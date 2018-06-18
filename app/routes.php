@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', function()
+/*Route::get('/', function()
 {
-	return View::make('home');
-});
+	return View::make('index');
+});*/
+
+Route::get('/', 'IndexController@showIndex');
+
+Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');

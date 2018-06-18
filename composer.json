@@ -4,7 +4,10 @@
 	"keywords": ["framework", "laravel"],
 	"license": "MIT",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+	        "way/generators": "dev-master",
+        	"twitter/bootstrap": "dev-master",
+        	"conarwelsh/mustache-l4": "dev-master"
 	},
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
@@ -17,7 +20,8 @@
 			"app/models",
 			"app/database/migrations",
 			"app/database/seeds",
-			"app/tests/TestCase.php"
+			"app/tests/TestCase.php",
+            "app/repositories"
 		]
 	},
 	"scripts": {

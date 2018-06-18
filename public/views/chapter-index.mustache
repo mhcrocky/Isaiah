@@ -1,0 +1,14 @@
+            <main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+                <h4 class="title-chapters mini-header heading-mobile">Isaiah Chapter Index</h4>
+                <h4 class="title-chapters non-mobile">Isaiah Chapter Index</h4>
+{{{widget_chapter_sel}}}
+                <hr>
+                <div class="row chapter-table">
+                    {{#index_chapters}}
+                    <span class="col-xs-6 col-lg-4">
+                        <h2><a href="/{{id}}">Chapter {{id}}<i class="fa fa-angle-right"></i></a></h2>
+                        <p>{{heading_text}}</p>
+                    </span>
+                    {{/index_chapters}}
+                </div>
+            </main>
