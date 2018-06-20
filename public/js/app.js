@@ -74,7 +74,6 @@
                     $(this).attr('href', $(this).attr('href').split('#')[0] + '#' + id);
                 });
             }
-            //btn-chapter-sel
         });
 
         /**
