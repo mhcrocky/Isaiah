@@ -96,8 +96,8 @@
                     <div class="col-xs-12 col-sm-3 col-list">
                         <h3>Read Isaiah</h3>
                         <ul>
-                            <li><a href="/isaiah/">Isaiah Chapter Index</a></li>
-                            <li><a href="search.php">Search Isaiah</a></li>
+                            <li><a href="/">Isaiah Chapter Index</a></li>
+                            <li><a href="/search">Search Isaiah</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-3">
