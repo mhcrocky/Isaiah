@@ -221,6 +221,10 @@ header .main-nav .nav>li>a:focus
     border-color: #DFD9C7;
 }
 
+.btn-chapter-sel .fa {
+padding-left: 8px;
+}
+
 /*--------------------------------
   >Heading
 --------------------------------*/
@@ -428,12 +432,6 @@ main b:hover
     font-style: italic;
     margin: 0 0 15px;
 }
-
-/*
-#commentary main .commentary .verse-number {
-font-style: normal;
-}
-*/
 
 .nav-pills .active .fa {
     background: #D3BA71;
