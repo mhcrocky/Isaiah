@@ -5,19 +5,18 @@ class WidgetRepository {
      * Gets html for the chapter selection widget
      *
      * @param int $chapter Chapter number
-     * @return string Chapter selection widget html
+     * @return array Chapter selection array for mustache template
      */
     public static function GetChapterSelection($chapter) {
-        $chapter_selection = "\t\t<ul class=\"chapter-selection\">\r\n";
-        for($i = 1; $i <= 66; $i++) {
-            $btn_class = 'btn-default';
+        $chapter_selection = array();
+        for($j = 0, $i = 1; $i <= 66; $i++, $j++) {
+            $chapter_selection[$j]['selection_number'] = $i;
             if($i == $chapter) {
-                $btn_class = 'btn-warning';
+                $chapter_selection[$j]['button_class'] = 'btn-warning';
+            } else {
+                $chapter_selection[$j]['button_class'] = 'btn-default';
             }
-            $chapter_selection .= "\t\t\t<li><a class=\"btn ${btn_class}\" href=\"/${i}\">${i}</a></li>\r\n";
         }
-        $chapter_selection .= "\t\t</ul>";
-
         return $chapter_selection;
     }
 } 

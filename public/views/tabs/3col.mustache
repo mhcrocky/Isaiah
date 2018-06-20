@@ -2,7 +2,7 @@
 
 <h4 class="mini-header">Comparative Translation</h4>
 
-<div class="chapter-heading"><i><?php echo get_book_chapter_header($book_title, $chapter); ?></i></div>
+<div class="chapter-heading"><i>{{chapter_heading}}</i></div>
 
 <div class="row">
 
@@ -213,6 +213,6 @@
 
 <h4>Isaiah Chapter Index</h4>
 
-<?php include('widget-chapter-sel.php'); ?>
+{{> widgets.chapter-selection}}
 
 </main>

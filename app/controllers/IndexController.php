@@ -23,16 +23,12 @@ class IndexController extends BaseController {
             'body_css' => 'scriptures section-heading'
         );
         $content_data = array(
-            'widget_chapter_sel' => WidgetRepository::GetChapterSelection(0),
             'index_chapters' => IndexRepository::GetChapterIndex()
         );
-        return View::make('layouts.application', $template_data)->nest('content', 'chapter-index', $content_data);
-        /*$view = View::make('layouts.application', $template_data)->nest('content', 'chapter-index');
-        View::composer(array('chapter-index'), function($view)
-        {
-            $view->with('widget_chapter_sel', WidgetRepository::GetChapterSelection(0));
-        });
-        return $view;*/
+        View::share('chapters', WidgetRepository::GetChapterSelection(0));
+        return View::make('layouts.master', $template_data)
+            ->nest('heading', 'headings.chapter-index')
+            ->nest('content', 'chapter-index', $content_data);
     }
 
 }
