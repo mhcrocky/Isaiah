@@ -50,12 +50,6 @@ if (location.hash) {               // do the test straight away
         });
 
         /**
-         * TODO: Disabled left/right pager
-         */
-        //$('.nav-left-disabled a').on('click', function(e) { e.preventDefault(); });
-        //$('.nav-right-disabled a').on('click', function(e) { e.preventDefault(); });
-
-        /**
          * Remember active tab
          */
         $('#heading-tabs a,#dropdown-heading-tabs a').on('click', function (e) {
@@ -63,7 +57,8 @@ if (location.hash) {               // do the test straight away
             $(this).tab('show');
         });
 
-        var isTabShown = false;
+        window.isTabShown = false;
+        window.heading_tabs = $("#heading-tabs");
 
         /**
          * Store the currently selected tab in the hash value and update nav links
@@ -77,30 +72,13 @@ if (location.hash) {               // do the test straight away
             window.isTabShown = true;
         });
 
-        $("#index-aside a").on('click', function (e) {
+        $("#index-aside").find("a").on('click', function (e) {
             var id = $(e.currentTarget).attr("href").substr(1);
             //window.location.hash = id;
             var hash = "#" + id;
             selectTab(hash);
             setNavHash(hash);
         });
-
-        function setNavHash(hash) {
-            var angle_left = $('.fa-angle-left');
-            if(typeof angle_left.attr('href') != 'undefined') {
-                angle_left.attr('href', angle_left.attr('href').split('#')[0] + hash);
-            }
-            var angle_right = $('.fa-angle-right');
-            if(typeof angle_right.attr('href') != 'undefined') {
-                angle_right.attr('href', angle_right.attr('href').split('#')[0] + hash);
-            }
-            var chapter_sel = $('.btn-chapter-sel');
-            if(typeof chapter_sel.attr('href') != 'undefined') {
-                chapter_sel.each(function(index){
-                    $(this).attr('href', $(this).attr('href').split('#')[0] + hash);
-                });
-            }
-        }
 
         /**
          * On load of the page: switch to the currently selected tab
@@ -124,23 +102,45 @@ if (location.hash) {               // do the test straight away
             }
         }
 
+        window.heading_tabs.find('li > a').click(function (e) {
+            var t = e.target;
+            if (t.parentElement.href != undefined)
+                var parentHref = t.parentElement.href;
+                var hashStart = parentHref.indexOf("#");
+                if(hashStart != -1) {
+                var hash = parentHref.substr(hashStart);
+                selectTab(hash);
+                return false;
+            } else {
+                return true;
+            }
+        });
+
+        function setNavHash(hash) {
+            var angle_left = $('.fa-angle-left');
+            if(typeof angle_left.attr('href') != 'undefined') {
+                angle_left.attr('href', angle_left.attr('href').split('#')[0] + hash);
+            }
+            var angle_right = $('.fa-angle-right');
+            if(typeof angle_right.attr('href') != 'undefined') {
+                angle_right.attr('href', angle_right.attr('href').split('#')[0] + hash);
+            }
+            var chapter_sel = $('.btn-chapter-sel');
+            if(typeof chapter_sel.attr('href') != 'undefined') {
+                chapter_sel.each(function(){
+                    $(this).attr('href', $(this).attr('href').split('#')[0] + hash);
+                });
+            }
+        }
+
         function selectTab(hash) {
-            $("#heading-tabs > li").removeClass('active');
-            $("#heading-tabs > li > a[href$=" + hash + "]").closest("li").addClass("active");
+            var heading_tabs_li = window.heading_tabs.find('li');
+            heading_tabs_li.removeClass('active');
+            heading_tabs_li.find("a[href$=" + hash + "]").closest("li").addClass("active");
             $('.tab-content > .tab-pane').hide();
             location.hash = hash;
             $(hash).show();
         }
-
-        $("#heading-tabs > li > a").click(function (e) {
-            var t = e.target;
-
-            if (t.parentElement.href != undefined && t.parentElement.href.indexOf("#") != -1) {
-                var hash = t.parentElement.href.substr(t.parentElement.href.indexOf("#"));
-                selectTab(hash);
-                return false;
-            }
-        });
     });//end document ready
 
 }(this, jQuery, Backbone));
