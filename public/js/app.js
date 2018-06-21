@@ -1,3 +1,13 @@
+/**
+ * Hack to prevent scrolling to hash tags from bootstrap tabs
+ */
+if (location.hash) {               // do the test straight away
+    window.scrollTo(0, 0);         // execute it straight away
+    setTimeout(function() {
+        window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
+    }, 1);
+}
+
 //alias the global object
 //alias jQuery so we can potentially use other libraries that utilize $
 //alias Backbone to save us on some typing
@@ -60,15 +70,19 @@
          */
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a").on("shown.bs.tab", function (e) {
             var id = $(e.target).attr("href").substr(1);
-            window.location.hash = id;
-            setNavHash('#' + id);
+            //window.location.hash = id;
+            var hash = "#" + id;
+            selectTab(hash);
+            setNavHash(hash);
             window.isTabShown = true;
         });
 
         $("#index-aside a").on('click', function (e) {
             var id = $(e.currentTarget).attr("href").substr(1);
-            window.location.hash = id;
-            setNavHash('#' + id);
+            //window.location.hash = id;
+            var hash = "#" + id;
+            selectTab(hash);
+            setNavHash(hash);
         });
 
         function setNavHash(hash) {
@@ -92,35 +106,41 @@
          * On load of the page: switch to the currently selected tab
          */
         var hash = window.location.hash;
-        $('#heading-tabs a[href="' + hash + '"]').tab('show');
 
-        if(isTabShown === false){
-            if(hash === '') {
-                //if(location.pathname != '/') {
-                    window.location.hash = '#one_col';
-                //}
-                setNavHash('#one_col');
-            } else {
+        if(location.pathname != '/') {
+            if (hash != "") {
+                selectTab(hash);
                 setNavHash(hash);
+            } else {
+                hash = "#one_col";
+                selectTab(hash);
+                setNavHash(hash);
+            }
+        } else {
+            if (hash != "") {
+                setNavHash(hash);
+            } else {
+                setNavHash("#one_col");
             }
         }
 
-        /*var scrolled = false;
+        function selectTab(hash) {
+            $("#heading-tabs > li").removeClass('active');
+            $("#heading-tabs > li > a[href$=" + hash + "]").closest("li").addClass("active");
+            $('.tab-content > .tab-pane').hide();
+            location.hash = hash;
+            $(hash).show();
+        }
 
-        $(window).scroll(function(){
-            scrolled = true;
+        $("#heading-tabs > li > a").click(function (e) {
+            var t = e.target;
+
+            if (t.parentElement.href != undefined && t.parentElement.href.indexOf("#") != -1) {
+                var hash = t.parentElement.href.substr(t.parentElement.href.indexOf("#"));
+                selectTab(hash);
+                return false;
+            }
         });
-
-        if ( window.location.hash && scrolled ) {
-            $(window).scrollTop( 0 );
-        }*/
     });//end document ready
 
 }(this, jQuery, Backbone));
-
-/*if (location.hash) {               // do the test straight away
-    window.scrollTo(0, 0);         // execute it straight away
-    setTimeout(function() {
-        window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
-    }, 1);
-}*/
