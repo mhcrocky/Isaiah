@@ -57,6 +57,21 @@ if (location.hash) {               // do the test straight away
             $(this).tab('show');
         });
 
+        /**
+         * Populate verse modal
+         */
+        $('.modal-trigger.verse-number').on('click', function (e) {
+            var verse_number = $(e.target).html();
+            var chapter_number = $('#chapter-number').html();
+            var kjv_text = $('#kjv_' + verse_number).html();
+            var iit_text = $('#iit_' + verse_number).html();
+            var heb_text = $('#heb_' + verse_number).html();
+            $('#kjv-modal-verse').html(kjv_text);
+            $('#iit-modal-verse').html(iit_text);
+            $('#heb-modal-verse').html(heb_text);
+            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
+        });
+
         window.isTabShown = false;
         window.heading_tabs = $("#heading-tabs");
 

@@ -4,14 +4,15 @@
 
             <div class="modal-header">
                 {{> navigation.links-light}}
-                <h3 class="modal-title" id="myModalLabel">Isaiah {{chapter_number}}:{{verse_number}}</h3>
+                <div id="chapter-number" style="display: none;">{{chapter_number}}</div>
+                <h3 class="modal-title" id="verse-modal-label">Isaiah {{chapter_number}}:{{verse_number}}</h3>
             </div>
             <div class="modal-body">
 
                 <table class="table">
                     <thead>
                     <tr>
-                        <td class="heb-col" colspan="2">
+                        <td id="heb-modal-verse" class="heb-col" colspan="2" dir="rtl">
                             {{verse_hebrew}}
                         </td>
                     </tr>
@@ -23,9 +24,9 @@
                     <tbody>
                     <tr>
                         <td>
-                            <p>{{verse_kjv}}</p>
+                            <p id="kjv-modal-verse">{{verse_kjv}}</p>
                         </td>
-                        <td>
+                        <td id="iit-modal-verse">
                             {{verse_iit}}
                         </td>
                     </tr>
@@ -40,7 +41,7 @@
                     <tbody>
                     <tr>
                         <td>
-                            <p>{{verse_commentary}}</p>
+                            <p id="commentary-modal-verse">{{verse_commentary}}</p>
                         </td>
                     </tr>
                     </tbody>

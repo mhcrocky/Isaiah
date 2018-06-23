@@ -110,8 +110,10 @@ EOT;
     }
 
     /**
-     * Get IIT HTML
+     * Get three column view HTML
      *
+     * @param int Chapter number
+     * @return string Three column view HTML
      */
     public function GetThreeColHtml($chapter_number) {
         $is_chapter_number_first = false;
@@ -149,10 +151,12 @@ EOT;
             }
 
             $kjv_scripture_text = html_entity_decode($kjv_chapter_text[$i]->scripture_text);
-            $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->scripture_text);
+            if(!empty($iit_chapter_text[$i]->three_col_html)) {
+                $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->three_col_html);
+            } else {
+                $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->scripture_text);
+            }
             $heb_scripture_text = html_entity_decode($heb_chapter_text[$i]->scripture_text);
-
-            $iit_custom_html = html_entity_decode($iit_chapter_text[$i]->three_col_html);
 
             $segment_id = $iit_chapter_text[$i]->segment_id;
 
@@ -216,10 +220,10 @@ EOT;
 
             $three_col_html .= <<<EOT
 \t\t\t<tr>
-\t\t\t\t<td>${kjv_scripture_text}</td>
+\t\t\t\t<td id="kjv_${kjv_verse_number}">${kjv_scripture_text}</td>
 \t\t\t\t<td class="comp-vs-num">${kjv_verse_number}</td>
-\t\t\t\t<td>${iit_html}</td>
-\t\t\t\t<td class="heb-col">${heb_scripture_text}</td>
+\t\t\t\t<td id="iit_${kjv_verse_number}">${iit_html}</td>
+\t\t\t\t<td id="heb_${kjv_verse_number}" class="heb-col">${heb_scripture_text}</td>
 \t\t\t</tr>\r\n
 EOT;
 
