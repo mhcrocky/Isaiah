@@ -48,18 +48,30 @@ class IITPaginator {
         if($nav_chapter >= 1 && $nav_chapter <= 66) {
             if($direction == 'left') {
                 $nav_class .= 'fa fa-angle-left';
+                if($page_area == 'heading-chapters') {
+                    $nav_class .= ' heading-nav-left';
+                }
                 $nav_id = 'nav-left' . $nav_area;
             } else {
                 $nav_class .= 'fa fa-angle-right';
+                if($page_area == 'heading-chapters') {
+                    $nav_class .= ' heading-nav-right';
+                }
                 $nav_id = 'nav-right' . $nav_area;
             }
             $link = "/${nav_chapter}";
         } else {
             $link = '';
             if($direction == 'left') {
+                if($page_area == 'heading-chapters') {
+                    $nav_class .= 'heading-nav-left ';
+                }
                 $nav_class .= 'fa fa-angle-left disabled';
                 $nav_id = 'nav-left-disabled';
             } else {
+                if($page_area == 'heading-chapters') {
+                    $nav_class .= 'heading-nav-right ';
+                }
                 $nav_class .= 'fa fa-angle-right disabled';
                 $nav_id = 'nav-right-disabled';
             }

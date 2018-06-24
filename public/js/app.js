@@ -57,6 +57,11 @@ if (location.hash) {               // do the test straight away
             $(this).tab('show');
         });
 
+        $('.heading-nav-left.disabled,.heading-nav-right.disabled').on('click', function(e) {
+            e.preventDefault();
+            return false;
+        })
+
         window.verse_number = 1;
 
         /**
@@ -87,7 +92,6 @@ if (location.hash) {               // do the test straight away
          */
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a").on("shown.bs.tab", function (e) {
             var id = $(e.target).attr("href").substr(1);
-            //window.location.hash = id;
             var hash = "#" + id;
             selectTab(hash);
             setNavHash(hash);
@@ -96,7 +100,6 @@ if (location.hash) {               // do the test straight away
 
         $("#index-aside").find("a").on('click', function (e) {
             var id = $(e.currentTarget).attr("href").substr(1);
-            //window.location.hash = id;
             var hash = "#" + id;
             selectTab(hash);
             setNavHash(hash);
@@ -187,13 +190,13 @@ if (location.hash) {               // do the test straight away
 
         function updatePagination(verse_number) {
             var left_pager = $('#nav-links-light-verse-left');
-            var right_pager = $('#nav-links-light-verse-right');
             var prev_verse = verse_number - 1;
             if(prev_verse >= 1) {
                 left_pager.disable(false);
             } else {
                 left_pager.disable(true);
             }
+            var right_pager = $('#nav-links-light-verse-right');
             var verse_count = $('#verse-count').html();
             var next_verse = verse_number + 1;
             if(next_verse <= verse_count) {
