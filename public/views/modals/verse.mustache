@@ -3,8 +3,9 @@
         <div class="modal-content">
 
             <div class="modal-header">
-                {{> navigation.links-light}}
+                {{> navigation.links-light-verse}}
                 <div id="chapter-number" style="display: none;">{{chapter_number}}</div>
+                <div id="verse-count" style="display: none;">{{verse_count}}</div>
                 <h3 class="modal-title" id="verse-modal-label">Isaiah {{chapter_number}}:{{verse_number}}</h3>
             </div>
             <div class="modal-body">
@@ -12,7 +13,7 @@
                 <table class="table">
                     <thead>
                     <tr>
-                        <td id="heb-modal-verse" class="heb-col" colspan="2" dir="rtl">
+                        <td id="heb-modal-verse" class="heb-col" colspan="2">
                             {{verse_hebrew}}
                         </td>
                     </tr>

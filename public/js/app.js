@@ -57,19 +57,36 @@ if (location.hash) {               // do the test straight away
             $(this).tab('show');
         });
 
+        window.verse_number = 1;
+
         /**
          * Populate verse modal
          */
         $('.modal-trigger.verse-number').on('click', function (e) {
-            var verse_number = $(e.target).html();
-            var chapter_number = $('#chapter-number').html();
-            var kjv_text = $('#kjv_' + verse_number).html();
-            var iit_text = $('#iit_' + verse_number).html();
-            var heb_text = $('#heb_' + verse_number).html();
-            $('#kjv-modal-verse').html(kjv_text);
-            $('#iit-modal-verse').html(iit_text);
-            $('#heb-modal-verse').html(heb_text);
-            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
+            window.verse_number = $(e.target).html();
+            populateVerseModal(window.verse_number);
+        });
+
+        $('#nav-links-light-verse-left').on('click', function (e) {
+            e.preventDefault();
+            if(window.verse_number > 1) {
+                window.verse_number--;
+                populateVerseModal(window.verse_number);
+                return true;
+            } else {
+                return false;
+            }
+        });
+
+        $('#nav-links-light-verse-right').on('click', function (e) {
+            e.preventDefault();
+            if(window.verse_number < 66) {
+                window.verse_number++;
+                populateVerseModal(window.verse_number);
+                return true;
+            } else {
+                return false;
+            }
         });
 
         window.isTabShown = false;
@@ -119,12 +136,13 @@ if (location.hash) {               // do the test straight away
 
         window.heading_tabs.find('li > a').click(function (e) {
             var t = e.target;
-            if (t.parentElement.href != undefined)
+            if (t.parentElement.href != undefined) {
                 var parentHref = t.parentElement.href;
                 var hashStart = parentHref.indexOf("#");
                 if(hashStart != -1) {
-                var hash = parentHref.substr(hashStart);
-                selectTab(hash);
+                    var hash = parentHref.substr(hashStart);
+                    selectTab(hash);
+                }
                 return false;
             } else {
                 return true;
@@ -132,13 +150,21 @@ if (location.hash) {               // do the test straight away
         });
 
         function setNavHash(hash) {
-            var angle_left = $('.fa-angle-left');
-            if(typeof angle_left.attr('href') != 'undefined') {
-                angle_left.attr('href', angle_left.attr('href').split('#')[0] + hash);
+            var angle_left_top = $('#nav-left-top.fa-angle-left');
+            if(typeof angle_left_top.attr('href') != 'undefined') {
+                angle_left_top.attr('href', angle_left_top.attr('href').split('#')[0] + hash);
             }
-            var angle_right = $('.fa-angle-right');
-            if(typeof angle_right.attr('href') != 'undefined') {
-                angle_right.attr('href', angle_right.attr('href').split('#')[0] + hash);
+            var angle_left_bottom = $('#nav-left-bottom.fa-angle-left');
+            if(typeof angle_left_bottom.attr('href') != 'undefined') {
+                angle_left_bottom.attr('href', angle_left_bottom.attr('href').split('#')[0] + hash);
+            }
+            var angle_right_top = $('#nav-right-top.fa-angle-right');
+            if(typeof angle_right_top.attr('href') != 'undefined') {
+                angle_right_top.attr('href', angle_right_top.attr('href').split('#')[0] + hash);
+            }
+            var angle_right_bottom = $('#nav-right-bottom.fa-angle-right');
+            if(typeof angle_right_bottom.attr('href') != 'undefined') {
+                angle_right_bottom.attr('href', angle_right_top.attr('href').split('#')[0] + hash);
             }
             var chapter_sel = $('.btn-chapter-sel');
             if(typeof chapter_sel.attr('href') != 'undefined') {
@@ -156,6 +182,45 @@ if (location.hash) {               // do the test straight away
             location.hash = hash;
             $(hash).show();
         }
+
+        function populateVerseModal(verse_number) {
+            var chapter_number = $('#chapter-number').html();
+            var kjv_text = $('#kjv_' + verse_number).html();
+            var iit_text = $('#iit_' + verse_number).html();
+            var heb_text = $('#heb_' + verse_number).html();
+            $('#kjv-modal-verse').html(kjv_text);
+            $('#iit-modal-verse').html(iit_text);
+            $('#heb-modal-verse').html(heb_text);
+            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
+            updatePagination(verse_number);
+        }
+
+        function updatePagination(verse_number) {
+            var left_pager = $('#nav-links-light-verse-left');
+            var right_pager = $('#nav-links-light-verse-right');
+            var prev_verse = verse_number - 1;
+            if(prev_verse >= 1) {
+                left_pager.disable(false);
+            } else {
+                left_pager.disable(true);
+            }
+            var verse_count = $('#verse-count').html();
+            var next_verse = verse_number + 1;
+            if(next_verse <= verse_count) {
+                right_pager.disable(false);
+            } else {
+                right_pager.disable(true);
+            }
+        }
+
+        $.fn.extend({
+            disable: function(state) {
+                return this.each(function() {
+                    var $this = $(this);
+                    $this.toggleClass('disabled', state);
+                });
+            }
+        });
     });//end document ready
 
 }(this, jQuery, Backbone));

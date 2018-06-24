@@ -1,6 +1,10 @@
 <?php
 
 class ChapterRepository {
+    public $verse_count = 0;
+
+    private $_iit_chapter_text = '';
+
     /**
      * Gets text for the chapter heading
      *
@@ -19,12 +23,14 @@ class ChapterRepository {
      * @return string
      */
     public function GetIITChapter($chapter_number) {
-        $chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
+        $this->_iit_chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
+        $chapter_text = $this->_iit_chapter_text;
 
         $last_segment_id = 0;
         $segment_id = 1;
 
         $verse_count = count($chapter_text);
+        $this->verse_count = $verse_count;
 
         $iit_html = '';
         $is_prose_inline = false;
@@ -119,7 +125,11 @@ EOT;
         $is_chapter_number_first = false;
 
         $kjv_chapter_text = $this->_getBookChapter('Isaiah KJV', $chapter_number);
-        $iit_chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
+        if(!empty($this->_iit_chapter_text)) {
+            $iit_chapter_text = $this->_iit_chapter_text;
+        } else {
+            $iit_chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
+        }
         $heb_chapter_text = $this->_getBookChapter('Isaiah Hebrew', $chapter_number);
 
         $last_segment_id = 0;
