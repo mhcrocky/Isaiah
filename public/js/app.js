@@ -69,24 +69,14 @@ if (location.hash) {               // do the test straight away
 
         $('#nav-links-light-verse-left').on('click', function (e) {
             e.preventDefault();
-            if(window.verse_number > 1) {
-                window.verse_number--;
-                populateVerseModal(window.verse_number);
-                return true;
-            } else {
-                return false;
-            }
+            window.verse_number--;
+            populateVerseModal(window.verse_number);
         });
 
         $('#nav-links-light-verse-right').on('click', function (e) {
             e.preventDefault();
-            if(window.verse_number < 66) {
-                window.verse_number++;
-                populateVerseModal(window.verse_number);
-                return true;
-            } else {
-                return false;
-            }
+            window.verse_number++;
+            populateVerseModal(window.verse_number);
         });
 
         window.isTabShown = false;
