@@ -223,10 +223,6 @@ header .main-nav .nav>li>a:focus
     border-color: #DFD9C7;
 }
 
-.btn-chapter-sel .fa {
-padding-left: 8px;
-}
-
 /*--------------------------------
   >Heading
 --------------------------------*/
@@ -364,6 +360,10 @@ main .indent,
     padding-left: 25px;
 }
 
+main .commentary-indent {
+    text-indent: .5in
+}
+
 main .chapter-number-single, .chapter-number-double, .verse-number {
     color: #000;
 }
@@ -435,6 +435,12 @@ main b:hover
     margin: 0 0 15px;
 }
 
+/*
+#commentary main .commentary .verse-number {
+font-style: normal;
+}
+*/
+
 .nav-pills .active .fa {
     background: #D3BA71;
     color: #FFF;
@@ -458,6 +464,14 @@ main b:hover
     font-weight: 300;
 }
 
+#nav-left-disabled.heading-nav-left.disabled,
+#nav-left-disabled.heading-nav-left[disabled],
+#nav-right-disabled.heading-nav-right.disabled,
+#nav-right-disabled.heading-nav-right[disabled]
+{
+    cursor: default;
+    color: gray;
+}
 
 /*--------------------------------
   >1Col
