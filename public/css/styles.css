@@ -45,6 +45,8 @@ a:hover {
     text-decoration:underline;
 }
 
+b, strong {line-height: 10px;}
+
 main ol, main ul {
     padding-left: 35px;
 }
