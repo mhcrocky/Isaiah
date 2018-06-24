@@ -1648,6 +1648,7 @@ footer .btn:hover {
         line-height: 20px !important;
     }
 
+		.mini-header {display: none;}
 
 } /*--------------------------------------- End */
 
