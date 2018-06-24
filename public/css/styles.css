@@ -462,10 +462,6 @@ font-style: normal;
     font-weight: 300;
 }
 
-/*#nav-left-disabled .heading-nav-left.disabled,
-#nav-left-disabled .heading-nav-left[disabled],
-#nav-right-disabled .heading-nav-right.disabled,
-#nav-right-disabled .heading-nav-right[disabled]*/
 #nav-left-disabled.heading-nav-left.disabled,
 #nav-left-disabled.heading-nav-left[disabled],
 #nav-right-disabled.heading-nav-right.disabled,
