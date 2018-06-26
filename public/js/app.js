@@ -99,10 +99,8 @@ if (location.hash) {               // do the test straight away
         });
 
         $("#index-aside").find("a").on('click', function (e) {
-            var id = $(e.currentTarget).attr("href").substr(1);
-            var hash = "#" + id;
-            selectTab(hash);
-            setNavHash(hash);
+            var href = $(e.currentTarget).attr("href");
+            window.location = href;
         });
 
         /**
