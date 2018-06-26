@@ -1271,6 +1271,8 @@ footer .btn:hover {
     {
         background-color: inherit;
     }
+    
+    aside audio {margin: 10px 0;}
 
 } /*--------------------------------------- End mobile only */
 
@@ -1545,6 +1547,8 @@ footer .btn:hover {
     .footer-wrapper {
         padding-left: 20px;
         padding-right: 20px;
+				margin-left: 0;
+				margin-right: 0;
     }
 
     footer {
