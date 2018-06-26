@@ -104,7 +104,7 @@
                         <h3>Social</h3>
                         <ul>
                             <li><a class="btn btn-facebook" href=""><i class="fa fa-facebook fa-fw"></i>&nbsp;&nbsp;Facebook</a></li>
-                            <li><a class="btn btn-twitter" href=""><i class="fa fa-twitter fa-fw"></i>&nbsp;&nbsp;twitter</a></li>
+                            <!--<li><a class="btn btn-twitter" href=""><i class="fa fa-twitter fa-fw"></i>&nbsp;&nbsp;twitter</a></li>-->
                         </ul>
                     </div>
                 </div>
