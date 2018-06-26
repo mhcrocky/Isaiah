@@ -717,6 +717,10 @@ aside iframe {
     background-color: #fff;
 }
 
+aside audio {
+		width: 100%;
+}
+
 .color-legend {
     font-weight: bold;
 }
