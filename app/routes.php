@@ -19,3 +19,7 @@
 Route::get('/', 'IndexController@showIndex');
 
 Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');
+
+Route::get('/media/commentary/{fileName}', 'MediaController@showMediaCommentary');
+/*Route::get('/commentary/ogg/{chapterNumber}', 'MediaController@showMediaOGG')->where('chapterNumber', '[0-9]+');
+Route::get('/commentary/mp3/{chapterNumber}', 'MediaController@showMediaMP3')->where('chapterNumber', '[0-9]+');*/
