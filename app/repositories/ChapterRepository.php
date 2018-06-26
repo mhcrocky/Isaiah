@@ -115,6 +115,10 @@ EOT;
         return $iit_html;
     }
 
+    public function GetIITFootnotesList($chapter_number) {
+        return $this->getIITFootnotes($chapter_number);
+    }
+
     /**
      * Get three column view HTML
      *
@@ -155,18 +159,30 @@ EOT;
             $heb_html = '';
 
             $iit_verse_number = $this->_strrtrim($iit_chapter_text[$i]->verse_number, '.0');
-            $kjv_verse_number = $this->_strrtrim($kjv_chapter_text[$i]->verse_number, '.0');
-            if($iit_verse_number != $kjv_verse_number) {
-                $kjv_verse_number = $kjv_verse_number . "|${iit_verse_number}";
+            if(!empty($kjv_chapter_text[$i])) {
+                $kjv_verse_number = $this->_strrtrim($kjv_chapter_text[$i]->verse_number, '.0');
+            } else {
+                $kjv_verse_number = '';
             }
+            /*if($iit_verse_number != $kjv_verse_number) {
+                $kjv_verse_number = $kjv_verse_number . "|${iit_verse_number}";
+            }*/
 
-            $kjv_scripture_text = html_entity_decode($kjv_chapter_text[$i]->scripture_text);
+            if(!empty($kjv_chapter_text[$i])) {
+                $kjv_scripture_text = html_entity_decode($kjv_chapter_text[$i]->scripture_text);
+            } else {
+                $kjv_scripture_text = '';
+            }
             if(!empty($iit_chapter_text[$i]->three_col_html)) {
                 $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->three_col_html);
             } else {
                 $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->scripture_text);
             }
-            $heb_scripture_text = html_entity_decode($heb_chapter_text[$i]->scripture_text);
+            if(!empty($heb_chapter_text[$i])) {
+                $heb_scripture_text = html_entity_decode($heb_chapter_text[$i]->scripture_text);
+            } else {
+                $heb_scripture_text = '';
+            }
 
             $segment_id = $iit_chapter_text[$i]->segment_id;
 
@@ -413,6 +429,34 @@ EOT;
         ORDER BY `volumes`.`id`, `books`.`id`, `chapters`.`id`, `verses`.`id`';
 
         $results = DB::select($sql, array($book_title, $chapter_number));
+
+        return $results;
+    }
+
+    private function getIITFootnotes($chapter_number) {
+        // SELECT verse_number, letter, note FROM iit_footnotes WHERE chapter_id = ?
+        $sql = 'SELECT
+          `iit_footnotes`.`id` AS `footnote_id`,
+          `iit_footnotes`.`verse_number` DIV 1 AS `verse_number`,
+          `iit_footnotes`.`letter` AS `letter`,
+          `iit_footnotes`.`note` AS `footnote_text`
+        FROM (((`volumes`
+          JOIN `books`
+            ON ((`books`.`volume_id` = `volumes`.`id`)))
+          JOIN `chapters`
+            ON ((`chapters`.`book_id` = `books`.`id`)))
+          JOIN `iit_footnotes`
+            ON ((`iit_footnotes`.`chapter_id` = `chapters`.`id`)))
+        WHERE (`books`.`book_title` = \'Isaiah IIT\'
+          AND `chapters`.`chapter_number` = ?)
+        ORDER BY `volumes`.`id`, `books`.`id`, `chapters`.`id`, `iit_footnotes`.`id`';
+
+        $results = DB::select($sql, array($chapter_number));
+
+        $result_count = count($results);
+        for($i = 0; $i < $result_count; $i++) {
+            $results[$i]->footnote_text = html_entity_decode($results[$i]->footnote_text);
+        }
 
         return $results;
     }
