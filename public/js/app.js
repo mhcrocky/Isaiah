@@ -178,7 +178,7 @@ if (location.hash) {               // do the test straight away
             var chapter_number = $('#chapter-number').html();
             var kjv_text = $('#kjv_' + verse_number).html();
             var iit_text = $('#iit_' + verse_number).html();
-            iit_text = iit_text.replace(/<a\b[^>]*>(.*?)<\/a>\s?/i,"");
+            iit_text = '<p>' + iit_text.replace(/<a\b[^>]*>(.*?)<\/a>\s?/i,"") + '</p>';
             var heb_text = $('#heb_' + verse_number).html();
             $('#kjv-modal-verse').html(kjv_text);
             $('#iit-modal-verse').html(iit_text);
