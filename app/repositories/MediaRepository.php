@@ -11,6 +11,10 @@ class MediaRepository {
         } else if ($extension == "ogg") {
             $mimeType = "audio/ogg";
             //$mimeType = "audio/ogg, audio/x-ogg, application/ogg, application/x-ogg";
+        } else {
+            $mimeType = '';
+            $location = '';
+            $filename = '';
         }
 
         $this->_smartReadFile($location, $filename, $mimeType);
@@ -31,11 +35,12 @@ class MediaRepository {
      */
     private function _smartReadFile($location, $filename, $mimeType = 'application/octet-stream')
     {
-        if (!file_exists($location))
+        $isMatch = preg_match('/^Isaiah\d{1,2}\.(mp3|ogg)$/', $filename);
+        if ($isMatch == false || !file_exists($location))
         {
             ob_end_clean();
-            header ("HTTP/1.1 404 Not Found");
-            header("Location: $location");
+            header("HTTP/1.1 404 Not Found");
+            //header("Location: $location");
             exit;
         }
 
@@ -47,7 +52,7 @@ class MediaRepository {
         {
             ob_end_clean();
             header ("HTTP/1.1 505 Internal server error");
-            header("Location: $location");
+            //header("Location: $location");
             exit;
         }
 
