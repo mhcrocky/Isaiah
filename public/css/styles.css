@@ -45,6 +45,8 @@ a:hover {
     text-decoration:underline;
 }
 
+b, strong {line-height: 10px;}
+
 main ol, main ul {
     padding-left: 35px;
 }
@@ -219,6 +221,10 @@ header .main-nav .nav>li>a:focus
 .heading .index-search input[type="text"] {
     background: #F5F3ED;
     border-color: #DFD9C7;
+}
+
+.btn-chapter-sel .fa {
+		padding-left: 8px;
 }
 
 /*--------------------------------
@@ -711,6 +717,10 @@ aside iframe {
     background-color: #fff;
 }
 
+aside audio {
+		width: 100%; 
+}
+
 .color-legend {
     font-weight: bold;
 }
@@ -779,7 +789,7 @@ aside .btn-default {
 
 aside h2 {
     margin: 0 0 10px;
-    font-weight: 300;
+    font-weight: 500;
 }
 
 aside hr {
@@ -1261,6 +1271,8 @@ footer .btn:hover {
     {
         background-color: inherit;
     }
+    
+    aside audio {margin: 10px 0;}
 
 } /*--------------------------------------- End mobile only */
 
@@ -1420,6 +1432,7 @@ footer .btn:hover {
 
     .heading {
         padding: 30px 0 25px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
     .heading p {
@@ -1504,7 +1517,7 @@ footer .btn:hover {
     }
 
     .wrapper {
-        margin-top: 30px;
+        margin-top: 25px;
     }
 
     .three-column.table td {
@@ -1524,10 +1537,6 @@ footer .btn:hover {
 
     aside {
         padding: 25px !important;
-        /* border: 1px solid #E2DBD1; */
-        /* background: #fff; */
-        /* background: #F8F8F8; */
-        /* border-radius: 6px; */
     }
 
     aside p {
@@ -1538,14 +1547,8 @@ footer .btn:hover {
     .footer-wrapper {
         padding-left: 20px;
         padding-right: 20px;
-        /*
-            border-top-left-radius: 6px;
-            -webkit-border-top-left-radius: 6px;
-            -moz-border-radius-topleft: 6px;
-            border-top-right-radius: 6px;
-            -webkit-border-top-right-radius: 6px;
-            -moz-border-radius-topright: 6px;
-        */
+				margin-left: 0;
+				margin-right: 0;
     }
 
     footer {
@@ -1646,6 +1649,7 @@ footer .btn:hover {
         line-height: 20px !important;
     }
 
+		.mini-header {display: none;}
 
 } /*--------------------------------------- End */
 
