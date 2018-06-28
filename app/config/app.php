@@ -123,6 +123,7 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
         'Way\Generators\GeneratorsServiceProvider',
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
+        'DaveJamesMiller\Boris\BorisServiceProvider',
 	),
 
 	/*
