@@ -92,13 +92,21 @@ class ChapterRepository {
                 $display_verse_number = $verse_number;
             }
 
+
+
             if(!empty($custom_html)) {
-                $iit_html .= $custom_html;
+                $iit_html .= <<<EOT
+<div id="iit_${display_verse_number}">
+\t$custom_html\r\n
+</div>
+EOT;
             } else {
                 $iit_html .= <<<EOT
-\t<span class="${verse_class}">
-\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
-\t</span>${space}\r\n
+\t<div id="iit_${display_verse_number}">
+\t\t<span class="${verse_class}">
+\t\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
+\t\t</span>${space}
+\t</div>\r\n
 EOT;
             }
 
@@ -248,7 +256,7 @@ EOT;
 \t\t\t<tr>
 \t\t\t\t<td id="kjv_${kjv_verse_number}">${kjv_scripture_text}</td>
 \t\t\t\t<td class="comp-vs-num">${kjv_verse_number}</td>
-\t\t\t\t<td id="iit_${kjv_verse_number}">${iit_html}</td>
+\t\t\t\t<td>${iit_html}</td>
 \t\t\t\t<td id="heb_${kjv_verse_number}" class="heb-col">${heb_scripture_text}</td>
 \t\t\t</tr>\r\n
 EOT;
