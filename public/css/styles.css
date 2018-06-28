@@ -61,7 +61,7 @@ q:before, q:after {
     content: none;
 }
 
-main p, main p a, main span, main span a, main sup, main li, main i, main b, .modal-body b, table td, table tbody span, .modal p, .verse, .vtext, .vtext b, .vtext i, .chapter-number-single, .chapter-number-double, .verse-number, .section-heading h1, .section-heading h1 .modal-trigger, .tab-heading h1, .tab-heading h1 .modal-trigger, .randomtext p, article h2, article h3, article h4, article h5, .page h2, .page h3, .page h4, .page h5, main b, main i, main strong, main em
+main p, main p a, main span, #iit-modal-verse span, main span a, main sup, #iit-modal-verse sup, main li, main i, #iit-modal-verse i, main b, #iit-modal-verse b, table td, table tbody span, .modal p, .verse, .vtext, .vtext b, .vtext i, .chapter-number-single, .chapter-number-double, .verse-number, .section-heading h1, .section-heading h1 .modal-trigger, .tab-heading h1, .tab-heading h1 .modal-trigger, .randomtext p, article h2, article h3, article h4, article h5, .page h2, .page h3, .page h4, .page h5, main b, main i, main strong, main em
 {
     font-family: "Crimson Text", "Palatino", Georgia, Time, serif;
 }
@@ -373,11 +373,14 @@ main .chapter-number-single, .chapter-number-double, .verse-number {
 }
 
 main span.prose,
-main .poetry {
+main .poetry,
+#iit-modal-verse span.prose,
+#iit-modal-verse .poetry {
     display: block;
 }
 
-main .prose.inline {
+main .prose.inline,
+#iit-modal-verse .prose.inline {
     display: inline;
 }
 
@@ -1262,7 +1265,7 @@ footer .btn:hover {
         height: 3px;
     }
 
-    .modal-body p, .modal .poetry, .modal-prose {
+    .modal-body p, #iit-modal-verse td, .modal .poetry, .modal-prose {
         font-size: 14px;
         line-height: 16px;
     }
