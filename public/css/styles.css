@@ -480,6 +480,21 @@ font-style: normal;
 /*--------------------------------
   Tooltip
 --------------------------------*/
+.tooltip {
+    position:absolute;
+    z-index:1030;
+    display:block;
+    visibility:visible;
+    font-size:12px;
+    line-height:1.4;
+    opacity:0;
+    filter:alpha(opacity=0)}
+
+.tooltip.in{
+    opacity:.9;
+    filter:alpha(opacity=90)
+}
+
 .tooltip-inner {
     max-width: 400px;
     width: 200px;
@@ -489,6 +504,14 @@ font-style: normal;
     text-decoration: none;
     background-color: #000;
     border-radius: 4px;
+    font-style: normal;
+    /*font-family: "Crimson Text", "Palatino", Georgia, Time, serif;*/
+    font-family: "Roboto", Helvetica, Arial, sans-serif
+}
+
+.tooltip-inner i {
+    font-style: italic;
+    font-family: "Roboto", Helvetica, Arial, sans-serif
 }
 
 /*--------------------------------
