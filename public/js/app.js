@@ -49,6 +49,47 @@ if (location.hash) {               // do the test straight away
             });
         });
 
+        var one_col_tooltip_options = {
+            animation: true,
+            container: false,
+            //delay: { show: 500, hide: 100 },
+            delay: 0,
+            html: true,
+            placement: 'right',
+            selector: false,
+            template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+            title: function(e) {
+                //TODO: Get title text from event
+                var sub = $(this).html();;
+                var footnote = $('#one-col-footnote-' + sub).html();
+                return footnote;
+            },
+            trigger: 'hover focus',
+            viewport: { selector: 'body', padding: 0 }
+        };
+
+        var three_col_tooltip_options = {
+            animation: true,
+            container: false,
+            //delay: { show: 500, hide: 100 },
+            delay: 0,
+            html: true,
+            placement: 'right',
+            selector: false,
+            template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
+            title: function(e) {
+                //TODO: Get title text from event
+                var sub = $(this).html();;
+                var footnote = $('#three-col-footnote-' + sub).html();
+                return footnote;
+            },
+            trigger: 'hover focus',
+            viewport: { selector: 'body', padding: 0 }
+        };
+
+        $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
+        $("a[id*='three_col_sup_']").tooltip(three_col_tooltip_options);
+
         /**
          * Remember active tab
          */

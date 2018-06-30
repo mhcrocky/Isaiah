@@ -120,6 +120,8 @@ EOT;
             $last_segment_id = $segment_id;
         }
 
+        $iit_html = preg_replace('/<sup>(.*)<\/sup>/U', '<sup><a id="three_col_sup_$1" href="#one-col-footnote-$1" data-toggle="tooltip">$1</a></sup>', $iit_html);
+
         return $iit_html;
     }
 
@@ -270,6 +272,9 @@ EOT;
 
             $last_segment_id = $segment_id;
         }
+
+        $three_col_html = preg_replace('/<sup>(.*)<\/sup>/U', '<sup><a id="three_col_sup_$1" href="#three-col-footnote-$1" data-toggle="tooltip">$1</a></sup>', $three_col_html);
+
 
         return $three_col_html;
     }

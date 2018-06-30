@@ -373,14 +373,11 @@ main .chapter-number-single, .chapter-number-double, .verse-number {
 }
 
 main span.prose,
-main .poetry,
-#iit-modal-verse span.prose,
-#iit-modal-verse .poetry {
+main .poetry {
     display: block;
 }
 
-main .prose.inline,
-#iit-modal-verse .prose.inline {
+main .prose.inline {
     display: inline;
 }
 
@@ -478,6 +475,20 @@ font-style: normal;
 {
     cursor: default;
     color: gray;
+}
+
+/*--------------------------------
+  Tooltip
+--------------------------------*/
+.tooltip-inner {
+    max-width: 400px;
+    width: 200px;
+    padding: 3px 8px;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+    background-color: #000;
+    border-radius: 4px;
 }
 
 /*--------------------------------
