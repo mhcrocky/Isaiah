@@ -1,0 +1,57 @@
+<div id="versemodal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                {{> navigation.links-light-verse}}
+                <div id="chapter-number" style="display: none;">{{chapter_number}}</div>
+                <div id="verse-count" style="display: none;">{{verse_count}}</div>
+                <h3 class="modal-title" id="verse-modal-label">Isaiah {{chapter_number}}:{{verse_number}}</h3>
+            </div>
+            <div class="modal-body">
+
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <td id="heb-modal-verse" class="heb-col" colspan="2">
+                            {{verse_hebrew}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="col-xs-6"><div class="full-table-title">King James Version</div><div class="mobile-table-title">KJV</div></th>
+                        <th class="col-xs-6"><div class="full-table-title">Isaiah Institute Translation</div><div class="mobile-table-title">IIT</div></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <p id="kjv-modal-verse">{{verse_kjv}}</p>
+                        </td>
+                        <td id="iit-modal-verse">
+                            {{verse_iit}}
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>Apocalyptic Commentary</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>
+                            <p id="commentary-modal-verse">{{verse_commentary}}</p>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+
+                <a class="modal-close pull-right" data-dismiss="modal" aria-hidden="true"><i class="fa fa-times"></i> Close</a>
+
+            </div>
+
+        </div>
+    </div>
+</div>

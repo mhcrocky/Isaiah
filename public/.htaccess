@@ -13,3 +13,10 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+AddType audio/mpeg mp3
+AddType audio/ogg ogg
+
+SetOutputFilter DEFLATE
+SetEnvIfNoCase Request_URI \.ogg$ no-gzip dont-vary
+SetEnvIfNoCase Request_URI \.mp3$ no-gzip dont-vary
