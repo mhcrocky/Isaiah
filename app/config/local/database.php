@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'homestead',
+			'database'  => 'isaiahde_logos',
 			'username'  => 'homestead',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
