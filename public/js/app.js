@@ -58,20 +58,19 @@ if (location.hash) {               // do the test straight away
             placement: 'right',
             selector: false,
             template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-            title: function(e) {
-                var sub = $(this).html();;
-                var footnote = $('#one-col-footnote-' + sub).html();
-                return footnote;
+            //title: function(e) {
+            title: function() {
+                var sub = $(this).html();
+                return $('#one-col-footnote-' + sub).html();
             },
             trigger: 'hover focus',
             viewport: { selector: 'body', padding: 0 }
         };
 
         var three_col_tooltip_options = one_col_tooltip_options;
-        three_col_tooltip_options.title = function(e) {
-            var sub = $(this).html();;
-            var footnote = $('#three-col-footnote-' + sub).html();
-            return footnote;
+        //three_col_tooltip_options.title = function(e) {
+        three_col_tooltip_options.title = function() {
+            return $('#three-col-footnote-' + $(this).html()).html();
         };
 
         $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
@@ -88,7 +87,7 @@ if (location.hash) {               // do the test straight away
         $('.heading-nav-left.disabled,.heading-nav-right.disabled').on('click', function(e) {
             e.preventDefault();
             return false;
-        })
+        });
 
         window.verse_number = 1;
 
@@ -119,11 +118,11 @@ if (location.hash) {               // do the test straight away
          * Populate keyword modal
          */
         $('.modal-trigger.keyword-modal').on('click', function (e) {
-            keyword_value = e.target.innerHTML;
-            keyword_verse_number = parseInt(e.target.id, 10);
-            keyword_color = $("#" + keyword_verse_number + '_keyword_color').html();
+            var keyword_value = e.target.innerHTML;
+            var keyword_verse_number = parseInt(e.target.id, 10);
+            var keyword_color = $("#" + keyword_verse_number + '_keyword_color').html();
             $("#keyword_modal_header").attr('class', 'modal-header ' + keyword_color);
-            keyword_description = $("#" + keyword_verse_number + '_keyword_description').html();
+            var keyword_description = $("#" + keyword_verse_number + '_keyword_description').html();
             $("#keywordModalLabel").html(keyword_value);
             $("#keyword_modal_paragraph").html(keyword_description);
         });
@@ -140,8 +139,7 @@ if (location.hash) {               // do the test straight away
         });
 
         $("#index-aside").find("a").on('click', function (e) {
-            var href = $(e.currentTarget).attr("href");
-            window.location = href;
+            window.location = $(e.currentTarget).attr("href");
         });
 
         /**
