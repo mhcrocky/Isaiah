@@ -492,7 +492,11 @@ EOT;
 
         $results = DB::select($sql, array($verse_id));
 
-        return $results[0];
+        if(!empty($results)) {
+            return $results[0];
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -506,13 +510,15 @@ EOT;
         $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
         if ($has_keyword == true) {
             $iit_keyword = $this->getIITKeyword($verse_id);
-            $scripture_text = preg_replace('/<b>(.*)<\/b>/U', '<b><a id="' . $verse_id . '_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $iit_keyword->color_name . '" data-toggle="modal">$1</a></b>', $scripture_text);
-            $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_description" style="display: none;">';
-            $chapter_keywords_html .= html_entity_decode($iit_keyword->keyword_description);
-            $chapter_keywords_html .= '</div>';
-            $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_color" style="display: none;">';
-            $chapter_keywords_html .= $iit_keyword->color_name;
-            $chapter_keywords_html .= '</div>';
+            if(!empty($iit_keyword)) {
+                $scripture_text = preg_replace('/<b>(.*)<\/b>/U', '<b><a id="' . $verse_id . '_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $iit_keyword->color_name . '" data-toggle="modal">$1</a></b>', $scripture_text);
+                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_description" style="display: none;">';
+                $chapter_keywords_html .= html_entity_decode($iit_keyword->keyword_description);
+                $chapter_keywords_html .= '</div>';
+                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_color" style="display: none;">';
+                $chapter_keywords_html .= $iit_keyword->color_name;
+                $chapter_keywords_html .= '</div>';
+            }
             return array($scripture_text, $chapter_keywords_html);
         }
         return array($scripture_text, $chapter_keywords_html);
