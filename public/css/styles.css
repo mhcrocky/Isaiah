@@ -61,7 +61,7 @@ q:before, q:after {
     content: none;
 }
 
-main p, main p a, main span, #iit-modal-verse span, main span a, main sup, #iit-modal-verse sup, main li, main i, #iit-modal-verse i, main b, #iit-modal-verse b, table td, table tbody span, .modal p, .verse, .vtext, .vtext b, .vtext i, .chapter-number-single, .chapter-number-double, .verse-number, .section-heading h1, .section-heading h1 .modal-trigger, .tab-heading h1, .tab-heading h1 .modal-trigger, .randomtext p, article h2, article h3, article h4, article h5, .page h2, .page h3, .page h4, .page h5, main b, main i, main strong, main em
+main p, main p a, main span, main b a, #iit-modal-verse span, main span a, main sup, #iit-modal-verse sup, main li, main i, #iit-modal-verse i, main b, #iit-modal-verse b, table td, table tbody span, .modal p, .verse, .vtext, .vtext b, .vtext i, .chapter-number-single, .chapter-number-double, .verse-number, .section-heading h1, .section-heading h1 .modal-trigger, .tab-heading h1, .tab-heading h1 .modal-trigger, .randomtext p, article h2, article h3, article h4, article h5, .page h2, .page h3, .page h4, .page h5, main b, main i, main strong, main em
 {
     font-family: "Crimson Text", "Palatino", Georgia, Time, serif;
 }
