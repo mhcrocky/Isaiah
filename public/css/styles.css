@@ -1393,6 +1393,10 @@ footer .btn:hover {
         font-size: 15px;
         line-height: 18px !important;
     }
+    
+		thead th:first-child, td#kjv_1 {
+				width: 26%;
+		}
 
 
 } /*--------------------------------------- End */
@@ -1439,6 +1443,10 @@ footer .btn:hover {
     main .poetry {
         padding-left: 80px;
     }
+    
+		thead th:first-child, td#kjv_1 {
+				width: 26%;
+		}
 
 
 } /*--------------------------------------- End */
@@ -1740,6 +1748,10 @@ footer .btn:hover {
     main .poetry {
         padding-left: 100px;
     }
+    
+		thead th:first-child, td#kjv_1 {
+				width: 20%;
+		}
 
 } /*--------------------------------------- End */
 
