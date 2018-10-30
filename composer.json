@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-	        "way/generators": "~2.0",
+	        "way/generators": "~3.0",
         	"twitter/bootstrap": "dev-master",
         	"conarwelsh/mustache-l4": "dev-master",
 		"davejamesmiller/laravel-boris": "dev-master"

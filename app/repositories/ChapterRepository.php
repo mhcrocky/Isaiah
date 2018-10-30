@@ -25,6 +25,7 @@ class ChapterRepository {
     public function GetIITChapter($chapter_number) {
         $this->_iit_chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
         $chapter_text = $this->_iit_chapter_text;
+        $chapter_keywords_html = '';
 
         $last_segment_id = 0;
         $segment_id = 1;
@@ -67,6 +68,20 @@ class ChapterRepository {
                 }
             }
 
+            //Get color
+            //Use $verse_id to get the keyword entry
+            $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
+            if($has_keyword == true) {
+                $iit_keyword = $this->getIITKeyword($verse_id);
+                $scripture_text = preg_replace('/<b>(.*)<\/b>/U', '<b><a id="' . $verse_id . '_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $iit_keyword->color_name . '" data-toggle="modal">$1</a></b>', $scripture_text);
+                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_description" style="display: none;">';
+                $chapter_keywords_html .= html_entity_decode($iit_keyword->keyword_description);
+                $chapter_keywords_html .= '</div>';
+                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_color" style="display: none;">';
+                $chapter_keywords_html .= $iit_keyword->color_name;
+                $chapter_keywords_html .= '</div>';
+            }
+
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
             $is_prose_inline = ($is_prose == true && $this->_isProseInline($segment_ids) ? true : false);
@@ -98,7 +113,8 @@ class ChapterRepository {
                 $iit_html .= <<<EOT
 <div id="iit_${display_verse_number}">
 \t$custom_html\r\n
-</div>
+</div>\r\n
+$chapter_keywords_html\r\n
 EOT;
             } else {
                 $iit_html .= <<<EOT
@@ -107,6 +123,7 @@ EOT;
 \t\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
 \t\t</span>${space}
 \t</div>\r\n
+$chapter_keywords_html\r\n
 EOT;
             }
 
@@ -472,5 +489,15 @@ EOT;
         }
 
         return $results;
+    }
+
+    private function getIITKeyword($verse_id) {
+        $sql = 'SELECT color_name, keyword, keyword_description
+                FROM iit_keywords
+                WHERE verse_id = ?';
+
+        $results = DB::select($sql, array($verse_id));
+
+        return $results[0];
     }
 } 

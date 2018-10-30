@@ -59,7 +59,6 @@ if (location.hash) {               // do the test straight away
             selector: false,
             template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
             title: function(e) {
-                //TODO: Get title text from event
                 var sub = $(this).html();;
                 var footnote = $('#one-col-footnote-' + sub).html();
                 return footnote;
@@ -68,23 +67,11 @@ if (location.hash) {               // do the test straight away
             viewport: { selector: 'body', padding: 0 }
         };
 
-        var three_col_tooltip_options = {
-            animation: true,
-            container: false,
-            //delay: { show: 500, hide: 100 },
-            delay: 0,
-            html: true,
-            placement: 'right',
-            selector: false,
-            template: '<div class="tooltip" role="tooltip"><div class="tooltip-arrow"></div><div class="tooltip-inner"></div></div>',
-            title: function(e) {
-                //TODO: Get title text from event
-                var sub = $(this).html();;
-                var footnote = $('#three-col-footnote-' + sub).html();
-                return footnote;
-            },
-            trigger: 'hover focus',
-            viewport: { selector: 'body', padding: 0 }
+        var three_col_tooltip_options = one_col_tooltip_options;
+        three_col_tooltip_options.title = function(e) {
+            var sub = $(this).html();;
+            var footnote = $('#three-col-footnote-' + sub).html();
+            return footnote;
         };
 
         $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
@@ -127,6 +114,19 @@ if (location.hash) {               // do the test straight away
 
         window.isTabShown = false;
         window.heading_tabs = $("#heading-tabs");
+
+        /**
+         * Populate keyword modal
+         */
+        $('.modal-trigger.keyword-modal').on('click', function (e) {
+            keyword_value = e.target.innerHTML;
+            keyword_verse_number = parseInt(e.target.id, 10);
+            keyword_color = $("#" + keyword_verse_number + '_keyword_color').html();
+            $("#keyword_modal_header").attr('class', 'modal-header ' + keyword_color);
+            keyword_description = $("#" + keyword_verse_number + '_keyword_description').html();
+            $("#keywordModalLabel").html(keyword_value);
+            $("#keyword_modal_paragraph").html(keyword_description);
+        });
 
         /**
          * Store the currently selected tab in the hash value and update nav links
