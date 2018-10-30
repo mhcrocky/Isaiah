@@ -772,12 +772,12 @@ aside audio {
 .def-trigger {color: #000;}
 .def-trigger:hover {text-decoration: none !important;}
 
-.modal .red, a.red:hover {color: #C50000;}
-.modal .blue, a.blue:hover {color: #1A58DB;}
-.modal .orange, a.orange:hover {color: #FF8500;}
-.modal .green, a.green:hover {color: #4DC000;}
-.modal .purple, a.purple:hover {color: #9D24CC;}
-.modal .black, a.purple:black {color: #222;}
+/* .modal .red, */ a.red:hover {color: #C50000;}
+/* .modal .blue, */ a.blue:hover {color: #1A58DB;}
+/* .modal .orange, */ a.orange:hover {color: #FF8500;}
+/* .modal .green, */ a.green:hover {color: #4DC000;}
+/* .modal .purple, */ a.purple:hover {color: #9D24CC;}
+/* .modal .black, */ a.purple:black {color: #222;}
 
 #defmodal .modal-title {color: #fff;}
 
