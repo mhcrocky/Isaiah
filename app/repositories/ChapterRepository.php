@@ -68,19 +68,7 @@ class ChapterRepository {
                 }
             }
 
-            //Get color
-            //Use $verse_id to get the keyword entry
-            $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
-            if($has_keyword == true) {
-                $iit_keyword = $this->getIITKeyword($verse_id);
-                $scripture_text = preg_replace('/<b>(.*)<\/b>/U', '<b><a id="' . $verse_id . '_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $iit_keyword->color_name . '" data-toggle="modal">$1</a></b>', $scripture_text);
-                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_description" style="display: none;">';
-                $chapter_keywords_html .= html_entity_decode($iit_keyword->keyword_description);
-                $chapter_keywords_html .= '</div>';
-                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_color" style="display: none;">';
-                $chapter_keywords_html .= $iit_keyword->color_name;
-                $chapter_keywords_html .= '</div>';
-            }
+            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html);
 
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
@@ -154,6 +142,7 @@ EOT;
      */
     public function GetThreeColHtml($chapter_number) {
         $is_chapter_number_first = false;
+        $chapter_keywords_html = '';
 
         $kjv_chapter_text = $this->_getBookChapter('Isaiah KJV', $chapter_number);
         if(!empty($this->_iit_chapter_text)) {
@@ -200,11 +189,15 @@ EOT;
             } else {
                 $kjv_scripture_text = '';
             }
+
             if(!empty($iit_chapter_text[$i]->three_col_html)) {
                 $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->three_col_html);
             } else {
                 $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->scripture_text);
             }
+
+            list($iit_scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($iit_scripture_text, $iit_chapter_text[$i]->verse_id, $chapter_keywords_html);
+
             if(!empty($heb_chapter_text[$i])) {
                 $heb_scripture_text = html_entity_decode($heb_chapter_text[$i]->scripture_text);
             } else {
@@ -292,6 +285,7 @@ EOT;
 
         $three_col_html = preg_replace('/<sup>(.*)<\/sup>/U', '<sup><a id="three_col_sup_$1" href="#three-col-footnote-$1" data-toggle="tooltip">$1</a></sup>', $three_col_html);
 
+        $three_col_html .= "$chapter_keywords_html\r\n";
 
         return $three_col_html;
     }
@@ -499,5 +493,28 @@ EOT;
         $results = DB::select($sql, array($verse_id));
 
         return $results[0];
+    }
+
+    /**
+     * @param $scripture_text
+     * @param $verse_id
+     * @param $chapter_keywords_html
+     * @return array
+     */
+    private function buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html)
+    {
+        $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
+        if ($has_keyword == true) {
+            $iit_keyword = $this->getIITKeyword($verse_id);
+            $scripture_text = preg_replace('/<b>(.*)<\/b>/U', '<b><a id="' . $verse_id . '_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $iit_keyword->color_name . '" data-toggle="modal">$1</a></b>', $scripture_text);
+            $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_description" style="display: none;">';
+            $chapter_keywords_html .= html_entity_decode($iit_keyword->keyword_description);
+            $chapter_keywords_html .= '</div>';
+            $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_color" style="display: none;">';
+            $chapter_keywords_html .= $iit_keyword->color_name;
+            $chapter_keywords_html .= '</div>';
+            return array($scripture_text, $chapter_keywords_html);
+        }
+        return array($scripture_text, $chapter_keywords_html);
     }
 } 
