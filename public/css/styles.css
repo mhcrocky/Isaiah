@@ -1394,7 +1394,7 @@ footer .btn:hover {
         line-height: 18px !important;
     }
     
-		thead th:first-child, td#kjv_1 {
+		.tab-content thead th:first-child, .tab-content td#kjv_1 {
 				width: 26%;
 		}
 
@@ -1444,7 +1444,7 @@ footer .btn:hover {
         padding-left: 80px;
     }
     
-		thead th:first-child, td#kjv_1 {
+		.tab-content thead th:first-child, .tab-content td#kjv_1 {
 				width: 26%;
 		}
 
@@ -1749,7 +1749,7 @@ footer .btn:hover {
         padding-left: 100px;
     }
     
-		thead th:first-child, td#kjv_1 {
+		.tab-content thead th:first-child, .tab-content td#kjv_1 {
 				width: 20%;
 		}
 
