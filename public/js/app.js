@@ -229,7 +229,7 @@ if (location.hash) {               // do the test straight away
             var subject_verses = commentary_modal_verse.children("div").html();
             commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
             $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
-            updatePagination(verse_number);
+            updatePagination(parseInt(verse_number));
         }
 
         function updatePagination(verse_number) {
