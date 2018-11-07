@@ -232,6 +232,7 @@ if (location.hash) {               // do the test straight away
             updatePagination(parseInt(verse_number));
         }
 
+        //TODO: Paginator only works sequentially. This is a problem for verses out of sequence. Need to write special exceptions for stuff like chapter 40/41:7*
         function updatePagination(verse_number) {
             var left_pager = $('#nav-links-light-verse-left');
             var prev_verse = verse_number - 1;
