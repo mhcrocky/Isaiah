@@ -797,6 +797,11 @@ aside audio {
     padding: 0;
 }
 
+.cs-top {
+padding: 15px 0 0;
+margin: 0;
+}
+
 .def-trigger {
     font-weight: bold;
     font-weight: 600;
@@ -813,15 +818,22 @@ aside audio {
 }
 
 .chapter-selection a {
-    font-size: 11px;
-    padding: 1px 0 0;
-    width: 20px;
-    height: 20px;
-    border-color: transparent;
+font-size: 11px;
+padding: 3px 0 0;
+width: 24px;
+height: 24px;
+border-color: rgba(0, 0, 0, 0);
 }
 
 .chapter-selection .btn-default {
-    background: rgba(0, 0, 0, 0);
+    background: rgba(134, 105, 52, 0.05);
+}
+
+.modal .chapter-selection a {
+font-size: 13px;
+padding: 5px 0 0;
+width: 40px;
+height: 30px;
 }
 
 aside .btn-default {
