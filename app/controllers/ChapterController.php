@@ -17,6 +17,7 @@ class ChapterController extends BaseController {
             'iit_html' => $chapterRepository->GetIITChapter($chapter_number),
             'three_col_html' => $chapterRepository->GetThreeColHtml($chapter_number),
             'commentary_html' => $chapterRepository->GetIITCommentary($chapter_number),
+            'concordance_html' => $chapterRepository->GetIITChapter($chapter_number),
             'nav_links_light_left' => IITPaginator::GetNav($chapter_number, 'left', 'nav-links-light'),
             'nav_links_light_right' => IITPaginator::GetNav($chapter_number, 'right', 'nav-links-light')
         );
