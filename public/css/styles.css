@@ -103,11 +103,9 @@ aside .fa-ul li a:hover,
     color: #2970B3;
 }
 
-/*
 hr {
     border-color: #E2DBD1;
 }
-*/
 
 
 /*---------------------------------------------------------------------------
@@ -570,7 +568,11 @@ table td {
   >Commentary
 --------------------------------*/
 
-
+#commentary .one-col-padding div:first-child {
+border-top: none !important;
+padding-top: 0 !important;
+margin-top: 0 !important;
+}
 
 /*--------------------------------
   >Modal
