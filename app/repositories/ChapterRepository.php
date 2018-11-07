@@ -301,7 +301,7 @@ EOT;
         $headers = $this->_getCommentaryHeaders($chapter_number);
         foreach($headers as $header) {
             $iit_commentary_html .= '<div class="commentary">';
-            $iit_commentary_html .= $header->header . '</div><hr>';
+            $iit_commentary_html .= $header->header . '</div>';
             $subject_verses = '<div class="subject_verses" style="display: none;">' . $this->_getCommentarySubjectVerses($header->commentary_id) . '</div>';
             $verses = $this->_getCommentaryVerses($header->commentary_id);
             $wrapper_class = '';
