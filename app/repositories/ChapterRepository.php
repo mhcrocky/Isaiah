@@ -540,7 +540,8 @@ EOT;
           JOIN `iit_commentary_headers`
             ON ((`iit_commentary_headers`.`commentary_id` = `iit_commentary_index`.`commentary_id`))
         WHERE (`books`.`book_title` = "Isaiah IIT"
-          AND `chapters`.`chapter_number` = ?)';
+          AND `chapters`.`chapter_number` = ?)
+        GROUP BY `commentary_id`';
 
         $results = DB::select($sql, array($chapter_number));
 
