@@ -500,6 +500,55 @@ EOT;
     }
 
     /**
+     * Get the book chapter's commentary headers
+     *
+     * @param $chapter_number
+     * @return array
+     */
+    private function _getBookChapterHeaders($chapter_number) {
+        $sql = 'SELECT
+          `iit_commentary_index`.`id` AS index_id,
+          `iit_commentary_index`.`chapter_id` AS chapter_id,
+          `iit_commentary_index`.`verse_id` AS verse_id,
+          `iit_commentary_index`.`commentary_id` AS commentary_id,
+          `iit_commentary_headers`.`header` AS header
+        FROM (((`volumes`
+          JOIN `books`
+            ON ((`books`.`volume_id` = `volumes`.`id`)))
+          JOIN `chapters`
+            ON ((`chapters`.`book_id` = `books`.`id`)))
+          JOIN `iit_commentary_index`
+            ON ((`iit_commentary_index`.`chapter_id` = `chapters`.`id`)))
+          JOIN `iit_commentary_headers`
+            ON ((`iit_commentary_headers`.`commentary_id` = `iit_commentary_index`.`commentary_id`))
+        WHERE (`books`.`book_title` = "Isaiah IIT"
+          AND `chapters`.`chapter_number` = ?)';
+
+        $results = DB::select($sql, array($chapter_number));
+
+        return $results;
+    }
+
+    /**
+     * Get the header's commentary
+     *
+     * @param int $commentary_id
+     * @return array
+     */
+    private function _getCommentary($commentary_id) {
+        $sql = 'SELECT
+          `iit_commentary`.`id` AS commentary_id,
+          `iit_commentary`.`commentary` AS commentary,
+          `iit_commentary`.`subject_verses` AS subject_verses
+        FROM isaiahde_logos.iit_commentary
+        WHERE (`iit_commentary`.`id` = ?)';
+
+        $results = DB::select($sql, array($commentary_id));
+
+        return $results;
+    }
+
+    /**
      * @param $scripture_text
      * @param $verse_id
      * @param $chapter_keywords_html
@@ -523,4 +572,4 @@ EOT;
         }
         return array($scripture_text, $chapter_keywords_html);
     }
-} 
+}
