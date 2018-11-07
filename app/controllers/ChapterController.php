@@ -35,6 +35,8 @@ class ChapterController extends BaseController {
         VIEW::share('footnotes', $chapterRepository->GetIITFootnotesList($chapter_number));
 
         return View::make('layouts.master', $template_data)
+            ->nest('top_nav', 'widgets.chapter-selection-top')
+            ->nest('bottom_nav', 'widgets.chapter-selection-bottom')
             ->nest('verse_modal', 'modals.verse', $verse_modal_data)
             ->nest('chapter_modal', 'modals.chapter')
             ->nest('keyword_modal', 'modals.keyword')

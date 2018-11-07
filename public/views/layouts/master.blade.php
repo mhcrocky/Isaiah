@@ -70,9 +70,15 @@
     </div>
 
     <div class="container">
+
+        {{ $top_nav or '' }}
+
         <div class="row wrapper">
 {{ $content }}
         </div>
+
+        {{ $bottom_nav or '' }}
+
         <div class="row footer-wrapper">
             <footer>
                 <div>
