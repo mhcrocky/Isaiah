@@ -220,13 +220,19 @@ if (location.hash) {               // do the test straight away
             iit_text = iit_text.replace(/<a\b[^>]*>(.*?)<\/a>\s?/i,"");
             iit_text = "<p>" + iit_text + "</p>";
             var heb_text = $('#heb_' + verse_number).html();
+            var commentary_text = $('.commentary_' + verse_number).html();
             $('#kjv-modal-verse').html(kjv_text);
             $('#iit-modal-verse').html(iit_text);
             $('#heb-modal-verse').html(heb_text);
+            var commentary_modal_verse = $('#commentary-modal-verse');
+            commentary_modal_verse.html(commentary_text);
+            var subject_verses = commentary_modal_verse.children("div").html();
+            commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
             $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
-            updatePagination(verse_number);
+            updatePagination(parseInt(verse_number));
         }
 
+        //TODO: Paginator only works sequentially. This is a problem for verses out of sequence. Need to write special exceptions for stuff like chapter 40/41:7*
         function updatePagination(verse_number) {
             var left_pager = $('#nav-links-light-verse-left');
             var prev_verse = verse_number - 1;

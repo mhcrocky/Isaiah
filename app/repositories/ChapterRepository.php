@@ -291,6 +291,34 @@ EOT;
     }
 
     /**
+     * Get three column view HTML
+     *
+     * @param int Chapter number
+     * @return string Commentary view HTML
+     */
+    public function GetIITCommentary($chapter_number) {
+        $iit_commentary_html = '';
+        $headers = $this->_getCommentaryHeaders($chapter_number);
+        foreach($headers as $header) {
+            $iit_commentary_html .= '<div class="commentary">';
+            $iit_commentary_html .= $header->header . '</div><hr>';
+            $subject_verses = '<div class="subject_verses" style="display: none;">' . $this->_getCommentarySubjectVerses($header->commentary_id) . '</div>';
+            $verses = $this->_getCommentaryVerses($header->commentary_id);
+            $wrapper_class = '';
+            $verse_count = count($verses);
+            for($i = 0; $i < $verse_count; $i++) {
+                if($i + 1 != $verse_count) {
+                    $wrapper_class .= 'commentary_' . $this->_strrtrim($verses[$i]->verse_number, '.0') . ' ';
+                } else {
+                    $wrapper_class .= 'commentary_' . $this->_strrtrim($verses[$i]->verse_number, '.0');
+                }
+            }
+            $iit_commentary_html .= "<div class=\"$wrapper_class\">$subject_verses" . $this->_getCommentary($header->commentary_id) . '</div>';
+        }
+        return html_entity_decode($iit_commentary_html);
+    }
+
+    /**
      * Gets prose CSS class based on if verse is a prose block segment
      *
      * @param bool $is_prose is the verse prose
@@ -500,6 +528,110 @@ EOT;
     }
 
     /**
+     * Get the book chapter's commentary headers
+     *
+     * @param $chapter_number
+     * @return array
+     */
+    private function _getCommentaryHeaders($chapter_number) {
+        $sql = 'SELECT
+          `iit_commentary_index`.`id` AS index_id,
+          `iit_commentary_index`.`chapter_id` AS chapter_id,
+          `iit_commentary_index`.`verse_id` AS verse_id,
+          `iit_commentary_index`.`commentary_id` AS commentary_id,
+          `iit_commentary_headers`.`header` AS header
+        FROM (((`volumes`
+          JOIN `books`
+            ON ((`books`.`volume_id` = `volumes`.`id`)))
+          JOIN `chapters`
+            ON ((`chapters`.`book_id` = `books`.`id`)))
+          JOIN `iit_commentary_index`
+            ON ((`iit_commentary_index`.`chapter_id` = `chapters`.`id`)))
+          JOIN `iit_commentary_headers`
+            ON ((`iit_commentary_headers`.`commentary_id` = `iit_commentary_index`.`commentary_id`))
+        WHERE (`books`.`book_title` = "Isaiah IIT"
+          AND `chapters`.`chapter_number` = ?)
+        GROUP BY `commentary_id`';
+
+        $results = DB::select($sql, array($chapter_number));
+
+        return $results;
+    }
+
+    /**
+     * Get the commentary subject verses
+     *
+     * @param $commentary_id
+     * @return string
+     */
+    private function _getCommentarySubjectVerses($commentary_id) {
+        $sql = 'SELECT
+          `iit_commentary`.`subject_verses` AS subject_verses
+        FROM (isaiahde_logos.iit_commentary_index
+          JOIN iit_commentary
+            ON (`iit_commentary_index`.`commentary_id` = `iit_commentary`.`id`))
+        WHERE (`iit_commentary_index`.`commentary_id` = ?)';
+
+        $results = DB::select($sql, array($commentary_id));
+
+        if(!empty($results)) {
+            return $results[0]->subject_verses;
+        } else {
+            return false;
+        }
+
+        return $results;
+    }
+
+    /**
+     * Get the commentary verses
+     *
+     * @param $commentary_id
+     * @return array
+     */
+    private function _getCommentaryVerses($commentary_id) {
+        $sql = 'SELECT
+          `iit_commentary_index`.`verse_number` AS `verse_number`
+        FROM isaiahde_logos.iit_commentary_index
+        WHERE (`iit_commentary_index`.`commentary_id` = ?)';
+
+        $results = DB::select($sql, array($commentary_id));
+
+        /*if(!empty($results)) {
+            return $results[0];
+        } else {
+            return false;
+        }*/
+
+        return $results;
+    }
+
+    /**
+     * Get the header's commentary
+     *
+     * @param int $commentary_id
+     * @return array
+     */
+    private function _getCommentary($commentary_id) {
+        $sql = 'SELECT
+          `iit_commentary`.`id` AS commentary_id,
+          `iit_commentary`.`commentary` AS commentary,
+          `iit_commentary`.`subject_verses` AS subject_verses
+        FROM isaiahde_logos.iit_commentary
+        WHERE (`iit_commentary`.`id` = ?)';
+
+        $results = DB::select($sql, array($commentary_id));
+
+        if(!empty($results)) {
+            return $results[0]->commentary;
+        } else {
+            return false;
+        }
+
+        return $results;
+    }
+
+    /**
      * @param $scripture_text
      * @param $verse_id
      * @param $chapter_keywords_html
@@ -523,4 +655,4 @@ EOT;
         }
         return array($scripture_text, $chapter_keywords_html);
     }
-} 
+}
