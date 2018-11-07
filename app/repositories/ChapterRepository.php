@@ -291,6 +291,24 @@ EOT;
     }
 
     /**
+     * Get three column view HTML
+     *
+     * @param int Chapter number
+     * @return string Commentary view HTML
+     */
+    public function GetIITCommentary($chapter_number) {
+        $iit_commentary_html = '';
+        $headers = $this->_getBookChapterHeaders($chapter_number);
+        foreach($headers as $header) {
+            $iit_commentary_html .= '<div class="commentary">';
+            $iit_commentary_html .= $header->header . '</div><hr>';
+            $commentary = $this->_getCommentary($header->commentary_id);
+            $iit_commentary_html .= $commentary->commentary;
+        }
+        return html_entity_decode($iit_commentary_html);
+    }
+
+    /**
      * Gets prose CSS class based on if verse is a prose block segment
      *
      * @param bool $is_prose is the verse prose
@@ -544,6 +562,12 @@ EOT;
         WHERE (`iit_commentary`.`id` = ?)';
 
         $results = DB::select($sql, array($commentary_id));
+
+        if(!empty($results)) {
+            return $results[0];
+        } else {
+            return false;
+        }
 
         return $results;
     }
