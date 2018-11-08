@@ -319,6 +319,168 @@ EOT;
     }
 
     /**
+     * Get IIT Concordance html
+     *
+     * @param $chapter_number
+     * @return string
+     */
+    public function GetIITConcordance($chapter_number) {
+        $this->_iit_chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
+        $chapter_text = $this->_iit_chapter_text;
+        $chapter_keywords_html = '';
+
+        $last_segment_id = 0;
+        $segment_id = 1;
+
+        $verse_count = count($chapter_text);
+        $this->verse_count = $verse_count;
+
+        $iit_html = '';
+        $is_prose_inline = false;
+
+        for($i = 0; $i < $verse_count; $i++) {
+            $verse_id = $chapter_text[$i]->verse_id;
+            $verse_number = $this->_strrtrim($chapter_text[$i]->verse_number, '.0');
+            $scripture_text = html_entity_decode($chapter_text[$i]->scripture_text);
+            $custom_html = html_entity_decode($chapter_text[$i]->one_col_html);
+            $segment_id = $chapter_text[$i]->segment_id;
+            $is_poetry = $chapter_text[$i]->is_poetry;
+            $is_prose = ($is_poetry == false ? true : false);
+            $indent_start = '';
+            $indent_end = '';
+
+            $j = $i + 1;
+            if($j != $verse_count) {
+                $next_segment_id = $chapter_text[$j]->segment_id;
+                $next_is_poetry = $chapter_text[$j]->is_poetry;
+                $next_is_prose = ($next_is_poetry == false ? true : false);
+            } else {
+                $next_segment_id = 0;
+                $next_is_poetry = false;
+                $next_is_prose = false;
+            }
+
+            // If is poetry and starts with a span, we need to strip that span and indent the whole span
+            if($is_poetry == true) {
+                $is_poem_indented = preg_match('/^<span class="indent">.*/', $scripture_text);
+                if($is_poem_indented == true) {
+                    $scripture_text = preg_replace('/^<span class="indent">(.*)<\/span>$/', '$1', $scripture_text);
+                    $indent_start = '<span class="indent">';
+                    $indent_end = '</span>';
+                }
+            }
+
+            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html);
+
+            $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
+
+            $is_prose_inline = ($is_prose == true && $this->_isProseInline($segment_ids) ? true : false);
+            $space = $this->_getSpace($is_prose, $is_prose_inline, $next_is_prose, $segment_ids);
+
+            $verse_class = $this->_getVerseClass($is_prose, $is_prose_inline);
+
+            $is_chapter_number_first = false;
+            if($i == 0) {
+                if($is_chapter_number_first == true) {
+                    if($chapter_number < 10) {
+                        $number_class = 'chapter-number-single';
+                    } else {
+                        $number_class = 'chapter-number-double';
+                    }
+                    $display_verse_number = $chapter_number;
+                } else {
+                    $number_class = 'verse-number';
+                    $display_verse_number = $verse_number;
+                }
+            } else {
+                $number_class = 'verse-number';
+                $display_verse_number = $verse_number;
+            }
+
+            //url and segment_id
+            if(!empty($custom_html)) {
+                $custom_html = $this->_getConcordanceURL($custom_html, $verse_id);
+            } else {
+                $scripture_text = $this->_getConcordanceURL($scripture_text, $verse_id);
+            }
+
+            if(!empty($custom_html)) {
+                $iit_html .= <<<EOT
+<div id="iit_${display_verse_number}">
+\t$custom_html\r\n
+</div>\r\n
+$chapter_keywords_html\r\n
+EOT;
+            } else {
+                $iit_html .= <<<EOT
+\t<div id="iit_${display_verse_number}">
+\t\t<span class="${verse_class}">
+\t\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
+\t\t</span>${space}
+\t</div>\r\n
+$chapter_keywords_html\r\n
+EOT;
+            }
+
+            // Clear $is_prose_inline if necessary
+            if($is_prose_inline == true) {
+                if($next_segment_id != $segment_id) {
+                    $is_prose_inline = false;
+                }
+            }
+
+            $last_segment_id = $segment_id;
+        }
+
+        $iit_html = preg_replace('/<sup>(.*)<\/sup>/U', '<sup><a id="one_col_sup_$1" href="#one-col-footnote-$1" data-toggle="tooltip">$1</a></sup>', $iit_html);
+
+        return $iit_html;
+    }
+
+    /**
+     * Get the Concordance urls for the words cited in scripture
+     *
+     * @param string $scripture_text
+     * @param int $verse_id
+     * @return string
+     */
+    private function _getConcordanceURL($scripture_text, $verse_id) {
+        $concordance_verse = $this->_getConcordanceVerse($verse_id);
+
+        foreach($concordance_verse as $citation) {
+            $word = $citation->word;
+            $url = preg_replace("/($word)/", 'zzz$1zzz', $citation->url);
+            $fixed_word = preg_replace('/(.*)/', 'zzz$1zzz', $word);
+            $segment_id = $citation->segment_id;
+            $letter = $word[0];
+            $pattern = "/\b(${word})\b/i";
+            $replacement = '<a href="/Concordance/' . $letter . '?citation=' . $url . '#' . $fixed_word . '">$1</a>';
+            $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
+        }
+
+        return preg_replace('/zzz/', '', $scripture_text);
+    }
+
+    /**
+     * Replace only the Nth occurrence of $pattern
+     * http://php.net/manual/en/function.preg-replace.php#112400
+     *
+     * @param $pattern
+     * @param $replacement
+     * @param $subject
+     * @param int $nth
+     * @return mixed
+     */
+    private function _pregReplaceNth($pattern, $replacement, $subject, $nth=1) {
+        return preg_replace_callback($pattern,
+            function($found) use (&$pattern, &$replacement, &$nth) {
+                $nth--;
+                if ($nth==0) return preg_replace($pattern, $replacement, reset($found) );
+                return reset($found);
+            }, $subject,$nth  );
+    }
+
+    /**
      * Gets prose CSS class based on if verse is a prose block segment
      *
      * @param bool $is_prose is the verse prose
@@ -602,6 +764,27 @@ EOT;
         } else {
             return false;
         }*/
+
+        return $results;
+    }
+
+    /**
+     * Get the concordance verse citations
+     *
+     * @param $verse_id
+     * @return array
+     */
+    private function _getConcordanceVerse($verse_id) {
+        $sql = 'SELECT
+          `iit_concordance_words`.`word` AS word,
+          `iit_concordance_citations`.`url` AS url,
+          `iit_concordance_citations`.`segment_id` AS segment_id
+        FROM (`isaiahde_logos`.`iit_concordance_citations`
+          JOIN `iit_concordance_words`
+            ON (`iit_concordance_citations`.`concordance_id` = `iit_concordance_words`.`id`))
+        WHERE (verse_id = ?)';
+
+        $results = DB::select($sql, array($verse_id));
 
         return $results;
     }
