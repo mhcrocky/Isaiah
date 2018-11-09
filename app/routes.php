@@ -17,8 +17,10 @@
 });*/
 
 Route::get('/', 'IndexController@showIndex');
-
 Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');
+
+Route::get('/Concordance', 'ConcordanceController@showIndex');
+Route::get('/Concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Z]');
 
 Route::get('/media/commentary/{fileName}', 'MediaController@showMediaCommentary');
 /*Route::get('/commentary/ogg/{chapterNumber}', 'MediaController@showMediaOGG')->where('chapterNumber', '[0-9]+');

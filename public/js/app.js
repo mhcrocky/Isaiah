@@ -1,10 +1,20 @@
 /**
  * Hack to prevent scrolling to hash tags from bootstrap tabs
  */
+var is_citation = false;
+var citationDiv;
 if (location.hash) {               // do the test straight away
     window.scrollTo(0, 0);         // execute it straight away
     setTimeout(function() {
-        window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
+        if(is_citation === false) {
+            var scrollTop = $(window).scrollTop();
+            if(scrollTop != 0) {
+                window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
+            }
+        } else {
+            $(window).scrollTop(citationDiv.offset().top);
+            //$("html").scrollTop(citationDiv.offset().top);
+        }
     }, 1);
 }
 
@@ -147,20 +157,22 @@ if (location.hash) {               // do the test straight away
          */
         var hash = window.location.hash;
 
-        if(location.pathname != '/') {
-            if (hash != "") {
-                selectTab(hash);
-                setNavHash(hash);
+        if(location.pathname.indexOf('/Concordance') == -1) {
+            if (location.pathname != '/') {
+                if (hash != "") {
+                    selectTab(hash);
+                    setNavHash(hash);
+                } else {
+                    hash = "#one_col";
+                    selectTab(hash);
+                    setNavHash(hash);
+                }
             } else {
-                hash = "#one_col";
-                selectTab(hash);
-                setNavHash(hash);
-            }
-        } else {
-            if (hash != "") {
-                setNavHash(hash);
-            } else {
-                setNavHash("#one_col");
+                if (hash != "") {
+                    setNavHash(hash);
+                } else {
+                    setNavHash("#one_col");
+                }
             }
         }
 
@@ -321,8 +333,17 @@ if (location.hash) {               // do the test straight away
             return r;
         };
 
-        //var testQueryString = getQueryStringKey('verse');
-        //var testHolder = 1;
+        var citationQueryString = getQueryStringKey('citation');
+        if(citationQueryString != undefined) {
+            var citationLink = $('a[href*=' + citationQueryString + ']');
+            if(citationLink != undefined) {
+                citationDiv = citationLink.parent().closest('div');
+                if (citationDiv != undefined) {
+                    is_citation = true;
+                }
+            }
+            citationLink.addClass('highlight');
+        }
 
         $.fn.extend({
             disable: function(state) {

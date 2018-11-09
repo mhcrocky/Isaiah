@@ -37,9 +37,7 @@
 </head>
 <body id="{{ $body_id }}" class="{{ $body_css }}">
 
-    {{ $verse_modal or '' }}
-    {{ $chapter_modal or '' }}
-    {{ $keyword_modal or '' }}
+    {{ $alpha_modal or '' }}
 
     <div class="header-container">
         <header class="navbar navbar-static-top" role="navigation">
@@ -103,7 +101,7 @@
                         <h3>Read Isaiah</h3>
                         <ul>
                             <li><a href="/">Isaiah Chapter Index</a></li>
-                            <li><a href="/search">Search Isaiah</a></li>
+                            <li><a href="/Search/">Search Isaiah</a></li>
                             <li><a href="/Concordance/">Isaiah Concordance Index</a></li>
                         </ul>
                     </div>
