@@ -15,6 +15,7 @@ class IITSearchController extends BaseController {
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.search')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'search-index', $content_data);
     }
 
@@ -44,6 +45,7 @@ class IITSearchController extends BaseController {
 
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.search')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'search', $content_data);
     }
 

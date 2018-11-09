@@ -53,14 +53,7 @@
                         <li><a href="/"><i class="fa fa-book fa-fw"></i> Chapter Index</a></li>
                         <li><a href="/Concordance/"><i class="fa fa-list fa-fw"></i> Concordance Index</a></li>
                         <li class="show-hide nav-search">
-                            <div class="input-group">
-                                <input type="text" class="form-control search-field" placeholder="Search Isaiah">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-warning" type="button">
-                                        <i class="fa fa-search"></i>
-                                    </button>
-                                </span>
-                            </div>
+                            {{ $mobile_search or '' }}
                         </li>
                     </ul>
                 </div><!-- End nav-collapse -->

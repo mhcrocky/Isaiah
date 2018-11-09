@@ -17,13 +17,14 @@ class ConcordanceController extends BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
         return View::make('layouts.concordance', $template_data)
             ->nest('heading', 'headings.concordance-index')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'concordance-index', $content_data);
     }
 
     public function showLetter($concordance_letter)
     {
         $concordance_letter = strtoupper($concordance_letter);
-        
+
         $template_data = array(
             'title' => "${concordance_letter} - A Comprehensive Concordance Of The Book of Isaiah.",
             'body_id' => 'concordance',
@@ -49,6 +50,7 @@ class ConcordanceController extends BaseController {
         return View::make('layouts.concordance', $template_data)
             ->nest('heading', 'headings.concordance', $header_data)
             ->nest('alpha_modal', 'modals.alpha')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'concordance', $content_data);
     }
 
