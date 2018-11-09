@@ -103,7 +103,7 @@
                         <h3>Read Isaiah</h3>
                         <ul>
                             <li><a href="/">Isaiah Chapter Index</a></li>
-                            <li><a href="/search">Search Isaiah</a></li>
+                            <li><a href="/Search">Search Isaiah</a></li>
                             <li><a href="/Concordance/">Isaiah Concordance Index</a></li>
                         </ul>
                     </div>

@@ -8,3 +8,4 @@ composer.lock
 Thumbs.db
 **/.idea/workspace.xml
 **/.idea/tasks.xml
+_ide_helper.php

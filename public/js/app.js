@@ -86,6 +86,16 @@ if (location.hash) {               // do the test straight away
         $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
         $("a[id*='three_col_sup_']").tooltip(three_col_tooltip_options);
 
+        $("form").submit(function(e) {
+            e.preventDefault();//prevent the form from actually submitting
+            var search_term = $(this).find("input[name=search-box]").val();
+            if (search_term.length) {
+                window.location = '/Search/' + search_term;
+            } else {
+                $("#search-error").text("Not valid!").show().fadeOut( 1000 );
+            }
+        });
+
         /**
          * Remember active tab
          */
@@ -157,7 +167,7 @@ if (location.hash) {               // do the test straight away
          */
         var hash = window.location.hash;
 
-        if(location.pathname.indexOf('/Concordance') == -1) {
+        if(location.pathname.indexOf('/Concordance') == -1 && location.pathname.indexOf('/Search') == -1) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);
