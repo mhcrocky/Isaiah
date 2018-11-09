@@ -92,7 +92,7 @@ if (location.hash) {               // do the test straight away
             if (search_term.length) {
                 window.location = '/Search/' + search_term;
             } else {
-                $("#search-error").text("Not valid!").show().fadeOut( 1000 );
+                $(this).find("span[name=search-error]").text("Not valid!").show().fadeOut( 1000 );
             }
         });
 
