@@ -1,0 +1,25 @@
+<main class="col-xs-12 col-sm-8 left-column" role="main">
+
+    <h4 class="mini-header">Apocalyptic Commentary</h4>
+
+    <div class="chapter-heading"><i>{{chapter_heading}}</i></div>
+
+    <hr>
+
+    <div class="one-col-padding">
+        {{{commentary_html}}}
+    </div> <!-- End One Col Padding -->
+
+    <hr>
+
+    <div class="bottom-links pull-right">{{> navigation.links-light}}</div>
+
+    <ul class="footnotes">
+        {{#footnotes}}
+            <li><sup>{{letter}}</sup>{{verse_number}} {{{footnote_text}}}<div id="commentary-footnote-{{letter}}" style="display: none;">{{{footnote_text}}}</div></li>
+        {{/footnotes}}
+    </ul>
+
+</main>
+
+{{> asides.commentary}}

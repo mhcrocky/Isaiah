@@ -1,0 +1,45 @@
+<main class="col-xs-12 full-width" role="main">
+
+<h4 class="mini-header">Comparative Translation</h4>
+
+<div class="chapter-heading"><i>{{chapter_heading}}</i></div>
+
+<div class="row">
+
+    <hr>
+
+    <table class="three-column table">
+        <thead>
+            <tr>
+                <th class="col-xs-4">
+                    <div class="full-table-title">King James Version</div>
+                    <div class="mobile-table-title">KJV</div>
+                </th>
+                <th class="comp-vs-num"></th>
+                <th class="col-xs-4" style="width: 36%">
+                    <div class="full-table-title">Isaiah Institute Translation</div>
+                    <div class="mobile-table-title">IIT</div>
+                </th>
+                <th class="col-xs-4">
+                    <div class="full-table-title">Masoretic Text</div>
+                    <div class="mobile-table-title">HEB</div>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            {{{three_col_html}}}
+        </tbody>
+    </table>
+</div>
+
+<hr>
+
+<div class="bottom-links pull-right">{{> navigation.links-light}}</div>
+
+<ul class="footnotes">
+    {{#footnotes}}
+        <li id="three-col-footnote-{{letter}}"><sup>{{letter}}</sup>{{verse_number}} {{{footnote_text}}}</li>
+    {{/footnotes}}
+</ul>
+
+</main>

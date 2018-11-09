@@ -1,0 +1,59 @@
+<div class="heading-chapters">
+
+    <div class="heading heading-full non-mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="nav-links pull-right">
+                        <ul class="nav">
+                            <li>{{{heading_nav_left}}}</li>
+                            <li>{{{heading_nav_right}}}</li>
+                        </ul>
+                    </div>
+
+                    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <h1><a class="fa fa-book" href="/Concordance/"></a> <a href="#alphamodal" class="modal-trigger" data-toggle="modal">Concordance</a> <i class="fa fa-angle-right"></i> <a href="/Concordance/{{concordance_letter}}" class="modal-trigger" data-toggle="modal">{{concordance_letter}}</a></h1>
+
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Heading Non-mobile -->
+
+    <div class="heading heading-mobile">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12">
+                    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
+                        <i class="fa fa-bars"></i>
+                    </button>
+
+                    <ul class="pull-right view-switcher">
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                <i class="fa fa-ellipsis-v"></i>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-right">
+                                <li><a href="#one_col" data-toggle="tab"><i class="fa fa-fw fa-align-justify"></i> Isaiah Institute Translation</a></li>
+                                <li><a href="#three_col" data-toggle="tab"><i class="fa fa-fw fa-table"></i> Comparative Translation</a></li>
+                                <li><a href="#commentary" data-toggle="tab"><i class="fa fa-fw fa-quote-left"></i> Apocalyptic Commentary</a></li>
+                                <!-- <li><a href="#concordance" data-toggle="tab"><i class="fa fa-fw fa-list"></i></a></li> -->
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div class="nav-links">
+                        <ul class="nav">
+                            <li>{{{heading_nav_left}}}</li>
+                            <li><h1><a href="/Concordance/">Concordance</a> <i class="fa fa-angle-right"></i> <a href="#alphamodal" class="modal-trigger" data-toggle="modal">{{chapter_letter}}</a></h1></li>
+                            <li>{{{heading_nav_right}}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- End Heading Mobile -->
+
+</div> <!-- End Heading Chapters -->

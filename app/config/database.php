@@ -54,13 +54,15 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			//'host'      => '127.0.0.1',
+            'host'     => 'localhost',
 			'database'  => 'isaiahde_logos',
 			'username'  => 'isaiahde_tekton',
+            //'username'  => 'homestead',
 			'password'  => 'kkg7n5a4',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
-			'prefix'    => 'laravel',
+			'prefix'    => '',
 		),
 
 		'pgsql' => array(
