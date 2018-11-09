@@ -22,6 +22,8 @@ class ConcordanceController extends BaseController {
 
     public function showLetter($concordance_letter)
     {
+        $concordance_letter = strtoupper($concordance_letter);
+        
         $template_data = array(
             'title' => "${concordance_letter} - A Comprehensive Concordance Of The Book of Isaiah.",
             'body_id' => 'concordance',
