@@ -337,12 +337,17 @@ if (location.hash) {               // do the test straight away
         if(citationQueryString != undefined) {
             var citationLink = $('a[href*=' + citationQueryString + ']');
             if(citationLink != undefined) {
-                citationDiv = citationLink.parent().closest('div');
+                if(location.pathname.indexOf('/Concordance') == -1) {
+                    citationDiv = citationLink.parent().closest('div');
+                    citationLink.addClass('highlight');
+                } else {
+                    citationDiv = citationLink.parent();
+                    citationDiv.addClass('highlight');
+                }
                 if (citationDiv != undefined) {
                     is_citation = true;
                 }
             }
-            citationLink.addClass('highlight');
         }
 
         $.fn.extend({
