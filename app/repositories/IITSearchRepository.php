@@ -16,7 +16,7 @@ class IITSearchRepository {
      * @param int $limit
      * @return mixed
      */
-    public function GetIITSearchTerm($search_term, $page = 1, $limit = 10) {
+    public function GetIITSearchTerm($search_term, $page = 1, $limit = 20) {
         $result['count'] = 0;
         $result['html'] = '';
         $result_count = 0;
