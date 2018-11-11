@@ -392,9 +392,12 @@ if (location.hash) {               // do the test straight away
             iitDiv = $('#iit_' + verse_number).parent();
             if(location.pathname.indexOf('/Concordance') == -1) {
                 if (hash == "#one_col") {
-                    var replacement = new RegExp('(' + search + ')',"ig");
-                    var new_verse = iitDiv.html().replace(replacement, "<span class='highlight'>$1</span>");
-                    iitDiv.html(new_verse);
+                    iitDiv.children().each(function() {
+                        if(this.innerHTML != undefined) {
+                            var replacement = new RegExp('(' + search + ')', 'ig');
+                            this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
+                        }
+                    });
                     $(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }
