@@ -78,13 +78,17 @@ if (location.hash) {               // do the test straight away
         };
 
         var three_col_tooltip_options = one_col_tooltip_options;
-        //three_col_tooltip_options.title = function(e) {
         three_col_tooltip_options.title = function() {
             return $('#three-col-footnote-' + $(this).html()).html();
+        };
+        var commentary_tooltip_options = one_col_tooltip_options;
+        commentary_tooltip_options.title = function() {
+            return $('#commentary-footnote-' + $(this).html()).html();
         };
 
         $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
         $("a[id*='three_col_sup_']").tooltip(three_col_tooltip_options);
+        $("a[id*='commentary_sup_']").tooltip(commentary_tooltip_options);
 
         $("form").submit(function(e) {
             e.preventDefault();//prevent the form from actually submitting
@@ -238,9 +242,25 @@ if (location.hash) {               // do the test straight away
         function populateVerseModal(verse_number) {
             var chapter_number = $('#chapter-number').html();
             var kjv_text = $('#kjv_' + verse_number).html();
-            var iit_text = $('#iit_' + verse_number).html();
-            iit_text = iit_text.replace(/<a\b[^>]*>(.*?)<\/a>\s?/i,"");
-            iit_text = "<p>" + iit_text + "</p>";
+            var iit_text = '';
+            if(chapter_number == '14' && verse_number == '4') {
+                var iit_selector = $('#iit_' + verse_number);
+                iit_text = iit_selector.parent().outerHTML();
+                iit_text += iit_selector.parent().next().outerHTML();
+                iit_text += iit_selector.parent().next().next().outerHTML();
+                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
+                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/ig, "");
+                iit_text = "<p>" + iit_text + "</p>";
+            } else if(chapter_number == '36' && verse_number == '4') {
+                alert('TODO: Create exception to avoid malformed modal text [also breaks modal for whole page].');
+            } else {
+                iit_text = $('#iit_' + verse_number).parent().outerHTML();
+                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
+                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/i, "");
+                iit_text = "<p>" + iit_text + "</p>";
+            }
             var heb_text = $('#heb_' + verse_number).html();
             var commentary_text = $('.commentary_' + verse_number).html();
             $('#kjv-modal-verse').html(kjv_text);
@@ -359,6 +379,12 @@ if (location.hash) {               // do the test straight away
                 }
             }
         }
+
+        $.fn.outerHTML = function(s) {
+            return s
+                ? this.before(s).remove()
+                : jQuery("<p>").append(this.eq(0).clone()).html();
+        };
 
         $.fn.extend({
             disable: function(state) {

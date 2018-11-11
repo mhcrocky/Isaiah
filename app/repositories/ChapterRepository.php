@@ -98,20 +98,17 @@ class ChapterRepository {
 
 
             if(!empty($custom_html)) {
+                $custom_html = preg_replace('/^(<span class="prose inline">)/', '$1<div id="iit_' . $display_verse_number . '" style="display: none;"></div>', $custom_html);
+                $custom_html = preg_replace('/^(<span class="poetry">)/', '$1<div id="iit_' . $display_verse_number . '" style="display: none;"></div>', $custom_html);
                 $iit_html .= <<<EOT
-<div id="iit_${display_verse_number}">
 \t$custom_html\r\n
-</div>\r\n
-$chapter_keywords_html\r\n
 EOT;
             } else {
                 $iit_html .= <<<EOT
-\t<div id="iit_${display_verse_number}">
-\t\t<span class="${verse_class}">
+\t\t<span class="${verse_class}">\r\n
+\t<div id="iit_${display_verse_number}" style="display: none;"></div>\r\n
 \t\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
-\t\t</span>${space}
-\t</div>\r\n
-$chapter_keywords_html\r\n
+\t\t</span>${space}\r\n
 EOT;
             }
 
@@ -126,6 +123,7 @@ EOT;
         }
 
         $iit_html = preg_replace('/<sup>(.*)<\/sup>/U', '<sup><a id="one_col_sup_$1" href="#one-col-footnote-$1" data-toggle="tooltip">$1</a></sup>', $iit_html);
+        $iit_html .= $chapter_keywords_html;
 
         return $iit_html;
     }
@@ -300,9 +298,7 @@ EOT;
         $iit_commentary_html = '';
         $headers = $this->_getCommentaryHeaders($chapter_number);
         foreach($headers as $header) {
-            $iit_commentary_html .= '<div class="commentary">';
-            $iit_commentary_html .= $header->header . '</div>';
-            $subject_verses = '<div class="subject_verses" style="display: none;">' . $this->_getCommentarySubjectVerses($header->commentary_id) . '</div>';
+            $iit_commentary_html .= '<div class="commentary">' . html_entity_decode($header->header) . '</div>';
             $verses = $this->_getCommentaryVerses($header->commentary_id);
             $wrapper_class = '';
             $verse_count = count($verses);
@@ -313,9 +309,11 @@ EOT;
                     $wrapper_class .= 'commentary_' . $this->_strrtrim($verses[$i]->verse_number, '.0');
                 }
             }
-            $iit_commentary_html .= "<div class=\"$wrapper_class\">$subject_verses" . $this->_getCommentary($header->commentary_id) . '</div>';
+            $subject_verses = '<div class="subject_verses" style="display: none;">' . $this->_getCommentarySubjectVerses($header->commentary_id) . '</div>';
+            $iit_commentary_html .= "<div class=\"$wrapper_class\">$subject_verses" . html_entity_decode($this->_getCommentary($header->commentary_id)) . '</div>';
+
         }
-        return html_entity_decode($iit_commentary_html);
+        return $iit_commentary_html;
     }
 
     /**
@@ -753,6 +751,7 @@ EOT;
      */
     private function _getCommentaryVerses($commentary_id) {
         $sql = 'SELECT
+          `iit_commentary_index`.`verse_id` AS `verse_id`,
           `iit_commentary_index`.`verse_number` AS `verse_number`
         FROM isaiahde_logos.iit_commentary_index
         WHERE (`iit_commentary_index`.`commentary_id` = ?)';

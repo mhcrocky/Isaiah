@@ -13,7 +13,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +26,8 @@ return array(
 	|
 	*/
 
-	'url' => 'http://isaiahexplained.local',
+	//'url' => 'http://localhost',
+    'url' => 'http://dev-isaiah.isaiahexplained.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -124,6 +125,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
         'DaveJamesMiller\Boris\BorisServiceProvider',
+
 	),
 
 	/*
