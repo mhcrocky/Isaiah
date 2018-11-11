@@ -28,6 +28,7 @@ class IndexController extends BaseController {
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.chapter-index')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'chapter-index', $content_data);
     }
 

@@ -424,6 +424,10 @@ a.modal-trigger.chapter-number-double {
     /*font-size: 375%;*/
 }
 
+.highlight {
+    background-color: #FFFF00;
+}
+
 main a:hover,
 main b:hover
 {

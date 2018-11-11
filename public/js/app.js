@@ -1,10 +1,23 @@
 /**
  * Hack to prevent scrolling to hash tags from bootstrap tabs
  */
+var is_citation = false;
+var is_searched = false;
+var citationDiv;
+var iitDiv;
 if (location.hash) {               // do the test straight away
     window.scrollTo(0, 0);         // execute it straight away
     setTimeout(function() {
-        window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
+        if(is_citation === false && is_searched == false) {
+            var scrollTop = $(window).scrollTop();
+            if(scrollTop != 0) {
+                window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
+            }
+        } else if(is_citation === true) {
+            $(window).scrollTop(citationDiv.offset().top);
+        } else if (is_searched === true) {
+            $(window).scrollTop(iitDiv.offset().top);
+        }
     }, 1);
 }
 
@@ -68,13 +81,27 @@ if (location.hash) {               // do the test straight away
         };
 
         var three_col_tooltip_options = one_col_tooltip_options;
-        //three_col_tooltip_options.title = function(e) {
         three_col_tooltip_options.title = function() {
             return $('#three-col-footnote-' + $(this).html()).html();
+        };
+        var commentary_tooltip_options = one_col_tooltip_options;
+        commentary_tooltip_options.title = function() {
+            return $('#commentary-footnote-' + $(this).html()).html();
         };
 
         $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
         $("a[id*='three_col_sup_']").tooltip(three_col_tooltip_options);
+        $("a[id*='commentary_sup_']").tooltip(commentary_tooltip_options);
+
+        $("form").submit(function(e) {
+            e.preventDefault();//prevent the form from actually submitting
+            var search_term = $(this).find("input[name=search-box]").val();
+            if (search_term.length) {
+                window.location = '/Search/' + search_term;
+            } else {
+                $(this).find("span[name=search-error]").text("Not valid!").show().fadeOut( 1000 );
+            }
+        });
 
         /**
          * Remember active tab
@@ -119,10 +146,11 @@ if (location.hash) {               // do the test straight away
          */
         $('.modal-trigger.keyword-modal').on('click', function (e) {
             var keyword_value = e.target.innerHTML;
-            var keyword_verse_number = parseInt(e.target.id, 10);
-            var keyword_color = $("#" + keyword_verse_number + '_keyword_color').html();
+            var section = e.target.name;
+            var keyword_id = parseInt(e.target.id, 10);
+            var keyword_color = $("#" + keyword_id + '_' + section + '_keyword_color').html();
             $("#keyword_modal_header").attr('class', 'modal-header ' + keyword_color);
-            var keyword_description = $("#" + keyword_verse_number + '_keyword_description').html();
+            var keyword_description = $("#" + keyword_id + '_' + section + '_keyword_description').html();
             $("#keywordModalLabel").html(keyword_value);
             $("#keyword_modal_paragraph").html(keyword_description);
         });
@@ -147,20 +175,22 @@ if (location.hash) {               // do the test straight away
          */
         var hash = window.location.hash;
 
-        if(location.pathname != '/') {
-            if (hash != "") {
-                selectTab(hash);
-                setNavHash(hash);
+        if(location.pathname.indexOf('/Concordance') == -1 && location.pathname.indexOf('/Search') == -1) {
+            if (location.pathname != '/') {
+                if (hash != "") {
+                    selectTab(hash);
+                    setNavHash(hash);
+                } else {
+                    hash = "#one_col";
+                    selectTab(hash);
+                    setNavHash(hash);
+                }
             } else {
-                hash = "#one_col";
-                selectTab(hash);
-                setNavHash(hash);
-            }
-        } else {
-            if (hash != "") {
-                setNavHash(hash);
-            } else {
-                setNavHash("#one_col");
+                if (hash != "") {
+                    setNavHash(hash);
+                } else {
+                    setNavHash("#one_col");
+                }
             }
         }
 
@@ -216,9 +246,25 @@ if (location.hash) {               // do the test straight away
         function populateVerseModal(verse_number) {
             var chapter_number = $('#chapter-number').html();
             var kjv_text = $('#kjv_' + verse_number).html();
-            var iit_text = $('#iit_' + verse_number).html();
-            iit_text = iit_text.replace(/<a\b[^>]*>(.*?)<\/a>\s?/i,"");
-            iit_text = "<p>" + iit_text + "</p>";
+            var iit_text = '';
+            if(chapter_number == '14' && verse_number == '4') {
+                var iit_selector = $('#iit_' + verse_number);
+                iit_text = iit_selector.parent().outerHTML();
+                iit_text += iit_selector.parent().next().outerHTML();
+                iit_text += iit_selector.parent().next().next().outerHTML();
+                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
+                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/ig, "");
+                iit_text = "<p>" + iit_text + "</p>";
+            } else if(chapter_number == '36' && verse_number == '4') {
+                alert('TODO: Create exception to avoid malformed modal text [also breaks modal for whole page].');
+            } else {
+                iit_text = $('#iit_' + verse_number).parent().outerHTML();
+                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
+                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/i, "");
+                iit_text = "<p>" + iit_text + "</p>";
+            }
             var heb_text = $('#heb_' + verse_number).html();
             var commentary_text = $('.commentary_' + verse_number).html();
             $('#kjv-modal-verse').html(kjv_text);
@@ -321,8 +367,46 @@ if (location.hash) {               // do the test straight away
             return r;
         };
 
-        //var testQueryString = getQueryStringKey('verse');
-        //var testHolder = 1;
+        var citationQueryString = getQueryStringKey('citation');
+        if(citationQueryString != undefined) {
+            var citationLink = $('a[href*=' + citationQueryString + ']');
+            if(citationLink != undefined) {
+                if(location.pathname.indexOf('/Concordance') == -1) {
+                    citationDiv = citationLink.parent().closest('div');
+                    citationLink.addClass('highlight');
+                } else {
+                    citationDiv = citationLink.parent();
+                    citationDiv.addClass('highlight');
+                }
+                if (citationDiv != undefined) {
+                    is_citation = true;
+                }
+            }
+        }
+
+        var verseQueryString = getQueryStringKey('verse');
+        var searchQueryString = getQueryStringKey('search');
+        if(verseQueryString != undefined && searchQueryString != undefined) {
+            var verse_number = verseQueryString;
+            var search = searchQueryString;
+            iitDiv = $('#iit_' + verse_number).parent();
+            if(location.pathname.indexOf('/Concordance') == -1) {
+                if (hash == "#one_col") {
+                    var replacement = new RegExp('(' + search + ')',"ig");
+                    var new_verse = iitDiv.html().replace(replacement, "<span class='highlight'>$1</span>");
+                    iitDiv.html(new_verse);
+                    $(window).scrollTop(iitDiv.offset().top);
+                    is_searched = true;
+                }
+            }
+            var tmpTest = 1;
+        }
+
+        $.fn.outerHTML = function(s) {
+            return s
+                ? this.before(s).remove()
+                : jQuery("<p>").append(this.eq(0).clone()).html();
+        };
 
         $.fn.extend({
             disable: function(state) {
