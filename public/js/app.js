@@ -143,10 +143,11 @@ if (location.hash) {               // do the test straight away
          */
         $('.modal-trigger.keyword-modal').on('click', function (e) {
             var keyword_value = e.target.innerHTML;
-            var keyword_verse_number = parseInt(e.target.id, 10);
-            var keyword_color = $("#" + keyword_verse_number + '_keyword_color').html();
+            var section = e.target.name;
+            var keyword_id = parseInt(e.target.id, 10);
+            var keyword_color = $("#" + keyword_id + '_' + section + '_keyword_color').html();
             $("#keyword_modal_header").attr('class', 'modal-header ' + keyword_color);
-            var keyword_description = $("#" + keyword_verse_number + '_keyword_description').html();
+            var keyword_description = $("#" + keyword_id + '_' + section + '_keyword_description').html();
             $("#keywordModalLabel").html(keyword_value);
             $("#keyword_modal_paragraph").html(keyword_description);
         });

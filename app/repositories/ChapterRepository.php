@@ -68,7 +68,7 @@ class ChapterRepository {
                 }
             }
 
-            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html);
+            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'one-col');
 
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
@@ -194,7 +194,7 @@ EOT;
                 $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->scripture_text);
             }
 
-            list($iit_scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($iit_scripture_text, $iit_chapter_text[$i]->verse_id, $chapter_keywords_html);
+            list($iit_scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($iit_scripture_text, $iit_chapter_text[$i]->verse_id, $chapter_keywords_html, 'three-col');
 
             if(!empty($heb_chapter_text[$i])) {
                 $heb_scripture_text = html_entity_decode($heb_chapter_text[$i]->scripture_text);
@@ -368,7 +368,7 @@ EOT;
                 }
             }
 
-            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html);
+            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'concordance');
 
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
@@ -674,17 +674,13 @@ EOT;
     }
 
     private function getIITKeyword($verse_id) {
-        $sql = 'SELECT color_name, keyword, keyword_description
+        $sql = 'SELECT id as keyword_id, color_name, keyword, keyword_description
                 FROM iit_keywords
                 WHERE verse_id = ?';
 
         $results = DB::select($sql, array($verse_id));
 
-        if(!empty($results)) {
-            return $results[0];
-        } else {
-            return false;
-        }
+        return $results;
     }
 
     /**
@@ -817,23 +813,45 @@ EOT;
      * @param $scripture_text
      * @param $verse_id
      * @param $chapter_keywords_html
+     * @param $section_tab
      * @return array
      */
-    private function buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html)
+    private function buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, $section_tab)
     {
         $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
         if ($has_keyword == true) {
-            $iit_keyword = $this->getIITKeyword($verse_id);
-            if(!empty($iit_keyword)) {
-                $scripture_text = preg_replace('/<b>(.*)<\/b>/U', '<b><a id="' . $verse_id . '_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $iit_keyword->color_name . '" data-toggle="modal">$1</a></b>', $scripture_text);
-                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_description" style="display: none;">';
-                $chapter_keywords_html .= html_entity_decode($iit_keyword->keyword_description);
-                $chapter_keywords_html .= '</div>';
-                $chapter_keywords_html .= '<div id="' . $verse_id . '_keyword_color" style="display: none;">';
-                $chapter_keywords_html .= $iit_keyword->color_name;
-                $chapter_keywords_html .= '</div>';
+            $iit_keywords = $this->getIITKeyword($verse_id);
+            if(!empty($iit_keywords)) {
+                $keywords_found = array();
+                foreach ($iit_keywords as $iit_keyword) {
+                    $keyword_id = $iit_keyword->keyword_id;
+                    $keyword = $iit_keyword->keyword;
+                    $keywords_found[] = $keyword;
+                    $keywords_count = array_count_values($keywords_found);
+                    $identical_keywords = $keywords_count[$keyword];
+                    $color = $iit_keyword->color_name;
+                    $section = '';
+                    if ($section_tab == 'one-col') {
+                        $section = 'one_col';
+                    } elseif ($section_tab == 'three-col') {
+                        $section = 'three_col';
+                    } elseif ($section_tab == 'commentary') {
+                        $section = 'commentary';
+                    } elseif ($section_tab == 'concordance') {
+                        $section = 'concordance';
+                    }
+                    //$scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
+                    $pattern = '/<b>(' . $keyword . ')<\/b>/Ui';
+                    $replacement = '<b><a id="' . $keyword_id . '_' . $section . '_keyword_verse" name="' . $section . '" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $color . '" data-toggle="modal">$1</a></b>';
+                    $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $identical_keywords);
+                    $chapter_keywords_html .= '<div id="' . $keyword_id . '_' . $section . '_keyword_description" name="' . $section . '" style="display: none;">' . html_entity_decode($iit_keyword->keyword_description) . '</div>';
+                    $chapter_keywords_html .= '<div id="' . $keyword_id . '_' . $section . '_keyword_color" name="' . $section . '" style="display: none;">' . $color . '</div>';
+                }
+                return array($scripture_text, $chapter_keywords_html);
+            } else {
+                $test = 1;
+                return array($scripture_text, $chapter_keywords_html);
             }
-            return array($scripture_text, $chapter_keywords_html);
         }
         return array($scripture_text, $chapter_keywords_html);
     }
