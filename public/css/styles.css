@@ -805,8 +805,7 @@ margin: 0;
 }
 
 .def-trigger {
-    font-weight: bold;
-    font-weight: 600;
+font-weight: 700;
 }
 
 .def-trigger:hover {
@@ -882,6 +881,10 @@ aside .tab-sections a:hover .fa {
 /*---------------------------------------------------------------------------
   >Search
 ---------------------------------------------------------------------------*/
+
+#search .heading-search .navbar-form {
+float: none !important;
+}
 
 #search .heading p b {
     color: #D6B89C;
