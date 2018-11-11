@@ -41,6 +41,8 @@ EOT;
                 $chapter_number = $search_results[$i]->chapter_number;
                 $verse_number = $this->_strrtrim($search_results[$i]->verse_number, '.0');
                 $scripture_text = html_entity_decode($search_results[$i]->scripture_text);
+                $scripture_text = preg_replace('/<span\b[^>]*>(.*)<\/span>/U', ' $1 ', $scripture_text);
+                $scripture_text = preg_replace('/\s\s/', ' ', $scripture_text);
                 $search_html .= <<<EOT
 <li>${scripture_text} - <i>Isaiah ${chapter_number}:${verse_number}</i></li>
 EOT;
