@@ -15,7 +15,6 @@ if (location.hash) {               // do the test straight away
             }
         } else if(is_citation === true) {
             $(window).scrollTop(citationDiv.offset().top);
-            //$("html").scrollTop(citationDiv.offset().top);
         } else if (is_searched === true) {
             $(window).scrollTop(iitDiv.offset().top);
         }
@@ -396,6 +395,7 @@ if (location.hash) {               // do the test straight away
                     var replacement = new RegExp('(' + search + ')',"ig");
                     var new_verse = iitDiv.html().replace(replacement, "<span class='highlight'>$1</span>");
                     iitDiv.html(new_verse);
+                    $(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }
             }
