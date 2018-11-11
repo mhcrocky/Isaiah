@@ -2,18 +2,22 @@
  * Hack to prevent scrolling to hash tags from bootstrap tabs
  */
 var is_citation = false;
+var is_searched = false;
 var citationDiv;
+var iitDiv;
 if (location.hash) {               // do the test straight away
     window.scrollTo(0, 0);         // execute it straight away
     setTimeout(function() {
-        if(is_citation === false) {
+        if(is_citation === false && is_searched == false) {
             var scrollTop = $(window).scrollTop();
             if(scrollTop != 0) {
                 window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
             }
-        } else {
+        } else if(is_citation === true) {
             $(window).scrollTop(citationDiv.offset().top);
             //$("html").scrollTop(citationDiv.offset().top);
+        } else if (is_searched === true) {
+            $(window).scrollTop(iitDiv.offset().top);
         }
     }, 1);
 }
@@ -379,6 +383,23 @@ if (location.hash) {               // do the test straight away
                     is_citation = true;
                 }
             }
+        }
+
+        var verseQueryString = getQueryStringKey('verse');
+        var searchQueryString = getQueryStringKey('search');
+        if(verseQueryString != undefined && searchQueryString != undefined) {
+            var verse_number = verseQueryString;
+            var search = searchQueryString;
+            iitDiv = $('#iit_' + verse_number).parent();
+            if(location.pathname.indexOf('/Concordance') == -1) {
+                if (hash == "#one_col") {
+                    var replacement = new RegExp('(' + search + ')',"ig");
+                    var new_verse = iitDiv.html().replace(replacement, "<span class='highlight'>$1</span>");
+                    iitDiv.html(new_verse);
+                    is_searched = true;
+                }
+            }
+            var tmpTest = 1;
         }
 
         $.fn.outerHTML = function(s) {

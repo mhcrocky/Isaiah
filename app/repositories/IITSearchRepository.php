@@ -44,7 +44,7 @@ EOT;
                 $scripture_text = preg_replace('/<span\b[^>]*>(.*)<\/span>/U', ' $1 ', $scripture_text);
                 $scripture_text = preg_replace('/\s\s/', ' ', $scripture_text);
                 $search_html .= <<<EOT
-<li>${scripture_text} - <i>Isaiah ${chapter_number}:${verse_number}</i></li>
+<li>${scripture_text} - <a href="/${chapter_number}?verse=$verse_number&search=$search_term"><i>Isaiah ${chapter_number}:${verse_number}</i></a></li>
 EOT;
             }
 
