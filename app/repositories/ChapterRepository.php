@@ -447,11 +447,11 @@ EOT;
 
         foreach($concordance_verse as $citation) {
             $word = $citation->word;
-            $url = preg_replace("/($word)/", 'zzz$1zzz', $citation->url);
-            $fixed_word = preg_replace('/(.*)/', 'zzz$1zzz', $word);
+            $url = preg_replace("/($word)(?!=)/", 'zzz$1zzz', $citation->url);
+            $fixed_word = preg_replace('/(.*)(?!=)/', 'zzz$1zzz', $word);
             $segment_id = $citation->segment_id;
             $letter = $word[0];
-            $pattern = "/\b(${word})\b/i";
+            $pattern = "/\b(${word})(?!=)\b/i";
             $replacement = '<a href="/Concordance/' . $letter . '?citation=' . $url . '#' . $fixed_word . '">$1</a>';
             $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
         }
