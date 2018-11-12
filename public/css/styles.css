@@ -163,7 +163,7 @@ header .main-nav .nav>li>a:focus
     background-color: #253041;
 }
 
-.navbar .container {background-image: url(/images/circle.png); background-repeat: no-repeat;}
+.navbar .container {background-image: url(http://dev.isaiahexplained.com/isaiah/images/circle.png); background-repeat: no-repeat;}
 
 /*--------------------------------
   >Headings
@@ -1003,6 +1003,8 @@ footer .btn:hover {
         z-index: 1000;
         top: 0;
     }
+    
+		#search .heading-search .navbar-form {display: none;}
 
     .non-mobile	{
         display: none !important;
@@ -1499,6 +1501,9 @@ footer .btn:hover {
         font-size: 16px;
         line-height: 17px;
     }
+    
+	#search .search-results-title {font-size: 1.5em;}
+	#search .heading .navbar-form {margin: 0;}
 
     .heading {
         padding: 30px 0 25px;
