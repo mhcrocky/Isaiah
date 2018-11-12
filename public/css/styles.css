@@ -726,7 +726,7 @@ button.close {
   >Ads
 ---------------------------------------------------------------------------*/
 
-.isaiah-ad {padding: 1em 0;}
+.isaiah-ad {padding: 1em 0; display: block;}
 .isaiah-ad img {width: 100%; height: auto;}
 
 /*---------------------------------------------------------------------------
@@ -1029,7 +1029,7 @@ footer .btn:hover {
         top: 0;
     }
     
-		#search .heading-search .navbar-form {display: none;}
+		.header-container .navbar-form {display: none;}
 
     .non-mobile	{
         display: none !important;
@@ -1361,7 +1361,7 @@ footer .btn:hover {
         background-color: inherit;
     }
     
-    aside audio {margin: 10px 0;}
+    aside audio {margin: 10px 0; margin-bottom: 10px;}
 
 } /*--------------------------------------- End mobile only */
 
