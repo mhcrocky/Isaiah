@@ -28,7 +28,7 @@ class ConcordanceController extends BaseController {
         $template_data = array(
             'title' => "${concordance_letter} - A Comprehensive Concordance Of The Book of Isaiah.",
             'body_id' => 'concordance',
-            'body_css' => 'tab-heading alphabetical'
+            'body_css' => 'tab-heading alphabetical scriptures'
         );
 
         $concordanceRepository = new ConcordanceRepository();
