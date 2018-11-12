@@ -198,8 +198,11 @@ if (location.hash) {               // do the test straight away
             $('ol').children().each(function() {
                 if(this.innerHTML != undefined) {
                     search_parts.forEach(function(value, index) {
-                        var replacement = new RegExp('(' + value + ')', 'ig');
-                        this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
+                        var replacement = new RegExp('(.*- <)', 'ig');
+                        this.innerHTML = this.innerHTML.replace(replacement, function(match, contents, offset, s) {
+                            var replacement = new RegExp('(' + value + ')');
+                            return match.replace(replacement, '<span class="highlight">$1</span>');
+                        }, value);
                     }, this);
                 }
             });
