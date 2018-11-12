@@ -32,6 +32,7 @@ class ChapterController extends BaseController {
         );
 
         View::share('chapter_number', $chapter_number);
+        View::share('chapter_number_dd', sprintf("%02s", $chapter_number));
         View::share('chapters', WidgetRepository::GetChapterSelection($chapter_number));
         VIEW::share('footnotes', $chapterRepository->GetIITFootnotesList($chapter_number));
 
