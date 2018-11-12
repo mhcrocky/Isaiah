@@ -43,6 +43,7 @@ EOT;
                 $scripture_text = html_entity_decode($search_results[$i]->scripture_text);
                 $scripture_text = preg_replace('/<span\b[^>]*>(.*)<\/span>/U', ' $1 ', $scripture_text);
                 $scripture_text = preg_replace('/\s\s/', ' ', $scripture_text);
+                $scripture_text = preg_replace('/<b>|<\/b>/', '', $scripture_text);
                 $search_html .= <<<EOT
 <li>${scripture_text} - <a href="/${chapter_number}?verse=$verse_number&search=$search_term#one_col"><i>Isaiah ${chapter_number}:${verse_number}</i></a></li>
 EOT;
@@ -119,11 +120,8 @@ EOT;
             })
             ->where('books.book_title', '=', 'Isaiah IIT')
             ->where(function($query) use ($search_term) {
-                $terms = explode(' ', $search_term);
-                $term_count = count($terms);
-                for($i = 0; $i < $term_count; $i++) {
-                    $query->where('verses.scripture_text', 'LIKE', '%' . $terms[$i] . '%', 'and');
-                }
+                $search_term = preg_replace('/ /', '%', $search_term);
+                $query->where('verses.scripture_text', 'LIKE', '%' . $search_term . '%', 'and');
             })
             ->select(array(DB::raw('COUNT(chapters.id) as results')))->get();
 
