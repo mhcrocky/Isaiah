@@ -705,15 +705,14 @@ button.close {
 }
 
 #concordance main .ref {
-    margin-bottom: 5px;
+    margin-bottom: 3px;
 }
 
-/*
-#concordance.scriptures main p a {
-    color: #000;
+#concordance.scriptures main p {
+/*     color: #000; */
     border-bottom: 1px solid #DDD;
+    padding-bottom: 3px;
 }
-*/
 
 #concordance .modal-body {
     padding-bottom: 40px;
@@ -819,6 +818,7 @@ aside audio {
 .chapter-selection {
     display: table;
     padding: 0;
+    text-align: center;
 }
 
 .cs-top {
@@ -835,7 +835,7 @@ font-weight: 700;
 }
 
 .chapter-selection li {
-    float: left;
+    display: inline;
     margin: 0;
     list-style: none;
 }
@@ -843,7 +843,6 @@ font-weight: 700;
 .chapter-selection a {
 font-size: 11px;
 padding: 3px 0 0;
-width: 24px;
 height: 24px;
 border-color: rgba(0, 0, 0, 0);
 }
@@ -1325,6 +1324,7 @@ footer .btn:hover {
     .chapter-selection a	{
         margin-right: 5px;
         margin-bottom: 5px;
+        width: 24px;
     }
 
     .mini-header {
@@ -1417,11 +1417,13 @@ footer .btn:hover {
     .chapter-selection a {
         margin-right: 5px;
         margin-bottom: 5px;
+        width: 27px;
     }
 
     aside .chapter-selection a {
-        margin-right: 13px;
-        margin-bottom: 8px;
+			margin-right: 5px;
+			margin-bottom: 4px;
+			width: 28px;
     }
 
     .chapter-table span {
@@ -1478,13 +1480,15 @@ footer .btn:hover {
     }
 
     .chapter-selection a {
-        margin-right: 2px;
+        margin-right: 3px;
         margin-bottom: 3px;
+        width: 25px;
     }
 
     aside .chapter-selection a {
         margin-right: 4px;
         margin-bottom: 3px;
+        width: 40px;
     }
 
     .chapter-table span {
@@ -1776,6 +1780,7 @@ footer .btn:hover {
 
     .chapter-selection a {
         margin-right: 11px;
+        width: 25px;
     }
 
     .one-col-padding {
@@ -1800,8 +1805,9 @@ footer .btn:hover {
     }
 
     aside .chapter-selection a {
-        margin-right: 10px;
-        margin-bottom: 6px;
+				margin-right: 5px;
+				margin-bottom: 6px;
+				width: 25px;
     }
 
     .chapter-table span {
