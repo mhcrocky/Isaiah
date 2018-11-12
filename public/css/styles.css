@@ -303,8 +303,8 @@ aside .tab-sections a:hover .fa
     color: #B19132;
 }
 
+.btn-warning,
 .pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
-.btn-warning
 {
     background-color: #D3BA71;
     border-color: #B19E68;
@@ -722,6 +722,12 @@ button.close {
     bottom: -22px;
 }
 
+/*---------------------------------------------------------------------------
+  >Ads
+---------------------------------------------------------------------------*/
+
+.isaiah-ad {padding: 1em 0;}
+.isaiah-ad img {width: 100%; height: auto;}
 
 /*---------------------------------------------------------------------------
   >Aside
@@ -913,7 +919,7 @@ float: none !important;
     line-height: 20px;
 }
 
-.index-search button, .nav-search button {
+.index-search button, .nav-search button, aside .input-group-btn button {
 border-top-left-radius: 0px;
 -webkit-border-top-left-radius: 0px;
 -moz-border-radius-topleft: 0px;
@@ -1521,8 +1527,13 @@ footer .btn:hover {
         line-height: 17px;
     }
     
-	#search .search-results-title {font-size: 1.5em;}
-	#search .heading .navbar-form {margin: 0;}
+		#search .search-results-title {font-size: 1.5em;}
+		#search .heading .navbar-form {margin: 0;}
+
+		aside .navbar-form {
+		padding-left: 0;
+		padding-right: 0;
+		}
 
     .heading {
         padding: 30px 0 25px;
