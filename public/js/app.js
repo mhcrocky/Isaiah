@@ -200,7 +200,7 @@ if (location.hash) {               // do the test straight away
                     search_parts.forEach(function(value, index) {
                         var replacement = new RegExp('(.*- <)', 'ig');
                         this.innerHTML = this.innerHTML.replace(replacement, function(match, contents, offset, s) {
-                            var replacement = new RegExp('(' + value + ')');
+                            var replacement = new RegExp('(' + value + ')', 'i');
                             return match.replace(replacement, '<span class="highlight">$1</span>');
                         }, value);
                     }, this);
