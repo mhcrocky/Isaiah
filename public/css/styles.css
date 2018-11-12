@@ -303,7 +303,7 @@ aside .tab-sections a:hover .fa
     color: #B19132;
 }
 
-.pagination>.active>a, .pagination>.active>a:hover, .pagination>.active>a:focus,
+.pagination>.active>a, .pagination>.active>span, .pagination>.active>a:hover, .pagination>.active>span:hover, .pagination>.active>a:focus, .pagination>.active>span:focus
 .btn-warning
 {
     background-color: #D3BA71;
@@ -904,6 +904,16 @@ float: none !important;
     line-height: 20px;
 }
 
+.index-search button, .nav-search button {
+border-top-left-radius: 0px;
+-webkit-border-top-left-radius: 0px;
+-moz-border-radius-topleft: 0px;
+
+border-bottom-left-radius: 0px;
+-webkit-border-bottom-left-radius: 0px;
+-moz-border-radius-bottomleft: 0px;
+}
+
 /*---------------------------------------------------------------------------
   >Footer
 ---------------------------------------------------------------------------*/
@@ -1247,7 +1257,7 @@ footer .btn:hover {
     .section-heading h1	{
         position: relative;
         top: 4px;
-        width: 210px;
+        width: 228px;
     }
 
     #search .heading h1 {
