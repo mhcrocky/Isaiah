@@ -608,6 +608,10 @@ margin-top: 0 !important;
     padding-top: 0 !important;
 }
 
+#versemodal .nav-links-light a {
+border: none;
+}
+
 .modal .chapter-selection {
     margin: 0;
     text-align: center;
