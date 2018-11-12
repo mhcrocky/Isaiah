@@ -163,7 +163,7 @@ header .main-nav .nav>li>a:focus
     background-color: #253041;
 }
 
-.navbar .container {background-image: url(http://dev.isaiahexplained.com/isaiah/images/circle.png); background-repeat: no-repeat;}
+.navbar .container {background-image: url(/circle.png); background-repeat: no-repeat;}
 
 /*--------------------------------
   >Headings
