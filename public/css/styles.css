@@ -599,6 +599,11 @@ margin-top: 0 !important;
     -moz-border-radius-bottomright: 6px;
 }
 
+#versemodal .modal-header {
+	color: #fff
+  background: #2B3B53;
+}
+
 #versemodal .modal-body {
     padding-top: 0 !important;
 }
