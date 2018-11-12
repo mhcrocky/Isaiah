@@ -70,7 +70,7 @@ class ChapterRepository {
                 }
             }
 
-            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'one-col');
+            list($scripture_text, $chapter_keywords_html) = $this->_buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'one-col');
 
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
@@ -196,7 +196,7 @@ EOT;
                 $iit_scripture_text = html_entity_decode($iit_chapter_text[$i]->scripture_text);
             }
 
-            list($iit_scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($iit_scripture_text, $iit_chapter_text[$i]->verse_id, $chapter_keywords_html, 'three-col');
+            list($iit_scripture_text, $chapter_keywords_html) = $this->_buildKeywordsHTML($iit_scripture_text, $iit_chapter_text[$i]->verse_id, $chapter_keywords_html, 'three-col');
 
             if(!empty($heb_chapter_text[$i])) {
                 $heb_scripture_text = html_entity_decode($heb_chapter_text[$i]->scripture_text);
@@ -208,9 +208,6 @@ EOT;
 
             $is_iit_poetry = $iit_chapter_text[$i]->is_poetry;
             $is_iit_prose = ($is_iit_poetry == false ? true : false);
-
-            $indent_start = '';
-            $indent_end = '';
 
             if($j != $iit_verse_count) {
                 $next_segment_id = $iit_chapter_text[$j]->segment_id;
@@ -374,7 +371,7 @@ EOT;
                 }
             }
 
-            list($scripture_text, $chapter_keywords_html) = $this->buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'concordance');
+            list($scripture_text, $chapter_keywords_html) = $this->_buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'concordance');
 
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
@@ -822,7 +819,7 @@ EOT;
      * @param $section_tab
      * @return array
      */
-    private function buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, $section_tab)
+    private function _buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, $section_tab)
     {
         $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
         if ($has_keyword == true) {

@@ -9,10 +9,7 @@ if (location.hash) {               // do the test straight away
     window.scrollTo(0, 0);         // execute it straight away
     setTimeout(function() {
         if(is_citation === false && is_searched == false) {
-            var scrollTop = $(window).scrollTop();
-            if(scrollTop != 0) {
-                window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
-            }
+            window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
         } else if(is_citation === true) {
             $(window).scrollTop(citationDiv.offset().top);
         } else if (is_searched === true) {
@@ -193,8 +190,7 @@ if (location.hash) {               // do the test straight away
                 }
             }
         } else if(location.pathname.indexOf('/Search') > -1) {
-            var search = location.pathname.split('/')[2].replace(/%20/, ' ');
-            var search_parts = search.split(' ');
+            var search_parts = location.pathname.split('/')[2].replace(/%20/, ' ').split(' ');
             $('ol').children().each(function() {
                 if(this.innerHTML != undefined) {
                     search_parts.forEach(function(value, index) {
