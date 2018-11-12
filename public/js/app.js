@@ -408,15 +408,17 @@ if (location.hash) {               // do the test straight away
                 if (hash == "#one_col") {
                     iitDiv.children().each(function() {
                         if(this.innerHTML != undefined) {
-                            var replacement = new RegExp('(' + search + ')', 'ig');
-                            this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
+                            var search_parts = search.split(' ');
+                            search_parts.forEach(function(value, index) {
+                                var replacement = new RegExp('(' + value + ')', 'ig');
+                                this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
+                            }, this);
                         }
                     });
                     $(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }
             }
-            var tmpTest = 1;
         }
 
         $.fn.outerHTML = function(s) {
