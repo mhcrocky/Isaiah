@@ -3,7 +3,7 @@
     require('lib/simplehtmldom_1_5/simple_html_dom.php');
     require('isaiah_db.php');
     $site_root = 'C:/Users/Tekton/Documents/isaiahexplained_code/';
-    $concordance_html = $site_root . 'Extraction/doc/Concordance.html';
+    $concordance_html = $site_root . 'Code/Laravel/extraction/doc/Concordance.html';
     //$concordance_html = $site_root . 'Extraction/doc/Concordance_Sample.html';
 
     $html = file_get_html($concordance_html);
