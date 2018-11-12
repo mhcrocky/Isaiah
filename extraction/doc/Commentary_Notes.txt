@@ -1,0 +1,64 @@
+1) Commentary can span multiple verses. This occurs with verse ranges or even multiple verses out of sequence from normal numbering.
+2) Commentary display requires header (verse number(s) and original IIT text) and the body text(commentary).
+3) Commentary text contains references to verses (OT/NT). We may wish to link to the reference text, at some point. 
+4) Commentary needs a way to link verse_id to commentary_id. This would enable viewing commentary from the IIT
+   4a) Mapping table would be something like map_id, verse_id, commentary_id
+
+No Indent:
+
+<p class="western" style="margin-bottom: 0in; line-height: 100%">
+
+Indent:
+
+<p class="western" style="text-indent: 0.5in; margin-bottom: 0in; line-height: 100%">
+
+Verse Heading:
+
+<p class="western" style="margin-bottom: 0in; line-height: 100%"><span lang="en-CA">1:1
+</span><i>The vision of Isaiah the son of Amoz which he beheld
+concerning Judea and Jerusalem during the reigns of Uzziah, Jotham,
+Ahaz, and Hezekiah, kings of Judah:</i></p>
+
+Verse Commentary:
+
+<p class="western" style="margin-bottom: 0in; line-height: 100%">	Isaiah
+mentions four successive kings during whose reigns he prophesies, of
+whom Ahaz and Hezekiah feature most prominently in the Book of
+Isaiah, one for evil, the other for good. A fifth goes
+unmentioned—Manasseh, the son of Hezekiah, who slays Isaiah by
+sawing him in half (<i>Ascension of Isaiah</i>,<i> </i>11:41). On
+account of the sins of Manasseh, the people of the Southern Kingdom
+of Judah are ultimately exiled and taken captive by the Babylonians
+(2 Kings 24:3–4). Manasseh’s reign becomes a point of no return
+for the Jewish nation because of the king’s corrupting influence on
+the people.</p>
+<p class="western" style="margin-bottom: 0in; line-height: 100%">	As
+the preface of the Book of Isaiah, Chapter 1 dates from about 701
+B.C., the fourteenth year of the reign of King Hezekiah. At that
+time, Assyria invaded the Southern Kingdom of Judah. Israel’s God
+Jehovah, however, thwarted Assyria’s designs because of the
+righteousness of the king and his people. Earlier, in 722 B.C.,
+Assyria had conquered the ten-tribed Northern Kingdom of Israel and
+taken its people captive into Mesopotamia. The first chapter of the
+Book of Isaiah chronologically is chapter 6, which describes Isaiah’s
+calling as a prophet in the year of King Uzziah’s death in 742 B.C.</p>
+<p class="western" style="margin-bottom: 0in; line-height: 100%"><font size="2" style="font-size: 11pt">	</font><i>The
+vision. </i>Although Isaiah’s prophetic ministry may have spanned
+fifty years, the singular term “vision” (<i>hazon</i>) defines
+Isaiah’s writings as <i>one</i> conceptually from beginning to end.
+That is evident in the Book of Isaiah’s multi-layered structuring,
+through which Isaiah integrates his early oracles and later written
+discourses into a single prophecy that spells out an end-time
+scenario. Without taking away from the historical origins of Isaiah’s
+writings, historical events now serve as an allegory of the end-time,
+in which “Judea” and “Jerusalem” are codenames that designate
+Jehovah’s end-time people.</p>
+
+Range:
+
+<p class="western" style="margin-bottom: 0in; line-height: 100%"><span lang="en-CA">2:</span>7–8<i>
+
+Multiple Verses:
+
+<p class="western" style="margin-bottom: 0in; line-height: 100%"><span lang="en-CA">33:</span>20,
+24
