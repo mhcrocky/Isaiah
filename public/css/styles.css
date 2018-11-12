@@ -96,8 +96,8 @@ a,
 aside .fa-ul li a:hover,
 .chapter-table a:hover,
 .chapter-number-single:hover,
-.chpater-number-double:hover,
-.verse-number:hover,
+.chapter-number-double:hover,
+a.verse-number:hover,
 #concordance main .modal-trigger:hover
 {
     color: #2970B3;
