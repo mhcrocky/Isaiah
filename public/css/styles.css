@@ -781,6 +781,7 @@ aside iframe {
 
 aside audio {
 		width: 100%; 
+		margin-bottom: 10px;
 }
 
 .color-legend {
