@@ -192,6 +192,17 @@ if (location.hash) {               // do the test straight away
                     setNavHash("#one_col");
                 }
             }
+        } else if(location.pathname.indexOf('/Search') > -1) {
+            var search = location.pathname.split('/')[2].replace(/%20/, ' ');
+            var search_parts = search.split(' ');
+            $('ol').children().each(function() {
+                if(this.innerHTML != undefined) {
+                    search_parts.forEach(function(value, index) {
+                        var replacement = new RegExp('(' + value + ')', 'ig');
+                        this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
+                    }, this);
+                }
+            });
         }
 
         window.heading_tabs.find('li > a').click(function (e) {
