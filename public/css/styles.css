@@ -708,10 +708,12 @@ button.close {
     margin-bottom: 5px;
 }
 
+/*
 #concordance.scriptures main p a {
     color: #000;
     border-bottom: 1px solid #DDD;
 }
+*/
 
 #concordance .modal-body {
     padding-bottom: 40px;
