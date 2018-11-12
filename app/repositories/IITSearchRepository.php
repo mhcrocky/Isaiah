@@ -92,11 +92,8 @@ EOT;
             })
             ->where('books.book_title', '=', 'Isaiah IIT')
             ->where(function($query) use ($search_term) {
-                $terms = explode(' ', $search_term);
-                $term_count = count($terms);
-                for($i = 0; $i < $term_count; $i++) {
-                    $query->where('verses.scripture_text', 'LIKE', '%' . $terms[$i] . '%', 'and');
-                }
+                $search_term = preg_replace('/ /', '%', $search_term);
+                $query->where('verses.scripture_text', 'LIKE', '%' . $search_term . '%', 'and');
             })
             ->select('chapters.id as chapter_id', 'verses.id as verse_id', 'chapters.chapter_number',
                 'verses.verse_number', 'verses.scripture_text', 'verses.segment_id',
