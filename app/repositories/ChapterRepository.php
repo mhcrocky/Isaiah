@@ -58,6 +58,8 @@ class ChapterRepository {
                 $next_is_prose = false;
             }
 
+            $indent_start = '<span>';
+            $indent_end = '</span>';
             // If is poetry and starts with a span, we need to strip that span and indent the whole span
             if($is_poetry == true) {
                 $is_poem_indented = preg_match('/^<span class="indent">.*/', $scripture_text);
@@ -220,6 +222,8 @@ EOT;
                 $next_is_prose = false;
             }
 
+            $indent_start = '<span>';
+            $indent_end = '</span>';
             // If is poetry and starts with a span, we need to strip that span and indent the whole span
             if($is_iit_poetry == true) {
                 $is_poem_indented = preg_match('/^<span class="indent">.*/', $iit_scripture_text);
@@ -359,6 +363,8 @@ EOT;
             }
 
             // If is poetry and starts with a span, we need to strip that span and indent the whole span
+            $indent_start = '<span>';
+            $indent_end = '</span>';
             if($is_poetry == true) {
                 $is_poem_indented = preg_match('/^<span class="indent">.*/', $scripture_text);
                 if($is_poem_indented == true) {
