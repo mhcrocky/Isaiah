@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceA.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceA.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceB.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceB.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceC.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceC.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceD.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceD.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceE.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceE.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceF.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceF.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceG.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceG.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceH.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceH.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceI.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceI.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceJ.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceJ.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceK.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceK.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceL.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceL.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceM.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceM.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceN.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceN.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceO.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceO.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceP.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceP.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceQ.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceQ.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceR.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceR.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceS.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceS.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceT.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceT.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceU.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceU.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceV.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceV.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceW.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceW.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceY.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceY.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceZ.html" afterPath="$PROJECT_DIR$/extraction/doc/concordance_html-sept-30-2014/concordanceZ.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/extraction/extract_iit_concordance.php" afterPath="$PROJECT_DIR$/extraction/extract_iit_concordance.php" />
     </list>
     <ignored path="Laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,21 +52,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="database.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/config/database.php">
+      <file leaf-file-name="extract_iit_concordance.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/extraction/extract_iit_concordance.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.0" vertical-offset="912" max-vertical-offset="2080">
-              <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="extract_iit.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/extraction/extract_iit.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6745763" vertical-offset="3058" max-vertical-offset="3648">
-              <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="221" selection-end-column="1" />
+            <state vertical-scroll-proportion="0.42780748" vertical-offset="0" max-vertical-offset="2272">
+              <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -61,10 +76,11 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/config/database.php" />
+        <option value="$PROJECT_DIR$/extraction/extract_iit_concordance.php" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.4" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
@@ -126,6 +142,20 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="extraction" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -144,7 +174,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="config" />
+              <option name="myItemId" value="repositories" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -155,9 +185,46 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
+    <property name="options.lastSelected" value="com.intellij.webcore.resourceRoots.WebIdeProjectStructureWithSourceConfigurable" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="recentsLimit" value="5" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/extraction/extract_iit_commentary.php" />
+    <property name="restartRequiresConfirmation" value="true" />
   </component>
-  <component name="RunManager">
-    <list size="0" />
+  <component name="RunManager" selected="PHP Script.Extract Concordance">
+    <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
+      <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
+      <method />
+    </configuration>
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug">
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpBehatConfigurationType" factoryName="Behat">
+      <BehatRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpUnitRemoteRunConfigurationType" factoryName="PHPUnit on Server">
+      <method />
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <method />
+    </configuration>
+    <configuration default="false" name="Extract Concordance" type="PhpLocalRunConfigurationType" factoryName="PHP Console" editBeforeRun="true" path="$PROJECT_DIR$/extraction/extract_iit_concordance.php">
+      <RunnerSettings RunnerId="PhpRunner" />
+      <ConfigurationWrapper RunnerId="PhpRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Extract Commentary" type="PhpLocalRunConfigurationType" factoryName="PHP Console" editBeforeRun="true" path="$PROJECT_DIR$/extraction/extract_iit_commentary.php">
+      <method />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="PHP Script.Extract Concordance" />
+      <item index="1" class="java.lang.String" itemvalue="PHP Script.Extract Commentary" />
+    </list>
   </component>
   <component name="ShelveChangesManager" show_recycled="false" />
   <component name="TaskManager">
@@ -180,6 +247,8 @@
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16909385" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32977098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -187,9 +256,7 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -231,6 +298,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/extraction/extract_iit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6745763" vertical-offset="3058" max-vertical-offset="3648">
+          <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="221" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/config/database.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0" vertical-offset="912" max-vertical-offset="2080">
@@ -239,10 +314,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/extraction/extract_iit.php">
+    <entry file="file://$PROJECT_DIR$/app/repositories/ConcordanceRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6745763" vertical-offset="3058" max-vertical-offset="3648">
-          <caret line="216" column="0" selection-start-line="216" selection-start-column="0" selection-end-line="221" selection-end-column="1" />
+        <state vertical-scroll-proportion="1.1355932" vertical-offset="34" max-vertical-offset="1488">
+          <caret line="44" column="21" selection-start-line="44" selection-start-column="21" selection-end-line="44" selection-end-column="21" />
+          <folding>
+            <marker date="1415861490811" expanded="true" signature="-1:-1" placeholder="SELECT `iit_..." />
+            <marker date="1415861490811" expanded="true" signature="-1:-1" placeholder="SELECT `iit_..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/repositories/ConcordancePaginatorRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1712">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extraction/extract_iit_commentary.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-10.688135" vertical-offset="6306" max-vertical-offset="7424">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/extraction/extract_iit_concordance.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.42780748" vertical-offset="0" max-vertical-offset="2272">
+          <caret line="10" column="42" selection-start-line="10" selection-start-column="42" selection-end-line="10" selection-end-column="42" />
           <folding />
         </state>
       </provider>
