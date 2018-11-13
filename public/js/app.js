@@ -382,16 +382,16 @@ if (location.hash) {               // do the test straight away
             var citationLink = $('a[href*=' + citationQueryString + ']');
             if(citationLink != undefined) {
                 if(location.pathname.indexOf('/Concordance') == -1) {
-                    //citationDiv = citationLink.parent().closest('div');
-                    citationDiv = citationLink.parent();
+                    citationDiv = citationLink.parent().closest('div');
+                    //citationDiv = citationLink.parent();
                     citationLink.addClass('highlight');
                 } else {
                     citationDiv = citationLink.parent();
                     if (citationDiv != undefined) {
                             citationDiv.addClass('highlight');
                     }
-                    is_citation = true;
                 }
+                is_citation = true;
             }
         }
 
