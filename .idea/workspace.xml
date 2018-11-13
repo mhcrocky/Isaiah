@@ -30,11 +30,10 @@
       <file leaf-file-name="extract_iit_concordance.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/extraction/extract_iit_concordance.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5721925" vertical-offset="346" max-vertical-offset="1632">
-              <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.7647059" vertical-offset="1042" max-vertical-offset="1840">
+              <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
               <folding>
                 <element signature="e#583#630#0#PHP" expanded="false" />
-                <element signature="e#4379#4765#0#PHP" expanded="false" />
                 <element signature="n#performInserts#0;n#!!top" expanded="false" />
                 <element signature="n#toAlpha#0;n#!!top" expanded="false" />
               </folding>
@@ -406,11 +405,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/extraction/extract_iit_concordance.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5721925" vertical-offset="346" max-vertical-offset="1632">
-          <caret line="37" column="40" selection-start-line="37" selection-start-column="40" selection-end-line="37" selection-end-column="40" />
+        <state vertical-scroll-proportion="0.7647059" vertical-offset="1042" max-vertical-offset="1840">
+          <caret line="85" column="23" selection-start-line="85" selection-start-column="23" selection-end-line="85" selection-end-column="23" />
           <folding>
             <element signature="e#583#630#0#PHP" expanded="false" />
-            <element signature="e#4379#4765#0#PHP" expanded="false" />
             <element signature="n#performInserts#0;n#!!top" expanded="false" />
             <element signature="n#toAlpha#0;n#!!top" expanded="false" />
           </folding>

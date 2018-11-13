@@ -83,14 +83,14 @@
         }
     }
 
-    /*if (empty($amysql)) {
+    if (empty($amysql)) {
         $amysql = get_amysql();
     }
     //2807	1610	42985	28	c28v13a-PRECEPT	28:13	P	upon precept, precept upon precept	PRECEPT	1	3
-    /*performInserts807, 1610, 42982, 28, 'c28v10a-PRECEPT',
+    performInserts(2805, 1610, 42982, 28, 'c28v10a-PRECEPT',
         '28:10', 'P', 'upon precept, precept upon precept', 1, 4, 0, $amysql);
-    performInserts(2807, 1610, 42985, 28, 'c28v13a-PRECEPT',
-    '28:13', 'P', 'upon precept, precept upon precept', 1, 4, 0, $amysql);*/
+    performInserts(2805, 1610, 42985, 28, 'c28v13a-PRECEPT',
+        '28:13', 'P', 'upon precept, precept upon precept', 1, 4, 0, $amysql);
 
     /**
      * @param int $concordance_id
