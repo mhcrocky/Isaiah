@@ -1419,6 +1419,10 @@ footer .btn:hover {
         margin-bottom: 5px;
         width: 27px;
     }
+    
+    main .chapter-selection a {
+	  width: 36px ;
+    }
 
     aside .chapter-selection a {
 			margin-right: 5px;
@@ -1471,10 +1475,6 @@ footer .btn:hover {
     .navbar-brand img {width: 200px;}
     .main-site .navbar-brand {height: inherit; padding: 12px 15px;}
 
-    .chapter-selection a {
-        margin-right: 5px;
-    }
-
     .nav-pills a span {
         font-size: 14px;
     }
@@ -1483,6 +1483,10 @@ footer .btn:hover {
         margin-right: 3px;
         margin-bottom: 3px;
         width: 25px;
+    }
+    
+    main .chapter-selection a {
+	  width: 24px;
     }
 
     aside .chapter-selection a {
@@ -1783,6 +1787,10 @@ footer .btn:hover {
         width: 28px;
         margin-right: 6px;
         margin-bottom: 6px;
+    }
+    
+    main .chapter-selection a {
+	  width: 27px ;
     }
 
     .one-col-padding {
