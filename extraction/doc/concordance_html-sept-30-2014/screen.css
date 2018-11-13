@@ -1,0 +1,106 @@
+p {
+  margin: 0;
+}
+body {
+  padding: 72pt;
+  width: 468pt;
+  color: black;
+  font-size: 12pt;
+  background-color: white;
+  font-family: "Times New Roman";
+  line-height: 1.3em;
+}
+sub, sup {
+  line-height: 0.2em;
+}
+.main-title {
+  font-size: 20pt;
+  font-variant: small-caps;
+  text-align: center;
+}
+.title {
+  font-size: 24pt;
+  text-align: center;
+}
+.chapter-number {
+  font-size: 32pt;
+}
+.subtitle {
+  font-size: 16pt;
+  text-align: center;
+}
+.references-title {
+  font-size: 22pt;
+  text-align: center;
+}
+.inset-text {
+  text-indent: 18.7pt;
+  margin-left: 18.7pt;
+}
+.reference {
+  line-height: 1.5;
+  margin-left: 36pt;
+}
+.footnote {
+  font-size: 10pt;
+}
+.bold {
+  font-weight: bold;
+}
+.italic {
+  font-style: italic;
+}
+.keyword {
+}
+.ref {
+  position: relative;
+}
+.verse {
+  margin-left: 30pt;
+}
+.vtext {
+  position: absolute;
+  top: 0;
+  left: 68pt;
+  width: 400pt;
+}
+.con {
+  color: black;
+  text-decoration: none;
+}
+.con:hover {
+  color: blue;
+  text-decoration: underline;
+}
+.highlighted {
+  background-color: yellow;
+}
+.navigation {
+  text-align: center;
+}
+.navigation a {
+  font-style: italic;
+  color: #BBB;
+}
+.navigation a:hover {
+  color: #666;
+}
+.prev {
+  float: left;
+}
+.next {
+  float: right;
+}
+.contents-container {
+  margin-left: auto;
+  margin-right: auto;
+}
+.contents a {
+  display: inline-block;
+  width: 2.8em;
+  line-height: 2em;
+  text-align: center;
+}
+.contents-title {
+  text-align: center;
+}
