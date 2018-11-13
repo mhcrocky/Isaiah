@@ -400,9 +400,9 @@ EOT;
 
             //url and segment_id
             if(!empty($custom_html)) {
-                $custom_html = $this->_getConcordanceURL($custom_html, $verse_id);
+                $custom_html = $this->_getConcordanceURL($custom_html, $chapter_number, $verse_number, $verse_id);
             } else {
-                $scripture_text = $this->_getConcordanceURL($scripture_text, $verse_id);
+                $scripture_text = $this->_getConcordanceURL($scripture_text, $chapter_number, $verse_number, $verse_id);
             }
 
             if(!empty($custom_html)) {
@@ -442,10 +442,12 @@ EOT;
      * Get the Concordance urls for the words cited in scripture
      *
      * @param string $scripture_text
+     * @param int $chapter_number
+     * @param int $verse_number
      * @param int $verse_id
      * @return string
      */
-    private function _getConcordanceURL($scripture_text, $verse_id) {
+    private function _getConcordanceURL($scripture_text, $chapter_number, $verse_number, $verse_id) {
         $concordance_verse = $this->_getConcordanceVerse($verse_id);
 
         foreach($concordance_verse as $citation) {
@@ -456,7 +458,15 @@ EOT;
             $letter = $word[0];
             $pattern = "/\b(${word})(?!=)\b/i";
             $replacement = '<a href="/Concordance/' . $letter . '?citation=' . $url . '#' . $fixed_word . '">$1</a>';
-            $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
+            if($chapter_number == 28) {
+                if($verse_number == 10 || $verse_number == 13) {
+                    $scripture_text = preg_replace($pattern, $replacement, $scripture_text);
+                } else {
+                    $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
+                }
+            } else {
+                $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
+            }
         }
 
         return preg_replace('/zzz/', '', $scripture_text);
