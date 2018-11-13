@@ -61,13 +61,25 @@ EOT;
      * @return array
      */
     private function _getWordCitations($concordance_id) {
+        $test = 1;
+
         $sql = 'SELECT
           `iit_concordance_citations`.`url` AS url,
           `iit_concordance_citations`.`subject_verse` AS subject_verse,
           `iit_concordance_citations`.`chapter` AS chapter,
           `iit_concordance_citations`.`citation` AS citation
+        FROM (`isaiahde_logos`.`iit_concordance_citations`
+          JOIN `isaiahde_logos`.`iit_concordance_index`
+            ON (`iit_concordance_index`.`citation_id` = `iit_concordance_citations`.`id`))
+        WHERE (`iit_concordance_index`.`is_displayed` = TRUE AND `iit_concordance_citations`.`concordance_id` = ?)';
+
+        /*$sql = 'SELECT
+          `iit_concordance_citations`.`url` AS url,
+          `iit_concordance_citations`.`subject_verse` AS subject_verse,
+          `iit_concordance_citations`.`chapter` AS chapter,
+          `iit_concordance_citations`.`citation` AS citation
         FROM `isaiahde_logos`.`iit_concordance_citations`
-        WHERE (`iit_concordance_citations`.`concordance_id` = ?)';
+        WHERE (`iit_concordance_citations`.`concordance_id` = ?)';*/
 
         $results = DB::select($sql, array($concordance_id));
 

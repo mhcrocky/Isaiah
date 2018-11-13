@@ -423,6 +423,10 @@ $chapter_keywords_html\r\n
 EOT;
             }
 
+            /*if($chapter_number == 28 && $verse_number == 13) {
+                echo $iit_html; exit;
+            }*/
+
             // Clear $is_prose_inline if necessary
             if($is_prose_inline == true) {
                 if($next_segment_id != $segment_id) {
@@ -455,18 +459,16 @@ EOT;
             $url = preg_replace("/($word)(?!=)/", 'zzz$1zzz', $citation->url);
             $fixed_word = preg_replace('/(.*)(?!=)/', 'zzz$1zzz', $word);
             $segment_id = $citation->segment_id;
+            $sub_segment_id = $citation->sub_segment_id;
             $letter = $word[0];
             $pattern = "/\b(${word})(?!=)\b/i";
             $replacement = '<a href="/Concordance/' . $letter . '?citation=' . $url . '#' . $fixed_word . '">$1</a>';
-            if($chapter_number == 28) {
+            /*if($chapter_number == 28) {
                 if($verse_number == 10 || $verse_number == 13) {
-                    $scripture_text = preg_replace($pattern, $replacement, $scripture_text);
-                } else {
-                    $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
+                    $test = 1;
                 }
-            } else {
-                $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
-            }
+            }*/
+            $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $sub_segment_id);
         }
 
         return preg_replace('/zzz/', '', $scripture_text);
@@ -786,7 +788,8 @@ EOT;
         $sql = 'SELECT
           `iit_concordance_words`.`word` AS word,
           `iit_concordance_citations`.`url` AS url,
-          `iit_concordance_citations`.`segment_id` AS segment_id
+          `iit_concordance_citations`.`segment_id` AS segment_id,
+          `iit_concordance_citations`.`sub_segment_id` AS sub_segment_id
         FROM (`isaiahde_logos`.`iit_concordance_citations`
           JOIN `iit_concordance_words`
             ON (`iit_concordance_citations`.`concordance_id` = `iit_concordance_words`.`id`))

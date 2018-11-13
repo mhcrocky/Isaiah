@@ -455,10 +455,12 @@
      * @param string $letter
      * @param string $citation
      * @param int $segment_id
+     * @param int $sub_segment_id
      * @param AMysql $amysql
      * @return int
      */
-    function insert_concordance_citation($concordance_id, $chapter_id, $verse_id, $chapter_number, $url, $subject_verse, $letter, $citation, $segment_id, &$amysql) {
+    function insert_concordance_citation($concordance_id, $chapter_id, $verse_id, $chapter_number, $url,
+                                         $subject_verse, $letter, $citation, $segment_id, $sub_segment_id, &$amysql) {
         $data = array(
             'concordance_id' => $concordance_id,
             'chapter_id' => $chapter_id,
@@ -468,10 +470,32 @@
             'subject_verse' => $subject_verse,
             'letter' => $letter,
             'citation' => $citation,
-            'segment_id' => $segment_id
+            'segment_id' => $segment_id,
+            'sub_segment_id' => $sub_segment_id
         );
 
         $id = $amysql->insert('iit_concordance_citations', $data);
+
+        return $id;
+    }
+
+    /**
+     * Insert Concordance Index
+     *
+     * @param int $concordance_id
+     * @param int $citation_id
+     * @param bool $is_displayed
+     * @param AMysql $amysql
+     * @return int
+     */
+    function insert_concordance_index($concordance_id, $citation_id, $is_displayed, &$amysql) {
+        $data = array(
+            'concordance_id' => $concordance_id,
+            'citation_id' => $citation_id,
+            'is_displayed' => $is_displayed
+        );
+
+        $id = $amysql->insert('iit_concordance_index', $data);
 
         return $id;
     }
