@@ -1780,7 +1780,9 @@ footer .btn:hover {
 
     .chapter-selection a {
         margin-right: 11px;
-        width: 25px;
+        width: 28px;
+        margin-right: 6px;
+        margin-bottom: 6px;
     }
 
     .one-col-padding {
@@ -1797,11 +1799,6 @@ footer .btn:hover {
 
     .nav-pills a span {
         font-size: 15px;
-    }
-
-    .chapter-selection a {
-        margin-right: 7px;
-        margin-bottom: 6px;
     }
 
     aside .chapter-selection a {
