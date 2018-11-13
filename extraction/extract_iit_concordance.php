@@ -32,7 +32,7 @@
             if ($class == 'keyword') {
                 $word = preg_replace('/^<a\b[^>]*>(.*)/', '$1', $concordanceHTML->innertext);
                 $letter = strtoupper($word[0]);
-                //$concordance_id = insert_concordance($word, $letter, $amysql);
+                $concordance_id = insert_concordance($word, $letter, $amysql);
                 $segment_id = 1;
                 $sub_segment_id = 1;
                 if (strtoupper($word) == strtoupper('PRECEPT')) {
