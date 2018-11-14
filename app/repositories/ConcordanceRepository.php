@@ -26,7 +26,7 @@ EOT;
                 $url = $word_citation->url;
                 $subject_verse = $word_citation->subject_verse;
                 $chapter = $word_citation->chapter;
-                $citation = $word_citation->citation;
+                $citation = html_entity_decode($word_citation->citation);
                 $concordance_html .= <<<EOT
 <p id=${url} class="ref"><a href="/{$chapter}?citation=${url}#concordance" class="verse">${subject_verse}</a> <span class="vtext">${citation}</span></p>$EOL
 EOT;

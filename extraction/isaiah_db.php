@@ -469,7 +469,7 @@
             'url' => $url,
             'subject_verse' => $subject_verse,
             'letter' => $letter,
-            'citation' => $citation,
+            'citation' => htmlentities($citation),
             'segment_id' => $segment_id,
             'sub_segment_id' => $sub_segment_id
         );

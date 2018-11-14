@@ -35,11 +35,13 @@
                 $concordance_id = insert_concordance($word, $letter, $amysql);
                 $segment_id = 1;
                 $sub_segment_id = 1;
-                if (strtoupper($word) == strtoupper('PRECEPT')) {
+                $test_word = strtoupper($word);
+                if ($test_word == strtoupper('PRECEPT') || $test_word == strtoupper('ANGER')) {
                     $test = 1;
                 }
             } else {
-                $citation = preg_replace('/^<a\b[^>]*>(.*)<\/a> <span\b[^>]*>/', '$1 ', $concordanceHTML->innertext);
+                $citation = preg_replace('/<span class="bold">(.*)<\/span>/Ui', '<b>$1</b>', $concordanceHTML->innertext);
+                $citation = preg_replace('/^<a\b[^>]*>(.*)<\/a> <span\b[^>]*>/', '$1 ', $citation);
                 $is_match = preg_match('/^(\d{1,2}):(\d{1,2})/', $citation, $matches);
                 if ($is_match) {
                     if (!empty($chapter_number) && !empty($verse_number)) {
