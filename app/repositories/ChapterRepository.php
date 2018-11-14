@@ -290,7 +290,7 @@ EOT;
     }
 
     /**
-     * Get three column view HTML
+     * Get Commentary view HTML
      *
      * @param int Chapter number
      * @return string Commentary view HTML
