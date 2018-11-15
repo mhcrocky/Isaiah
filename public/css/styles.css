@@ -369,7 +369,7 @@ main .commentary-indent {
 }
 
 main .chapter-number-single, .chapter-number-double, .verse-number {
-    color: #000;
+/*     color: #000; */
 }
 
 main span.prose,
@@ -432,10 +432,6 @@ main a:hover,
 main b:hover
 {
     text-decoration: none;
-}
-
-.chapter-heading {
-    text-align: center;
 }
 
 #commentary main .commentary {
@@ -1030,10 +1026,10 @@ footer .btn:hover {
         z-index: 1000;
         top: 0;
     }
-    
+        
 		.header-container .navbar-form {display: none;}
 
-    .non-mobile	{
+    .non-mobile, .full-only	{
         display: none !important;
         visibility: hidden;
     }
@@ -1041,6 +1037,7 @@ footer .btn:hover {
     .chapter-heading {
         font-size: 13px;
         line-height: 14px;
+        text-align: left;
     }
 
     .heading {
@@ -1480,9 +1477,9 @@ footer .btn:hover {
     }
 
     .chapter-selection a {
-        margin-right: 3px;
-        margin-bottom: 3px;
-        width: 25px;
+				margin-right: 5px;
+				margin-bottom: 5px;
+				width: 23px;
     }
     
     main .chapter-selection a {
@@ -1520,15 +1517,18 @@ footer .btn:hover {
         font-size: 33px;
         float: left;
     }
+    
+   	.page-title {margin-bottom: 10px; margin-top: 0; text-align: left;}
 
     .modal-hide,
     .show-hide,
-    .heading-mobile
+    .heading-mobile,
+    .mobile-only
     {
         display: none !important;
         visibility: hidden;
     }
-
+   
     main {
         padding-bottom: 20px
     }
@@ -1536,6 +1536,7 @@ footer .btn:hover {
     .chapter-heading {
         font-size: 16px;
         line-height: 17px;
+        text-align: left;
     }
     
 		#search .search-results-title {font-size: 1.5em;}
@@ -1547,7 +1548,7 @@ footer .btn:hover {
 		}
 
     .heading {
-        padding: 30px 0 25px;
+        padding: 23px 0 18px;
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
     }
 
@@ -1574,6 +1575,16 @@ footer .btn:hover {
         padding: 12px;
     }
 
+		.nav-links {
+			text-align: right;
+		}
+		
+		.nav-links .fa-th {
+		font-size: 23px !important;
+		position: relative;
+		top: -3px;
+		}
+		
     .nav-links .nav>li>a {
         font-size: 40px;
         padding: 0px 0 0 15px;
@@ -1633,7 +1644,7 @@ footer .btn:hover {
     }
 
     .wrapper {
-        margin-top: 25px;
+        margin-top: 20px;
     }
 
     .three-column.table td {
@@ -1733,7 +1744,7 @@ footer .btn:hover {
     }
 
     .heading .nav-pills a {
-        padding: 0 8px;
+        padding: 0 30px 0 0;
         font-size: 16px;
         line-height: 19px;
         text-align: center;
