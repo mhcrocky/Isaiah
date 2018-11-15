@@ -818,7 +818,7 @@ aside audio {
 }
 
 .cs-top {
-padding: 15px 0 0;
+padding: 20px 0 0;
 margin: 0;
 }
 
@@ -1010,6 +1010,9 @@ footer .btn:hover {
     .navbar .container {background-position: -20px -32px; background-size: 350px;}
 
     .main-site .navbar-brand {height: inherit; padding: 9px 15px 6px;}
+    
+    #chapter-index .navbar-brand {display: block; padding: 10px 10px 7px;}
+    
     .navbar-brand img {width: 140px;}
 
     body.section-heading {
@@ -1358,7 +1361,7 @@ footer .btn:hover {
 
     .dropdown-menu>.active>a, .dropdown-menu>.active>a:hover, .dropdown-menu>.active>a:focus
     {
-        background-color: inherit;
+        background-color: #D3BA71;
     }
     
     aside audio {margin: 10px 0; margin-bottom: 10px;}
@@ -1533,6 +1536,10 @@ footer .btn:hover {
         padding-bottom: 20px
     }
 
+		.heading .row > div {
+		padding: 0;
+		}
+
     .chapter-heading {
         font-size: 16px;
         line-height: 17px;
@@ -1577,6 +1584,7 @@ footer .btn:hover {
 
 		.nav-links {
 			text-align: right;
+			padding-right: 0;
 		}
 		
 		.nav-links .fa-th {
