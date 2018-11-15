@@ -43,6 +43,7 @@ class ChapterController extends BaseController {
             ->nest('chapter_modal', 'modals.chapter')
             ->nest('keyword_modal', 'modals.keyword')
             ->nest('heading', 'headings.chapter', $header_data)
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'chapter', $content_data);
     }
 
