@@ -51,12 +51,12 @@
                     <ul class="nav navbar-nav">
                         <li class="dropdown"><a title="<i class=&quot;fa fa-graduation-cap fa-fw&quot;></i>&nbsp;<span>Resources</span>" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;<span>Resources</span> <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
-                                <li><a title="Key Features of the Prophecy of Isaiah" href="/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
-                                <li><a title="Isaiah’s Layered Literary Structures" href="/isaiahs-layered-literary-structures/">Isaiah’s Layered Literary Structures</a></li>
-                                <li><a title="Isaiah’s Seven Spiritual Levels of Humanity" href="/isaiahs-seven-spiritual-levels-of-humanity/">Isaiah’s Seven Spiritual Levels of Humanity</a></li>
-                                <li><a title="Isaiah’s Ancient Types of End-Time Events" href="/isaiahs-ancient-types-of-end-time-events/">Isaiah’s Ancient Types of End-Time Events</a></li>
-                                <li><a title="Overviews of the Prophecy of Isaiah" href="/overviews-of-the-prophecy-of-isaiah/">Overviews of the Prophecy of Isaiah</a></li>
-                                <li><a title="Glossary of Terms Relating to Isaiah" href="/glossary-of-terms-relating-to-isaiah/">Glossary of Terms Relating to Isaiah</a></li>
+                                <li><a title="Key Features of the Prophecy of Isaiah" href="/resources/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
+                                <li><a title="Isaiah’s Layered Literary Structures" href="/resources/isaiahs-layered-literary-structures/">Isaiah’s Layered Literary Structures</a></li>
+                                <li><a title="Isaiah’s Seven Spiritual Levels of Humanity" href="/resources/isaiahs-seven-spiritual-levels-of-humanity/">Isaiah’s Seven Spiritual Levels of Humanity</a></li>
+                                <li><a title="Isaiah’s Ancient Types of End-Time Events" href="/resources/isaiahs-ancient-types-of-end-time-events/">Isaiah’s Ancient Types of End-Time Events</a></li>
+                                <li><a title="Overviews of the Prophecy of Isaiah" href="/resources/overviews-of-the-prophecy-of-isaiah/">Overviews of the Prophecy of Isaiah</a></li>
+                                <li><a title="Glossary of Terms Relating to Isaiah" href="/resources/glossary-of-terms-relating-to-isaiah/">Glossary of Terms Relating to Isaiah</a></li>
                             </ul>
                         </li>
                         <li><a href="/blog/"><i class="fa fa-rss fa-fw"></i> Blog</a></li>
@@ -90,12 +90,12 @@
                             <li><a href="/">Home</a></li>
                             <li class="dropdown"><a title="<i class=&quot;fa fa-graduation-cap fa-fw&quot;></i>&nbsp;<span>Resources</span>" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;<span>Resources</span> <span class="caret"></span></a>
                                 <ul role="menu" class="dropdown-menu">
-                                    <li><a title="Key Features of the Prophecy of Isaiah" href="/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
-                                    <li><a title="Isaiah’s Layered Literary Structures" href="/isaiahs-layered-literary-structures/">Isaiah’s Layered Literary Structures</a></li>
-                                    <li><a title="Isaiah’s Seven Spiritual Levels of Humanity" href="/isaiahs-seven-spiritual-levels-of-humanity/">Isaiah’s Seven Spiritual Levels of Humanity</a></li>
-                                    <li><a title="Isaiah’s Ancient Types of End-Time Events" href="/isaiahs-ancient-types-of-end-time-events/">Isaiah’s Ancient Types of End-Time Events</a></li>
-                                    <li><a title="Overviews of the Prophecy of Isaiah" href="/overviews-of-the-prophecy-of-isaiah/">Overviews of the Prophecy of Isaiah</a></li>
-                                    <li><a title="Glossary of Terms Relating to Isaiah" href="/glossary-of-terms-relating-to-isaiah/">Glossary of Terms Relating to Isaiah</a></li>
+                                    <li><a title="Key Features of the Prophecy of Isaiah" href="/resources/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
+                                    <li><a title="Isaiah’s Layered Literary Structures" href="/resources/isaiahs-layered-literary-structures/">Isaiah’s Layered Literary Structures</a></li>
+                                    <li><a title="Isaiah’s Seven Spiritual Levels of Humanity" href="/resources/isaiahs-seven-spiritual-levels-of-humanity/">Isaiah’s Seven Spiritual Levels of Humanity</a></li>
+                                    <li><a title="Isaiah’s Ancient Types of End-Time Events" href="/resources/isaiahs-ancient-types-of-end-time-events/">Isaiah’s Ancient Types of End-Time Events</a></li>
+                                    <li><a title="Overviews of the Prophecy of Isaiah" href="/resources/overviews-of-the-prophecy-of-isaiah/">Overviews of the Prophecy of Isaiah</a></li>
+                                    <li><a title="Glossary of Terms Relating to Isaiah" href="/resources/glossary-of-terms-relating-to-isaiah/">Glossary of Terms Relating to Isaiah</a></li>
                                 </ul>
                             </li>
                             <li><a href="/About">About</a></li>
