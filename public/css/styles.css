@@ -1551,6 +1551,11 @@ footer .btn:hover {
         line-height: 17px;
         text-align: left;
     }
+        
+		#chapter-index .nav .fa-th {
+		position: relative;
+		top: 10px;
+		}
     
 		#search .search-results-title {font-size: 1.5em;}
 		#search .heading .navbar-form {margin: 0;}
