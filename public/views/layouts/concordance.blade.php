@@ -43,7 +43,7 @@
         <header class="navbar navbar-static-top" role="navigation">
             <nav class="container main-nav">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/"><img src="//dev.isaiahexplained.com/wp-content/themes/ie04/images/isaiah-explained-logo.png" alt="IsaiahExplained.com"></a>
+                    <a class="navbar-brand" href="/"><img src="/images/isaiah-explained-logo.png" alt="IsaiahExplained.com"></a>
                 </div>
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
