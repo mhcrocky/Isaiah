@@ -165,12 +165,12 @@ if (location.hash) {               // do the test straight away
 
         var is_cs_toggled = $.cookie('is_cs_toggled');
         if(is_cs_toggled != undefined) {
-            is_cs_toggled = Boolean(is_cs_toggled);
-            if(is_cs_toggled) {
+            if(is_cs_toggled == 'true') {
                 $(".cs-top").toggle();
             }
         } else {
-            is_cs_toggled = false;
+            is_cs_toggled = 'false';
+            $.cookie('is_cs_toggled', is_cs_toggled);
         }
 
         //TODO: Make this sticky between pages
@@ -179,18 +179,15 @@ if (location.hash) {               // do the test straight away
             $(".cs-top").toggle();
             e.preventDefault();
             if(is_cs_toggled != undefined) {
-                if(is_cs_toggled == true) {
-                    is_cs_toggled = false;
-                    $.cookie('is_cs_toggled', 'false');
+                if(is_cs_toggled == 'true') {
+                    is_cs_toggled = 'false';
                 } else {
-                    is_cs_toggled = true;
-                    $.cookie('is_cs_toggled', 'true');
+                    is_cs_toggled = 'true';
                 }
             } else {
-                is_cs_toggled = true;
-                $.cookie('is_cs_toggled', 'true');
+                is_cs_toggled = 'false';
             }
-
+            $.cookie('is_cs_toggled', is_cs_toggled);
         });
 
         $("#index-aside").find("a").on('click', function (e) {
