@@ -156,11 +156,13 @@ if (location.hash) {               // do the test straight away
          * Store the currently selected tab in the hash value and update nav links
          */
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a").on("shown.bs.tab", function (e) {
-            var id = $(e.target).attr("href").substr(1);
-            var hash = "#" + id;
-            selectTab(hash);
-            setNavHash(hash);
-            window.isTabShown = true;
+            if (location.pathname != '/') {
+                var id = $(e.target).attr("href").substr(1);
+                var hash = "#" + id;
+                selectTab(hash);
+                setNavHash(hash);
+                window.isTabShown = true;
+            }
         });
 
         var is_cs_toggled = $.cookie('is_cs_toggled');
