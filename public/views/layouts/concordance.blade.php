@@ -43,7 +43,7 @@
         <header class="navbar navbar-static-top" role="navigation">
             <nav class="container main-nav">
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="/"><img src="/images/isaiah-explained-logo.png" alt="IsaiahExplained.com"></a>
+                    <a class="navbar-brand" href="/"><img src="//dev.isaiahexplained.com/wp-content/themes/ie04/images/isaiah-explained-logo.png" alt="IsaiahExplained.com"></a>
                 </div>
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
@@ -124,7 +124,6 @@
     <!-- Bootstrap 3.1.1 -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!--<script src="{{ asset('js/bootstrap.min.js') }}"></script>-->
-    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>

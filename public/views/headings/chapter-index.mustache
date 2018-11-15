@@ -1,74 +1,21 @@
-<div class="heading-chapters">
+<div class="heading-chapter-index">
 
-    <div class="heading heading-full non-mobile">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12">
-                    <div class="tabbable">
-                        <ul id="heading-tabs" class="nav nav-pills col-sm-8 col-md-9">
-                            <li class="active"><a href="#one_col" data-toggle="tab" title="Isaiah Institute Translation"><i class="fa fa-align-justify"></i><span>Isaiah Institute<br>Translation</span></a></li>
-                            <li><a href="#three_col" data-toggle="tab" title="Comparative Translation"><i class="fa fa-table"></i><span>Comparative<br>Translation</span></a></li>
-                            <li><a href="#commentary" data-toggle="tab" title="Apocalyptic Commentary"><i class="fa fa-quote-left"></i><span>Apocalyptic<br>Commentary</span></a></li>
-                            <li><a href="#concordance" data-toggle="tab" title="Interactive Concordance"><i class="fa fa-list"></i><span>Interactive<br>Concordance</span></a></li>
-                        </ul>
-                    </div>
-
-                    <div class="nav-links col-sm-4 col-md-3">
-                        <ul class="nav">
-                            <!--<li>{{{heading_nav_left}}}</li>-->
-                            <li><a id="nav-left-disabled" class="heading-nav-left fa fa-th hide-chapter-selection" href=""></a></li>
-                            <!--<li>{{{heading_nav_right}}}</li>-->
-                        </ul>
-                    </div>
-
-                    <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
-                        <i class="fa fa-bars"></i>
-                    </button>
-
-                    <!--<h1><a class="fa fa-book" href="/"></a> <a href="#chaptermodal" class="modal-trigger" data-toggle="modal">Isaiah {{chapter_number}}</a></h1>-->
-
-                </div>
-            </div>
-        </div>
-    </div> <!-- End Heading Non-mobile -->
-
-    <div class="heading heading-mobile">
+    <div class="heading">
         <div class="container">
             <div class="row">
                 <div class="col-xs-12">
                     <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
-                    <ul class="pull-right view-switcher">
-                        <li class="dropdown">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                <i class="fa fa-ellipsis-v"></i>
-                            </a>
-                            <ul id="dropdown-heading-tabs" class="dropdown-menu dropdown-menu-right">
-                                <li><a href="#one_col" data-toggle="tab"><i class="fa fa-fw fa-align-justify"></i> Isaiah Institute Translation</a></li>
-                                <li><a href="#three_col" data-toggle="tab"><i class="fa fa-fw fa-table"></i> Comparative Translation</a></li>
-                                <li><a href="#commentary" data-toggle="tab"><i class="fa fa-fw fa-quote-left"></i> Apocalyptic Commentary</a></li>
-                                <li><a href="#concordance" data-toggle="tab"><i class="fa fa-fw fa-list"></i> Interactive Concordance</a></li>
-                                <li role="presentation" class="divider"></li>
-                                <li><a href="/"><i class="fa fa-fw fa-book"></i> Isaiah Chapter Index</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <div class="">
-                        <h1>The Book of Isaiah</h1>
-                        <p><a href="/Isaiah-Institute-Translation/">The Isaiah Institute Translation by Avraham Gileadi Ph.D.</a></p>
-                    </div>
 
-                    <!--<div class="nav-links">
-                        <ul class="nav">
-                            <li>{{{heading_nav_left}}}</li>
-                            <li><h1><a href="#chaptermodal" class="modal-trigger" data-toggle="modal">Isaiah {{chapter_number}}</a></h1></li>
-                            <li>{{{heading_nav_right}}}</li>
-                        </ul>
-                    </div>-->
+                    <h1>The Book of Isaiah</h1>
+                    <p>The Isaiah Institute Translation by Avraham Gileadi Ph.D.</p>
+
+                    {{> widgets.search-chapter-index}}
+
                 </div>
             </div>
         </div>
-    </div> <!-- End Heading Mobile -->
+    </div>
 
-</div> <!-- End Heading Chapters -->
+</div> <!-- End Heading Chapter Index -->
