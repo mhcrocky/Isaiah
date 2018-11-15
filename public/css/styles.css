@@ -1011,7 +1011,12 @@ footer .btn:hover {
 
     .main-site .navbar-brand {height: inherit; padding: 9px 15px 6px;}
     
-    #chapter-index .navbar-brand {display: block; padding: 10px 10px 7px;}
+    /* #chapter-index .navbar-brand {display: block; padding: 10px 10px 7px;} */
+    
+		#chapter-index .navbar-header button {
+		position: relative;
+		top: 14px;
+		}
     
     .navbar-brand img {width: 140px;}
 
