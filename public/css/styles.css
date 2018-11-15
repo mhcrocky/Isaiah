@@ -206,7 +206,7 @@ header .main-nav .nav>li>a:focus
 }
 
 .chapter-table a {
-    color: #000;
+/*     color: #000; */
     display: block;
 }
 
@@ -281,6 +281,7 @@ header .dropdown-menu a {
 .nav-pills a,
 .nav-links .nav>li>a,
 .heading p,
+.heading p a,
 .heading .dropdown-menu a i,
 aside .fa-ul .fa,
 .navbar-toggle .fa,
