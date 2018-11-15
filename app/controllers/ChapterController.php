@@ -2,8 +2,7 @@
 
 class ChapterController extends BaseController {
 
-    public function showChapter($chapter_number)
-    {
+    public function showChapter($chapter_number) {
         $template_data = array(
             'title' => "Isaiah ${chapter_number}",
             'body_id' => 'chapters',
@@ -11,7 +10,7 @@ class ChapterController extends BaseController {
         );
 
         $chapterRepository = new ChapterRepository();
-//<a href="#defmodal" class="modal-trigger def-trigger red" data-toggle="modal">razor</a>
+
         $content_data = array(
             'chapter_heading' => $chapterRepository->GetChapterHeading($chapter_number),
             'iit_html' => $chapterRepository->GetIITChapter($chapter_number),
@@ -34,7 +33,7 @@ class ChapterController extends BaseController {
         View::share('chapter_number', $chapter_number);
         View::share('chapter_number_dd', sprintf("%02s", $chapter_number));
         View::share('chapters', WidgetRepository::GetChapterSelection($chapter_number));
-        VIEW::share('footnotes', $chapterRepository->GetIITFootnotesList($chapter_number));
+        View::share('footnotes', $chapterRepository->GetIITFootnotesList($chapter_number));
 
         return View::make('layouts.master', $template_data)
             ->nest('top_nav', 'widgets.chapter-selection-top')
