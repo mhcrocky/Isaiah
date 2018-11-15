@@ -596,12 +596,14 @@ margin-top: 0 !important;
     -moz-border-radius-bottomright: 6px;
 }
 
-.modal-header { 
+#versemodal .modal-header,
+#chaptermodal .modal-header
+{ 
 	color: #fff;
-  background: #2B3B53 !important;
-	border-width: 1px 0 0 1px !important;
+  background: #2B3B53;
+	border-width: 1px 0 0 1px;
 	border-style: solid;
-	border-color: #3B4F6C !important;
+	border-color: #3B4F6C;
 }
 
 #versemodal .modal-body {
