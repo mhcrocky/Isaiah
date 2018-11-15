@@ -94,7 +94,7 @@ if (location.hash) {               // do the test straight away
             e.preventDefault();//prevent the form from actually submitting
             var search_term = $(this).find("input[name=search-box]").val();
             if (search_term.length) {
-                window.location = '/Search/' + search_term;
+                window.location = '/search/' + search_term;
             } else {
                 $(this).find("span[name=search-error]").text("Not valid!").show().fadeOut( 1000 );
             }
@@ -206,7 +206,7 @@ if (location.hash) {               // do the test straight away
          */
         var hash = window.location.hash;
 
-        if(location.pathname.indexOf('/Concordance') == -1 && location.pathname.indexOf('/Search') == -1) {
+        if(location.pathname.indexOf('/concordance') == -1 && location.pathname.indexOf('/search') == -1) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);
@@ -223,7 +223,7 @@ if (location.hash) {               // do the test straight away
                     setNavHash("#one_col");
                 }*/
             }
-        } else if(location.pathname.indexOf('/Search') > -1) {
+        } else if(location.pathname.indexOf('/search') > -1) {
             var search_parts = location.pathname.split('/')[2].replace(/%20/, ' ').split(' ');
             $('ol').children().each(function() {
                 if(this.innerHTML != undefined) {
@@ -415,7 +415,7 @@ if (location.hash) {               // do the test straight away
         if(citationQueryString != undefined) {
             var citationLink = $('a[href*=' + citationQueryString + ']');
             if(citationLink != undefined) {
-                if(location.pathname.indexOf('/Concordance') == -1) {
+                if(location.pathname.indexOf('/concordance') == -1) {
                     citationDiv = citationLink.parent().closest('div');
                     //citationDiv = citationLink.parent();
                     citationLink.addClass('highlight');
@@ -435,7 +435,7 @@ if (location.hash) {               // do the test straight away
             var verse_number = verseQueryString;
             var search = searchQueryString;
             iitDiv = $('#iit_' + verse_number).parent();
-            if(location.pathname.indexOf('/Concordance') == -1) {
+            if(location.pathname.indexOf('/concordance') == -1) {
                 if (hash == "#one_col") {
                     iitDiv.children().each(function() {
                         if(this.innerHTML != undefined) {

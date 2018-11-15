@@ -19,13 +19,13 @@
 Route::get('/', 'IndexController@showIndex');
 Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');
 
-Route::get('/Concordance', 'ConcordanceController@showIndex');
-Route::get('/Concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Za-z]');
+Route::get('/concordance', 'ConcordanceController@showIndex');
+Route::get('/concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Za-z]');
 //Route::get('/concordance', 'ConcordanceController@showIndex');
 //Route::get('/concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Za-z]');
 
-Route::get('/Search', 'IITSearchController@showIndex');
-Route::get('/Search/{searchTerm}', 'IITSearchController@findTerm')->where('searchTerm', '(\w*\s?)+');
+Route::get('/search', 'IITSearchController@showIndex');
+Route::get('/search/{searchTerm}', 'IITSearchController@findTerm')->where('searchTerm', '(\w*\s?)+');
 //Route::get('/search', 'IITSearchController@showIndex');
 //Route::get('/search/{searchTerm}', 'IITSearchController@findTerm')->where('searchTerm', '(\w*\s?)+');
 

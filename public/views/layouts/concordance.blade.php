@@ -49,7 +49,7 @@
                     <ul class="nav navbar-nav">
                         <li><a href="http://dev.isaiahexplained.com/"><i class="fa fa-home fa-fw"></i> Back to Home</a></li>
                         <li><a href="/"><i class="fa fa-book fa-fw"></i> Chapter Index</a></li>
-                        <li><a href="/Concordance/"><i class="fa fa-list fa-fw"></i> Concordance Index</a></li>
+                        <li><a href="/concordance/"><i class="fa fa-list fa-fw"></i> Concordance Index</a></li>
                         <li class="show-hide nav-search">
                             {{ $mobile_search or '' }}
                         </li>
@@ -94,8 +94,8 @@
                         <h3>Read Isaiah</h3>
                         <ul>
                             <li><a href="/">Isaiah Chapter Index</a></li>
-                            <li><a href="/Search/">Search Isaiah</a></li>
-                            <li><a href="/Concordance/">Isaiah Concordance Index</a></li>
+                            <li><a href="/search/">Search Isaiah</a></li>
+                            <li><a href="/concordance/">Isaiah Concordance Index</a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-3">
