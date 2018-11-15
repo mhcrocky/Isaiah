@@ -163,6 +163,36 @@ if (location.hash) {               // do the test straight away
             window.isTabShown = true;
         });
 
+        var is_cs_toggled = $.cookie('is_cs_toggled');
+        if(is_cs_toggled != undefined) {
+            is_cs_toggled = Boolean(is_cs_toggled);
+            if(is_cs_toggled) {
+                $(".cs-top").toggle();
+            }
+        } else {
+            is_cs_toggled = false;
+        }
+
+        //TODO: Make this sticky between pages
+        $(".hide-chapter-selection").on('click', function (e) {
+            //$(".chapter-selection").slideToggle('fast');
+            $(".cs-top").toggle();
+            e.preventDefault();
+            if(is_cs_toggled != undefined) {
+                if(is_cs_toggled == true) {
+                    is_cs_toggled = false;
+                    $.cookie('is_cs_toggled', 'false');
+                } else {
+                    is_cs_toggled = true;
+                    $.cookie('is_cs_toggled', 'true');
+                }
+            } else {
+                is_cs_toggled = true;
+                $.cookie('is_cs_toggled', 'true');
+            }
+
+        });
+
         $("#index-aside").find("a").on('click', function (e) {
             window.location = $(e.currentTarget).attr("href");
         });
