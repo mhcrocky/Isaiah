@@ -124,6 +124,7 @@
     <!-- Bootstrap 3.1.1 -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!--<script src="{{ asset('js/bootstrap.min.js') }}"></script>-->
+    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
