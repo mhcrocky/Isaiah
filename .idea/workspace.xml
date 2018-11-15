@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="" />
+    <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/views/resources/isaiah-institute-translation.mustache" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/IndexController.php" afterPath="$PROJECT_DIR$/app/controllers/IndexController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/routes.php" afterPath="$PROJECT_DIR$/app/routes.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+    </list>
     <ignored path="Laravel.iws" />
     <ignored path=".idea/workspace.xml" />
     <ignored path=".idea/dataSources.local.xml" />
@@ -38,42 +43,42 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="5456" max-vertical-offset="6320">
-              <caret line="347" column="0" selection-start-line="347" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
-              <folding>
-                <element signature="e#1833#2467#0" expanded="false" />
-                <element signature="e#13948#14009#0" expanded="false" />
-                <element signature="e#14061#17065#0" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="0.54892206" vertical-offset="453" max-vertical-offset="1056">
+              <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="concordance.blade.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/views/layouts/concordance.blade.php">
+      <file leaf-file-name="concordance-index.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/concordance-index.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.83728814" vertical-offset="1522" max-vertical-offset="2176">
-              <caret line="126" column="62" selection-start-line="126" selection-start-column="62" selection-end-line="126" selection-end-column="62" />
-              <folding>
-                <marker date="1416086366849" expanded="true" signature="850:935" placeholder="..." />
-                <marker date="1416086366849" expanded="true" signature="874:919" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
+              <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="24" selection-end-column="51" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="master.blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/public/views/layouts/master.blade.php">
+      <file leaf-file-name="isaiah-institute-translation.mustache" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/views/resources/isaiah-institute-translation.mustache">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.25" vertical-offset="1922" max-vertical-offset="2512">
-              <caret line="146" column="69" selection-start-line="146" selection-start-column="69" selection-end-line="147" selection-end-column="62" />
-              <folding>
-                <marker date="1416085809188" expanded="true" signature="850:935" placeholder="..." />
-                <marker date="1416085809188" expanded="true" signature="874:919" placeholder="{...}" />
-              </folding>
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
+              <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/routes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="480">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="41" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -108,7 +113,6 @@
         <option value="$PROJECT_DIR$/public/views/asides/chapter-index.mustache" />
         <option value="$PROJECT_DIR$/public/views/chapter-index.mustache" />
         <option value="$PROJECT_DIR$/public/views/widgets/chapter-selection-top.mustache" />
-        <option value="$PROJECT_DIR$/app/controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/public/views/headings/chapter-index.mustache" />
         <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
         <option value="$PROJECT_DIR$/app/repositories/ConcordancePaginatorRepository.php" />
@@ -123,7 +127,6 @@
         <option value="$PROJECT_DIR$/public/views/widgets/search-iit-mobile.mustache" />
         <option value="$PROJECT_DIR$/public/views/widgets/search-iit.mustache" />
         <option value="$PROJECT_DIR$/public/views/widgets/search.mustache" />
-        <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/ChapterController.php" />
         <option value="$PROJECT_DIR$/public/views/resources/key-features-of-the-prophecy-of-isaiah.mustache" />
         <option value="$PROJECT_DIR$/public/views/resources/isaiahs-layered-literary-structures.mustache" />
@@ -134,6 +137,9 @@
         <option value="$PROJECT_DIR$/app/controllers/ResourceController.php" />
         <option value="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/public/views/layouts/concordance.blade.php" />
+        <option value="$PROJECT_DIR$/app/routes.php" />
+        <option value="$PROJECT_DIR$/app/controllers/IndexController.php" />
+        <option value="$PROJECT_DIR$/public/views/resources/isaiah-institute-translation.mustache" />
       </list>
     </option>
   </component>
@@ -509,22 +515,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_1bfeab7fc8e04a939536a13c2dd90016.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2916665" vertical-offset="585" max-vertical-offset="1104">
-          <caret line="43" column="82" selection-start-line="43" selection-start-column="82" selection-end-line="43" selection-end-column="82" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_26510d0730540b958ef3c37fc289bcfd.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.625" vertical-offset="609" max-vertical-offset="1136">
-          <caret line="45" column="61" selection-start-line="45" selection-start-column="61" selection-end-line="45" selection-end-column="61" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_286e70aaa10d1296fd7ba5d9886db7bd.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.2916665" vertical-offset="633" max-vertical-offset="1152">
@@ -808,14 +798,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.2244898" vertical-offset="88" max-vertical-offset="672">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/resources/key-features-of-the-prophecy-of-isaiah.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.028520498" vertical-offset="0" max-vertical-offset="816">
@@ -867,14 +849,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4338983" vertical-offset="0" max-vertical-offset="590">
-          <caret line="25" column="22" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/repositories/IndexRepository.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="416">
@@ -899,9 +873,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/layouts/concordance.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.83728814" vertical-offset="1826" max-vertical-offset="2480">
+          <caret line="145" column="62" selection-start-line="145" selection-start-column="62" selection-end-line="145" selection-end-column="62" />
+          <folding>
+            <marker date="1416086505857" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1416086505857" expanded="true" signature="-1:-1" placeholder="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5456" max-vertical-offset="6320">
+        <state vertical-scroll-proportion="-0.31270358" vertical-offset="5456" max-vertical-offset="6320">
           <caret line="347" column="0" selection-start-line="347" selection-start-column="0" selection-end-line="347" selection-end-column="0" />
           <folding>
             <element signature="e#1833#2467#0" expanded="false" />
@@ -913,23 +898,44 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/views/layouts/master.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.25" vertical-offset="1922" max-vertical-offset="2512">
+        <state vertical-scroll-proportion="0.7016949" vertical-offset="1922" max-vertical-offset="2512">
           <caret line="146" column="69" selection-start-line="146" selection-start-column="69" selection-end-line="147" selection-end-column="62" />
           <folding>
-            <marker date="1416085809188" expanded="true" signature="850:935" placeholder="..." />
-            <marker date="1416085809188" expanded="true" signature="874:919" placeholder="{...}" />
+            <marker date="1416085809188" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1416085809188" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/layouts/concordance.blade.php">
+    <entry file="file://$PROJECT_DIR$/app/routes.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.83728814" vertical-offset="1522" max-vertical-offset="2176">
-          <caret line="126" column="62" selection-start-line="126" selection-start-column="62" selection-end-line="126" selection-end-column="62" />
-          <folding>
-            <marker date="1416086366849" expanded="true" signature="850:935" placeholder="..." />
-            <marker date="1416086366849" expanded="true" signature="874:919" placeholder="{...}" />
-          </folding>
+        <state vertical-scroll-proportion="-6.6666665" vertical-offset="0" max-vertical-offset="480">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/concordance-index.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="512">
+          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="24" selection-end-column="51" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/resources/isaiah-institute-translation.mustache">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="336">
+          <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.54892206" vertical-offset="453" max-vertical-offset="1056">
+          <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
