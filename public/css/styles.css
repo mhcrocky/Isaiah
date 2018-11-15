@@ -597,7 +597,7 @@ margin-top: 0 !important;
 }
 
 #versemodal .modal-header {
-	color: #fff
+	color: #fff;
   background: #2B3B53;
 }
 
@@ -661,6 +661,7 @@ button.close {
 .modal .heb-col {
     text-align: center;
     direction:rtl;
+    font-size: 20px;
 }
 
 .modal .nav-links-light {
@@ -893,6 +894,10 @@ aside .tab-sections .fa {
 
 aside .tab-sections a:hover .fa {
     /* color: #F0AD4E; */
+}
+
+aside .navbar-form {
+		width: 100%;
 }
 
 
