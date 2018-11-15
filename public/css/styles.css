@@ -1057,7 +1057,7 @@ footer .btn:hover {
         text-align: left;
     }
     
-		#chapters .chapter-selection {
+		#chapters .chapter-selection.cs-top {
 		display: none;
 		}
     
