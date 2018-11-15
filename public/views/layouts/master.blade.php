@@ -112,11 +112,11 @@
                     </div>
                     <div class="col-xs-12 col-sm-3 col-list">
                         <h3>Read Isaiah</h3>
-                        <ul id="index-aside" class="tab-sections">
-                            <li><a href="/1#one_col" data-toggle="tab" title="Isaiah Institute Translation"><i class="fa fa-align-justify fa-fw"></i><span>Isaiah Institute Translation</span></a></li>
-                            <li><a href="/1#three_col" data-toggle="tab" title="Comparative Translation"><i class="fa fa-table fa-fw"></i><span>Comparative Translation</span></a></li>
-                            <li><a href="/1#commentary" data-toggle="tab" title="Apocalyptic Commentary"><i class="fa fa-quote-left fa-fw"></i><span>Apocalyptic Commentary</span></a></li>
-                            <li><a href="/1#concordance" data-toggle="tab" title="Interactive Concordance"><i class="fa fa-list fa-fw"></i><span>Interactive Concordance</span></a></li>
+                        <ul class="nav-read-isaiah">
+                            <li><a href="/1#one_col" title="Isaiah Institute Translation"><i class="fa fa-align-justify fa-fw"></i><span>Isaiah Institute Translation</span></a></li>
+                            <li><a href="/1#three_col" title="Comparative Translation"><i class="fa fa-table fa-fw"></i><span>Comparative Translation</span></a></li>
+                            <li><a href="/1#commentary" title="Apocalyptic Commentary"><i class="fa fa-quote-left fa-fw"></i><span>Apocalyptic Commentary</span></a></li>
+                            <li><a href="/1#concordance" title="Interactive Concordance"><i class="fa fa-list fa-fw"></i><span>Interactive Concordance</span></a></li>
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-3">

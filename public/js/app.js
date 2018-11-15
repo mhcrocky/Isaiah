@@ -190,8 +190,13 @@ if (location.hash) {               // do the test straight away
             $.cookie('is_cs_toggled', is_cs_toggled);
         });
 
-        $("#index-aside").find("a").on('click', function (e) {
+        $(".nav-read-isaiah").find("a").on('click', function (e) {
             window.location = $(e.currentTarget).attr("href");
+        });
+
+        $(".heading-chapters").find("a").on('click', function (e) {
+            window.location = $(e.currentTarget).attr("href");
+            e.preventDefault();
         });
 
         /**
@@ -210,11 +215,11 @@ if (location.hash) {               // do the test straight away
                     setNavHash(hash);
                 }
             } else {
-                if (hash != "") {
+                /*if (hash != "") {
                     setNavHash(hash);
                 } else {
                     setNavHash("#one_col");
-                }
+                }*/
             }
         } else if(location.pathname.indexOf('/Search') > -1) {
             var search_parts = location.pathname.split('/')[2].replace(/%20/, ' ').split(' ');
