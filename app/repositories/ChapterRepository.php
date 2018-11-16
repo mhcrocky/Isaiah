@@ -97,11 +97,7 @@ class ChapterRepository {
                 $display_verse_number = $verse_number;
             }
 
-
-
             if(!empty($custom_html)) {
-                $custom_html = preg_replace('/^(<span class="prose inline">)/', '$1<div id="iit_' . $display_verse_number . '" style="display: none;"></div>', $custom_html);
-                $custom_html = preg_replace('/^(<span class="poetry">)/', '$1<div id="iit_' . $display_verse_number . '" style="display: none;"></div>', $custom_html);
                 $iit_html .= <<<EOT
 \t$custom_html\r\n
 EOT;
@@ -653,7 +649,7 @@ EOT;
             ON ((`verses`.`chapter_id` = `chapters`.`id`)))
         WHERE (`books`.`book_title` = ?
           AND `chapters`.`chapter_number` = ?)
-        ORDER BY `volumes`.`id`, `books`.`id`, `chapters`.`id`, `verses`.`id`';
+        ORDER BY `volumes`.`id`, `books`.`id`, `chapters`.`id`, `verses`.`segment_id`, `verses`.`id`';
 
         $results = DB::select($sql, array($book_title, $chapter_number));
 

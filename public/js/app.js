@@ -123,34 +123,72 @@ if (location.hash) {               // do the test straight away
             populateVerseModal(window.verse_number);
         });
 
+        /**
+         * Page verse modal left
+         */
         $('#nav-links-light-verse-left').on('click', function (e) {
             e.preventDefault();
             window.verse_number--;
             populateVerseModal(window.verse_number);
         });
 
+        /**
+         * Page verse modal right
+         */
         $('#nav-links-light-verse-right').on('click', function (e) {
             e.preventDefault();
             window.verse_number++;
             populateVerseModal(window.verse_number);
         });
 
-        window.isTabShown = false;
-        window.heading_tabs = $("#heading-tabs");
+        function populateVerseModal(verse_number) {
+            var chapter_number = $('#chapter-number').html();
+            var kjv_text = $('#kjv_' + verse_number).html();
+            var iit_text = '';
+            if(chapter_number == 40 && verse_number == 1) {
+                iit_text = '<p><span class="poetry">Comfort and give solace to my people,<span class="indent">says your God; &nbsp;</span></span></p>';
+            } else if (chapter_number == 40 && verse_number == 2) {
+                iit_text = '<p><span class="poetry"><span class="indent">speak kindly to Jerusalem.</span>Announce to her that she has served her term,<span class="indent">that her guilt has been expiated.</span>She has received from Jehovah’s <b><a id="43232_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger red" data-toggle="modal">hand</a></b> <span class="indent">double for all her sins.</span> </span> <div class="spacer"></div> </p>';
+            } else {
+                iit_text = $('#iit_' + verse_number).parent().outerHTML();
+                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
+                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/i, "");
+                iit_text = "<p>" + iit_text + "</p>";
+            }
+            var heb_text = $('#heb_' + verse_number).html();
+            var commentary_text = $('.commentary_' + verse_number).html();
+            if(chapter_number == 41 && verse_number == 7) {
+                commentary_text = 'See: 40:19 Verse appears out of sequence in text.';
+            }
+            $('#kjv-modal-verse').html(kjv_text);
+            $('#iit-modal-verse').html(iit_text);
+            $('#heb-modal-verse').html(heb_text);
+            var commentary_modal_verse = $('#commentary-modal-verse');
+            commentary_modal_verse.html(commentary_text);
+            var subject_verses = commentary_modal_verse.children("div").html();
+            commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
+            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
+            updatePagination(parseInt(verse_number));
+        }
 
         /**
          * Populate keyword modal
          */
         $('.modal-trigger.keyword-modal').on('click', function (e) {
-            var keyword_value = e.target.innerHTML;
-            var section = e.target.name;
-            var keyword_id = parseInt(e.target.id, 10);
+            var target = e.target;
+            var keyword_value = target.innerHTML;
+            var section = target.name;
+            var keyword_id = parseInt(target.id, 10);
             var keyword_color = $("#" + keyword_id + '_' + section + '_keyword_color').html();
             $("#keyword_modal_header").attr('class', 'modal-header ' + keyword_color);
             var keyword_description = $("#" + keyword_id + '_' + section + '_keyword_description').html();
             $("#keywordModalLabel").html(keyword_value);
             $("#keyword_modal_paragraph").html(keyword_description);
         });
+
+        window.isTabShown = false;
+        window.heading_tabs = $("#heading-tabs");
 
         /**
          * Store the currently selected tab in the hash value and update nav links
@@ -175,7 +213,6 @@ if (location.hash) {               // do the test straight away
             $.cookie('is_cs_toggled', is_cs_toggled);
         }
 
-        //TODO: Make this sticky between pages
         $(".hide-chapter-selection").on('click', function (e) {
             //$(".chapter-selection").slideToggle('fast');
             $(".cs-top").toggle();
@@ -285,41 +322,6 @@ if (location.hash) {               // do the test straight away
             $('.tab-content > .tab-pane').hide();
             location.hash = hash;
             $(hash).show();
-        }
-
-        function populateVerseModal(verse_number) {
-            var chapter_number = $('#chapter-number').html();
-            var kjv_text = $('#kjv_' + verse_number).html();
-            var iit_text = '';
-            if(chapter_number == '14' && verse_number == '4') {
-                var iit_selector = $('#iit_' + verse_number);
-                iit_text = iit_selector.parent().outerHTML();
-                iit_text += iit_selector.parent().next().outerHTML();
-                iit_text += iit_selector.parent().next().next().outerHTML();
-                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
-                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
-                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/ig, "");
-                iit_text = "<p>" + iit_text + "</p>";
-            } else if(chapter_number == '36' && verse_number == '4') {
-                alert('TODO: Create exception to avoid malformed modal text [also breaks modal for whole page].');
-            } else {
-                iit_text = $('#iit_' + verse_number).parent().outerHTML();
-                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
-                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
-                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/i, "");
-                iit_text = "<p>" + iit_text + "</p>";
-            }
-            var heb_text = $('#heb_' + verse_number).html();
-            var commentary_text = $('.commentary_' + verse_number).html();
-            $('#kjv-modal-verse').html(kjv_text);
-            $('#iit-modal-verse').html(iit_text);
-            $('#heb-modal-verse').html(heb_text);
-            var commentary_modal_verse = $('#commentary-modal-verse');
-            commentary_modal_verse.html(commentary_text);
-            var subject_verses = commentary_modal_verse.children("div").html();
-            commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
-            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
-            updatePagination(parseInt(verse_number));
         }
 
         //TODO: Paginator only works sequentially. This is a problem for verses out of sequence. Need to write special exceptions for stuff like chapter 40/41:7*
