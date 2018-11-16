@@ -157,9 +157,12 @@ if (location.hash) {               // do the test straight away
                 iit_text = "<p>" + iit_text + "</p>";
             }
             var heb_text = $('#heb_' + verse_number).html();
-            var commentary_text = $('.commentary_' + verse_number).html();
+            var commentary_text = '';
             if(chapter_number == 41 && verse_number == 7) {
-                commentary_text = 'See: 40:19 Verse appears out of sequence in text.';
+                commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
+                modal_label = 'Isaiah ' + verse_number;
+            } else {
+                commentary_text = $('.commentary_' + verse_number).html();
             }
             $('#kjv-modal-verse').html(kjv_text);
             $('#iit-modal-verse').html(iit_text);
@@ -168,8 +171,15 @@ if (location.hash) {               // do the test straight away
             commentary_modal_verse.html(commentary_text);
             var subject_verses = commentary_modal_verse.children("div").html();
             commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
-            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
-            updatePagination(parseInt(verse_number));
+            var modal_label = '';
+            if(chapter_number == 40 && verse_number == 41.7) {
+                commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
+                modal_label = 'Isaiah ' + verse_number;
+            } else {
+                modal_label = 'Isaiah ' + chapter_number + ':' + verse_number;
+            }
+            $('#verse-modal-label').html(modal_label);
+            updatePagination(parseFloat(verse_number));
         }
 
         function updatePagination(verse_number) {
