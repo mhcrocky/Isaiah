@@ -26,6 +26,7 @@ class ChapterRepository {
         $this->_iit_chapter_text = $this->_getBookChapter('Isaiah IIT', $chapter_number);
         $chapter_text = $this->_iit_chapter_text;
         $chapter_keywords_html = '';
+        $chapter_verse_order_html = '';
 
         $last_segment_id = 0;
         $segment_id = 1;
@@ -46,6 +47,12 @@ class ChapterRepository {
             $is_prose = ($is_poetry == false ? true : false);
             $indent_start = '';
             $indent_end = '';
+
+            if($i + 1 != $verse_count) {
+                $chapter_verse_order_html .= "$verse_number,";
+            } else {
+                $chapter_verse_order_html .= $verse_number;
+            }
 
             $j = $i + 1;
             if($j != $verse_count) {
@@ -122,6 +129,7 @@ EOT;
 
         $iit_html = preg_replace('/<sup>(.*)<\/sup>/U', '<sup><a id="one_col_sup_$1" href="#one-col-footnote-$1" data-toggle="tooltip">$1</a></sup>', $iit_html);
         $iit_html .= $chapter_keywords_html;
+        $iit_html .= '<div id="chapter-verse-order" style="display: none;">' . $chapter_verse_order_html . '</div>';
 
         return $iit_html;
     }

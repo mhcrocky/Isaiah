@@ -128,7 +128,7 @@ if (location.hash) {               // do the test straight away
          */
         $('#nav-links-light-verse-left').on('click', function (e) {
             e.preventDefault();
-            window.verse_number--;
+            window.verse_number = chapter_verse_order[window.verse_index - 1];
             populateVerseModal(window.verse_number);
         });
 
@@ -137,7 +137,7 @@ if (location.hash) {               // do the test straight away
          */
         $('#nav-links-light-verse-right').on('click', function (e) {
             e.preventDefault();
-            window.verse_number++;
+            window.verse_number = chapter_verse_order[window.verse_index + 1];
             populateVerseModal(window.verse_number);
         });
 
@@ -170,6 +170,25 @@ if (location.hash) {               // do the test straight away
             commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
             $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
             updatePagination(parseInt(verse_number));
+        }
+
+        function updatePagination(verse_number) {
+            window.chapter_verse_order = $('#chapter-verse-order').text().split(',');
+            window.verse_index = chapter_verse_order.indexOf(verse_number.toString());
+            var left_pager = $('#nav-links-light-verse-left');
+            var prev_verse = verse_number - 1;
+            if(prev_verse >= chapter_verse_order[0]) {
+                left_pager.disable(false);
+            } else {
+                left_pager.disable(true);
+            }
+            //var next_verse = verse_number + 1;
+            var right_pager = $('#nav-links-light-verse-right');
+            if(verse_index != chapter_verse_order.length - 1) {
+                right_pager.disable(false);
+            } else {
+                right_pager.disable(true);
+            }
         }
 
         /**
@@ -322,25 +341,6 @@ if (location.hash) {               // do the test straight away
             $('.tab-content > .tab-pane').hide();
             location.hash = hash;
             $(hash).show();
-        }
-
-        //TODO: Paginator only works sequentially. This is a problem for verses out of sequence. Need to write special exceptions for stuff like chapter 40/41:7*
-        function updatePagination(verse_number) {
-            var left_pager = $('#nav-links-light-verse-left');
-            var prev_verse = verse_number - 1;
-            if(prev_verse >= 1) {
-                left_pager.disable(false);
-            } else {
-                left_pager.disable(true);
-            }
-            var right_pager = $('#nav-links-light-verse-right');
-            var verse_count = $('#verse-count').html();
-            var next_verse = verse_number + 1;
-            if(next_verse <= verse_count) {
-                right_pager.disable(false);
-            } else {
-                right_pager.disable(true);
-            }
         }
 
         var getQueryStringKey = function(key) {

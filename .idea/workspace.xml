@@ -4,6 +4,7 @@
     <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" afterPath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/views/layouts/master.blade.php" afterPath="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Laravel.iws" />
@@ -45,8 +46,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.71986973" vertical-offset="1382" max-vertical-offset="6896">
-              <caret line="161" column="84" selection-start-line="161" selection-start-column="84" selection-end-line="161" selection-end-column="84" />
+            <state vertical-scroll-proportion="0.28664497" vertical-offset="1152" max-vertical-offset="6896">
+              <caret line="130" column="77" selection-start-line="130" selection-start-column="77" selection-end-line="130" selection-end-column="77" />
               <folding>
                 <element signature="e#168#676#0" expanded="false" />
                 <element signature="e#895#1034#0" expanded="false" />
@@ -65,18 +66,19 @@
       <file leaf-file-name="ChapterRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.166667" vertical-offset="10076" max-vertical-offset="14000">
-              <caret line="648" column="42" selection-start-line="648" selection-start-column="42" selection-end-line="648" selection-end-column="42" />
+            <state vertical-scroll-proportion="-10.208333" vertical-offset="1851" max-vertical-offset="14128">
+              <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
               <folding>
-                <marker date="1416118194727" expanded="false" signature="12036:12050" placeholder="..." />
-                <marker date="1416118194727" expanded="true" signature="23503:24323" placeholder="SELECT `vers..volumes..." />
-                <marker date="1416118194727" expanded="true" signature="24591:25283" placeholder="SELECT `iit_..volumes..." />
-                <marker date="1416118194727" expanded="true" signature="25636:25770" placeholder="SELECT id as..iit_keywords..." />
-                <marker date="1416118194727" expanded="true" signature="26063:26931" placeholder="SELECT `iit_..volumes..." />
-                <marker date="1416118194727" expanded="true" signature="27227:27515" placeholder="SELECT `iit_..iit_commentary_index..." />
-                <marker date="1416118194727" expanded="true" signature="27927:28166" placeholder="SELECT `iit_..iit_commentary_index..." />
-                <marker date="1416118194727" expanded="true" signature="28566:29034" placeholder="SELECT `iit_..iit_concordance_citations..." />
-                <marker date="1416118194727" expanded="true" signature="29308:29566" placeholder="SELECT `iit_..iit_commentary..." />
+                <marker date="1416119666547" expanded="true" signature="5126:5140" placeholder="..." />
+                <marker date="1416119666547" expanded="false" signature="12393:12407" placeholder="..." />
+                <marker date="1416119666547" expanded="true" signature="23860:24680" placeholder="SELECT `vers..volumes..." />
+                <marker date="1416119666547" expanded="true" signature="24948:25640" placeholder="SELECT `iit_..volumes..." />
+                <marker date="1416119666547" expanded="true" signature="25993:26127" placeholder="SELECT id as..iit_keywords..." />
+                <marker date="1416119666547" expanded="true" signature="26420:27288" placeholder="SELECT `iit_..volumes..." />
+                <marker date="1416119666547" expanded="true" signature="27584:27872" placeholder="SELECT `iit_..iit_commentary_index..." />
+                <marker date="1416119666547" expanded="true" signature="28284:28523" placeholder="SELECT `iit_..iit_commentary_index..." />
+                <marker date="1416119666547" expanded="true" signature="28923:29391" placeholder="SELECT `iit_..iit_concordance_citations..." />
+                <marker date="1416119666547" expanded="true" signature="29665:29923" placeholder="SELECT `iit_..iit_commentary..." />
               </folding>
             </state>
           </provider>
@@ -106,7 +108,6 @@
         <option value="$PROJECT_DIR$/public/views/tabs/commentary.mustache" />
         <option value="$PROJECT_DIR$/public/views/tabs/concordance.mustache" />
         <option value="$PROJECT_DIR$/public/views/widgets/iit-flash-presentation.mustache" />
-        <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/public/index.php" />
         <option value="$PROJECT_DIR$/public/views/headings/chapter.mustache" />
         <option value="$PROJECT_DIR$/public/views/asides/chapter-index.mustache" />
@@ -132,12 +133,14 @@
         <option value="$PROJECT_DIR$/public/views/resources/overviews-of-the-prophecy-of-isaiah.mustache" />
         <option value="$PROJECT_DIR$/public/views/resources/glossary-of-terms-relating-to-isaiah.mustache" />
         <option value="$PROJECT_DIR$/app/controllers/ResourceController.php" />
-        <option value="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/public/views/layouts/concordance.blade.php" />
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/public/views/resources/isaiah-institute-translation.mustache" />
         <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
+        <option value="$PROJECT_DIR$/app/views/layouts/master.blade.php" />
+        <option value="$PROJECT_DIR$/app/config/app.php" />
+        <option value="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
       </list>
     </option>
@@ -221,6 +224,46 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layouts" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -254,6 +297,42 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="repositories" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="controllers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -434,20 +513,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_2965c7dff685583a8a81efa3f5711024.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.25" vertical-offset="242" max-vertical-offset="576">
-          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_3bddc179ba159c91e75985c441ee254e.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-5.25" vertical-offset="242" max-vertical-offset="576">
-          <caret line="23" column="45" selection-start-line="23" selection-start-column="45" selection-end-line="23" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_3c045b7acfb609835c42694a314d6e07.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-4.2916665" vertical-offset="297" max-vertical-offset="608">
@@ -748,21 +813,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/views/layouts/master.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7016949" vertical-offset="1922" max-vertical-offset="2512">
-          <caret line="146" column="69" selection-start-line="146" selection-start-column="69" selection-end-line="147" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5854063" vertical-offset="431" max-vertical-offset="1056">
-          <caret line="49" column="10" selection-start-line="49" selection-start-column="10" selection-end-line="49" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/views/concordance-index.mustache">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23452769" vertical-offset="0" max-vertical-offset="614">
@@ -789,26 +839,54 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.166667" vertical-offset="10076" max-vertical-offset="14000">
-          <caret line="648" column="42" selection-start-line="648" selection-start-column="42" selection-end-line="648" selection-end-column="42" />
+        <state vertical-scroll-proportion="-10.208333" vertical-offset="1851" max-vertical-offset="14128">
+          <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
           <folding>
-            <marker date="1416118194727" expanded="false" signature="12036:12050" placeholder="..." />
-            <marker date="1416118194727" expanded="true" signature="23503:24323" placeholder="SELECT `vers..volumes..." />
-            <marker date="1416118194727" expanded="true" signature="24591:25283" placeholder="SELECT `iit_..volumes..." />
-            <marker date="1416118194727" expanded="true" signature="25636:25770" placeholder="SELECT id as..iit_keywords..." />
-            <marker date="1416118194727" expanded="true" signature="26063:26931" placeholder="SELECT `iit_..volumes..." />
-            <marker date="1416118194727" expanded="true" signature="27227:27515" placeholder="SELECT `iit_..iit_commentary_index..." />
-            <marker date="1416118194727" expanded="true" signature="27927:28166" placeholder="SELECT `iit_..iit_commentary_index..." />
-            <marker date="1416118194727" expanded="true" signature="28566:29034" placeholder="SELECT `iit_..iit_concordance_citations..." />
-            <marker date="1416118194727" expanded="true" signature="29308:29566" placeholder="SELECT `iit_..iit_commentary..." />
+            <marker date="1416119666547" expanded="true" signature="5126:5140" placeholder="..." />
+            <marker date="1416119666547" expanded="false" signature="12393:12407" placeholder="..." />
+            <marker date="1416119666547" expanded="true" signature="23860:24680" placeholder="SELECT `vers..volumes..." />
+            <marker date="1416119666547" expanded="true" signature="24948:25640" placeholder="SELECT `iit_..volumes..." />
+            <marker date="1416119666547" expanded="true" signature="25993:26127" placeholder="SELECT id as..iit_keywords..." />
+            <marker date="1416119666547" expanded="true" signature="26420:27288" placeholder="SELECT `iit_..volumes..." />
+            <marker date="1416119666547" expanded="true" signature="27584:27872" placeholder="SELECT `iit_..iit_commentary_index..." />
+            <marker date="1416119666547" expanded="true" signature="28284:28523" placeholder="SELECT `iit_..iit_commentary_index..." />
+            <marker date="1416119666547" expanded="true" signature="28923:29391" placeholder="SELECT `iit_..iit_concordance_citations..." />
+            <marker date="1416119666547" expanded="true" signature="29665:29923" placeholder="SELECT `iit_..iit_commentary..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39800996" vertical-offset="0" max-vertical-offset="3264">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/IndexController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.1641791" vertical-offset="429" max-vertical-offset="1056">
+          <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/views/layouts/master.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.43050846" vertical-offset="1074" max-vertical-offset="1664">
+          <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+          <folding>
+            <marker date="1416122753531" expanded="true" signature="-1:-1" placeholder="..." />
+            <marker date="1416122753531" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.71986973" vertical-offset="1382" max-vertical-offset="6896">
-          <caret line="161" column="84" selection-start-line="161" selection-start-column="84" selection-end-line="161" selection-end-column="84" />
+        <state vertical-scroll-proportion="0.28664497" vertical-offset="1152" max-vertical-offset="6896">
+          <caret line="130" column="77" selection-start-line="130" selection-start-column="77" selection-end-line="130" selection-end-column="77" />
           <folding>
             <element signature="e#168#676#0" expanded="false" />
             <element signature="e#895#1034#0" expanded="false" />
