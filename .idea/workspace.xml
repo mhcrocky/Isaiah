@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/styles.css" afterPath="$PROJECT_DIR$/public/css/styles.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" afterPath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
     </list>
     <ignored path="Laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -61,32 +60,26 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/public/css/styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5238908" vertical-offset="27997" max-vertical-offset="30736">
-              <caret line="1769" column="17" selection-start-line="1769" selection-start-column="17" selection-end-line="1769" selection-end-column="17" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ChapterRepository.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ChapterRepository.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="93.375" vertical-offset="4033" max-vertical-offset="14112">
-              <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
+            <state vertical-scroll-proportion="10.038983" vertical-offset="1885" max-vertical-offset="11296">
+              <caret line="665" column="36" selection-start-line="665" selection-start-column="21" selection-end-line="665" selection-end-column="36" />
               <folding>
-                <marker date="1416249235146" expanded="true" signature="5052:5066" placeholder="..." />
-                <marker date="1416249235146" expanded="false" signature="12348:12362" placeholder="..." />
-                <marker date="1416249235146" expanded="true" signature="23815:24635" placeholder="SELECT `vers..volumes..." />
-                <marker date="1416249235146" expanded="true" signature="24903:25595" placeholder="SELECT `iit_..volumes..." />
-                <marker date="1416249235146" expanded="true" signature="25948:26082" placeholder="SELECT id as..iit_keywords..." />
-                <marker date="1416249235146" expanded="true" signature="26375:27243" placeholder="SELECT `iit_..volumes..." />
-                <marker date="1416249235146" expanded="true" signature="27539:27827" placeholder="SELECT `iit_..iit_commentary_index..." />
-                <marker date="1416249235146" expanded="true" signature="28239:28478" placeholder="SELECT `iit_..iit_commentary_index..." />
-                <marker date="1416249235146" expanded="true" signature="28878:29346" placeholder="SELECT `iit_..iit_concordance_citations..." />
-                <marker date="1416249235146" expanded="true" signature="29620:29878" placeholder="SELECT `iit_..iit_commentary..." />
+                <element signature="e#5270#5400#0#PHP" expanded="false" />
+                <element signature="n#GetThreeColHtml#0;n#ChapterRepository#0;n#!!top" expanded="false" />
+                <element signature="e#11326#11452#0#PHP" expanded="false" />
+                <element signature="n#GetIITCommentary#0;n#ChapterRepository#0;n#!!top" expanded="false" />
+                <marker date="1416253680273" expanded="true" signature="5052:5066" placeholder="..." />
+                <marker date="1416253680273" expanded="false" signature="12348:12362" placeholder="..." />
+                <marker date="1416253680273" expanded="true" signature="23815:24635" placeholder="SELECT `vers..volumes..." />
+                <marker date="1416253680273" expanded="true" signature="24903:25589" placeholder="SELECT `iit_..volumes..." />
+                <marker date="1416253680273" expanded="true" signature="26035:26169" placeholder="SELECT id as..iit_keywords..." />
+                <marker date="1416253680273" expanded="true" signature="26462:27330" placeholder="SELECT `iit_..volumes..." />
+                <marker date="1416253680273" expanded="true" signature="27626:27914" placeholder="SELECT `iit_..iit_commentary_index..." />
+                <marker date="1416253680273" expanded="true" signature="28326:28565" placeholder="SELECT `iit_..iit_commentary_index..." />
+                <marker date="1416253680273" expanded="true" signature="28965:29433" placeholder="SELECT `iit_..iit_concordance_citations..." />
+                <marker date="1416253680273" expanded="true" signature="29707:29965" placeholder="SELECT `iit_..iit_commentary..." />
               </folding>
             </state>
           </provider>
@@ -148,9 +141,9 @@
         <option value="$PROJECT_DIR$/app/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
-        <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
         <option value="$PROJECT_DIR$/public/css/styles.css" />
+        <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
       </list>
     </option>
   </component>
@@ -896,22 +889,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
+    <entry file="file://$PROJECT_DIR$/public/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="93.375" vertical-offset="4033" max-vertical-offset="14112">
-          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
-          <folding>
-            <marker date="1416249235146" expanded="true" signature="5052:5066" placeholder="..." />
-            <marker date="1416249235146" expanded="false" signature="12348:12362" placeholder="..." />
-            <marker date="1416249235146" expanded="true" signature="23815:24635" placeholder="SELECT `vers..volumes..." />
-            <marker date="1416249235146" expanded="true" signature="24903:25595" placeholder="SELECT `iit_..volumes..." />
-            <marker date="1416249235146" expanded="true" signature="25948:26082" placeholder="SELECT id as..iit_keywords..." />
-            <marker date="1416249235146" expanded="true" signature="26375:27243" placeholder="SELECT `iit_..volumes..." />
-            <marker date="1416249235146" expanded="true" signature="27539:27827" placeholder="SELECT `iit_..iit_commentary_index..." />
-            <marker date="1416249235146" expanded="true" signature="28239:28478" placeholder="SELECT `iit_..iit_commentary_index..." />
-            <marker date="1416249235146" expanded="true" signature="28878:29346" placeholder="SELECT `iit_..iit_concordance_citations..." />
-            <marker date="1416249235146" expanded="true" signature="29620:29878" placeholder="SELECT `iit_..iit_commentary..." />
-          </folding>
+        <state vertical-scroll-proportion="0.5238908" vertical-offset="27997" max-vertical-offset="30736">
+          <caret line="1769" column="17" selection-start-line="1769" selection-start-column="17" selection-end-line="1769" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -933,11 +915,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/styles.css">
+    <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5238908" vertical-offset="27997" max-vertical-offset="30736">
-          <caret line="1769" column="17" selection-start-line="1769" selection-start-column="17" selection-end-line="1769" selection-end-column="17" />
-          <folding />
+        <state vertical-scroll-proportion="10.038983" vertical-offset="1885" max-vertical-offset="11296">
+          <caret line="665" column="36" selection-start-line="665" selection-start-column="21" selection-end-line="665" selection-end-column="36" />
+          <folding>
+            <element signature="e#5270#5400#0#PHP" expanded="false" />
+            <element signature="n#GetThreeColHtml#0;n#ChapterRepository#0;n#!!top" expanded="false" />
+            <element signature="e#11326#11452#0#PHP" expanded="false" />
+            <element signature="n#GetIITCommentary#0;n#ChapterRepository#0;n#!!top" expanded="false" />
+            <marker date="1416253680273" expanded="true" signature="5052:5066" placeholder="..." />
+            <marker date="1416253680273" expanded="false" signature="12348:12362" placeholder="..." />
+            <marker date="1416253680273" expanded="true" signature="23815:24635" placeholder="SELECT `vers..volumes..." />
+            <marker date="1416253680273" expanded="true" signature="24903:25589" placeholder="SELECT `iit_..volumes..." />
+            <marker date="1416253680273" expanded="true" signature="26035:26169" placeholder="SELECT id as..iit_keywords..." />
+            <marker date="1416253680273" expanded="true" signature="26462:27330" placeholder="SELECT `iit_..volumes..." />
+            <marker date="1416253680273" expanded="true" signature="27626:27914" placeholder="SELECT `iit_..iit_commentary_index..." />
+            <marker date="1416253680273" expanded="true" signature="28326:28565" placeholder="SELECT `iit_..iit_commentary_index..." />
+            <marker date="1416253680273" expanded="true" signature="28965:29433" placeholder="SELECT `iit_..iit_concordance_citations..." />
+            <marker date="1416253680273" expanded="true" signature="29707:29965" placeholder="SELECT `iit_..iit_commentary..." />
+          </folding>
         </state>
       </provider>
     </entry>

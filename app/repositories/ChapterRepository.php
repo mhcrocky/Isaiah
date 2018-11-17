@@ -667,7 +667,7 @@ EOT;
         // SELECT verse_number, letter, note FROM iit_footnotes WHERE chapter_id = ?
         $sql = 'SELECT
           `iit_footnotes`.`id` AS `footnote_id`,
-          `iit_footnotes`.`verse_number` DIV 1 AS `verse_number`,
+          `iit_footnotes`.`verse_number` AS `verse_number`,
           `iit_footnotes`.`letter` AS `letter`,
           `iit_footnotes`.`note` AS `footnote_text`
         FROM (((`volumes`
@@ -685,6 +685,7 @@ EOT;
 
         $result_count = count($results);
         for($i = 0; $i < $result_count; $i++) {
+            $results[$i]->verse_number = $this->_strrtrim($results[$i]->verse_number, '.0');
             $results[$i]->footnote_text = html_entity_decode($results[$i]->footnote_text);
         }
 
