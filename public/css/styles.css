@@ -1765,6 +1765,11 @@ footer .btn:hover {
         height: 10px;
     }
 
+    .prose-spacer {
+        display: block;
+        height: 3px;
+    }
+
     .modal-body p, .modal .poetry, .modal-prose {
         font-size: 16px;
         line-height: 19px;

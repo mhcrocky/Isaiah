@@ -143,7 +143,6 @@ if (location.hash) {               // do the test straight away
 
         function populateVerseModal(verse_number) {
             var chapter_number = $('#chapter-number').html();
-            //var iit_text = $('#iit_' + verse_number).parent().outerHTML();
             var iit_text = $('#iit_' + verse_number).html();
             var heb_text = $('#heb_' + verse_number).html();
             var commentary_text = $('.commentary_' + verse_number).html();
@@ -158,8 +157,8 @@ if (location.hash) {               // do the test straight away
             } else {
                 iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
                 iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
-                //<div class="spacer"></div>
-                iit_text = iit_text.replace(/<div\b[^>]*><\/div>/ig, "<span class=\"spacer\"></span>");
+                iit_text = iit_text.replace(/<div class="spacer"><\/div>/ig, "<span class=\"spacer\"></span>");
+                iit_text = iit_text.replace(/<div class="prose-spacer"><\/div>/ig, "<span class=\"prose-spacer\"></span>");
                 iit_text = "<p>" + iit_text + "</p>";
             }
             $('#kjv-modal-verse').html(kjv_text);

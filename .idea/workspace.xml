@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" afterPath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/css/styles.css" afterPath="$PROJECT_DIR$/public/css/styles.css" />
     </list>
     <ignored path="Laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,11 +41,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55700326" vertical-offset="1482" max-vertical-offset="7008">
-              <caret line="161" column="99" selection-start-line="161" selection-start-column="99" selection-end-line="161" selection-end-column="99" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1626" max-vertical-offset="6992">
+              <caret line="144" column="61" selection-start-line="144" selection-start-column="61" selection-end-line="144" selection-end-column="61" />
               <folding>
                 <element signature="e#168#676#0" expanded="false" />
                 <element signature="e#895#1034#0" expanded="false" />
@@ -58,6 +57,16 @@
                 <element signature="e#2588#2669#0" expanded="false" />
                 <element signature="e#2791#2873#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="styles.css" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/css/styles.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.5238908" vertical-offset="27997" max-vertical-offset="30736">
+              <caret line="1769" column="17" selection-start-line="1769" selection-start-column="17" selection-end-line="1769" selection-end-column="17" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -141,6 +150,7 @@
         <option value="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
+        <option value="$PROJECT_DIR$/public/css/styles.css" />
       </list>
     </option>
   </component>
@@ -274,6 +284,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Laravel" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="css" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -524,13 +552,6 @@
     </watches-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_3c045b7acfb609835c42694a314d6e07.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-4.2916665" vertical-offset="297" max-vertical-offset="608">
-          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/storage/cache/views/mustache/__Mustache_41b9084642372abf70ca4af13c28bf0f.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-5.625" vertical-offset="265" max-vertical-offset="576">
@@ -896,8 +917,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55700326" vertical-offset="1482" max-vertical-offset="7008">
-          <caret line="161" column="99" selection-start-line="161" selection-start-column="99" selection-end-line="161" selection-end-column="99" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="1626" max-vertical-offset="6992">
+          <caret line="144" column="61" selection-start-line="144" selection-start-column="61" selection-end-line="144" selection-end-column="61" />
           <folding>
             <element signature="e#168#676#0" expanded="false" />
             <element signature="e#895#1034#0" expanded="false" />
@@ -909,6 +930,14 @@
             <element signature="e#2588#2669#0" expanded="false" />
             <element signature="e#2791#2873#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/css/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5238908" vertical-offset="27997" max-vertical-offset="30736">
+          <caret line="1769" column="17" selection-start-line="1769" selection-start-column="17" selection-end-line="1769" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
