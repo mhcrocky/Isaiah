@@ -269,8 +269,8 @@ if (location.hash) {               // do the test straight away
                 window.isTabShown = true;
             } else {
                 window.location = $(e.currentTarget).attr("href");
-                e.preventDefault();
             }
+            e.preventDefault();
         });
 
         /**
