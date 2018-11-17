@@ -100,14 +100,6 @@ if (location.hash) {               // do the test straight away
             }
         });
 
-        /**
-         * Remember active tab
-         */
-        $('#heading-tabs a,#dropdown-heading-tabs a').on('click', function (e) {
-            e.preventDefault();
-            $(this).tab('show');
-        });
-
         $('.heading-nav-left.disabled,.heading-nav-right.disabled').on('click', function(e) {
             e.preventDefault();
             return false;
@@ -248,8 +240,6 @@ if (location.hash) {               // do the test straight away
         /**
          * Store the currently selected tab in the hash value and update nav links
          */
-        //$("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']")
-        //$(".heading-chapters").find("a").on('click', function (e) {
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']").on('click', function (e) {
             if (location.pathname != '/') {
                 var id;
