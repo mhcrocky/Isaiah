@@ -412,18 +412,14 @@ EOT;
 
             if(!empty($custom_html)) {
                 $iit_html .= <<<EOT
-<div id="iit_${display_verse_number}">
 \t$custom_html\r\n
-</div>\r\n
 $chapter_keywords_html\r\n
 EOT;
             } else {
                 $iit_html .= <<<EOT
-\t<div id="iit_${display_verse_number}">
 \t\t<span class="${verse_class}">
 \t\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
 \t\t</span>${space}
-\t</div>\r\n
 $chapter_keywords_html\r\n
 EOT;
             }
