@@ -143,26 +143,24 @@ if (location.hash) {               // do the test straight away
 
         function populateVerseModal(verse_number) {
             var chapter_number = $('#chapter-number').html();
+            //var iit_text = $('#iit_' + verse_number).parent().outerHTML();
+            var iit_text = $('#iit_' + verse_number).html();
+            var heb_text = $('#heb_' + verse_number).html();
+            var commentary_text = $('.commentary_' + verse_number).html();
             var kjv_text = $('#kjv_' + verse_number).html();
-            var iit_text = '';
-            if(chapter_number == 40 && verse_number == 1) {
-                iit_text = '<p><span class="poetry">Comfort and give solace to my people,<span class="indent">says your God; &nbsp;</span></span></p>';
-            } else if (chapter_number == 40 && verse_number == 2) {
-                iit_text = '<p><span class="poetry"><span class="indent">speak kindly to Jerusalem.</span>Announce to her that she has served her term,<span class="indent">that her guilt has been expiated.</span>She has received from Jehovah’s <b><a id="43232_keyword_verse" href="#defmodal" class="modal-trigger keyword-modal def-trigger red" data-toggle="modal">hand</a></b> <span class="indent">double for all her sins.</span> </span> <div class="spacer"></div> </p>';
+            if (chapter_number == 40 && verse_number == 41.7) {
+                iit_text = '<p><span class="poetry"><span><sup>c</sup> The artisan encourages the smith,<span class="indent">and he who beats with a hammer</span><span class="indent"><i>urges</i> him who pounds the anvil.</span>They say of the welding, It is good,<span class="indent">though they fasten it with riveting </span><span class="indent">that it may not come loose.</span></span></span></p>';
+                heb_text = 'וַיְחַזֵּק חָרָשׁ אֶת־צֹרֵף מַחֲלִיק פַּטִּישׁ אֶת־הוֹלֶם פָּעַם אֹמֵר לַדֶּבֶק טוֹב הוּא וַיְחַזְּקֵהוּ בְמַסְמְרִים לֹא יִמּוֹט ׃';
+                commentary_text = '<p>(40:18–19; 41:7*; 40:20) Almost the first thing the nations do on the earth is to corrupt themselves, diverting their attention from the true God to images and idols. Isaiah’s satire on idolaters in this passage shows the futility of creating substitutes for humanity’s Creator. As these false gods are the antithesis of the true God, they are the main reason people become spiritually blind and lose understanding of him (Isaiah 27:9–11; 44:9–20). Such gods can’t save them in Jehovah’s Day of Judgment (Isaiah 45:20; 46:1–8). If the nations themselves are but chaos (vv 15–17), then how much more so the images and idols they invent?</p>';
+                kjv_text = 'So the carpenter encouraged the goldsmith, and he that smootheth with the hammer him that smote the anvil, saying, It is ready for the sodering: and he fastened it with nails, that it should not be moved.';
+            } else if(chapter_number == 41 && verse_number == 7) {
+                commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
             } else {
-                iit_text = $('#iit_' + verse_number).parent().outerHTML();
                 iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
                 iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
-                iit_text = iit_text.replace(/<div\sid="iit_\d{1,2}\b[^>]*>(.*?)<\/div>\s?/i, "");
+                //<div class="spacer"></div>
+                iit_text = iit_text.replace(/<div\b[^>]*><\/div>/ig, "<span class=\"spacer\"></span>");
                 iit_text = "<p>" + iit_text + "</p>";
-            }
-            var heb_text = $('#heb_' + verse_number).html();
-            var commentary_text = '';
-            if(chapter_number == 41 && verse_number == 7) {
-                commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
-                modal_label = 'Isaiah ' + verse_number;
-            } else {
-                commentary_text = $('.commentary_' + verse_number).html();
             }
             $('#kjv-modal-verse').html(kjv_text);
             $('#iit-modal-verse').html(iit_text);
@@ -173,7 +171,6 @@ if (location.hash) {               // do the test straight away
             commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
             var modal_label = '';
             if(chapter_number == 40 && verse_number == 41.7) {
-                commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
                 modal_label = 'Isaiah ' + verse_number;
             } else {
                 modal_label = 'Isaiah ' + chapter_number + ':' + verse_number;

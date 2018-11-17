@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8ba9e0d4-b225-4a07-a2e7-b8bb74184125" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" afterPath="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/public/js/app.js" afterPath="$PROJECT_DIR$/public/js/app.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Laravel.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -43,8 +45,8 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/public/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.60912055" vertical-offset="1658" max-vertical-offset="7056">
-              <caret line="174" column="58" selection-start-line="174" selection-start-column="58" selection-end-line="174" selection-end-column="58" />
+            <state vertical-scroll-proportion="0.55700326" vertical-offset="1482" max-vertical-offset="7008">
+              <caret line="161" column="99" selection-start-line="161" selection-start-column="99" selection-end-line="161" selection-end-column="99" />
               <folding>
                 <element signature="e#168#676#0" expanded="false" />
                 <element signature="e#895#1034#0" expanded="false" />
@@ -63,19 +65,19 @@
       <file leaf-file-name="ChapterRepository.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.208333" vertical-offset="1851" max-vertical-offset="14128">
-              <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
+            <state vertical-scroll-proportion="93.375" vertical-offset="4033" max-vertical-offset="14112">
+              <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
               <folding>
-                <marker date="1416123790232" expanded="true" signature="5126:5140" placeholder="..." />
-                <marker date="1416123790232" expanded="false" signature="12393:12407" placeholder="..." />
-                <marker date="1416123790232" expanded="true" signature="23860:24680" placeholder="SELECT `vers..volumes..." />
-                <marker date="1416123790232" expanded="true" signature="24948:25640" placeholder="SELECT `iit_..volumes..." />
-                <marker date="1416123790232" expanded="true" signature="25993:26127" placeholder="SELECT id as..iit_keywords..." />
-                <marker date="1416123790232" expanded="true" signature="26420:27288" placeholder="SELECT `iit_..volumes..." />
-                <marker date="1416123790232" expanded="true" signature="27584:27872" placeholder="SELECT `iit_..iit_commentary_index..." />
-                <marker date="1416123790232" expanded="true" signature="28284:28523" placeholder="SELECT `iit_..iit_commentary_index..." />
-                <marker date="1416123790232" expanded="true" signature="28923:29391" placeholder="SELECT `iit_..iit_concordance_citations..." />
-                <marker date="1416123790232" expanded="true" signature="29665:29923" placeholder="SELECT `iit_..iit_commentary..." />
+                <marker date="1416249235146" expanded="true" signature="5052:5066" placeholder="..." />
+                <marker date="1416249235146" expanded="false" signature="12348:12362" placeholder="..." />
+                <marker date="1416249235146" expanded="true" signature="23815:24635" placeholder="SELECT `vers..volumes..." />
+                <marker date="1416249235146" expanded="true" signature="24903:25595" placeholder="SELECT `iit_..volumes..." />
+                <marker date="1416249235146" expanded="true" signature="25948:26082" placeholder="SELECT id as..iit_keywords..." />
+                <marker date="1416249235146" expanded="true" signature="26375:27243" placeholder="SELECT `iit_..volumes..." />
+                <marker date="1416249235146" expanded="true" signature="27539:27827" placeholder="SELECT `iit_..iit_commentary_index..." />
+                <marker date="1416249235146" expanded="true" signature="28239:28478" placeholder="SELECT `iit_..iit_commentary_index..." />
+                <marker date="1416249235146" expanded="true" signature="28878:29346" placeholder="SELECT `iit_..iit_concordance_citations..." />
+                <marker date="1416249235146" expanded="true" signature="29620:29878" placeholder="SELECT `iit_..iit_commentary..." />
               </folding>
             </state>
           </provider>
@@ -134,19 +136,28 @@
         <option value="$PROJECT_DIR$/app/routes.php" />
         <option value="$PROJECT_DIR$/app/controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/public/views/resources/isaiah-institute-translation.mustache" />
-        <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
         <option value="$PROJECT_DIR$/app/views/layouts/master.blade.php" />
         <option value="$PROJECT_DIR$/app/config/app.php" />
         <option value="$PROJECT_DIR$/public/views/layouts/master.blade.php" />
+        <option value="$PROJECT_DIR$/app/repositories/ChapterRepository.php" />
         <option value="$PROJECT_DIR$/public/js/app.js" />
       </list>
     </option>
   </component>
-  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="PHP 5.4" />
+  <component name="PhpServers">
+    <servers>
+      <server host="isaiahexplained.local" name="isaiahexplained.local" use_path_mappings="true">
+        <path_mappings>
+          <mapping local-root="$PROJECT_DIR$/public" remote-root="/home/vagrant/Code/Laravel/public" />
+        </path_mappings>
+      </server>
+    </servers>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" interpreter_name="Remote PHP 5.6" />
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1292" />
+    <option name="width" value="1296" />
     <option name="height" value="786" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -175,6 +186,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -335,13 +347,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="FullScreen" value="false" />
-    <property name="options.lastSelected" value="com.jetbrains.plugins.remotesdk.console.SshConsoleOptionsConfigurable" />
+    <property name="options.lastSelected" value="preferences.keymap" />
     <property name="options.splitter.main.proportions" value="0.3" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="recentsLimit" value="5" />
@@ -371,9 +382,12 @@
       <recent name="C:\Users\Tekton\Documents\isaiahexplained_code\Code\Laravel\app\controllers" />
     </key>
   </component>
-  <component name="RunManager" selected="PHP Script.Extract Concordance">
+  <component name="RunManager">
     <configuration default="true" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
       <TestRunner />
+      <method />
+    </configuration>
+    <configuration default="true" type="PhpWebAppRunConfigurationType" factoryName="PHP Web Application">
       <method />
     </configuration>
     <configuration default="true" type="PhpLocalRunConfigurationType" factoryName="PHP Console">
@@ -437,7 +451,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1292" height="786" extended-state="0" />
+    <frame x="-8" y="-8" width="1296" height="786" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -446,17 +460,17 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32954547" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22077923" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.22653721" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32213742" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32977098" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
@@ -500,7 +514,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="15" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="PhpLocalRunConfigurationType">
@@ -789,13 +803,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/ChapterController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10613599" vertical-offset="0" max-vertical-offset="864">
-          <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/ResourceController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.75124377" vertical-offset="501" max-vertical-offset="1104">
@@ -814,7 +821,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23452769" vertical-offset="0" max-vertical-offset="614">
           <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="24" selection-end-column="51" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -822,7 +828,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.31270358" vertical-offset="0" max-vertical-offset="614">
           <caret line="12" column="25" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -830,26 +835,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.27118644" vertical-offset="0" max-vertical-offset="590">
           <caret line="19" column="41" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="41" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.208333" vertical-offset="1851" max-vertical-offset="14128">
-          <caret line="131" column="34" selection-start-line="131" selection-start-column="34" selection-end-line="131" selection-end-column="34" />
-          <folding>
-            <marker date="1416123790232" expanded="true" signature="5126:5140" placeholder="..." />
-            <marker date="1416123790232" expanded="false" signature="12393:12407" placeholder="..." />
-            <marker date="1416123790232" expanded="true" signature="23860:24680" placeholder="SELECT `vers..volumes..." />
-            <marker date="1416123790232" expanded="true" signature="24948:25640" placeholder="SELECT `iit_..volumes..." />
-            <marker date="1416123790232" expanded="true" signature="25993:26127" placeholder="SELECT id as..iit_keywords..." />
-            <marker date="1416123790232" expanded="true" signature="26420:27288" placeholder="SELECT `iit_..volumes..." />
-            <marker date="1416123790232" expanded="true" signature="27584:27872" placeholder="SELECT `iit_..iit_commentary_index..." />
-            <marker date="1416123790232" expanded="true" signature="28284:28523" placeholder="SELECT `iit_..iit_commentary_index..." />
-            <marker date="1416123790232" expanded="true" signature="28923:29391" placeholder="SELECT `iit_..iit_concordance_citations..." />
-            <marker date="1416123790232" expanded="true" signature="29665:29923" placeholder="SELECT `iit_..iit_commentary..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -857,7 +842,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.39800996" vertical-offset="0" max-vertical-offset="3264">
           <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -865,7 +849,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1641791" vertical-offset="429" max-vertical-offset="1056">
           <caret line="33" column="19" selection-start-line="33" selection-start-column="19" selection-end-line="33" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -873,17 +856,48 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.43050846" vertical-offset="1074" max-vertical-offset="1664">
           <caret line="83" column="40" selection-start-line="83" selection-start-column="40" selection-end-line="83" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3548387" vertical-offset="39" max-vertical-offset="800">
+          <caret line="15" column="46" selection-start-line="15" selection-start-column="46" selection-end-line="15" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/ChapterController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.29187396" vertical-offset="0" max-vertical-offset="864">
+          <caret line="11" column="53" selection-start-line="11" selection-start-column="53" selection-end-line="11" selection-end-column="53" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/repositories/ChapterRepository.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="93.375" vertical-offset="4033" max-vertical-offset="14112">
+          <caret line="112" column="37" selection-start-line="112" selection-start-column="37" selection-end-line="112" selection-end-column="37" />
           <folding>
-            <marker date="1416123790244" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1416123790244" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1416249235146" expanded="true" signature="5052:5066" placeholder="..." />
+            <marker date="1416249235146" expanded="false" signature="12348:12362" placeholder="..." />
+            <marker date="1416249235146" expanded="true" signature="23815:24635" placeholder="SELECT `vers..volumes..." />
+            <marker date="1416249235146" expanded="true" signature="24903:25595" placeholder="SELECT `iit_..volumes..." />
+            <marker date="1416249235146" expanded="true" signature="25948:26082" placeholder="SELECT id as..iit_keywords..." />
+            <marker date="1416249235146" expanded="true" signature="26375:27243" placeholder="SELECT `iit_..volumes..." />
+            <marker date="1416249235146" expanded="true" signature="27539:27827" placeholder="SELECT `iit_..iit_commentary_index..." />
+            <marker date="1416249235146" expanded="true" signature="28239:28478" placeholder="SELECT `iit_..iit_commentary_index..." />
+            <marker date="1416249235146" expanded="true" signature="28878:29346" placeholder="SELECT `iit_..iit_concordance_citations..." />
+            <marker date="1416249235146" expanded="true" signature="29620:29878" placeholder="SELECT `iit_..iit_commentary..." />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/public/js/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.60912055" vertical-offset="1658" max-vertical-offset="7056">
-          <caret line="174" column="58" selection-start-line="174" selection-start-column="58" selection-end-line="174" selection-end-column="58" />
+        <state vertical-scroll-proportion="0.55700326" vertical-offset="1482" max-vertical-offset="7008">
+          <caret line="161" column="99" selection-start-line="161" selection-start-column="99" selection-end-line="161" selection-end-column="99" />
           <folding>
             <element signature="e#168#676#0" expanded="false" />
             <element signature="e#895#1034#0" expanded="false" />
