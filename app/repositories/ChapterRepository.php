@@ -77,7 +77,7 @@ class ChapterRepository {
                 }
             }
 
-            list($scripture_text, $chapter_keywords_html) = $this->_buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'one-col');
+            //list($scripture_text, $chapter_keywords_html) = $this->_buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, 'one-col');
 
             $segment_ids = array('last_segment_id' => $last_segment_id, 'next_segment_id' => $next_segment_id, 'segment_id' => $segment_id);
 
@@ -115,6 +115,8 @@ EOT;
 \t\t</span>${space}\r\n
 EOT;
             }
+
+            list($iit_html, $chapter_keywords_html) = $this->_buildKeywordsHTML($iit_html, $verse_id, $chapter_keywords_html, 'one-col');
 
             // Clear $is_prose_inline if necessary
             if($is_prose_inline == true) {
@@ -838,9 +840,12 @@ EOT;
      */
     private function _buildKeywordsHTML($scripture_text, $verse_id, $chapter_keywords_html, $section_tab)
     {
-        $has_keyword = preg_match('/<b>.*<\/b>/U', $scripture_text);
+        $has_keyword = preg_match('/<b>.*<\/b>/Ui', $scripture_text);
         if ($has_keyword == true) {
             $iit_keywords = $this->getIITKeyword($verse_id);
+            /*if($verse_id == 42934) {
+                dd($scripture_text);
+            }*/
             if(!empty($iit_keywords)) {
                 $keywords_found = array();
                 foreach ($iit_keywords as $iit_keyword) {
@@ -863,7 +868,8 @@ EOT;
                     //$scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $segment_id);
                     $pattern = '/<b>(' . $keyword . ')<\/b>/Ui';
                     $replacement = '<b><a id="' . $keyword_id . '_' . $section . '_keyword_verse" name="' . $section . '" href="#defmodal" class="modal-trigger keyword-modal def-trigger ' . $color . '" data-toggle="modal">$1</a></b>';
-                    $scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $identical_keywords);
+                    //$scripture_text = $this->_pregReplaceNth($pattern, $replacement, $scripture_text, $identical_keywords);
+                    $scripture_text = preg_replace($pattern, $replacement, $scripture_text);
                     $chapter_keywords_html .= '<div id="' . $keyword_id . '_' . $section . '_keyword_description" name="' . $section . '" style="display: none;">' . html_entity_decode($iit_keyword->keyword_description) . '</div>';
                     $chapter_keywords_html .= '<div id="' . $keyword_id . '_' . $section . '_keyword_color" name="' . $section . '" style="display: none;">' . $color . '</div>';
                 }
