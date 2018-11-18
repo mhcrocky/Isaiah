@@ -3,7 +3,7 @@
     require('lib/simplehtmldom_1_5/simple_html_dom.php');
     require('isaiah_db.php');
     $site_root = 'C:/Users/Tekton/Documents/isaiahexplained_code/';
-    $commentary_html = $site_root . 'Extraction/doc/IIT_Commentary.html';
+    $commentary_html = $site_root . 'Code/Laravel/extraction/doc/E-Book Apocalyptic Commentary of Isaiah.html';
 
     $book_title = 'Isaiah IIT';
 
@@ -20,7 +20,7 @@
     $html = file_get_html($commentary_html);
 
     foreach($html->find('p[class=western]') as $commentaryHTML) {
-        $commentaryInnerHTML = $commentaryHTML->innertext;
+        $commentaryInnerHTML = trim($commentaryHTML->innertext);
         if(empty($amysql)) {
             $amysql = get_amysql();
         }
