@@ -26,6 +26,8 @@
     echo $message;
 
     function rip_tags($string) {
+        $string = preg_replace('/<sup>\w<\/sup>/', '', $string);
+
         // ----- remove HTML TAGs -----
         $string = preg_replace ('/<[^>]*>/', ' ', $string);
 
