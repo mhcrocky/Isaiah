@@ -91,7 +91,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         $("a[id*='commentary_sup_']").tooltip(commentary_tooltip_options);
 
         $("form").submit(function(e) {
-            e.preventDefault();//prevent the form from actually submitting
+            e.preventDefault();
             var search_term = $(this).find("input[name=search-box]").val();
             if (search_term.length) {
                 window.location = '/search/' + search_term;
@@ -453,6 +453,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         if(verseQueryString != undefined && searchQueryString != undefined) {
             var verse_number = verseQueryString;
             var search = searchQueryString;
+            $(document).find("input[name=search-box]").val(search);
             var iitVerseSpan = $('#iit_search_' + verse_number);
             iitDiv = iitVerseSpan.next();
             if(location.pathname.indexOf('/concordance') == -1) {
