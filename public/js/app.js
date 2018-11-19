@@ -443,10 +443,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                             }, this);
                         }
                     });*/
+                    var searchRegex = RegExp(search, 'gi');
                     findAndReplaceDOMText(
                         document.getElementById('iit_search_' + verse_number).nextElementSibling, // (Element) The element or text-node to search within
                         {
-                            find: search,
+                            find: searchRegex,
                             replace: function(portion, match) {
                                 var span = document.createElement('span');
                                 span.className = 'highlight';
