@@ -444,33 +444,57 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         if(verseQueryString != undefined && searchQueryString != undefined) {
             var verse_number = verseQueryString;
             var search = searchQueryString;
-            iitDiv = $('#iit_search_' + verse_number).next();
+            var iitVerseSpan = $('#iit_search_' + verse_number);
+            iitDiv = iitVerseSpan.next();
             if(location.pathname.indexOf('/concordance') == -1) {
                 if (hash == "#one_col") {
-                    var is_exact = RegExp('"', 'g').test(search);
+                    var is_term_exact = new RegExp('"', 'g').test(search);
                     var searchRegex;
-                    if(is_exact == true) {
+                    if(is_term_exact == true) {
                         search = search.replace(/"/g, '');
-                        searchRegex = RegExp('\\b' + search + '\\b', 'gi');
+                        searchRegex = new RegExp('\\b' + search + '\\b', 'gi');
                     } else {
-                        searchRegex = RegExp(search, 'gi');
+                        searchRegex = new RegExp(search, 'gi');
                     }
-                    findAndReplaceDOMText(
-                        document.getElementById('iit_search_' + verse_number).nextElementSibling,
-                        {
-                            find: searchRegex,
-                            replace: function(portion, match) {
-                                var span = document.createElement('span');
-                                span.className = 'highlight';
-                                span.innerHTML = portion.text;
-                                return span;
-                            }
+                    var next_class = iitVerseSpan.next().attr('class');
+                    if(next_class == 'poetry' || next_class == 'prose' || next_class == 'prose inline') {
+                        highlightSearchTerm(iitVerseSpan.next()[0], searchRegex, verse_number);
+                    } else {
+                        if(next_class == 'modal-trigger verse-number') {
+                            highlightSearchTerm(iitVerseSpan.closest('span[class=poetry]')[0], searchRegex, verse_number);
+                            //$('#iit_search_2').closest('span[class=poetry]')
+                        } else {
+                            alert('Next class isnt the verse modal link. It is: ' + next_class);
                         }
-                    );
+                    }
                     $(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }
             }
+        }
+
+        function highlightSearchTerm(domElement, searchRegex, verse_number) {
+            window.highlight_verse = parseInt(verse_number);
+            findAndReplaceDOMText(
+                domElement,
+                {
+                    find: searchRegex,
+                    replace: function(portion, match) {
+                        var verse_index = match.input.indexOf(window.highlight_verse);
+                        var next_verse_index = match.input.indexOf(window.highlight_verse + 1);
+                        if(verse_index > -1 && match.startIndex < verse_index) {
+                            return portion.text;
+                        } else if(next_verse_index > -1 && match.endIndex > next_verse_index) {
+                            return portion.text;
+                        } else {
+                            var span = document.createElement('span');
+                            span.className = 'highlight';
+                            span.innerHTML = portion.text;
+                            return span;
+                        }
+                    }
+                }
+            );
         }
 
         $.fn.outerHTML = function(s) {
