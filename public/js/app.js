@@ -5,7 +5,7 @@ var is_citation = false;
 var is_searched = false;
 var citationDiv;
 var iitDiv;
-if (location.hash) {               // do the test straight away
+if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do the test straight away
     window.scrollTo(0, 0);         // execute it straight away
     setTimeout(function() {
         if(is_citation === false && is_searched == false) {
