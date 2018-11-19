@@ -289,16 +289,31 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                 }*/
             }
         } else if(location.pathname.indexOf('/search') > -1) {
-            var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
+            //var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
+            var search_phrase = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ');
+            var is_exact = RegExp('%22', 'g').test(location.pathname.split('/')[2]);
+            $('ol > li > span').each(function() {
+                if(this.innerHTML != undefined) {
+                    if(is_exact == true) {
+                        var replacement = new RegExp('\\b(' + search_phrase + ')\\b', 'ig');
+                        this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                    } else {
+                        var replacement = new RegExp('(' + search_phrase + ')', 'ig');
+                        this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                    }
+                }
+            });
             $('ol').children().each(function() {
                 if(this.innerHTML != undefined) {
-                    search_parts.forEach(function(value, index) {
+                    var replacement = new RegExp('(' + search_phrase + ')', 'ig');
+                    //this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                    /*search_parts.forEach(function(value, index) {
                         var replacement = new RegExp('(.*- <)', 'ig');
                         this.innerHTML = this.innerHTML.replace(replacement, function(match, contents, offset, s) {
                             var replacement = new RegExp('(' + value + ')', 'i');
                             return match.replace(replacement, '<span class="highlight">$1</span>');
                         }, value);
-                    }, this);
+                    }, this);*/
                 }
             });
         }
