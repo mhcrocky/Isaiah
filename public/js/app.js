@@ -289,7 +289,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                 }*/
             }
         } else if(location.pathname.indexOf('/search') > -1) {
-            var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/, ' ').split(' ');
+            var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
             $('ol').children().each(function() {
                 if(this.innerHTML != undefined) {
                     search_parts.forEach(function(value, index) {
@@ -429,23 +429,12 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         if(verseQueryString != undefined && searchQueryString != undefined) {
             var verse_number = verseQueryString;
             var search = searchQueryString;
-            //iitDiv = $('a').filter(function(index) { return $(this).text() === verse_number.toString(); });
             iitDiv = $('#iit_search_' + verse_number).next();
             if(location.pathname.indexOf('/concordance') == -1) {
                 if (hash == "#one_col") {
-                    //iitDiv.is('span')
-                    /*iitDiv.children().each(function() {
-                        if(this.innerHTML != undefined) {
-                            var search_parts = search.split(' ');
-                            search_parts.forEach(function(value, index) {
-                                var replacement = new RegExp('(' + value + ')', 'ig');
-                                this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
-                            }, this);
-                        }
-                    });*/
                     var searchRegex = RegExp(search, 'gi');
                     findAndReplaceDOMText(
-                        document.getElementById('iit_search_' + verse_number).nextElementSibling, // (Element) The element or text-node to search within
+                        document.getElementById('iit_search_' + verse_number).nextElementSibling,
                         {
                             find: searchRegex,
                             replace: function(portion, match) {
