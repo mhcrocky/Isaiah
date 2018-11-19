@@ -447,7 +447,14 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
             iitDiv = $('#iit_search_' + verse_number).next();
             if(location.pathname.indexOf('/concordance') == -1) {
                 if (hash == "#one_col") {
-                    var searchRegex = RegExp(search, 'gi');
+                    var is_exact = RegExp('"', 'g').test(search);
+                    var searchRegex;
+                    if(is_exact == true) {
+                        search = search.replace(/"/g, '');
+                        searchRegex = RegExp('\\b' + search + '\\b', 'gi');
+                    } else {
+                        searchRegex = RegExp(search, 'gi');
+                    }
                     findAndReplaceDOMText(
                         document.getElementById('iit_search_' + verse_number).nextElementSibling,
                         {

@@ -30,7 +30,7 @@ class IITSearchRepository {
             $results = $this->_getIITSearchResults($search_term, false, $page, $limit);
         }
 
-        $search_term = preg_replace('/"/', '' , $search_term);
+        //$search_term = preg_replace('/"/', '' , $search_term);
         $search_results = $results['results'];
         $total_count = $results['count'];
 
@@ -51,7 +51,7 @@ EOT;
                 $scripture_text = preg_replace('/\s\s/', ' ', $scripture_text);
                 $scripture_text = preg_replace('/<b>|<\/b>/', '', $scripture_text);
                 $search_html .= <<<EOT
-<li><span>${scripture_text}</span> - <a href="/${chapter_number}?verse=$verse_number&search=$search_term#one_col"><i>Isaiah ${chapter_number}:${verse_number}</i></a></li>
+<li><span>${scripture_text}</span> - <a href='/${chapter_number}?verse=$verse_number&search=$search_term#one_col'><i>Isaiah ${chapter_number}:${verse_number}</i></a></li>
 EOT;
             }
 
