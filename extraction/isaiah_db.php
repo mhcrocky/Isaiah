@@ -593,8 +593,26 @@
         
         return $success;
     }
-    
+
     /**
+     * Update Book Chapter/Verse
+     *
+     * @param int $verse_id
+     * @param string $scripture_text_plain
+     * @param AMysql $amysql
+     * @return bool
+     */
+    function update_chapter_verse_with_plain_scripture($verse_id, $scripture_text_plain, &$amysql) {
+        $data = array(
+            'scripture_text_plain' => $scripture_text_plain
+        );
+
+        $success = $amysql->update('verses', $data, 'id = :verse_id', array('verse_id' => $verse_id));
+
+        return $success;
+    }
+
+/**
     * Delete chapter verse by ID
     *
     * @param int $verse_id
