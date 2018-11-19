@@ -271,7 +271,9 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
          */
         var hash = window.location.hash;
 
-        if(location.pathname.indexOf('/concordance') == -1 && location.pathname.indexOf('/search') == -1) {
+        if(location.pathname.indexOf('/concordance') == -1
+            && location.pathname.indexOf('/search') == -1
+                && location.pathname.indexOf('/resources') == -1) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);
