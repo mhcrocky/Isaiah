@@ -291,16 +291,10 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         } else if(location.pathname.indexOf('/search') > -1) {
             var term_or_terms = location.pathname.split('/')[2];
             var is_exact = RegExp('%22', 'g').test(term_or_terms);
-            //var search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
             var search_phrase = $(document).find("input[name=search-box]").val().replace(/"/g, '');
             if(is_exact == false) {
-                search_phrase = search_phrase.split(' ');
+                var search_parts = search_phrase.split(' ');
             }
-            /*if(is_exact == true) {
-                search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
-            } else {
-                var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
-            }*/
             $('ol > li > span').each(function() {
                 if(this.innerHTML != undefined) {
                     if(is_exact == true) {
