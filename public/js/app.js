@@ -289,7 +289,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                 }*/
             }
         } else if(location.pathname.indexOf('/search') > -1) {
-            var search_parts = location.pathname.split('/')[2].replace(/%20/, ' ').split(' ');
+            var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/, ' ').split(' ');
             $('ol').children().each(function() {
                 if(this.innerHTML != undefined) {
                     search_parts.forEach(function(value, index) {
@@ -429,10 +429,12 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         if(verseQueryString != undefined && searchQueryString != undefined) {
             var verse_number = verseQueryString;
             var search = searchQueryString;
-            iitDiv = $('#iit_' + verse_number).parent();
+            //iitDiv = $('a').filter(function(index) { return $(this).text() === verse_number.toString(); });
+            iitDiv = $('#iit_search_' + verse_number).next();
             if(location.pathname.indexOf('/concordance') == -1) {
                 if (hash == "#one_col") {
-                    iitDiv.children().each(function() {
+                    //iitDiv.is('span')
+                    /*iitDiv.children().each(function() {
                         if(this.innerHTML != undefined) {
                             var search_parts = search.split(' ');
                             search_parts.forEach(function(value, index) {
@@ -440,7 +442,19 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                                 this.innerHTML = this.innerHTML.replace(replacement, "<span class='highlight'>$1</span>");
                             }, this);
                         }
-                    });
+                    });*/
+                    findAndReplaceDOMText(
+                        document.getElementById('iit_search_' + verse_number).nextElementSibling, // (Element) The element or text-node to search within
+                        {
+                            find: search,
+                            replace: function(portion, match) {
+                                var span = document.createElement('span');
+                                span.className = 'highlight';
+                                span.innerHTML = portion.text;
+                                return span;
+                            }
+                        }
+                    );
                     $(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }

@@ -30,6 +30,7 @@ class IITSearchRepository {
             $results = $this->_getIITSearchResults($search_term, false, $page, $limit);
         }
 
+        $search_term = preg_replace('/"/', '' , $search_term);
         $search_results = $results['results'];
         $total_count = $results['count'];
 

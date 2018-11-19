@@ -106,10 +106,12 @@ class ChapterRepository {
 
             if(!empty($custom_html)) {
                 $iit_html .= <<<EOT
-\t$custom_html\r\n
+<span id="iit_search_${verse_number}"></span>
+\t${custom_html}\r\n
 EOT;
             } else {
                 $iit_html .= <<<EOT
+<span id="iit_search_$verse_number"></span>
 \t\t<span class="${verse_class}">\r\n
 \t\t\t${indent_start}<a href="#versemodal" class="modal-trigger ${number_class}" data-toggle="modal">${display_verse_number}</a> ${scripture_text}${indent_end}
 \t\t</span>${space}\r\n
