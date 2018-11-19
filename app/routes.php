@@ -27,7 +27,7 @@ Route::get('/resources', 'ResourceController@showIndex');
 Route::get('/resources/{resourcePage}', 'ResourceController@findResource')->where('searchTerm', '(\w*-?)+');
 
 Route::get('/search', 'IITSearchController@showIndex');
-Route::get('/search/{searchTerm}', 'IITSearchController@findTerm')->where('searchTerm', '(\w*\s?)+');
+Route::get('/search/{searchTerm}', 'IITSearchController@findTerm')->where('searchTerm', '(.*)');
 
 Route::get('/media/commentary/{fileName}', 'MediaController@showMediaCommentary');
 /*Route::get('/commentary/ogg/{chapterNumber}', 'MediaController@showMediaOGG')->where('chapterNumber', '[0-9]+');

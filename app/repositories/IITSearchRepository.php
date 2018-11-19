@@ -23,7 +23,12 @@ class IITSearchRepository {
         $search_html = '';
         $EOL = PHP_EOL;
 
-        $results = $this->_getIITSearchResults($search_term, $page, $limit);
+        $is_exact_match = preg_match('/^".*"$/', $search_term);
+        if($is_exact_match == true) {
+            $results = $this->_getIITSearchResults(preg_replace('/"/', '' , $search_term), true, $page, $limit);
+        } else {
+            $results = $this->_getIITSearchResults($search_term, false, $page, $limit);
+        }
 
         $search_results = $results['results'];
         $total_count = $results['count'];
@@ -65,11 +70,12 @@ EOT;
      * Get the concordance words for specified letter
      *
      * @param string $search_term
+     * @param bool $is_exact
      * @param int $page
      * @param int $limit
      * @return array
      */
-    private function _getIITSearchResults($search_term, $page = 1, $limit = 10) {
+    private function _getIITSearchResults($search_term, $is_exact = false, $page = 1, $limit = 10) {
         $offset = ($page - 1) * $limit;
         $results = DB::table('volumes')
             ->limit($limit)
@@ -91,9 +97,13 @@ EOT;
                 $join->on('chapters.id', '=', 'verses.chapter_id');
             })
             ->where('books.book_title', '=', 'Isaiah IIT')
-            ->where(function($query) use ($search_term) {
-                $search_term = preg_replace('/ /', '%', $search_term);
-                $query->where('verses.scripture_text', 'LIKE', '%' . $search_term . '%', 'and');
+            ->where(function($query) use ($search_term, $is_exact) {
+                if($is_exact == true) {
+                    $query->where('verses.scripture_text_plain', 'RLIKE', '[[:<:]]' . $search_term . '[[:>:]]', 'and');
+                } else {
+                    $search_term = preg_replace('/ /', '%', $search_term);
+                    $query->where('verses.scripture_text_plain', 'LIKE', '%' . $search_term . '%', 'and');
+                }
             })
             ->select('chapters.id as chapter_id', 'verses.id as verse_id', 'chapters.chapter_number',
                 'verses.verse_number', 'verses.scripture_text', 'verses.segment_id',
@@ -116,9 +126,13 @@ EOT;
                 $join->on('chapters.id', '=', 'verses.chapter_id');
             })
             ->where('books.book_title', '=', 'Isaiah IIT')
-            ->where(function($query) use ($search_term) {
-                $search_term = preg_replace('/ /', '%', $search_term);
-                $query->where('verses.scripture_text', 'LIKE', '%' . $search_term . '%', 'and');
+            ->where(function($query) use ($search_term, $is_exact) {
+                if($is_exact == true) {
+                    $query->where('verses.scripture_text_plain', 'RLIKE', '[[:<:]]' . $search_term . '[[:>:]]', 'and');
+                } else {
+                    $search_term = preg_replace('/ /', '%', $search_term);
+                    $query->where('verses.scripture_text_plain', 'LIKE', '%' . $search_term . '%', 'and');
+                }
             })
             ->select(array(DB::raw('COUNT(chapters.id) as results')))->get();
 
