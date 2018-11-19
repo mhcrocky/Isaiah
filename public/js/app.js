@@ -497,9 +497,14 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                         } else if(next_verse_index > -1 && match.endIndex > next_verse_index) {
                             return portion.text;
                         } else {
-                            var span = document.createElement('span');
-                            span.className = 'highlight';
-                            span.innerHTML = portion.text;
+                            if($(portion.node).parent().is('a')) {
+                                $(portion.node).parent().addClass('highlight');
+                                return portion.text;
+                            } else {
+                                var span = document.createElement('span');
+                                span.className = 'highlight';
+                                span.innerHTML = portion.text;
+                            }
                             return span;
                         }
                     }
