@@ -147,6 +147,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
             } else if(chapter_number == 41 && verse_number == 7) {
                 commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
             } else {
+                iit_text = iit_text.replace(/<a\b[^>]*>(\w+)<\/a>/ig, "$1");
                 iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
                 iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
                 iit_text = iit_text.replace(/<div class="spacer"><\/div>/ig, "<span class=\"spacer\"></span>");
