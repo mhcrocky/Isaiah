@@ -291,13 +291,16 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         } else if(location.pathname.indexOf('/search') > -1) {
             var term_or_terms = location.pathname.split('/')[2];
             var is_exact = RegExp('%22', 'g').test(term_or_terms);
-            var search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
-            if(is_exact == true) {
+            //var search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
+            var search_phrase = $(document).find("input[name=search-box]").val().replace(/"/g, '');
+            if(is_exact == false) {
+                search_phrase = search_phrase.split(' ');
+            }
+            /*if(is_exact == true) {
                 search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
             } else {
                 var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
-            }
-            //var search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
+            }*/
             $('ol > li > span').each(function() {
                 if(this.innerHTML != undefined) {
                     if(is_exact == true) {
@@ -310,19 +313,6 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                             this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
                         }, this);
                     }
-                }
-            });
-            $('ol').children().each(function() {
-                if(this.innerHTML != undefined) {
-                    var replacement = new RegExp('(' + search_phrase + ')', 'ig');
-                    //this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
-                    /*search_parts.forEach(function(value, index) {
-                        var replacement = new RegExp('(.*- <)', 'ig');
-                        this.innerHTML = this.innerHTML.replace(replacement, function(match, contents, offset, s) {
-                            var replacement = new RegExp('(' + value + ')', 'i');
-                            return match.replace(replacement, '<span class="highlight">$1</span>');
-                        }, value);
-                    }, this);*/
                 }
             });
         }
@@ -452,8 +442,9 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
         var searchQueryString = getQueryStringKey('search');
         if(verseQueryString != undefined && searchQueryString != undefined) {
             var verse_number = verseQueryString;
-            var search = searchQueryString;
-            $(document).find("input[name=search-box]").val(search);
+            //var search = searchQueryString;
+            var search = $(document).find("input[name=search-box]").first().val();
+            //$(document).find("input[name=search-box]").val(search);
             var iitVerseSpan = $('#iit_search_' + verse_number);
             iitDiv = iitVerseSpan.next();
             if(location.pathname.indexOf('/concordance') == -1) {

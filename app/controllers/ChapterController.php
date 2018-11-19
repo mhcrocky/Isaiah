@@ -34,6 +34,7 @@ class ChapterController extends BaseController {
         View::share('chapter_number_dd', sprintf("%02s", $chapter_number));
         View::share('chapters', WidgetRepository::GetChapterSelection($chapter_number));
         View::share('footnotes', $chapterRepository->GetIITFootnotesList($chapter_number));
+        View::share('search_term', Input::get('search', ''));
 
         return View::make('layouts.master', $template_data)
             ->nest('top_nav', 'widgets.chapter-selection-top')
