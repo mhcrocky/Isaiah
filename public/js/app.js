@@ -289,9 +289,15 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                 }*/
             }
         } else if(location.pathname.indexOf('/search') > -1) {
-            //var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
-            var search_phrase = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ');
-            var is_exact = RegExp('%22', 'g').test(location.pathname.split('/')[2]);
+            var term_or_terms = location.pathname.split('/')[2];
+            var is_exact = RegExp('%22', 'g').test(term_or_terms);
+            var search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
+            if(is_exact == true) {
+                search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
+            } else {
+                var search_parts = location.pathname.split('/')[2].replace(/%22/g, '').replace(/%20/g, ' ').split(' ');
+            }
+            //var search_phrase = term_or_terms.replace(/%22/g, '').replace(/%20/g, ' ');
             $('ol > li > span').each(function() {
                 if(this.innerHTML != undefined) {
                     if(is_exact == true) {
@@ -299,7 +305,10 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                         this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
                     } else {
                         var replacement = new RegExp('(' + search_phrase + ')', 'ig');
-                        this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                        search_parts.forEach(function(value, index) {
+                            var replacement = new RegExp('(' + value + ')', 'ig');
+                            this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                        }, this);
                     }
                 }
             });
@@ -454,7 +463,17 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                         search = search.replace(/"/g, '');
                         searchRegex = new RegExp('\\b' + search + '\\b', 'gi');
                     } else {
-                        searchRegex = new RegExp(search, 'gi');
+                        var search_ors = '';
+                        var search_split = search.split(' ');
+                        var part_count = search_split.length;
+                        for(var i = 0; i < part_count; i++) {
+                            if(i + 1 != part_count) {
+                                search_ors += search_split[i] + '|';
+                            } else {
+                                search_ors += search_split[i];
+                            }
+                        }
+                        searchRegex = new RegExp(search_ors, 'gi');
                     }
                     var next_class = iitVerseSpan.next().attr('class');
                     if(next_class == 'poetry' || next_class == 'prose' || next_class == 'prose inline') {
@@ -462,7 +481,6 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
                     } else {
                         if(next_class == 'modal-trigger verse-number') {
                             highlightSearchTerm(iitVerseSpan.closest('span[class=poetry]')[0], searchRegex, verse_number);
-                            //$('#iit_search_2').closest('span[class=poetry]')
                         } else {
                             alert('Next class isnt the verse modal link. It is: ' + next_class);
                         }
