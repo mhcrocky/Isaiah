@@ -3,17 +3,27 @@
  */
 var is_citation = false;
 var is_searched = false;
-var citationDiv;
+var citationSpan;
 var iitDiv;
-if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do the test straight away
-    window.scrollTo(0, 0);         // execute it straight away
+if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
+    window.scrollTo(0, 0);
     setTimeout(function() {
         if(is_citation === false && is_searched == false) {
-            window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
-        } else if(is_citation === true) {
-            $(window).scrollTop(citationDiv.offset().top);
-        } else if (is_searched === true) {
-            $(window).scrollTop(iitDiv.offset().top);
+            window.scrollTo(0, 0);
+        } else {
+            var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
+            //var styleRuleValue = getStyleRuleValue('padding', '.lg', bootStrapStyleSheet);
+            //$('.header-container').first().height()
+            var bootStrapEnv = findBootstrapEnvironment();
+            var scrollPad = 0;
+            if(bootStrapEnv == 'xs') {
+                scrollPad = $('.header-container').first().height();
+            }
+            if(is_citation === true) {
+                $(window).scrollTop(citationSpan.offset().top - scrollPad);
+            } else if (is_searched === true) {
+                $(window).scrollTop(iitDiv.offset().top - scrollPad);
+            }
         }
     }, 1);
 }
@@ -418,16 +428,15 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
 
         var citationQueryString = getQueryStringKey('citation');
         if(citationQueryString != undefined) {
-            var citationLink = $('a[href*=' + citationQueryString + ']');
+            var citationLink = $('a[href*="' + citationQueryString + '"]');
             if(citationLink != undefined) {
                 if(location.pathname.indexOf('/concordance') == -1) {
-                    citationDiv = citationLink.parent().closest('div');
-                    //citationDiv = citationLink.parent();
+                    citationSpan = citationLink.parent().closest('.poetry,.prose,.prose inline');
                     citationLink.addClass('highlight');
                 } else {
-                    citationDiv = citationLink.parent();
-                    if (citationDiv != undefined) {
-                            citationDiv.addClass('highlight');
+                    citationSpan = citationLink.parent();
+                    if (citationSpan != undefined) {
+                            citationSpan.addClass('highlight');
                     }
                 }
                 is_citation = true;
@@ -508,6 +517,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
             );
         }
 
+        var test = 1;
+
         $.fn.outerHTML = function(s) {
             return s
                 ? this.before(s).remove()
@@ -525,3 +536,62 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {               // do
     });//end document ready
 
 }(this, jQuery, Backbone));
+
+/**
+ * http://stackoverflow.com/questions/14441456/how-to-detect-which-device-view-youre-on-using-twitter-bootstrap-api
+ * @returns {string}
+ */
+function findBootstrapEnvironment() {
+    var envs = ['xs', 'sm', 'md', 'lg'];
+
+    var $el = $('<div>');
+    $el.appendTo($('body'));
+
+    for (var i = envs.length - 1; i >= 0; i--) {
+        var env = envs[i];
+
+        $el.addClass('hidden-'+env);
+        if ($el.is(':hidden')) {
+            $el.remove();
+            return env
+        }
+    }
+}
+
+/**
+ * http://stackoverflow.com/questions/16965515/how-to-get-a-style-attribute-from-a-css-class-by-javascript-jquery
+ * @param style
+ * @param selector
+ * @param sheet
+ * @returns {*}
+ */
+function getStyleRuleValue(style, selector, sheet) {
+    var sheets = typeof sheet !== 'undefined' ? [sheet] : document.styleSheets;
+    for (var i = 0, l = sheets.length; i < l; i++) {
+        var sheet = sheets[i];
+        if( !sheet.cssRules ) { continue; }
+        for (var j = 0, k = sheet.cssRules.length; j < k; j++) {
+            var rule = sheet.cssRules[j];
+            if (rule.selectorText && rule.selectorText.split(',').indexOf(selector) !== -1) {
+                return rule.style[style];
+            }
+        }
+    }
+    return null;
+}
+
+/**
+ * Get BootStrap styleSheets index
+ * @returns {number}
+ */
+function getBootstrapStyleSheetsIndex() {
+    var sheets = document.styleSheets;
+    var count = sheets.length;
+    for (var i = 0; i < count; i++) {
+        var sheet = sheets[i];
+        var isBootstrap = new RegExp('bootstrap\\.min\\.css', 'i').test(sheet.href);
+        if(isBootstrap === true) {
+            return i;
+        }
+    }
+}
