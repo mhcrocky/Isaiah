@@ -11,9 +11,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         if(is_citation === false && is_searched == false) {
             window.scrollTo(0, 0);
         } else {
-            var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
+            //var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
             //var styleRuleValue = getStyleRuleValue('padding', '.lg', bootStrapStyleSheet);
-            //$('.header-container').first().height()
             var bootStrapEnv = findBootstrapEnvironment();
             var scrollPad = 0;
             if(bootStrapEnv == 'xs') {
