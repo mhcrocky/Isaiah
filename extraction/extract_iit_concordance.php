@@ -58,6 +58,10 @@
                     $subject_verse = $matches[0];
                     $chapter_number = $matches[1];
                     $verse_number = $matches[2];
+                    if($chapter_number == 41 && $verse_number == 7) {
+                        $chapter_number = 40;
+                        $verse_number = 41.7;
+                    }
                     $chapter_id = get_book_chapter_id('Isaiah IIT', $chapter_number, $amysql);
                     $verse_id = get_book_verse_id('Isaiah IIT', $chapter_number, $verse_number, $amysql);
                     $segment_letter = toAlpha($segment_id, 1);
