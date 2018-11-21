@@ -1,5 +1,6 @@
 <?php
-
+//Flatten::flushAll();
+//Flatten::flushPattern('resources/.+');
 /*
 |--------------------------------------------------------------------------
 | Application Routes
