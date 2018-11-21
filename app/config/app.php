@@ -125,6 +125,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
         'DaveJamesMiller\Boris\BorisServiceProvider',
+        'Flatten\FlattenServiceProvider',
 
 	),
 
@@ -192,6 +193,7 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
+        'Flatten'         => 'Flatten\Facades\Flatten',
 
 	),
 

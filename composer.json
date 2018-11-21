@@ -8,7 +8,8 @@
 	    "way/generators": "~3.0",
         "twitter/bootstrap": "dev-master",
         "conarwelsh/mustache-l4": "dev-master",
-	    "davejamesmiller/laravel-boris": "dev-master"
+	    "davejamesmiller/laravel-boris": "dev-master",
+		"anahkiasen/flatten": "dev-master"
 	},
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
