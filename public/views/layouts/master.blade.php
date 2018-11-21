@@ -92,8 +92,8 @@
     <!-- Bootstrap 3.1.1 -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
     <!--<script src="{{ asset('js/bootstrap.min.js') }}"></script>-->
-    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
     <?php if (Config::get('app.debug') == 'debug') { ?>
+    <script src="{{ asset('js/jquery.cookie.js') }}"></script>
     <script src="{{ asset('js/findAndReplaceDOMText.js') }}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
     <?php } else { ?>
