@@ -12,7 +12,8 @@
         <!-- Bootstrap 3.1.1 -->
         <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet" />
         <!-- IsaiahExplained -->
-        <link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" media="screen" />
+        {{--<link href="{{ asset('css/styles.css') }}" rel="stylesheet" type="text/css" media="screen" />--}}
+        <link href="http://isaiahexplained.com/blog/wp-content/themes/ie04/style-master.css" rel="stylesheet" type="text/css" media="screen" />
 
         <!-- Support for full multi-stop gradients with IE9 (using SVG) -->
         <!--[if gte IE 9]>
