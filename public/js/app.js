@@ -14,9 +14,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             //var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
             //var styleRuleValue = getStyleRuleValue('padding', '.lg', bootStrapStyleSheet);
             var bootStrapEnv = findBootstrapEnvironment();
-            var scrollPad = 0;
+            var scrollPad;
             if(bootStrapEnv == 'xs') {
                 scrollPad = $('.header-container').first().height();
+            } else {
+                scrollPad = 0;
             }
             if(is_citation === true) {
                 $(window).scrollTop(citationSpan.offset().top - scrollPad);
@@ -30,7 +32,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 //alias the global object
 //alias jQuery so we can potentially use other libraries that utilize $
 //alias Backbone to save us on some typing
-(function(exports, $, bb){
+(function(exports, $){
 
     //document ready
     $(function(){
@@ -40,10 +42,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          * Cached Globals
          ***************************************
          */
-        var $window, $body, $document;
+        //var $window, $body, $document;
+        var $body;
 
-        $window  = $(window);
-        $document = $(document);
+        //$window  = $(window);
+        //$document = $(document);
         $body   = $('body');
 
         /**
@@ -242,6 +245,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
         $(".nav-read-isaiah").find("a").on('click', function (e) {
             window.location = $(e.currentTarget).attr("href");
+            e.preventDefault();
         });
 
         window.isTabShown = false;
@@ -269,6 +273,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                 selectTab(hash);
                 setNavHash(hash);
                 window.isTabShown = true;
+                window.scrollTo(0, 0);
             } else {
                 window.location = $(e.currentTarget).attr("href");
             }
@@ -301,18 +306,18 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             }
         } else if(location.pathname.indexOf('/search') > -1) {
             var term_or_terms = location.pathname.split('/')[2];
-            var is_exact = RegExp('%22', 'g').test(term_or_terms);
+            var is_exact = new RegExp('%22', 'g').test(term_or_terms);
             var search_phrase = $(document).find("input[name=search-box]").val().replace(/"/g, '');
             if(is_exact == false) {
                 var search_parts = search_phrase.split(' ');
             }
             $('ol > li > span').each(function() {
                 if(this.innerHTML != undefined) {
+                    var replacement;
                     if(is_exact == true) {
-                        var replacement = new RegExp('\\b(' + search_phrase + ')\\b', 'ig');
+                        replacement = new RegExp('\\b(' + search_phrase + ')\\b', 'ig');
                         this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
                     } else {
-                        var replacement = new RegExp('(' + search_phrase + ')', 'ig');
                         search_parts.forEach(function(value, index) {
                             var replacement = new RegExp('(' + value + ')', 'ig');
                             this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
@@ -516,8 +521,6 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             );
         }
 
-        var test = 1;
-
         $.fn.outerHTML = function(s) {
             return s
                 ? this.before(s).remove()
@@ -559,12 +562,8 @@ function findBootstrapEnvironment() {
 
 /**
  * http://stackoverflow.com/questions/16965515/how-to-get-a-style-attribute-from-a-css-class-by-javascript-jquery
- * @param style
- * @param selector
- * @param sheet
- * @returns {*}
  */
-function getStyleRuleValue(style, selector, sheet) {
+/*function getStyleRuleValue(style, selector, sheet) {
     var sheets = typeof sheet !== 'undefined' ? [sheet] : document.styleSheets;
     for (var i = 0, l = sheets.length; i < l; i++) {
         var sheet = sheets[i];
@@ -577,12 +576,9 @@ function getStyleRuleValue(style, selector, sheet) {
         }
     }
     return null;
-}
+}*/
 
-/**
- * Get BootStrap styleSheets index
- * @returns {number}
- */
+/*
 function getBootstrapStyleSheetsIndex() {
     var sheets = document.styleSheets;
     var count = sheets.length;
@@ -593,4 +589,4 @@ function getBootstrapStyleSheetsIndex() {
             return i;
         }
     }
-}
+}*/
