@@ -46,6 +46,7 @@ class ConcordanceController extends BaseController {
         View::share('concordance_letter', $concordance_letter);
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
         View::share('letters', WidgetRepository::GetConcordanceSelection($concordance_letter));
+        //View::share('search_term', Input::get('search', ''));
 
         return View::make('layouts.concordance', $template_data)
             ->nest('heading', 'headings.concordance', $header_data)

@@ -50,7 +50,8 @@ class IndexController extends BaseController {
         );
 
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
-        View::share('letters', WidgetRepository::GetConcordanceSelection());*/
+        View::share('letters', WidgetRepository::GetConcordanceSelection());
+        View::share('search_term', Input::get('search', ''));*/
 
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.chapter-index')
