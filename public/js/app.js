@@ -451,9 +451,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         var searchQueryString = getQueryStringKey('search');
         if(verseQueryString != undefined && searchQueryString != undefined) {
             var verse_number = verseQueryString;
-            //var search = searchQueryString;
-            var search = $(document).find("input[name=search-box]").first().val();
-            //$(document).find("input[name=search-box]").val(search);
+            var search = searchQueryString;
+            //var search = $(document).find("input[name=search-box]").first().val();
             var iitVerseSpan = $('#iit_search_' + verse_number);
             iitDiv = iitVerseSpan.next();
             if(location.pathname.indexOf('/concordance') == -1) {

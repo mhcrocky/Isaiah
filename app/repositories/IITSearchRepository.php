@@ -46,7 +46,7 @@ EOT;
             for ($i = 0; $i < $result_count; $i++) {
                 $chapter_number = $search_results[$i]->chapter_number;
                 $verse_number = $this->_strrtrim($search_results[$i]->verse_number, '.0');
-                $scripture_text = html_entity_decode($search_results[$i]->scripture_text);
+                $scripture_text = html_entity_decode($search_results[$i]->scripture_text_plain);
                 $scripture_text = preg_replace('/<span\b[^>]*>(.*)<\/span>/U', ' $1 ', $scripture_text);
                 $scripture_text = preg_replace('/\s\s/', ' ', $scripture_text);
                 $scripture_text = preg_replace('/<b>|<\/b>/', '', $scripture_text);
@@ -107,7 +107,7 @@ EOT;
                 }
             })
             ->select('chapters.id as chapter_id', 'verses.id as verse_id', 'chapters.chapter_number',
-                'verses.verse_number', 'verses.scripture_text', 'verses.segment_id',
+                'verses.verse_number', 'verses.scripture_text_plain', 'verses.segment_id',
                 'verses.is_poetry', 'verses.one_col_html',  'verses.three_col_html')->get();
         $count_result = DB::table('volumes')
             /*->orderBy('volumes.id')
