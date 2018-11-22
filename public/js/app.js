@@ -255,7 +255,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          * Store the currently selected tab in the hash value and update nav links
          */
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']").on('click', function (e) {
-            if (location.pathname != '/') {
+            if (location.pathname != '/'
+                && location.pathname.indexOf('/concordance') == -1
+                && location.pathname.indexOf('/resources') == -1
+                && location.pathname.indexOf('/Isaiah-Institute-Translation') == -1
+                && location.pathname.indexOf('/about') == -1) {
                 var id;
                 if($(e.target).parent().attr("href") != undefined) {
                     id = $(e.target).parent().attr("href").substr(1);
@@ -287,7 +291,9 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
         if(location.pathname.indexOf('/concordance') == -1
             && location.pathname.indexOf('/search') == -1
-                && location.pathname.indexOf('/resources') == -1) {
+            && location.pathname.indexOf('/resources') == -1
+            && location.pathname.indexOf('/Isaiah-Institute-Translation') == -1
+            && location.pathname.indexOf('/about') == -1) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);
