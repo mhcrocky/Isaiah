@@ -9,7 +9,8 @@
         "twitter/bootstrap": "dev-master",
         "conarwelsh/mustache-l4": "dev-master",
 	    "davejamesmiller/laravel-boris": "dev-master",
-		"anahkiasen/flatten": "dev-master"
+		"anahkiasen/flatten": "dev-master",
+		"barryvdh/laravel-ide-helper": "~1.11@dev"
 	},
     "require-dev": {
         "phpunit/phpunit": "3.7.*",
@@ -33,6 +34,7 @@
 		],
 		"post-update-cmd": [
 			"php artisan clear-compiled",
+                        "php artisan ide-helper:generate",
 			"php artisan optimize"
 		],
 		"post-create-project-cmd": [

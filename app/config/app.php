@@ -40,7 +40,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Los_Angeles',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -126,6 +126,7 @@ return array(
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
         'DaveJamesMiller\Boris\BorisServiceProvider',
         'Flatten\FlattenServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
 
 	),
 
