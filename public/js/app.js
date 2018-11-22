@@ -307,7 +307,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         } else if(location.pathname.indexOf('/search') > -1) {
             var term_or_terms = location.pathname.split('/')[2];
             var is_exact = new RegExp('%22', 'g').test(term_or_terms);
-            var search_phrase = $(document).find("input[name=search-box]").val().replace(/"/g, '');
+            var search_phrase = $(document).find("input[name=search-box]").first().val().replace(/"/g, '');
             if(is_exact == false) {
                 var search_parts = search_phrase.split(' ');
             }
