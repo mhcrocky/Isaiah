@@ -48,6 +48,7 @@
                 </div>
                 <div class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
+                        <li><a title="Home" href="/"><i class="fa fa-home fa-fw"></i>&nbsp;<span>Home</span></a></li>
                         <li class="dropdown"><a title="<i class=&quot;fa fa-graduation-cap fa-fw&quot;></i>&nbsp;<span>Resources</span>" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;<span>Resources</span> <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a title="Key Features of the Prophecy of Isaiah" href="/resources/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
