@@ -17,9 +17,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             //var scrollPad = $('.header-container:visible').height();
             var scrollPad;
             if(bootStrapEnv == 'xs') {
-                scrollPad = $('.header-container').first().height() + 5;
+                //scrollPad = $('.header-container').first().height() + 5;
+                scrollPad = $('.header-container').first().height();
             } else {
-                scrollPad = $('.heading-chapters:visible').height() - 40;
+                //scrollPad = $('.heading-chapters:visible').height() - 40;
+                scrollPad = $('.heading-chapters:visible').height();
             }
             if(is_citation === true) {
                 $(window).scrollTop(citationSpan.offset().top - scrollPad);
