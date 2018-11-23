@@ -14,11 +14,12 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             //var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
             //var styleRuleValue = getStyleRuleValue('padding', '.lg', bootStrapStyleSheet);
             var bootStrapEnv = findBootstrapEnvironment();
+            //var scrollPad = $('.header-container:visible').height();
             var scrollPad;
             if(bootStrapEnv == 'xs') {
-                scrollPad = $('.header-container').first().height();
+                scrollPad = $('.header-container').first().height() + 5;
             } else {
-                scrollPad = 0;
+                scrollPad = $('.heading-chapters:visible').height() - 40;
             }
             if(is_citation === true) {
                 $(window).scrollTop(citationSpan.offset().top - scrollPad);
@@ -284,6 +285,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             e.preventDefault();
         });
 
+        $("#dropdown-heading-tabs > li > a").on('click', function (e) {
+            window.location = $(e.currentTarget).attr("href");
+            e.preventDefault();
+        });
+
         /**
          * On load of the page: switch to the currently selected tab
          */
@@ -449,6 +455,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                             citationSpan.addClass('highlight');
                     }
                 }
+                //$(window).scrollTop(citationSpan.offset().top);
                 is_citation = true;
             }
         }
@@ -490,11 +497,21 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                             alert('Next class isnt the verse modal link. It is: ' + next_class);
                         }
                     }
-                    $(window).scrollTop(iitDiv.offset().top);
+                    //var scrollPad = $('.header-container:visible').height();
+                    //$(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }
             }
         }
+
+        $(window).scroll(function(){
+            if ($(window).scrollTop() >= 105) {
+                $('.heading').addClass('fixed');
+            }
+            else {
+                $('.heading').removeClass('fixed');
+            }
+        });
 
         function highlightSearchTerm(domElement, searchRegex, verse_number) {
             window.highlight_verse = parseInt(verse_number);
