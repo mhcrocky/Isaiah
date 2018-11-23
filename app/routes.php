@@ -21,7 +21,7 @@ Route::get('/', 'IndexController@showIndex');
 Route::get('/Isaiah-Institute-Translation', 'IndexController@showIITInfo');
 Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');
 
-Route::get('/concordance', 'ConcordanceController@showIndex');
+//Route::get('/concordance', 'ConcordanceController@showIndex');
 Route::get('/concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Za-z]');
 
 Route::get('/resources', 'ResourceController@showIndex');
