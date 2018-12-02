@@ -18,7 +18,11 @@
 
             </div> <!-- End One Col Padding -->
 
-
+            <ul class="chapter-selection">
+                {{#letters}}
+                    <li><a class="btn {{button_class}} btn-chapter-sel" href="/concordance/{{selection_letter}}">{{selection_letter}}</a></li>
+                {{/letters}}
+            </ul>
         </main>
 
         {{> asides.concordance}}

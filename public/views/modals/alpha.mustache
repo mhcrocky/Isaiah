@@ -6,7 +6,11 @@
                 <h4 class="modal-title" id="myModalLabel">Alphabetical List</h4>
             </div>
             <div class="modal-body">
-                {{> widgets.letter-selection-concordance}}
+                <ul class="chapter-selection">
+                    {{#letters}}
+                        <li><a class="btn {{button_class}} btn-chapter-sel" href="/concordance/{{selection_letter}}">{{selection_letter}}</a></li>
+                    {{/letters}}
+                </ul>
             </div>
         </div>
     </div>

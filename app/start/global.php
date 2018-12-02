@@ -32,6 +32,9 @@ ClassLoader::addDirectories(array(
 */
 
 Log::useFiles(storage_path().'/logs/laravel.log');
+if(Config::get('app.debug') == true) {
+    Log::getMonolog()->pushHandler(new \Monolog\Handler\ChromePHPHandler());
+}
 
 /*
 |--------------------------------------------------------------------------

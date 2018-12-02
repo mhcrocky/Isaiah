@@ -260,6 +260,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']").on('click', function (e) {
             if (location.pathname != '/'
                 && location.pathname.indexOf('/concordance') == -1
+                && location.pathname.indexOf('/search') == -1
                 && location.pathname.indexOf('/resources') == -1
                 && location.pathname.indexOf('/Isaiah-Institute-Translation') == -1
                 && location.pathname.indexOf('/about') == -1) {
@@ -321,7 +322,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         } else if(location.pathname.indexOf('/search') > -1) {
             var term_or_terms = location.pathname.split('/')[2];
             var is_exact = new RegExp('%22', 'g').test(term_or_terms);
-            var search_phrase = $(document).find("input[name=search-box]").first().val().replace(/"/g, '');
+            var search_phrase = $(document).find("input[name=search-box]:visible").first().val().replace(/"/g, '');
             if(is_exact == false) {
                 var search_parts = search_phrase.split(' ');
             }

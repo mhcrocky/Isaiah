@@ -46,26 +46,7 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="/"><img src="/images/isaiah-explained-logo.png" alt="IsaiahExplained.com"></a>
                 </div>
-                <div class="navbar-collapse collapse navbar-right">
-                    <ul class="nav navbar-nav">
-                        <li><a title="Home" href="/"><i class="fa fa-home fa-fw"></i>&nbsp;<span>Home</span></a></li>
-                        <li class="dropdown"><a title="<i class=&quot;fa fa-graduation-cap fa-fw&quot;></i>&nbsp;<span>Resources</span>" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;<span>Resources</span> <span class="caret"></span></a>
-                            <ul role="menu" class="dropdown-menu">
-                                <li><a title="Key Features of the Prophecy of Isaiah" href="/resources/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
-                                <li><a title="Isaiah&rsquo;s Layered Literary Structures" href="/resources/isaiahs-layered-literary-structures/">Isaiah&rsquo;s Layered Literary Structures</a></li>
-                                <li><a title="Isaiah&rsquo;s Seven Spiritual Levels of Humanity" href="/resources/isaiahs-seven-spiritual-levels-of-humanity/">Isaiah&rsquo;s Seven Spiritual Levels of Humanity</a></li>
-                                <li><a title="Isaiah&rsquo;s Ancient Types of End-Time Events" href="/resources/isaiahs-ancient-types-of-end-time-events/">Isaiah&rsquo;s Ancient Types of End-Time Events</a></li>
-                                <li><a title="Overviews of the Prophecy of Isaiah" href="/resources/overviews-of-the-prophecy-of-isaiah/">Overviews of the Prophecy of Isaiah</a></li>
-                                <li><a title="Glossary of Terms Relating to Isaiah" href="/resources/glossary-of-terms-relating-to-isaiah/">Glossary of Terms Relating to Isaiah</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="/blog/"><i class="fa fa-rss fa-fw"></i> Blog</a></li>
-                        <li><a href="/blog/contact/"><i class="fa fa-envelope fa-fw"></i> Contact</a></li>
-                        <li class="show-hide nav-search">
-                            {{ $mobile_search or '' }}
-                        </li>
-                    </ul>
-                </div><!-- End nav-collapse -->
+                <?php include(public_path() . "/blog/wp-content/themes/ie04/nav.php"); ?>
             </nav><!-- End Container -->
         </header>
         {{ $heading }}
@@ -99,7 +80,7 @@
     <?php } else { ?>
     <script src="{{ asset('js/jquery.cookie.min.js') }}"></script>
     <script src="{{ asset('js/findAndReplaceDOMText.min.js') }}"></script>
-    <script src="{{ asset('js/app.min.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
     <?php } ?>
     @yield('scripts')
 </body>
