@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData">
+  <component name="PublishConfigData" serverName="isaiahexplained">
     <serverData>
-      <paths name="Homestead">
+      <paths name="isaiahexplained">
         <serverdata>
           <mappings>
-            <mapping deploy="/Code/Laravel/public" local="$PROJECT_DIR$" web="/" />
+            <mapping local="$PROJECT_DIR$/public" web="/" />
+            <mapping local="$PROJECT_DIR$/app" />
           </mappings>
         </serverdata>
       </paths>
