@@ -5,8 +5,9 @@
       <paths name="isaiahexplained">
         <serverdata>
           <mappings>
-            <mapping local="$PROJECT_DIR$/public" web="/" />
-            <mapping local="$PROJECT_DIR$/app" />
+            <mapping deploy="/Code/isaiahexplained/public" local="$PROJECT_DIR$/public" web="/" />
+            <mapping deploy="/Code/isaiahexplained/app" local="$PROJECT_DIR$/app" />
+            <mapping deploy="/Code/isaiahexplained" local="$PROJECT_DIR$" />
           </mappings>
         </serverdata>
       </paths>
