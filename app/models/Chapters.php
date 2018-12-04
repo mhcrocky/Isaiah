@@ -16,7 +16,7 @@ class Chapter extends Eloquent {
      */
     public $timestamps = false;
 
-    public function verse() {
+    public function verses() {
         return $this->hasMany('Verse');
     }
 

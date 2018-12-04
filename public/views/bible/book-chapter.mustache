@@ -1,0 +1,10 @@
+<main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+    <h1 class="title-chapters non-mobile">{{book_title}} {{chapter_number}}</h1>
+    <hr>
+    <div class="row chapter-table">
+        {{#book_verses}}
+            <p>{{verse_number}} {{scripture_text}}</p>
+        {{/book_verses}}
+    </div>
+</main>
+{{> asides.chapter-index}}

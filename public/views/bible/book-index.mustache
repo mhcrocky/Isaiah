@@ -1,0 +1,19 @@
+<main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+    <h1 class="title-chapters non-mobile">Bible Index</h1>
+    <hr>
+    <div class="row chapter-table">
+        <h4>Old Testament</h4>
+        {{#index_ot}}
+            <span class="col-xs-6 col-lg-4">
+                <h2><a class="btn-chapter-sel" href="/bible/{{book_lds_url}}">{{book_title}}</a></h2>
+            </span>
+        {{/index_ot}}
+        <h4>New Testament</h4>
+        {{#index_nt}}
+            <span class="col-xs-6 col-lg-4">
+                <h2><a class="btn-chapter-sel" href="/bible/{{book_lds_url}}">{{book_title}}</a></h2>
+            </span>
+        {{/index_nt}}
+    </div>
+</main>
+{{> asides.chapter-index}}

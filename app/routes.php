@@ -21,6 +21,11 @@ Route::get('/', 'IndexController@showIndex');
 Route::get('/Isaiah-Institute-Translation', 'IndexController@showIITInfo');
 Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');
 
+Route::get('/bible', 'BibleController@showIndex');
+Route::get('/bible/{bookAbbr}', 'BibleController@showBookIndex')->where('bookAbbr', '[a-z]+|\d-[a-z]+');
+Route::get('/bible/{bookAbbr}/{chapterNumber}', 'BibleController@showBookChapter')
+    ->where(array('bookAbbr' => '[a-z]+|\d-[a-z]+', 'chapterNumber' => '[0-9]+'));
+
 //Route::get('/concordance', 'ConcordanceController@showIndex');
 Route::get('/concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Za-z]');
 

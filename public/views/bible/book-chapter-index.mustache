@@ -1,0 +1,12 @@
+<main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+    <h1 class="title-chapters non-mobile">{{book_title}}</h1>
+    <hr>
+    <div class="row chapter-table">
+        {{#book_chapters}}
+            <span class="col-xs-6 col-lg-4">
+                <h2><a class="btn-chapter-sel" href="/bible/{{book_abbr}}/{{chapter_number}}">{{chapter_number}}</a></h2>
+            </span>
+        {{/book_chapters}}
+    </div>
+</main>
+{{> asides.chapter-index}}

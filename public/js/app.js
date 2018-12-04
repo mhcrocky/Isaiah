@@ -259,6 +259,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          */
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']").on('click', function (e) {
             if (location.pathname != '/'
+                && location.pathname.indexOf('/bible') == -1
                 && location.pathname.indexOf('/concordance') == -1
                 && location.pathname.indexOf('/search') == -1
                 && location.pathname.indexOf('/resources') == -1
@@ -299,6 +300,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         var hash = window.location.hash;
 
         if(location.pathname.indexOf('/concordance') == -1
+            && location.pathname.indexOf('/bible') == -1
             && location.pathname.indexOf('/search') == -1
             && location.pathname.indexOf('/resources') == -1
             && location.pathname.indexOf('/Isaiah-Institute-Translation') == -1
