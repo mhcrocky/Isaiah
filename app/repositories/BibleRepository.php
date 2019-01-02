@@ -6,6 +6,15 @@ class BibleRepository {
      *
      * @return Book Bible books
      */
+    public static function GetKJVBookIndex() {
+        return Book::where('volume_id', '<=', 2)->get();
+    }
+
+    /**
+     * Gets books from the Old Testament
+     *
+     * @return Book Bible books
+     */
     public static function GetOTBookIndex() {
         return Book::where('volume_id', '=', 1)->get();
     }
@@ -33,7 +42,7 @@ class BibleRepository {
      * Get Book's Chapters
      *
      * @param $book_abbr
-     * @return Chapters
+     * @return Chapter
      */
     public static function GetBookChapters($book_abbr) {
         return Book::where('book_lds_url', '=', $book_abbr)->first()->chapters;
@@ -47,9 +56,6 @@ class BibleRepository {
      * @return Verse
      */
     public static function GetChapterVerses($book_abbr, $chapter_number) {
-        //Book::where('book_lds_url', '=', 'gen')->where('chapter_number', '=', 1)->first()->verses
-        $test = 1;
         return Book::where('book_lds_url', '=', $book_abbr)->first()->chapters()->where('chapter_number', '=', $chapter_number)->first()->verses;
-        //return Verse::where('book_lds_url', '=', $book_abbr)->where('chapter_number', '=', $chapter_number)->first()->verses;
     }
 } 

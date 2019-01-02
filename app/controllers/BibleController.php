@@ -12,12 +12,30 @@ class BibleController extends \BaseController {
         $template_data = array(
             'title' => 'The Holy Bible',
             'body_id' => 'book-index',
-            'body_css' => 'scriptures section-heading'
+            'body_css' => 'bible scriptures section-heading'
         );
 
+        $book_index = BibleRepository::GetKJVBookIndex();
+
+        $books = [];
+
+        /*foreach($book_index as $book) {
+            $books[] = $book->book_lds_url;
+            $book_chapters = BibleRepository::GetBookChapters($book_abbr);
+        }*/
+
+        $books = [];
+        $book_index_count = count($book_index);
+        for($i = 0; $i < $book_index_count; $i++) {
+            $books[$i]['book_lds_url'] = $book_index[$i]->book_lds_url;
+            $books[$i]['book_title'] = $book_index[$i]->book_title;
+            $books[$i]['book_chapters'] = BibleRepository::GetBookChapters($book_index[$i]->book_lds_url);
+        }
+
         $content_data = array(
-            'index_ot' => BibleRepository::GetOTBookIndex(),
-            'index_nt' => BibleRepository::GetNTBookIndex()
+            'books' => $books
+            /*'index_ot' => BibleRepository::GetOTBookIndex(),
+            'index_nt' => BibleRepository::GetNTBookIndex()*/
         );
 
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
@@ -25,7 +43,7 @@ class BibleController extends \BaseController {
 
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.chapter-index')
-            ->nest('top_nav', 'widgets.chapter-selection-top')
+            //->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'bible.book-index', $content_data);
 	}
@@ -41,7 +59,7 @@ class BibleController extends \BaseController {
         $template_data = array(
             'title' => $title,
             'body_id' => 'book-index',
-            'body_css' => 'scriptures section-heading'
+            'body_css' => 'bible scriptures section-heading'
         );
 
         $content_data = array(
@@ -71,7 +89,7 @@ class BibleController extends \BaseController {
         $template_data = array(
             'title' => "$title $chapter_number",
             'body_id' => 'book-index',
-            'body_css' => 'scriptures section-heading'
+            'body_css' => 'bible scriptures section-heading'
         );
 
         $content_data = array(
