@@ -18,19 +18,32 @@ class BibleController extends \BaseController {
         $book_index = BibleRepository::GetKJVBookIndex();
 
         $books = [];
+        $book_count = count($book_index);
+        for($i = 0; $i < $book_count; $i++) {
+            $books[$i]['book_lds_url'] = $book_index[$i]->book_lds_url;
+            $books[$i]['book_title'] = $book_index[$i]->book_title;
+            $books[$i]['book_chapters'] = BibleRepository::GetBookChapters($book_index[$i]->book_lds_url);
+        }
 
-        /*foreach($book_index as $book) {
-            $books[] = $book->book_lds_url;
-            $book_chapters = BibleRepository::GetBookChapters($book_abbr);
-        }*/
-
-        $books = [];
+        /*$books = [];
         $book_index_count = count($book_index);
         for($i = 0; $i < $book_index_count; $i++) {
             $books[$i]['book_lds_url'] = $book_index[$i]->book_lds_url;
             $books[$i]['book_title'] = $book_index[$i]->book_title;
             $books[$i]['book_chapters'] = BibleRepository::GetBookChapters($book_index[$i]->book_lds_url);
-        }
+            foreach($books[$i]['book_chapters'] as $book_chapter) {
+                $chapter_verses = BibleRepository::GetChapterVerses($books[$i]['book_lds_url'], $book_chapter->chapter_number);
+                foreach($chapter_verses as $chapter_verse) {
+                    $chapter_verse->scripture_text = preg_replace_callback('/[A-Z]+/',
+                        function($match) {
+                            return ucfirst(strtolower($match[0]));
+                        },
+                        $chapter_verse->scripture_text
+                    );
+                    $chapter_verse->save();
+                }
+            }
+        }*/
 
         $content_data = array(
             'books' => $books

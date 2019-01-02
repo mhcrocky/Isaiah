@@ -58,4 +58,6 @@ class BibleRepository {
     public static function GetChapterVerses($book_abbr, $chapter_number) {
         return Book::where('book_lds_url', '=', $book_abbr)->first()->chapters()->where('chapter_number', '=', $chapter_number)->first()->verses;
     }
+
+
 } 
