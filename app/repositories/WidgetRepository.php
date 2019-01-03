@@ -21,6 +21,25 @@ class WidgetRepository {
     }
 
     /**
+     * Gets html for the chapter selection widget
+     *
+     * @param int $chapter Chapter number
+     * @return array Chapter selection array for mustache template
+     */
+    public static function GetKJVChapterSelection($chapter, $chapter_count) {
+        $chapter_selection = array();
+        for($j = 0, $i = 1; $j < $chapter_count; $j++, $i++) {
+            $chapter_selection[$j]['selection_number'] = $i;
+            if($i == $chapter) {
+                $chapter_selection[$j]['button_class'] = 'btn-warning';
+            } else {
+                $chapter_selection[$j]['button_class'] = 'btn-default';
+            }
+        }
+        return $chapter_selection;
+    }
+
+    /**
      * Gets html for the concordance letter selection widget
      *
      * @param string $letter Concordance letter

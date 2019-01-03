@@ -86,16 +86,17 @@ class BibleController extends \BaseController {
         $content_data = array(
             'book_title' => $title,
             'chapter_number' => $chapter_number,
-            'book_abbr' => $book_abbr,
+            //'book_abbr' => $book_abbr,
             'book_verses' => BibleRepository::GetChapterVerses($book_abbr, $chapter_number)
         );
 
-        View::share('chapters', WidgetRepository::GetChapterSelection(0));
+        View::share('book_abbr', $book_abbr);
+        View::share('chapters', WidgetRepository::GetKJVChapterSelection($chapter_number, count(BibleRepository::GetBookChapters($book_abbr))));
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.chapter-index')
-            ->nest('top_nav', 'widgets.chapter-selection-top')
+            ->nest('top_nav', 'widgets.chapter-selection-kjv-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'bible.book-chapter', $content_data);
     }
