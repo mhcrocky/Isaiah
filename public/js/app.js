@@ -3,26 +3,33 @@
  */
 var is_citation = false;
 var is_searched = false;
+var is_kjv_reference = false;
 var citationSpan;
 var iitDiv;
+var kjvDiv;
 if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
     window.scrollTo(0, 0);
     setTimeout(function() {
+        var bootStrapEnv = findBootstrapEnvironment();
+
+        var scrollPad;
+        //var scrollPad = $('.header-container:visible').height();
+        if(bootStrapEnv == 'xs') {
+            //scrollPad = $('.header-container').first().height() + 5;
+            scrollPad = $('.header-container').first().height();
+        } else {
+            //scrollPad = $('.heading-chapters:visible').height() - 40;
+            scrollPad = $('.heading-chapters:visible').height();
+        }
         if(is_citation === false && is_searched == false) {
-            window.scrollTo(0, 0);
+            if (is_kjv_reference === true) {
+                $(window).scrollTop(kjvDiv.offset().top - scrollPad);
+            } else {
+                window.scrollTo(0, 0);
+            }
         } else {
             //var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
             //var styleRuleValue = getStyleRuleValue('padding', '.lg', bootStrapStyleSheet);
-            var bootStrapEnv = findBootstrapEnvironment();
-            //var scrollPad = $('.header-container:visible').height();
-            var scrollPad;
-            if(bootStrapEnv == 'xs') {
-                //scrollPad = $('.header-container').first().height() + 5;
-                scrollPad = $('.header-container').first().height();
-            } else {
-                //scrollPad = $('.heading-chapters:visible').height() - 40;
-                scrollPad = $('.heading-chapters:visible').height();
-            }
             if(is_citation === true) {
                 $(window).scrollTop(citationSpan.offset().top - scrollPad);
             } else if (is_searched === true) {
@@ -467,33 +474,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
         var verseQueryString = getQueryStringKey('verse');
         var verse_number;
-        if(verseQueryString != undefined) {
-            if(verseQueryString != '') {
-                if(verseQueryString.indexOf(',') > -1) {
-                    //CSV
-                    var highlightVerses = verseQueryString.split(',');
-                    var highlightCount = highlightVerses.length;
-                    for(i = 0; i < highlightCount; i++) {
-                        verse_number = highlightVerses[i];
-                        $('#verse_' + verse_number).addClass('highlight');
-                    }
-                } else if(verseQueryString.indexOf('-') > -1) {
-                    //Range
-                    var verseRanges = verseQueryString.split('-');
-                    var min = verseRanges[0];
-                    var max = verseRanges[1];
-                    for(i = min; i <= max; i++) {
-                        verse_number = i;
-                        $('#verse_' + verse_number).addClass('highlight');
-                    }
-                } else {
-                    //Default
-                    verse_number = verseQueryString;
-                    $('#verse_' + verse_number).addClass('highlight');
-                }
-            }
-        }
         var searchQueryString = getQueryStringKey('search');
+        //Search highlighting
         if(verseQueryString != undefined && searchQueryString != undefined) {
             verse_number = verseQueryString;
             var search = searchQueryString;
@@ -533,6 +515,53 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                     //$(window).scrollTop(iitDiv.offset().top);
                     is_searched = true;
                 }
+            }
+        }
+
+        //KJV Verse highlighting
+        if(verseQueryString != undefined) {
+            //kjvDiv =  $('#verse_' + verse_number);
+            if(verseQueryString != '') {
+                is_kjv_reference = true;
+                //CSV
+                if(verseQueryString.indexOf(',') > -1) {
+                    var verseParts = verseQueryString.split(',');
+                    var highlightCount = verseParts.length;
+                    for(i = 0; i < highlightCount; i++) {
+                        //Verse
+                        if(verseParts[i].indexOf('-') == -1) {
+                            verse_number = verseParts[i];
+                            var verseTag = $('#verse_' + verse_number);
+                            verseTag.addClass('highlight');
+                            if(verse_number == 1) {
+                                kjvDiv = verseTag;
+                            }
+                        //Range
+                        } else {
+                            if(i == 0) {
+                                kjvDiv = $('#verse_' + verseParts[i].split('-')[0]);
+                            }
+                            highlightVerseRange(verseParts[i]);
+                        }
+                    }
+                //Range
+                } else if(verseQueryString.indexOf('-') > -1) {
+                    kjvDiv = $('#verse_' + verseQueryString.split('-')[0]);
+                    highlightVerseRange(verseQueryString);
+                //Default
+                } else {
+                    kjvDiv =  $('#verse_' + verseQueryString);
+                    kjvDiv.addClass('highlight');
+                }
+            }
+        }
+
+        function highlightVerseRange(verseRangeString) {
+            var verseRange = verseRangeString.split('-');
+            /*var min = verseRanges[0];
+             var max = verseRanges[1];*/
+            for(var i = verseRange[0]; i <= verseRange[1]; i++) {
+                $('#verse_' + i).addClass('highlight');
             }
         }
 
