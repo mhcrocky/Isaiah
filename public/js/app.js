@@ -466,9 +466,36 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         }
 
         var verseQueryString = getQueryStringKey('verse');
+        var verse_number;
+        if(verseQueryString != undefined) {
+            if(verseQueryString != '') {
+                if(verseQueryString.indexOf(',') > -1) {
+                    //CSV
+                    var highlightVerses = verseQueryString.split(',');
+                    var highlightCount = highlightVerses.length;
+                    for(i = 0; i < highlightCount; i++) {
+                        verse_number = highlightVerses[i];
+                        $('#verse_' + verse_number).addClass('highlight');
+                    }
+                } else if(verseQueryString.indexOf('-') > -1) {
+                    //Range
+                    var verseRanges = verseQueryString.split('-');
+                    var min = verseRanges[0];
+                    var max = verseRanges[1];
+                    for(i = min; i <= max; i++) {
+                        verse_number = i;
+                        $('#verse_' + verse_number).addClass('highlight');
+                    }
+                } else {
+                    //Default
+                    verse_number = verseQueryString;
+                    $('#verse_' + verse_number).addClass('highlight');
+                }
+            }
+        }
         var searchQueryString = getQueryStringKey('search');
         if(verseQueryString != undefined && searchQueryString != undefined) {
-            var verse_number = verseQueryString;
+            verse_number = verseQueryString;
             var search = searchQueryString;
             var iitVerseSpan = $('#iit_search_' + verse_number);
             iitDiv = iitVerseSpan.next();

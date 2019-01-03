@@ -29,8 +29,8 @@ class BibleController extends \BaseController {
             'books' => $books
         );
 
-        View::share('chapters', WidgetRepository::GetChapterSelection(0));
-        View::share('letters', WidgetRepository::GetConcordanceSelection());
+        /*View::share('chapters', WidgetRepository::GetChapterSelection(0));
+        View::share('letters', WidgetRepository::GetConcordanceSelection());*/
 
         return View::make('layouts.master', $template_data)
             ->nest('heading', 'headings.chapter-index')
@@ -59,7 +59,7 @@ class BibleController extends \BaseController {
             'book_chapters' => BibleRepository::GetBookChapters($book_abbr)
         );
 
-        View::share('chapters', WidgetRepository::GetChapterSelection(0));
+        View::share('chapters', WidgetRepository::GetKJVChapterSelection(0, count(BibleRepository::GetBookChapters($book_abbr))));
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
