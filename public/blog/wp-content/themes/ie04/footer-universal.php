@@ -5,9 +5,10 @@
 				<h3>Isaiah Explained</h3>
 				<ul>
 					<li><a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;<span>Home</span></a></li>
+					<li><a href="/bible"><i class="fa fa-book fa-fw"></i>&nbsp;<span>KJV Bible</span></a></li>
 					<li><a href="#"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
 					<li><a href=""><i class="fa fa-info-circle fa-fw"></i>&nbsp;<span>About</span></a></li>
-					<li><a href="http://isaiahexplained.com/blog/contact/"><i class="fa fa-envelope fa-fw"></i>&nbsp;<span>Contact</span></a></li>
+<!-- 					<li><a href="http://isaiahexplained.com/blog/contact/"><i class="fa fa-envelope fa-fw"></i>&nbsp;<span>Contact</span></a></li> -->
 				</ul>
 			</div>
 			<div class="col-xs-12 col-sm-3 col-list">
