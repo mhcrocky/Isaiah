@@ -17,12 +17,15 @@
                 {{{concordance_html}}}
 
             </div> <!-- End One Col Padding -->
+            
+            {{> widgets.ad-concordance}}
 
             <ul class="chapter-selection">
                 {{#letters}}
                     <li><a class="btn {{button_class}} btn-chapter-sel" href="/concordance/{{selection_letter}}">{{selection_letter}}</a></li>
                 {{/letters}}
             </ul>
+
         </main>
 
         {{> asides.concordance}}
