@@ -12,7 +12,7 @@
         <li><a title="KJV Bible" href="/bible">KJV Bible</a></li>
       </ul>
      </li>
-     <li><a href="#"><i class="fa fa-book fa-fw"></i> <span>KJV Bible</span></a></li>
+     <li><a href="/bible/"><i class="fa fa-book fa-fw"></i> <span>KJV Bible</span></a></li>
      <li><a href="#"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
      <li><a href="//isaiahexplained.com/blog/contact/"><i class="fa fa-envelope fa-fw"></i> <span>Contact</span></a></li>
      <li class="show-hide nav-search">
