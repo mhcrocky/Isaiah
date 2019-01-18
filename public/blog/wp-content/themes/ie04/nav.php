@@ -9,7 +9,6 @@
         <li><a title="Isaiah's Ancient Types of End-Time Events" href="/resources/isaiahs-ancient-types-of-end-time-events/">Isaiah's Ancient Types of End-Time Events</a></li>
         <li><a title="Overviews of the Prophecy of Isaiah" href="/resources/overviews-of-the-prophecy-of-isaiah/">Overviews of the Prophecy of Isaiah</a></li>
         <li><a title="Glossary of Terms Relating to Isaiah" href="/resources/glossary-of-terms-relating-to-isaiah/">Glossary of Terms Relating to Isaiah</a></li>
-        <li><a title="KJV Bible" href="/bible">KJV Bible</a></li>
       </ul>
      </li>
      <li><a href="/bible/"><i class="fa fa-book fa-fw"></i> <span>KJV Bible</span></a></li>
