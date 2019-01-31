@@ -13,19 +13,19 @@
                         </ul>
                     </div>
 
-                    <!--<div class="nav-links col-sm-4 col-md-3">
-                        <ul class="nav">-->
-                    <!--<li>{{{heading_nav_left}}}</li>-->
-                    <!--<li><a id="nav-left-disabled" class="heading-nav-left fa fa-th hide-chapter-selection" href=""></a></li>-->
-                    <!--<li>{{{heading_nav_right}}}</li>-->
-                    <!--</ul>
-                </div>-->
+                    <div class="nav-links col-sm-4 col-md-3">
+                        <ul class="nav">
+                            <li>{{{heading_nav_left}}}</li>
+                            <li><a id="nav-left-disabled" class="heading-nav-left fa fa-th hide-chapter-selection" href=""></a></li>
+                            <li>{{{heading_nav_right}}}</li>
+                        </ul>
+                    </div>
 
                     <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!--<h1><a class="fa fa-book" href="/"></a> <a href="#chaptermodal" class="modal-trigger" data-toggle="modal">Isaiah {{chapter_number}}</a></h1>-->
+                    <!--<h1><a class="fa fa-book" href="/"></a> <a href="#chaptermodal" class="modal-trigger" data-toggle="modal">Isaiah {\{chapter_number}}</a></h1>-->
 
                 </div>
             </div>
@@ -39,6 +39,7 @@
                     <button type="button" class="navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-collapse">
                         <i class="fa fa-bars"></i>
                     </button>
+
                     <ul class="pull-right view-switcher">
                         <li class="dropdown">
                             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -54,15 +55,11 @@
                             </ul>
                         </li>
                     </ul>
-                    <div class="">
-                        <h1>The Holy Bible</h1>
-                        <p><a href="/bible/">King James Version</a></p>
-                    </div>
 
                     <div class="nav-links">
                         <ul class="nav">
                             <li>{{{heading_nav_left}}}</li>
-                            <li><h1><a href="#chaptermodal" class="modal-trigger" data-toggle="modal">{{title}} {{chapter_number}}</a></h1></li>
+                            <li><h1><a href="#chaptermodal" class="modal-trigger" data-toggle="modal">{{book_title}} {{chapter_number}}</a></h1></li>
                             <li>{{{heading_nav_right}}}</li>
                         </ul>
                     </div>
