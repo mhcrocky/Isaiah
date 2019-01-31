@@ -37,8 +37,9 @@ class ContactController extends \BaseController {
         if ($validator->passes()){
             Mail::send('emails.feedback', $input_data, function($message) use ($input_data)
             {
+                //$message->from(Config::get('app.system_email'), $input_data['full_name']);
                 $message->from($input_data['email'], $input_data['full_name']);
-                $message->to(Config::get('contact_email'))->subject($input_data['subject']);
+                $message->to(Config::get('app.contact_email'))->subject($input_data['subject']);
                 $message->setBody($input_data['body']);
             });
             // Redirect to page
