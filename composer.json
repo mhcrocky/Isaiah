@@ -25,7 +25,10 @@
 			"app/database/seeds",
 			"app/tests/TestCase.php",
             "app/repositories"
-		]
+		],
+		"psr-4": {
+			"IsaiahExplained\\": "app/src/"
+		}
 	},
 	"scripts": {
 		"post-install-cmd": [

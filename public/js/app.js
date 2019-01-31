@@ -113,12 +113,14 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         $("a[id*='commentary_sup_']").tooltip(commentary_tooltip_options);
 
         $("form").submit(function(e) {
-            e.preventDefault();
-            var search_term = $(this).find("input[name=search-box]").val();
-            if (search_term.length) {
-                window.location = '/search/' + search_term;
-            } else {
-                $(this).find("span[name=search-error]").text("Not valid!").show().fadeOut( 1000 );
+            if(location.pathname.indexOf('/contact') == -1) {
+                e.preventDefault();
+                var search_term = $(this).find("input[name=search-box]").val();
+                if (search_term != undefined && search_term.length) {
+                    window.location = '/search/' + search_term;
+                } else {
+                    $(this).find("span[name=search-error]").text("Not valid!").show().fadeOut(1000);
+                }
             }
         });
 

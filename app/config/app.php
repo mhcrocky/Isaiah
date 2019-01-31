@@ -4,6 +4,19 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Application Contact
+	|--------------------------------------------------------------------------
+	|
+	| Your application contact name and email address.
+	|
+	 */
+
+	'contact_name' => 'Avraham Gileadi',
+	//'contact_email' => 'avrahamgileadi@gmail.com',
+	'contact_email' => 'tj@ixqus.com',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Application Debug Mode
 	|--------------------------------------------------------------------------
 	|
@@ -107,7 +120,8 @@ return array(
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Hashing\HashServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		//'Illuminate\Html\HtmlServiceProvider',
+		'IsaiahExplained\Providers\HtmlServiceProvider',
 		'Illuminate\Log\LogServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
 		'Illuminate\Database\MigrationServiceProvider',
