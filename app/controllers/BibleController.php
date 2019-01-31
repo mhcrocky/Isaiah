@@ -87,7 +87,14 @@ class BibleController extends \BaseController {
             'book_title' => $title,
             'chapter_number' => $chapter_number,
             //'book_abbr' => $book_abbr,
-            'book_verses' => BibleRepository::GetChapterVerses($book_abbr, $chapter_number)
+            'book_verses' => BibleRepository::GetChapterVerses($book_abbr, $chapter_number),
+            'nav_links_light_left' => KJVPaginator::GetNav($book_abbr, $chapter_number, 'left', 'nav-links-light'),
+            'nav_links_light_right' => KJVPaginator::GetNav($book_abbr, $chapter_number, 'right', 'nav-links-light')
+        );
+
+        $header_data = array(
+            'heading_nav_left' => KJVPaginator::GetNav($book_abbr, $chapter_number, 'left', 'heading-chapters'),
+            'heading_nav_right' => KJVPaginator::GetNav($book_abbr, $chapter_number, 'right', 'heading-chapters')
         );
 
         View::share('book_abbr', $book_abbr);
@@ -95,8 +102,9 @@ class BibleController extends \BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
-            ->nest('heading', 'headings.bible-chapter-index')
+            ->nest('heading', 'headings.bible-chapter')
             ->nest('top_nav', 'widgets.chapter-selection-kjv-top')
+            ->nest('heading', 'headings.chapter', $header_data)
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'bible.book-chapter', $content_data);
     }

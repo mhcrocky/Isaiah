@@ -48,6 +48,10 @@ class BibleRepository {
         return Book::where('book_lds_url', '=', $book_abbr)->first()->chapters;
     }
 
+    public static function GetBookChaptersCount($book_abbr) {
+        return Book::where('book_lds_url', '=', $book_abbr)->first()->chapters()->count();
+    }
+
     /**
      * Get Book Chapter Verses
      *
