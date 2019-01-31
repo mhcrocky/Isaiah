@@ -57,7 +57,7 @@ class ResourceController extends BaseController {
                 break;
         }
         return View::make('layouts.master', $template_data)
-            ->nest('heading', 'headings.chapter-index')
+            ->nest('heading', 'headings.resources')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', $content_template, $content_data);
     }

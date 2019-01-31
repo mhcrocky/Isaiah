@@ -12,7 +12,7 @@ class BibleController extends \BaseController {
         $template_data = array(
             'title' => 'The Holy Bible',
             'body_id' => 'book-index',
-            'body_css' => 'bible scriptures section-heading'
+            'body_css' => 'bible scriptures tab-heading'
         );
 
         $book_index = BibleRepository::GetKJVBookIndex();
@@ -50,7 +50,7 @@ class BibleController extends \BaseController {
         $template_data = array(
             'title' => $title,
             'body_id' => 'book-index',
-            'body_css' => 'bible scriptures section-heading'
+            'body_css' => 'bible scriptures tab-heading'
         );
 
         $content_data = array(
@@ -81,7 +81,7 @@ class BibleController extends \BaseController {
         $template_data = array(
             'title' => "{$book_title} {$chapter_number}",
             'body_id' => 'book-index',
-            'body_css' => 'bible scriptures section-heading'
+            'body_css' => 'bible scriptures tab-heading'
         );
 
         $content_data = array(
@@ -103,7 +103,7 @@ class BibleController extends \BaseController {
 
         return View::make('layouts.master', $template_data)
             //->nest('heading', 'headings.bible-chapter')
-            ->nest('top_nav', 'widgets.chapter-selection-top-kjv-book-chapter')
+            //->nest('top_nav', 'widgets.chapter-selection-top-kjv-book-chapter')
             ->nest('chapter_modal', 'modals.bible-chapter')
             ->nest('heading', 'headings.bible-chapter', $header_data)
             ->nest('mobile_search', 'widgets.search-iit-mobile')

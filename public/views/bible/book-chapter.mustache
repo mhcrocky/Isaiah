@@ -1,5 +1,7 @@
 <main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
-    <h1 class="title-chapters non-mobile"><a href="/bible"><i class="fa fa-book"></i></a><i class="fa fa-angle-right"></i><a href="/bible/{{book_abbr}}">{{book_title}}</a> {{chapter_number}}</h1>
+    <div class="top-links pull-right">{{> navigation.links-light}}</div>
+    <h1 class="title-chapters"><a href="/bible"><i class="fa fa-book"></i></a><i class="fa fa-angle-right"></i><a href="#chaptermodal" class="modal-trigger" data-toggle="modal">{{book_title}}</a> {{chapter_number}}</h1>
+
     <hr>
     <!--<div class="row chapter-table">-->
     <div class="one-col-padding scripture-text" id="scripture_area">
