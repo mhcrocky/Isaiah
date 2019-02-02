@@ -28,7 +28,8 @@ class ContactController extends \BaseController {
         $rules = array (
             'full_name' => 'required',
             'email' => 'required|email',
-            'subject' => 'required',
+            //'subject' => 'required',
+            'phone_number' => array('Regex:/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/'),
             'body' => 'required|min:5'
         );
 
@@ -39,7 +40,7 @@ class ContactController extends \BaseController {
             {
                 //$message->from(Config::get('app.system_email'), $input_data['full_name']);
                 $message->from($input_data['email'], $input_data['full_name']);
-                $message->to(Config::get('app.contact_email'))->subject($input_data['subject']);
+                $message->to(Config::get('app.contact_email'))->subject(Config::get('app.contact_subject'));
                 $message->setBody($input_data['body']);
             });
             // Redirect to page
@@ -49,8 +50,6 @@ class ContactController extends \BaseController {
             return View::make('layouts.master', $template_data)
                 ->nest('heading', 'headings.resources')
                 ->nest('content', 'contact', $content_data);
-
-
             //return View::make('contact');
         }else{
             //return contact form with errors
@@ -60,7 +59,6 @@ class ContactController extends \BaseController {
             return View::make('layouts.master', $template_data)
                 ->nest('heading', 'headings.resources')
                 ->nest('content', 'contact', $content_data);
-
         }
     }
 }
