@@ -21,9 +21,11 @@ class ContactController extends \BaseController {
             'body_css' => 'scriptures section-heading'
         );
 
-        $content_data = [];
+        //$content_data = [];
 
         $input_data = Input::all();
+
+        $content_data = ['input_data' => $input_data];
 
         $rules = array (
             'full_name' => 'required',
@@ -46,6 +48,7 @@ class ContactController extends \BaseController {
             // Redirect to page
             /*return Redirect::route('contact')
                 ->with('message', 'Your message has been sent. Thank You!');*/
+            $content_data = [];
             $content_data['message'] = 'Your message has been sent. Thank You!';
             return View::make('layouts.master', $template_data)
                 ->nest('heading', 'headings.resources')

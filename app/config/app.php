@@ -15,6 +15,7 @@ return array(
 	//'contact_email' => 'avrahamgileadi@gmail.com',
 	'contact_email' => 'tj@ixqus.com',
 	'system_email' => 'contact@isaiahexplained.com',
+	'contact_subject' => 'New Feedback for IsaiahExplained.com',
 
 	/*
 	|--------------------------------------------------------------------------

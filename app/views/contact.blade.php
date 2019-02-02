@@ -20,19 +20,19 @@
         {{ Form::open(array('action' => 'ContactController@SubmitContactForm')) }}
 
         {{ Form::openGroup('title', 'Full Name') }}
-        {{ Form::text('full_name', '', array('placeholder' => 'Full Name', 'id' => 'full_name')) }}
+        {{ Form::text('full_name', (!empty($input_data['full_name'])) ? $input_data['full_name'] : '', array('placeholder' => 'Full Name', 'id' => 'full_name')) }}
         {{ Form::closeGroup() }}
 
         {{ Form::openGroup('title', 'Email') }}
-        {{ Form::text('email', '', array('placeholder' => 'Email', 'id' => 'email')) }}
+        {{ Form::text('email', (!empty($input_data['email'])) ? $input_data['email'] : '', array('placeholder' => 'Email', 'id' => 'email')) }}
         {{ Form::closeGroup() }}
 
         {{ Form::openGroup('title', 'Phone Number') }}
-        {{ Form::text('phone_number', '', array('placeholder' => 'Phone Number', 'id' => 'phone_number')) }}
+        {{ Form::text('phone_number', (!empty($input_data['phone_number'])) ? $input_data['phone_number'] : '', array('placeholder' => 'Phone Number', 'id' => 'phone_number')) }}
         {{ Form::closeGroup() }}
 
         {{ Form::openGroup('title', 'Message') }}
-        {{ Form::textarea ('body', '', array('placeholder' => 'Message', 'class' => 'form-control', 'id' => 'body', 'rows' => '4' )) }}
+        {{ Form::textarea ('body', (!empty($input_data['body'])) ? $input_data['body'] : '', array('placeholder' => 'Message', 'class' => 'form-control', 'id' => 'body', 'rows' => '4' )) }}
         {{ Form::closeGroup() }}
 
         <div class="modal-footer">
