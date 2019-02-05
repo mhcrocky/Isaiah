@@ -45,7 +45,7 @@ if(Config::get('app.debug') == true) {
 |
 */
 
-App::missing(function($exception)
+/*App::missing(function($exception)
 {
 	$template_data = array(
 		'title' => 'Error 404 (Not Found)!',
@@ -59,7 +59,7 @@ App::missing(function($exception)
 		->nest('mobile_search', 'widgets.search-iit-mobile')
 		->nest('content', 'errors.missing', $content_data);
 	//return Response::view('errors.missing', array('uri' => Request::path()), 404);
-});
+});*/
 
 /*
 |--------------------------------------------------------------------------
