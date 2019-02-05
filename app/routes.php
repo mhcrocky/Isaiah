@@ -64,7 +64,7 @@ App::missing(function($exception)
         if(!empty($matches[1])) {
             $chapter_number = $matches[1];
             if(preg_match('/c\d{1,2}v(\d{1,2})(a|b)?-(\w+)/', $h, $h_matches)) {
-                if(!empty($h_matches) && !empty($h_matches[1] && !empty($h_matches[3]))) {
+                if(!empty($h_matches) && !empty($h_matches[1]) && !empty($h_matches[3])) {
                     $verse_number = $h_matches[1];
                     if(empty($h_matches[2])) {
                         $verse_number = $verse_number . 'a';
@@ -80,7 +80,7 @@ App::missing(function($exception)
         if(!empty($matches[1])) {
             $concordance_letter = $matches[1];
             if(preg_match('/c(\d{1,2})v(\d{1,2})(a|b)?-(\w+)/', $h, $h_matches)) {
-                if(!empty($h_matches) && !empty($h_matches[1] && !empty($h_matches[2]) && !empty($h_matches[4]))) {
+                if(!empty($h_matches) && !empty($h_matches[1]) && !empty($h_matches[2]) && !empty($h_matches[4])) {
                     $chapter_number = $h_matches[1];
                     $verse_number = $h_matches[2];
                     if(empty($h_matches[3])) {
@@ -96,7 +96,7 @@ App::missing(function($exception)
     }
 
     if(!empty($redirect_url)) {
-        return Redirect::to('http://isaiahexplained.local' . $redirect_url);
+        return Redirect::to('http://dev-isaiah.isaiahexplained.com' . $redirect_url);
     } else {
         //dd(['uri' => $uri, 'input_data' => $input_data]);
         //App::abort(404);
