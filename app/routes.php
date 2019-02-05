@@ -19,7 +19,7 @@
 
 Route::get('/', 'IndexController@showIndex');
 Route::get('/Isaiah-Institute-Translation', 'IndexController@showIITInfo');
-Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '[0-9]+');
+Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '^(?!67|68|69)[1-6][0-9]|[1-9]$');
 
 Route::get('/bible', 'BibleController@showIndex');
 Route::get('/bible/{bookAbbr}', 'BibleController@showBookIndex')->where('bookAbbr', '[a-z]+|\d-[a-z]+');

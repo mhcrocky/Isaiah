@@ -263,17 +263,35 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         window.isTabShown = false;
         window.heading_tabs = $("#heading-tabs");
 
+        /*var ignore_pages = [
+            '/about', '/bible', '/concordance', '/resources', '/search', '/Isaiah-Institute-Translation'
+        ];
+
+        var is_ignored_page = false;
+
+        for (i = 0; i < ignore_pages.length; i++) {
+            if(location.pathname.indexOf(ignore_pages[i]) > -1) {
+                is_ignored_page = true;
+                break;
+            }
+        }*/
+
+        var is_iit_page = false;
+
+        var iit_match = location.pathname.match(/^\/([1-6][0-9]|[1-9])$/);
+
+        if(iit_match != undefined && iit_match != null) {
+            var chapter_number = parseInt(iit_match[1]);
+            if(chapter_number > 0 && chapter_number < 67) {
+                is_iit_page = true;
+            }
+        }
+
         /**
          * Store the currently selected tab in the hash value and update nav links
          */
         $("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']").on('click', function (e) {
-            if (location.pathname != '/'
-                && location.pathname.indexOf('/bible') == -1
-                && location.pathname.indexOf('/concordance') == -1
-                && location.pathname.indexOf('/search') == -1
-                && location.pathname.indexOf('/resources') == -1
-                && location.pathname.indexOf('/Isaiah-Institute-Translation') == -1
-                && location.pathname.indexOf('/about') == -1) {
+            if (is_iit_page == true) {
                 var id;
                 if($(e.target).parent().attr("href") != undefined) {
                     id = $(e.target).parent().attr("href").substr(1);
@@ -308,19 +326,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          */
         var hash = window.location.hash;
 
-        var ignore_pages = [
-            '/about', '/bible', '/concordance', '/resources', '/search', '/Isaiah-Institute-Translation'
-        ];
-
-        var is_ignored_page = false;
-
-        for (i = 0; i < ignore_pages.length; i++) {
-            if(location.pathname.indexOf(ignore_pages[i]) == -1) {
-                is_ignored_page = true;
-            }
-        }
-
-        if(is_ignored_page == false) {
+        if(is_iit_page == true) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);
