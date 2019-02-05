@@ -308,12 +308,19 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          */
         var hash = window.location.hash;
 
-        if(location.pathname.indexOf('/concordance') == -1
-            && location.pathname.indexOf('/bible') == -1
-            && location.pathname.indexOf('/search') == -1
-            && location.pathname.indexOf('/resources') == -1
-            && location.pathname.indexOf('/Isaiah-Institute-Translation') == -1
-            && location.pathname.indexOf('/about') == -1) {
+        var ignore_pages = [
+            '/about', '/bible', '/concordance', '/resources', '/search', '/Isaiah-Institute-Translation'
+        ];
+
+        var is_ignored_page = false;
+
+        for (i = 0; i < ignore_pages.length; i++) {
+            if(location.pathname.indexOf(ignore_pages[i]) == -1) {
+                is_ignored_page = true;
+            }
+        }
+
+        if(is_ignored_page == false) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);

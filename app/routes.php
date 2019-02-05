@@ -41,3 +41,75 @@ Route::get('/commentary/mp3/{chapterNumber}', 'MediaController@showMediaMP3')->w
 
 Route::get('/contact', 'ContactController@GetContactForm');
 Route::post('/contact', 'ContactController@SubmitContactForm');
+
+App::missing(function($exception)
+{
+    $redirect_url = '';
+    $uri = Request::getRequestUri();
+    $input_data = Input::all();
+    $uri = preg_replace('/(\?|&)XDEBUG_SESSION_START=\d{1,}/', '', $uri);
+
+    if(!empty($input_data) && !empty($input_data['h'])) {
+        $h = $input_data['h'];
+    } else {
+        $h = '';
+    }
+
+    if(preg_match('/\/isaiah_ch_(\d{1,2})\.html/', $uri, $matches)) {
+        if(!empty($matches[1])) {
+            $chapter_number = ltrim($matches[1], '0');
+            $redirect_url = "/{$chapter_number}#one_col";
+        }
+    } elseif(preg_match('/\/Concordance\/chapter(\d{1,2})\.html/i', $uri, $matches)) {
+        if(!empty($matches[1])) {
+            $chapter_number = $matches[1];
+            if(preg_match('/c\d{1,2}v(\d{1,2})(a|b)?-(\w+)/', $h, $h_matches)) {
+                if(!empty($h_matches) && !empty($h_matches[1] && !empty($h_matches[3]))) {
+                    $verse_number = $h_matches[1];
+                    if(empty($h_matches[2])) {
+                        $verse_number = $verse_number . 'a';
+                    } else {
+                        $verse_number = $verse_number . $h_matches[2];
+                    }
+                    $word = $h_matches[3];
+                }
+                $redirect_url = "/{$chapter_number}?citation=c{$chapter_number}v{$verse_number}-{$word}#concordance";
+            }
+        }
+    } elseif(preg_match('/\/Concordance\/concordance([A-Z])\.html/i', $uri, $matches)) {
+        if(!empty($matches[1])) {
+            $concordance_letter = $matches[1];
+            if(preg_match('/c(\d{1,2})v(\d{1,2})(a|b)?-(\w+)/', $h, $h_matches)) {
+                if(!empty($h_matches) && !empty($h_matches[1] && !empty($h_matches[2]) && !empty($h_matches[4]))) {
+                    $chapter_number = $h_matches[1];
+                    $verse_number = $h_matches[2];
+                    if(empty($h_matches[3])) {
+                        $verse_number = $verse_number . 'a';
+                    } else {
+                        $verse_number = $verse_number . $h_matches[3];
+                    }
+                    $word = $h_matches[4];
+                }
+                $redirect_url = "/concordance/{$concordance_letter}?citation=c{$chapter_number}v{$verse_number}-{$word}#{$word}";
+            }
+        }
+    }
+
+    if(!empty($redirect_url)) {
+        return Redirect::to('http://isaiahexplained.local' . $redirect_url);
+    } else {
+        //dd(['uri' => $uri, 'input_data' => $input_data]);
+        //App::abort(404);
+        $template_data = array(
+            'title' => 'Error 404 (Not Found)!',
+            'body_id' => 'chapter-index',
+            'body_css' => 'scriptures section-heading'
+        );
+        $content_data = array('uri' => '/' . Request::path());
+        return View::make('layouts.master', $template_data)
+            ->nest('heading', 'headings.resources')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
+            ->nest('content', 'errors.missing', $content_data);
+        //return Response::view('errors.missing', array('uri' => Request::path()), 404);
+    }
+});
