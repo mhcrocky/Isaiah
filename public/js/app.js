@@ -263,19 +263,6 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         window.isTabShown = false;
         window.heading_tabs = $("#heading-tabs");
 
-        /*var ignore_pages = [
-            '/about', '/bible', '/concordance', '/resources', '/search', '/Isaiah-Institute-Translation'
-        ];
-
-        var is_ignored_page = false;
-
-        for (i = 0; i < ignore_pages.length; i++) {
-            if(location.pathname.indexOf(ignore_pages[i]) > -1) {
-                is_ignored_page = true;
-                break;
-            }
-        }*/
-
         var is_iit_page = false;
 
         var iit_match = location.pathname.match(/^\/([1-6][0-9]|[1-9])$/);
