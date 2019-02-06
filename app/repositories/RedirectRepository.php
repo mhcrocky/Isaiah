@@ -54,6 +54,19 @@ class RedirectRepository {
                     $redirect_url = "/concordance/{$concordance_letter}?citation=c{$chapter_number}v{$verse_number}-{$word}#{$word}";
                 }
             }
+        } elseif(preg_match('/\/Concordance\/title\.html/i', $uri)) {
+            $redirect_url = '/Isaiah-Institute-Translation/';
+        } elseif(preg_match('/\/Concordance\/index\.html/i', $uri)) {
+            $redirect_url = '/Concordance/';
+        } else {
+            $filename = $_SERVER['HOME'] . '/public_html/isaiahexplained_legacy' . $uri;
+            if(file_exists($filename)) {
+                $filesize = filesize($filename);
+                $fh = fopen($filename, 'r');
+                $html = fread($fh, $filesize);
+                echo $html;
+                exit;
+            }
         }
 
         return $redirect_url;
