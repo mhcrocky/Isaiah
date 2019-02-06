@@ -26,7 +26,7 @@ Route::get('/bible/{bookAbbr}', 'BibleController@showBookIndex')->where('bookAbb
 Route::get('/bible/{bookAbbr}/{chapterNumber}', 'BibleController@showBookChapter')
     ->where(array('bookAbbr' => '[a-z]+|\d-[a-z]+', 'chapterNumber' => '[0-9]+'));
 
-//Route::get('/concordance', 'ConcordanceController@showIndex');
+Route::get('/concordance', 'ConcordanceController@showIndex');
 Route::get('/concordance/{concordanceLetter}', 'ConcordanceController@showLetter')->where('concordanceLetter', '[A-Za-z]');
 
 Route::get('/resources', 'ResourceController@showIndex');
