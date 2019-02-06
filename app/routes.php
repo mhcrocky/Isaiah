@@ -49,8 +49,6 @@ App::missing(function($exception)
     if(!empty($redirect_url)) {
         return Redirect::to(Config::get('app.url') . $redirect_url);
     } else {
-        //dd(['uri' => $uri, 'input_data' => $input_data]);
-        //App::abort(404);
         $template_data = array(
             'title' => 'Error 404 (Not Found)!',
             'body_id' => 'chapter-index',
@@ -61,6 +59,5 @@ App::missing(function($exception)
             ->nest('heading', 'headings.resources')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'errors.missing', $content_data);
-        //return Response::view('errors.missing', array('uri' => Request::path()), 404);
     }
 });
