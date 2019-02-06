@@ -60,39 +60,12 @@ class RedirectRepository {
             $redirect_url = '/Concordance/';
         } else {
             $new_path = '/legacy' . urldecode($uri);
-            $filename = public_path() . '/legacy' . urldecode($uri);
-            //dd($filename);
+            $filename = public_path() . $new_path;
             if(file_exists($filename)) {
-                /*if(ends_with($filename, 'html')) {
-                    $filesize = filesize($filename);
-                    $fh = fopen($filename, 'r');
-                    $html = fread($fh, $filesize);
-                    $html = str_replace('"style.css"', '/legacy/style.css', $html);
-                    $html = str_replace('../', '/legacy/', $html);
-                    echo $html;*/
-                    /*$doc = new DOMDocument();
-                    libxml_use_internal_errors(true);
-                    $doc->loadHTMLFile($filename);
-                    echo $doc->saveHTML();*/
-                    /*exit;
-                } else {
-                    $redirect_url = $new_path;
-                }*/
                 $redirect_url = $new_path;
             }
-            //dd($filename);
         }
 
         return $redirect_url;
     }
-
-    /*private function endsWith($haystack, $needle)
-    {
-        $length = strlen($needle);
-        if ($length == 0) {
-            return true;
-        }
-
-        return (substr($haystack, -$length) === $needle);
-    }*/
 }
