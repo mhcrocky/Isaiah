@@ -41,6 +41,7 @@
     {{ $verse_modal or '' }}
     {{ $chapter_modal or '' }}
     {{ $keyword_modal or '' }}
+    {{ $vignette_modal or '' }}
 
     <div class="header-container">
         <header class="navbar navbar-static-top" role="navigation">

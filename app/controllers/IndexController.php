@@ -34,6 +34,7 @@ class IndexController extends BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
+            ->nest('vignette_modal', 'modals.vignette')
             ->nest('heading', 'headings.chapter-index')
             ->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
@@ -58,6 +59,7 @@ class IndexController extends BaseController {
         View::share('search_term', Input::get('search', ''));*/
 
         return View::make('layouts.master', $template_data)
+            ->nest('vignette_modal', 'modals.vignette')
             ->nest('heading', 'headings.chapter-index')
             ->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')

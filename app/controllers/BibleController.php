@@ -63,6 +63,7 @@ class BibleController extends \BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
+            ->nest('vignette_modal', 'modals.vignette')
             ->nest('heading', 'headings.bible-chapter-index')
             //->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
@@ -76,6 +77,12 @@ class BibleController extends \BaseController {
      */
     public function showBookChapter($book_abbr, $chapter_number)
     {
+        //8.3-4,6
+        /*$is_reference = strpos($chapter_number, '.');
+        if ($is_reference !== false) {
+            $test = 1;
+        }*/
+
         $book_title = BibleRepository::GetBookTitleFromAbbr($book_abbr);
 
         $template_data = array(
@@ -105,6 +112,7 @@ class BibleController extends \BaseController {
             //->nest('heading', 'headings.bible-chapter')
             //->nest('top_nav', 'widgets.chapter-selection-top-kjv-book-chapter')
             ->nest('chapter_modal', 'modals.bible-chapter')
+            ->nest('vignette_modal', 'modals.vignette')
             ->nest('heading', 'headings.bible-chapter', $header_data)
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'bible.book-chapter', $content_data);
