@@ -143,7 +143,7 @@ return array(
         'DaveJamesMiller\Boris\BorisServiceProvider',
         'Flatten\FlattenServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-
+        'Roumen\Sitemap\SitemapServiceProvider',
 	),
 
 	/*
@@ -211,7 +211,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
         'Flatten'         => 'Flatten\Facades\Flatten',
-
+        'Carbon'          => 'Carbon\Carbon',
 	),
 
 );
