@@ -145,9 +145,10 @@ EOT;
      * Get three column view HTML
      *
      * @param int Chapter number
+     * @param mixed Reference query parameter input
      * @return string Three column view HTML
      */
-    public function GetThreeColHtml($chapter_number) {
+    public function GetThreeColHtml($chapter_number, $reference_input) {
         $is_chapter_number_first = false;
         $chapter_keywords_html = '';
 
@@ -270,11 +271,19 @@ ${indent_start}${iit_scripture_text}${indent_end}
 EOT;
             /*}*/
 
+            $references = Helpers\getReferences($reference_input);
+            $highlight_class = '';
+            if(!empty($references)) {
+                if(in_array($iit_verse_number, $references)) {
+                    $highlight_class = ' class="highlight"';
+                }
+            }
+
             $three_col_html .= <<<EOT
 \t\t\t<tr>
 \t\t\t\t<td id="kjv_${kjv_verse_number}">${kjv_scripture_text}</td>
 \t\t\t\t<td class="comp-vs-num">${kjv_verse_number}</td>
-\t\t\t\t<td id="iit_${iit_verse_number}">${iit_html}</td>
+\t\t\t\t<td id="iit_${iit_verse_number}"{$highlight_class}>${iit_html}</td>
 \t\t\t\t<td id="heb_${kjv_verse_number}" class="heb-col">${heb_scripture_text}</td>
 \t\t\t</tr>\r\n
 EOT;

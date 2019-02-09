@@ -1,6 +1,28 @@
 <?php
 
 class RedirectRepository {
+    public static function PageNotFound() {
+        $redirect_url = RedirectRepository::GetRedirectURL(Request::getRequestUri(), Input::all());
+
+        $app_url = Config::get('app.url');
+
+        if(!empty($redirect_url)) {
+            return Redirect::to($app_url . $redirect_url);
+        } else {
+            $template_data = array(
+                'title' => 'Error 404 (Not Found)!',
+                'body_id' => 'chapter-index',
+                'body_css' => 'scriptures section-heading'
+            );
+            $content_data = array('uri' => '/' . Request::path());
+            View::share('app_url', $app_url);
+            return View::make('layouts.master', $template_data)
+                ->nest('heading', 'headings.resources')
+                ->nest('mobile_search', 'widgets.search-iit-mobile')
+                ->nest('content', 'errors.missing', $content_data);
+        }
+    }
+
     public static function GetRedirectURL($uri, $input_data) {
         $redirect_url = '';
 

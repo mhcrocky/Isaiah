@@ -12,10 +12,12 @@ class ChapterController extends BaseController {
 
         $chapterRepository = new ChapterRepository();
 
+        $reference_input = Input::get('reference', '');
+
         $content_data = array(
             'chapter_heading' => $chapterRepository->GetChapterHeading($chapter_number),
             'iit_html' => $chapterRepository->GetIITChapter($chapter_number),
-            'three_col_html' => $chapterRepository->GetThreeColHtml($chapter_number),
+            'three_col_html' => $chapterRepository->GetThreeColHtml($chapter_number, $reference_input),
             'commentary_html' => $chapterRepository->GetIITCommentary($chapter_number),
             'concordance_html' => $chapterRepository->GetIITConcordance($chapter_number),
             'nav_links_light_left' => IITPaginator::GetNav($chapter_number, 'left', 'nav-links-light'),
