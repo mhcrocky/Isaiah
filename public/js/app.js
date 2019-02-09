@@ -476,86 +476,68 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             }
         }
 
-        var verseQueryString = getQueryStringKey('verse');
-        var verse_number;
-        var searchQueryString = getQueryStringKey('search');
-        //Search highlighting
-        if(verseQueryString != undefined && searchQueryString != undefined) {
-            verse_number = verseQueryString;
-            var search = searchQueryString;
-            var iitVerseSpan = $('#iit_search_' + verse_number);
-            iitDiv = iitVerseSpan.next();
-            if(location.pathname.indexOf('/concordance') == -1) {
-                if (hash == "#one_col") {
-                    var is_term_exact = new RegExp('"', 'g').test(search);
-                    var searchRegex;
-                    if(is_term_exact == true) {
-                        search = search.replace(/"/g, '');
-                        searchRegex = new RegExp('\\b' + search + '\\b', 'gi');
-                    } else {
-                        var search_ors = '';
-                        var search_split = search.split(' ');
-                        var part_count = search_split.length;
-                        for(var i = 0; i < part_count; i++) {
-                            if(i + 1 != part_count) {
-                                search_ors += search_split[i] + '|';
-                            } else {
-                                search_ors += search_split[i];
-                            }
-                        }
-                        searchRegex = new RegExp(search_ors, 'gi');
-                    }
-                    var next_class = iitVerseSpan.next().attr('class');
-                    if(next_class == 'poetry' || next_class == 'prose' || next_class == 'prose inline') {
-                        highlightSearchTerm(iitVerseSpan.next()[0], searchRegex, verse_number);
-                    } else {
-                        if(next_class == 'modal-trigger verse-number') {
-                            highlightSearchTerm(iitVerseSpan.closest('span[class=poetry]')[0], searchRegex, verse_number);
-                        } else {
-                            alert('Next class isnt the verse modal link. It is: ' + next_class);
-                        }
-                    }
-                    //var scrollPad = $('.header-container:visible').height();
-                    //$(window).scrollTop(iitDiv.offset().top);
-                    is_searched = true;
-                }
-            }
-        }
+        var referenceQueryString = getQueryStringKey('reference');
+        if(referenceQueryString != undefined) {
+            var reference = referenceQueryString;
+            var referenceRegex = /^(\d{1,3})/;
+            var scroll_to_verse = parseInt(referenceRegex.exec(reference));
 
-        //KJV Verse highlighting
-        if(verseQueryString != undefined) {
-            //kjvDiv =  $('#verse_' + verse_number);
-            if(verseQueryString != '') {
-                is_kjv_reference = true;
-                //CSV
-                if(verseQueryString.indexOf(',') > -1) {
-                    var verseParts = verseQueryString.split(',');
-                    var highlightCount = verseParts.length;
-                    for(i = 0; i < highlightCount; i++) {
-                        //Verse
-                        if(verseParts[i].indexOf('-') == -1) {
-                            verse_number = verseParts[i];
-                            var verseTag = $('#verse_' + verse_number);
-                            verseTag.addClass('highlight');
-                            if(verse_number == 1) {
-                                kjvDiv = verseTag;
-                            }
-                        //Range
+            if (scroll_to_verse > 0) {
+                //Bible
+                if (hash == undefined || hash == '') {
+                    var iitVerseSpan = $('#verse_' + scroll_to_verse);
+                    iitDiv = iitVerseSpan;
+                    //IIT
+                } else if (hash == '#three_col') {
+                    var iitVerseSpan = $('#iit_' + scroll_to_verse);
+                    iitDiv = iitVerseSpan.next();
+                }
+                is_searched = true;
+            }
+        } else {
+            var verseQueryString = getQueryStringKey('verse');
+            var verse_number;
+            var searchQueryString = getQueryStringKey('search');
+            //Search highlighting
+            if (verseQueryString != undefined && searchQueryString != undefined) {
+                verse_number = verseQueryString;
+                var search = searchQueryString;
+                var iitVerseSpan = $('#iit_search_' + verse_number);
+                iitDiv = iitVerseSpan.next();
+                if (location.pathname.indexOf('/concordance') == -1) {
+                    if (hash == "#one_col") {
+                        var is_term_exact = new RegExp('"', 'g').test(search);
+                        var searchRegex;
+                        if (is_term_exact == true) {
+                            search = search.replace(/"/g, '');
+                            searchRegex = new RegExp('\\b' + search + '\\b', 'gi');
                         } else {
-                            if(i == 0) {
-                                kjvDiv = $('#verse_' + verseParts[i].split('-')[0]);
+                            var search_ors = '';
+                            var search_split = search.split(' ');
+                            var part_count = search_split.length;
+                            for (var i = 0; i < part_count; i++) {
+                                if (i + 1 != part_count) {
+                                    search_ors += search_split[i] + '|';
+                                } else {
+                                    search_ors += search_split[i];
+                                }
                             }
-                            highlightVerseRange(verseParts[i]);
+                            searchRegex = new RegExp(search_ors, 'gi');
                         }
+                        var next_class = iitVerseSpan.next().attr('class');
+                        if (next_class == 'poetry' || next_class == 'prose' || next_class == 'prose inline') {
+                            highlightSearchTerm(iitVerseSpan.next()[0], searchRegex, verse_number);
+                        } else {
+                            if (next_class == 'modal-trigger verse-number') {
+                                highlightSearchTerm(iitVerseSpan.closest('span[class=poetry]')[0], searchRegex, verse_number);
+                            } else {
+                                alert('Next class isnt the verse modal link. It is: ' + next_class);
+                            }
+                        }
+                        //var scrollPad = $('.header-container:visible').height();
+                        //$(window).scrollTop(iitDiv.offset().top);
+                        is_searched = true;
                     }
-                //Range
-                } else if(verseQueryString.indexOf('-') > -1) {
-                    kjvDiv = $('#verse_' + verseQueryString.split('-')[0]);
-                    highlightVerseRange(verseQueryString);
-                //Default
-                } else {
-                    kjvDiv =  $('#verse_' + verseQueryString);
-                    kjvDiv.addClass('highlight');
                 }
             }
         }
