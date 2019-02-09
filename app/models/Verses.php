@@ -9,6 +9,10 @@ class Verse extends Eloquent {
      */
     protected $table = 'verses';
 
+    protected $appends = array('verse_class');
+
+    protected $highlights = [];
+
     /**
      * Do not maintain ORM creation records for this model
      *
@@ -25,23 +29,18 @@ class Verse extends Eloquent {
     }
 
     public function getVerseNumberAttribute($value) {
-        return $this->_strrtrim($value, '.0');
+        return Helpers\strrtrim($value, '.0');
     }
 
-    /**
-     * Strip a string from the end of a string
-     *
-     * @param mixed $message the input string
-     * @param mixed $strip string to remove
-     *
-     * @return string the modified string
-     */
-    private function _strrtrim($message, $strip) {
-        $lines = explode($strip, $message);
-        $last  = '';
-        do {
-            $last = array_pop($lines);
-        } while (empty($last) && (count($lines)));
-        return implode($strip, array_merge($lines, array($last)));
+    public function getVerseClassAttribute() {
+        if(!empty($this->highlights[$this->verse_number])) {
+            return $this->highlights[$this->verse_number];
+        } else {
+            return '';
+        }
+    }
+
+    public function SetVerseClassAttribute($class) {
+        $this->highlights[$this->verse_number] = $class;
     }
 }

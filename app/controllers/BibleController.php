@@ -77,12 +77,6 @@ class BibleController extends \BaseController {
      */
     public function showBookChapter($book_abbr, $chapter_number)
     {
-        //8.3-4,6
-        /*$is_reference = strpos($chapter_number, '.');
-        if ($is_reference !== false) {
-            $test = 1;
-        }*/
-
         $book_title = BibleRepository::GetBookTitleFromAbbr($book_abbr);
 
         $template_data = array(
@@ -92,8 +86,10 @@ class BibleController extends \BaseController {
             'body_css' => 'bible scriptures tab-heading'
         );
 
+        $reference_input = Input::get('reference', '');
+
         $content_data = array(
-            'book_verses' => BibleRepository::GetChapterVerses($book_abbr, $chapter_number),
+            'book_verses' => BibleRepository::GetChapterVerses($book_abbr, $chapter_number, $reference_input),
             'nav_links_light_left' => KJVPaginator::GetNav($book_abbr, $chapter_number, 'left', 'nav-links-light'),
             'nav_links_light_right' => KJVPaginator::GetNav($book_abbr, $chapter_number, 'right', 'nav-links-light')
         );
