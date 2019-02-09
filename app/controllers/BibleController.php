@@ -87,6 +87,7 @@ class BibleController extends \BaseController {
 
         $template_data = array(
             'title' => "{$book_title} {$chapter_number}",
+            'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
             'body_id' => 'book-index',
             'body_css' => 'bible scriptures tab-heading'
         );
