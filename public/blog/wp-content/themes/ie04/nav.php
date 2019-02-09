@@ -17,7 +17,7 @@
      <li class="show-hide nav-search">
        <form role="search">
 				<div class="input-group">
-				<input name="search-box" type="text" class="form-control search-field" placeholder="Search Isaiah" value="nation">
+				<input name="search-box" type="text" class="form-control search-field" placeholder="Search Isaiah" value="">
 				<span class="input-group-btn">
 				<button class="btn btn-warning" type="submit"><i class="fa fa-search"></i></button>
 				</span>

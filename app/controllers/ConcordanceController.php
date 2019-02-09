@@ -9,12 +9,15 @@ class ConcordanceController extends BaseController {
             'body_id' => 'concordance-index',
             'body_css' => 'scriptures section-heading'
         );
+
         $content_data = array(
             'index_chapters' => ConcordanceRepository::GetConcordanceIndex()/*,
             'index_letters' => ConcordanceRepository::GetConcordanceIndex()*/
         );
+
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
         View::share('letters', WidgetRepository::GetConcordanceSelection());
+
         return View::make('layouts.concordance', $template_data)
             ->nest('heading', 'headings.concordance-index')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
@@ -27,6 +30,7 @@ class ConcordanceController extends BaseController {
 
         $template_data = array(
             'title' => "${concordance_letter} - A Comprehensive Concordance Of The Book of Isaiah.",
+            'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
             'body_id' => 'concordance',
             'body_css' => 'tab-heading alphabetical scriptures'
         );

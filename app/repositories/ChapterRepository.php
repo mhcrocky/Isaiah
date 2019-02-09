@@ -465,7 +465,7 @@ EOT;
             $sub_segment_id = $citation->sub_segment_id;
             $letter = $word[0];
             $pattern = "/\b(${word})(?!=)\b/i";
-            $replacement = '<a href="/concordance/' . $letter . '?citation=' . $url . '#' . $fixed_word . '">$1</a>';
+            $replacement = '<a href="' . Config::get('app.url') . '/concordance/' . $letter . '?citation=' . $url . '#' . $fixed_word . '">$1</a>';
             /*if($chapter_number == 28) {
                 if($verse_number == 10 || $verse_number == 13) {
                     $test = 1;

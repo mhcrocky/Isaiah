@@ -10,3 +10,13 @@ function getLastWeek() {
 function getLastMonth() {
     return Carbon::now()->subMonth();
 }
+
+function getRobotIgnoreMeta($query_string) {
+    if(!empty($query_string)) {
+        return <<<EOT
+<META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+EOT;
+    } else {
+        return '';
+    }
+}

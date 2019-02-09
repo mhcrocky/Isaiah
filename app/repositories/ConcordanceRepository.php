@@ -24,10 +24,13 @@ class ConcordanceRepository {
 <h4 id="{$word_citation->word}">{$word_citation->word}</h4>$EOL
 EOT;
             }
+            $app_url = Config::get('app.url');
             $concordance_html .= <<<EOT
-<p id={$word_citation->url} class="ref"><a href="/{$word_citation->chapter}?citation={$word_citation->url}#concordance" class="verse">{$word_citation->subject_verse}</a> <span class="vtext">{$word_citation->citation}</span></p>$EOL
+<p id={$word_citation->url} class="ref"><a href="{$app_url}/{$word_citation->chapter}?citation={$word_citation->url}#concordance" class="verse">{$word_citation->subject_verse}</a> <span class="vtext">{$word_citation->citation}</span></p>$EOL
 EOT;
         }
+
+
 
         return html_entity_decode($concordance_html);
     }

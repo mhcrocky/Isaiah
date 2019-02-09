@@ -5,6 +5,7 @@ class ChapterController extends BaseController {
     public function showChapter($chapter_number) {
         $template_data = array(
             'title' => "Isaiah ${chapter_number}",
+            'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
             'body_id' => 'chapters',
             'body_css' => 'scriptures tab-heading'
         );

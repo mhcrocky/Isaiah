@@ -6,7 +6,7 @@
 				<ul>
 					<li><a href="/"><i class="fa fa-home fa-fw"></i>&nbsp;<span>Home</span></a></li>
 					<li><a href="/bible"><i class="fa fa-book fa-fw"></i>&nbsp;<span>KJV Bible</span></a></li>
-					<li><a href="#"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
+					<li><a href="http://hebraeuspress.com"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
 					<li><a href=""><i class="fa fa-info-circle fa-fw"></i>&nbsp;<span>About</span></a></li>
 <!-- 					<li><a href="http://isaiahexplained.com/blog/contact/"><i class="fa fa-envelope fa-fw"></i>&nbsp;<span>Contact</span></a></li> -->
 				</ul>
