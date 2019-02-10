@@ -1,0 +1,17 @@
+<main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+    <h1 class="title-chapters">Bible Index</h1>
+    <hr>
+    <div class="books-table one-col-padding">
+        {{#books}}
+        <div class="books">
+                <h2><a class="btn-chapter-sel" href="{{app_url}}/bible/{{book_lds_url}}">{{book_title}}</a></h2>
+                <ul>
+                {{#book_chapters}}
+                    <li><a href="{{app_url}}/bible/{{book_lds_url}}/{{chapter_number}}">{{chapter_number}}</a></li>
+                {{/book_chapters}}
+                </ul>
+        </div>
+        {{/books}}
+    </div>
+</main>
+{{> asides.bible}}

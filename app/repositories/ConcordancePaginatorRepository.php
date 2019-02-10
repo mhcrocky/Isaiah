@@ -76,7 +76,7 @@ class ConcordancePaginator {
                 }
                 $nav_id = 'nav-right' . $nav_area;
             }
-            $link = "/Concordance/${nav_letter}";
+            $link = "/concordance/${nav_letter}";
         } else {
             $link = '';
             if($direction == 'left') {

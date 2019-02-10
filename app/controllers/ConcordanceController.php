@@ -9,13 +9,17 @@ class ConcordanceController extends BaseController {
             'body_id' => 'concordance-index',
             'body_css' => 'scriptures section-heading'
         );
+
         $content_data = array(
             'index_chapters' => ConcordanceRepository::GetConcordanceIndex()/*,
             'index_letters' => ConcordanceRepository::GetConcordanceIndex()*/
         );
+
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
         View::share('letters', WidgetRepository::GetConcordanceSelection());
+
         return View::make('layouts.concordance', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.concordance-index')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'concordance-index', $content_data);
@@ -27,8 +31,9 @@ class ConcordanceController extends BaseController {
 
         $template_data = array(
             'title' => "${concordance_letter} - A Comprehensive Concordance Of The Book of Isaiah.",
+            'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
             'body_id' => 'concordance',
-            'body_css' => 'tab-heading alphabetical'
+            'body_css' => 'tab-heading alphabetical scriptures'
         );
 
         $concordanceRepository = new ConcordanceRepository();
@@ -46,8 +51,11 @@ class ConcordanceController extends BaseController {
         View::share('concordance_letter', $concordance_letter);
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
         View::share('letters', WidgetRepository::GetConcordanceSelection($concordance_letter));
+        //View::share('search_term', Input::get('search', ''));
 
         return View::make('layouts.concordance', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
+            //->nest('heading', 'headings.concordance', $header_data)
             ->nest('heading', 'headings.concordance', $header_data)
             ->nest('alpha_modal', 'modals.alpha')
             ->nest('mobile_search', 'widgets.search-iit-mobile')

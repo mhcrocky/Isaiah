@@ -5,6 +5,11 @@
 
     RewriteEngine On
 
+    # Redirect non-www to www
+    #RewriteCond %{HTTP_HOST} !localhost
+    #RewriteCond %{HTTP_HOST} !^(.+)\.(.+)\.(.+)
+    #RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [L,R=301]
+
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 

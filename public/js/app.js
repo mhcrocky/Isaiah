@@ -2,18 +2,39 @@
  * Hack to prevent scrolling to hash tags from bootstrap tabs
  */
 var is_citation = false;
-var citationDiv;
-if (location.hash) {               // do the test straight away
-    window.scrollTo(0, 0);         // execute it straight away
+var is_searched = false;
+var is_kjv_reference = false;
+var citationSpan;
+var iitDiv;
+var kjvDiv;
+if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
+    window.scrollTo(0, 0);
     setTimeout(function() {
-        if(is_citation === false) {
-            var scrollTop = $(window).scrollTop();
-            if(scrollTop != 0) {
-                window.scrollTo(0, 0);     // run it a bit later also for browser compatibility
+        var bootStrapEnv = findBootstrapEnvironment();
+
+        var scrollPad;
+        //var scrollPad = $('.header-container:visible').height();
+        if(bootStrapEnv == 'xs') {
+            //scrollPad = $('.header-container').first().height() + 5;
+            scrollPad = $('.header-container').first().height();
+        } else {
+            //scrollPad = $('.heading-chapters:visible').height() - 40;
+            scrollPad = $('.heading-chapters:visible').height();
+        }
+        if(is_citation === false && is_searched == false) {
+            if (is_kjv_reference === true) {
+                $(window).scrollTop(kjvDiv.offset().top - scrollPad);
+            } else {
+                window.scrollTo(0, 0);
             }
         } else {
-            $(window).scrollTop(citationDiv.offset().top);
-            //$("html").scrollTop(citationDiv.offset().top);
+            //var bootStrapStyleSheet = document.styleSheets[getBootstrapStyleSheetsIndex()];
+            //var styleRuleValue = getStyleRuleValue('padding', '.lg', bootStrapStyleSheet);
+            if(is_citation === true) {
+                $(window).scrollTop(citationSpan.offset().top - scrollPad);
+            } else if (is_searched === true) {
+                $(window).scrollTop(iitDiv.offset().top - scrollPad);
+            }
         }
     }, 1);
 }
@@ -21,7 +42,7 @@ if (location.hash) {               // do the test straight away
 //alias the global object
 //alias jQuery so we can potentially use other libraries that utilize $
 //alias Backbone to save us on some typing
-(function(exports, $, bb){
+(function(exports, $){
 
     //document ready
     $(function(){
@@ -31,10 +52,11 @@ if (location.hash) {               // do the test straight away
          * Cached Globals
          ***************************************
          */
-        var $window, $body, $document;
+        //var $window, $body, $document;
+        var $body;
 
-        $window  = $(window);
-        $document = $(document);
+        //$window  = $(window);
+        //$document = $(document);
         $body   = $('body');
 
         /**
@@ -78,30 +100,30 @@ if (location.hash) {               // do the test straight away
         };
 
         var three_col_tooltip_options = one_col_tooltip_options;
-        //three_col_tooltip_options.title = function(e) {
         three_col_tooltip_options.title = function() {
             return $('#three-col-footnote-' + $(this).html()).html();
+        };
+        var commentary_tooltip_options = one_col_tooltip_options;
+        commentary_tooltip_options.title = function() {
+            return $('#commentary-footnote-' + $(this).html()).html();
         };
 
         $("a[id*='one_col_sup_']").tooltip(one_col_tooltip_options);
         $("a[id*='three_col_sup_']").tooltip(three_col_tooltip_options);
+        $("a[id*='commentary_sup_']").tooltip(commentary_tooltip_options);
 
         $("form").submit(function(e) {
-            e.preventDefault();//prevent the form from actually submitting
-            var search_term = $(this).find("input[name=search-box]").val();
-            if (search_term.length) {
-                window.location = '/Search/' + search_term;
-            } else {
-                $("#search-error").text("Not valid!").show().fadeOut( 1000 );
+            if(e.target.action == undefined || e.target.action == "") {
+                if (location.pathname.indexOf('/contact') == -1) {
+                    e.preventDefault();
+                    var search_term = $(this).find("input[name=search-box]").val();
+                    if (search_term != undefined && search_term.length) {
+                        window.location = '/search/' + search_term;
+                    } else {
+                        $(this).find("span[name=search-error]").text("Not valid!").show().fadeOut(1000);
+                    }
+                }
             }
-        });
-
-        /**
-         * Remember active tab
-         */
-        $('#heading-tabs a,#dropdown-heading-tabs a').on('click', function (e) {
-            e.preventDefault();
-            $(this).tab('show');
         });
 
         $('.heading-nav-left.disabled,.heading-nav-right.disabled').on('click', function(e) {
@@ -119,47 +141,173 @@ if (location.hash) {               // do the test straight away
             populateVerseModal(window.verse_number);
         });
 
+        /**
+         * Page verse modal left
+         */
         $('#nav-links-light-verse-left').on('click', function (e) {
             e.preventDefault();
-            window.verse_number--;
+            window.verse_number = chapter_verse_order[window.verse_index - 1];
             populateVerseModal(window.verse_number);
         });
 
+        /**
+         * Page verse modal right
+         */
         $('#nav-links-light-verse-right').on('click', function (e) {
             e.preventDefault();
-            window.verse_number++;
+            window.verse_number = chapter_verse_order[window.verse_index + 1];
             populateVerseModal(window.verse_number);
         });
 
-        window.isTabShown = false;
-        window.heading_tabs = $("#heading-tabs");
+        function populateVerseModal(verse_number) {
+            var chapter_number = $('#chapter-number').html();
+            var iit_text = $('#iit_' + verse_number).html();
+            var heb_text = $('#heb_' + verse_number).html();
+            var commentary_text = $('.commentary_' + verse_number).html();
+            var kjv_text = $('#kjv_' + verse_number).html();
+            if (chapter_number == 40 && verse_number == 41.7) {
+                iit_text = '<p><span class="poetry"><span><sup>c</sup> The artisan encourages the smith,<span class="indent">and he who beats with a hammer</span><span class="indent"><i>urges</i> him who pounds the anvil.</span>They say of the welding, It is good,<span class="indent">though they fasten it with riveting </span><span class="indent">that it may not come loose.</span></span></span></p>';
+                heb_text = 'וַיְחַזֵּק חָרָשׁ אֶת־צֹרֵף מַחֲלִיק פַּטִּישׁ אֶת־הוֹלֶם פָּעַם אֹמֵר לַדֶּבֶק טוֹב הוּא וַיְחַזְּקֵהוּ בְמַסְמְרִים לֹא יִמּוֹט ׃';
+                commentary_text = '<p>(40:18–19; 41:7*; 40:20) Almost the first thing the nations do on the earth is to corrupt themselves, diverting their attention from the true God to images and idols. Isaiah’s satire on idolaters in this passage shows the futility of creating substitutes for humanity’s Creator. As these false gods are the antithesis of the true God, they are the main reason people become spiritually blind and lose understanding of him (Isaiah 27:9–11; 44:9–20). Such gods can’t save them in Jehovah’s Day of Judgment (Isaiah 45:20; 46:1–8). If the nations themselves are but chaos (vv 15–17), then how much more so the images and idols they invent?</p>';
+                kjv_text = 'So the carpenter encouraged the goldsmith, and he that smootheth with the hammer him that smote the anvil, saying, It is ready for the sodering: and he fastened it with nails, that it should not be moved.';
+            } else if(chapter_number == 41 && verse_number == 7) {
+                commentary_text = '<p>See: 40:19 Verse appears out of sequence in text.</p>';
+            } else {
+                iit_text = iit_text.replace(/<a\b[^>]*>(\w+)<\/a>/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>(\D)<\/a>\s?/ig, "$1");
+                iit_text = iit_text.replace(/<a\b[^>]*>\d{1,2}<\/a>\s?/ig, "");
+                iit_text = iit_text.replace(/<div class="spacer"><\/div>/ig, "<span class=\"spacer\"></span>");
+                iit_text = iit_text.replace(/<div class="prose-spacer"><\/div>/ig, "<span class=\"prose-spacer\"></span>");
+                iit_text = "<p>" + iit_text + "</p>";
+            }
+            $('#kjv-modal-verse').html(kjv_text);
+            $('#iit-modal-verse').html(iit_text);
+            $('#heb-modal-verse').html(heb_text);
+            var commentary_modal_verse = $('#commentary-modal-verse');
+            commentary_modal_verse.html(commentary_text);
+            var subject_verses = commentary_modal_verse.children("div").html();
+            commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
+            var modal_label = '';
+            if(chapter_number == 40 && verse_number == 41.7) {
+                modal_label = 'Isaiah ' + verse_number;
+            } else {
+                modal_label = 'Isaiah ' + chapter_number + ':' + verse_number;
+            }
+            $('#verse-modal-label').html(modal_label);
+            updatePagination(parseFloat(verse_number));
+        }
+
+        function updatePagination(verse_number) {
+            window.chapter_verse_order = $('#chapter-verse-order').text().split(',');
+            window.verse_index = chapter_verse_order.indexOf(verse_number.toString());
+            var left_pager = $('#nav-links-light-verse-left');
+            var prev_verse = verse_number - 1;
+            if(prev_verse >= chapter_verse_order[0]) {
+                left_pager.disable(false);
+            } else {
+                left_pager.disable(true);
+            }
+            //var next_verse = verse_number + 1;
+            var right_pager = $('#nav-links-light-verse-right');
+            if(verse_index != chapter_verse_order.length - 1) {
+                right_pager.disable(false);
+            } else {
+                right_pager.disable(true);
+            }
+        }
 
         /**
          * Populate keyword modal
          */
         $('.modal-trigger.keyword-modal').on('click', function (e) {
-            var keyword_value = e.target.innerHTML;
-            var keyword_verse_number = parseInt(e.target.id, 10);
-            var keyword_color = $("#" + keyword_verse_number + '_keyword_color').html();
+            var target = e.target;
+            var keyword_value = target.innerHTML;
+            var section = target.name;
+            var keyword_id = parseInt(target.id, 10);
+            var keyword_color = $("#" + keyword_id + '_' + section + '_keyword_color').html();
             $("#keyword_modal_header").attr('class', 'modal-header ' + keyword_color);
-            var keyword_description = $("#" + keyword_verse_number + '_keyword_description').html();
+            var keyword_description = $("#" + keyword_id + '_' + section + '_keyword_description').html();
             $("#keywordModalLabel").html(keyword_value);
             $("#keyword_modal_paragraph").html(keyword_description);
         });
 
+        var is_cs_toggled = $.cookie('is_cs_toggled');
+        if(is_cs_toggled != undefined) {
+            if(is_cs_toggled == 'true') {
+                $(".cs-top").toggle();
+            }
+        } else {
+            is_cs_toggled = 'false';
+            $.cookie('is_cs_toggled', is_cs_toggled);
+        }
+
+        $(".hide-chapter-selection").on('click', function (e) {
+            //$(".chapter-selection").slideToggle('fast');
+            $(".cs-top").toggle();
+            e.preventDefault();
+            if(is_cs_toggled != undefined) {
+                if(is_cs_toggled == 'true') {
+                    is_cs_toggled = 'false';
+                } else {
+                    is_cs_toggled = 'true';
+                }
+            } else {
+                is_cs_toggled = 'false';
+            }
+            $.cookie('is_cs_toggled', is_cs_toggled);
+        });
+
+        $(".nav-read-isaiah").find("a").on('click', function (e) {
+            window.location = $(e.currentTarget).attr("href");
+            e.preventDefault();
+        });
+
+        window.isTabShown = false;
+        window.heading_tabs = $("#heading-tabs");
+
+        var is_iit_page = false;
+
+        var iit_match = location.pathname.match(/^\/([1-6][0-9]|[1-9])$/);
+
+        if(iit_match != undefined && iit_match != null) {
+            var chapter_number = parseInt(iit_match[1]);
+            if(chapter_number > 0 && chapter_number < 67) {
+                is_iit_page = true;
+            }
+        }
+
         /**
          * Store the currently selected tab in the hash value and update nav links
          */
-        $("ul.nav-pills > li > a,ul.dropdown-menu > li > a").on("shown.bs.tab", function (e) {
-            var id = $(e.target).attr("href").substr(1);
-            var hash = "#" + id;
-            selectTab(hash);
-            setNavHash(hash);
-            window.isTabShown = true;
+        $("ul.nav-pills > li > a,ul.dropdown-menu > li > a[href^='#']").on('click', function (e) {
+            if (is_iit_page == true) {
+                var id;
+                if($(e.target).parent().attr("href") != undefined) {
+                    id = $(e.target).parent().attr("href").substr(1);
+                } else {
+                    if($(e.target).attr("href") != undefined) {
+                        id = $(e.target).attr("href").substr(1);
+                    } else {
+                        alert('heading-chapters nav tab id cannot be found!');
+                    }
+                }
+                if(id === undefined) {
+                    id = $(e.target).attr("href").substr(1);
+                }
+                var hash = "#" + id;
+                selectTab(hash);
+                setNavHash(hash);
+                window.isTabShown = true;
+                window.scrollTo(0, 0);
+            } else {
+                window.location = $(e.currentTarget).attr("href");
+            }
+            e.preventDefault();
         });
 
-        $("#index-aside").find("a").on('click', function (e) {
+        $("#dropdown-heading-tabs > li > a").on('click', function (e) {
             window.location = $(e.currentTarget).attr("href");
+            e.preventDefault();
         });
 
         /**
@@ -167,7 +315,7 @@ if (location.hash) {               // do the test straight away
          */
         var hash = window.location.hash;
 
-        if(location.pathname.indexOf('/Concordance') == -1 && location.pathname.indexOf('/Search') == -1) {
+        if(is_iit_page == true) {
             if (location.pathname != '/') {
                 if (hash != "") {
                     selectTab(hash);
@@ -178,28 +326,34 @@ if (location.hash) {               // do the test straight away
                     setNavHash(hash);
                 }
             } else {
-                if (hash != "") {
+                /*if (hash != "") {
                     setNavHash(hash);
                 } else {
                     setNavHash("#one_col");
-                }
+                }*/
             }
+        } else if(location.pathname.indexOf('/search') > -1) {
+            var term_or_terms = location.pathname.split('/')[2];
+            var is_exact = new RegExp('%22', 'g').test(term_or_terms);
+            var search_phrase = $(document).find("input[name=search-box]:visible").first().val().replace(/"/g, '');
+            if(is_exact == false) {
+                var search_parts = search_phrase.split(' ');
+            }
+            $('ol > li > span').each(function() {
+                if(this.innerHTML != undefined) {
+                    var replacement;
+                    if(is_exact == true) {
+                        replacement = new RegExp('\\b(' + search_phrase + ')\\b', 'ig');
+                        this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                    } else {
+                        search_parts.forEach(function(value, index) {
+                            var replacement = new RegExp('(' + value + ')', 'ig');
+                            this.innerHTML = this.innerHTML.replace(replacement, '<span class="highlight">$1</span>');
+                        }, this);
+                    }
+                }
+            });
         }
-
-        window.heading_tabs.find('li > a').click(function (e) {
-            var t = e.target;
-            if (t.parentElement.href != undefined) {
-                var parentHref = t.parentElement.href;
-                var hashStart = parentHref.indexOf("#");
-                if(hashStart != -1) {
-                    var hash = parentHref.substr(hashStart);
-                    selectTab(hash);
-                }
-                return false;
-            } else {
-                return true;
-            }
-        });
 
         function setNavHash(hash) {
             var angle_left_top = $('#nav-left-top.fa-angle-left');
@@ -231,52 +385,13 @@ if (location.hash) {               // do the test straight away
             heading_tabs_li.removeClass('active');
             heading_tabs_li.find("a[href$=" + hash + "]").closest("li").addClass("active");
             $('.tab-content > .tab-pane').hide();
-            location.hash = hash;
+            window.location.hash = hash;
             $(hash).show();
-        }
-
-        function populateVerseModal(verse_number) {
-            var chapter_number = $('#chapter-number').html();
-            var kjv_text = $('#kjv_' + verse_number).html();
-            var iit_text = $('#iit_' + verse_number).html();
-            iit_text = iit_text.replace(/<a\b[^>]*>(.*?)<\/a>\s?/i,"");
-            iit_text = "<p>" + iit_text + "</p>";
-            var heb_text = $('#heb_' + verse_number).html();
-            var commentary_text = $('.commentary_' + verse_number).html();
-            $('#kjv-modal-verse').html(kjv_text);
-            $('#iit-modal-verse').html(iit_text);
-            $('#heb-modal-verse').html(heb_text);
-            var commentary_modal_verse = $('#commentary-modal-verse');
-            commentary_modal_verse.html(commentary_text);
-            var subject_verses = commentary_modal_verse.children("div").html();
-            commentary_modal_verse.children().next('p').first().prepend(subject_verses + ' ');
-            $('#verse-modal-label').html('Isaiah ' + chapter_number + ':' + verse_number);
-            updatePagination(parseInt(verse_number));
-        }
-
-        //TODO: Paginator only works sequentially. This is a problem for verses out of sequence. Need to write special exceptions for stuff like chapter 40/41:7*
-        function updatePagination(verse_number) {
-            var left_pager = $('#nav-links-light-verse-left');
-            var prev_verse = verse_number - 1;
-            if(prev_verse >= 1) {
-                left_pager.disable(false);
-            } else {
-                left_pager.disable(true);
-            }
-            var right_pager = $('#nav-links-light-verse-right');
-            var verse_count = $('#verse-count').html();
-            var next_verse = verse_number + 1;
-            if(next_verse <= verse_count) {
-                right_pager.disable(false);
-            } else {
-                right_pager.disable(true);
-            }
         }
 
         var getQueryStringKey = function(key) {
             return getQueryStringAsObject()[key];
         };
-
 
         var getQueryStringAsObject = function() {
             var b, cv, e, k, ma, sk, v, r = {},
@@ -345,20 +460,140 @@ if (location.hash) {               // do the test straight away
 
         var citationQueryString = getQueryStringKey('citation');
         if(citationQueryString != undefined) {
-            var citationLink = $('a[href*=' + citationQueryString + ']');
+            var citationLink = $('a[href*="' + citationQueryString + '"]');
             if(citationLink != undefined) {
-                if(location.pathname.indexOf('/Concordance') == -1) {
-                    citationDiv = citationLink.parent().closest('div');
+                if(location.pathname.indexOf('/concordance') == -1) {
+                    citationSpan = citationLink.parent().closest('.poetry,.prose,.prose inline');
                     citationLink.addClass('highlight');
                 } else {
-                    citationDiv = citationLink.parent();
-                    citationDiv.addClass('highlight');
+                    citationSpan = citationLink.parent();
+                    if (citationSpan != undefined) {
+                            citationSpan.addClass('highlight');
+                    }
                 }
-                if (citationDiv != undefined) {
-                    is_citation = true;
+                //$(window).scrollTop(citationSpan.offset().top);
+                is_citation = true;
+            }
+        }
+
+        var referenceQueryString = getQueryStringKey('reference');
+        if(referenceQueryString != undefined) {
+            var reference = referenceQueryString;
+            var referenceRegex = /^(\d{1,3})/;
+            var scroll_to_verse = parseInt(referenceRegex.exec(reference));
+
+            if (scroll_to_verse > 0) {
+                //Bible
+                if (hash == undefined || hash == '') {
+                    var iitVerseSpan = $('#verse_' + scroll_to_verse);
+                    iitDiv = iitVerseSpan;
+                    //IIT
+                } else if (hash == '#three_col') {
+                    var iitVerseSpan = $('#iit_' + scroll_to_verse);
+                    iitDiv = iitVerseSpan.next();
+                }
+                is_searched = true;
+            }
+        } else {
+            var verseQueryString = getQueryStringKey('verse');
+            var verse_number;
+            var searchQueryString = getQueryStringKey('search');
+            //Search highlighting
+            if (verseQueryString != undefined && searchQueryString != undefined) {
+                verse_number = verseQueryString;
+                var search = searchQueryString;
+                var iitVerseSpan = $('#iit_search_' + verse_number);
+                iitDiv = iitVerseSpan.next();
+                if (location.pathname.indexOf('/concordance') == -1) {
+                    if (hash == "#one_col") {
+                        var is_term_exact = new RegExp('"', 'g').test(search);
+                        var searchRegex;
+                        if (is_term_exact == true) {
+                            search = search.replace(/"/g, '');
+                            searchRegex = new RegExp('\\b' + search + '\\b', 'gi');
+                        } else {
+                            var search_ors = '';
+                            var search_split = search.split(' ');
+                            var part_count = search_split.length;
+                            for (var i = 0; i < part_count; i++) {
+                                if (i + 1 != part_count) {
+                                    search_ors += search_split[i] + '|';
+                                } else {
+                                    search_ors += search_split[i];
+                                }
+                            }
+                            searchRegex = new RegExp(search_ors, 'gi');
+                        }
+                        var next_class = iitVerseSpan.next().attr('class');
+                        if (next_class == 'poetry' || next_class == 'prose' || next_class == 'prose inline') {
+                            highlightSearchTerm(iitVerseSpan.next()[0], searchRegex, verse_number);
+                        } else {
+                            if (next_class == 'modal-trigger verse-number') {
+                                highlightSearchTerm(iitVerseSpan.closest('span[class=poetry]')[0], searchRegex, verse_number);
+                            } else {
+                                alert('Next class isnt the verse modal link. It is: ' + next_class);
+                            }
+                        }
+                        //var scrollPad = $('.header-container:visible').height();
+                        //$(window).scrollTop(iitDiv.offset().top);
+                        is_searched = true;
+                    }
                 }
             }
         }
+
+        function highlightVerseRange(verseRangeString) {
+            var verseRange = verseRangeString.split('-');
+            /*var min = verseRanges[0];
+             var max = verseRanges[1];*/
+            for(var i = verseRange[0]; i <= verseRange[1]; i++) {
+                $('#verse_' + i).addClass('highlight');
+            }
+        }
+
+        $(window).scroll(function(){
+            if ($(window).scrollTop() >= 105) {
+                $('.heading').addClass('fixed');
+            }
+            else {
+                $('.heading').removeClass('fixed');
+            }
+        });
+
+        function highlightSearchTerm(domElement, searchRegex, verse_number) {
+            window.highlight_verse = parseInt(verse_number);
+            findAndReplaceDOMText(
+                domElement,
+                {
+                    find: searchRegex,
+                    replace: function(portion, match) {
+                        var verse_index = match.input.indexOf(window.highlight_verse);
+                        var next_verse_index = match.input.indexOf(window.highlight_verse + 1);
+                        if(verse_index > -1 && match.startIndex < verse_index) {
+                            return portion.text;
+                        } else if(next_verse_index > -1 && match.endIndex > next_verse_index) {
+                            return portion.text;
+                        } else {
+                            if($(portion.node).parent().is('a')) {
+                                $(portion.node).parent().addClass('highlight');
+                                return portion.text;
+                            } else {
+                                var span = document.createElement('span');
+                                span.className = 'highlight';
+                                span.innerHTML = portion.text;
+                            }
+                            return span;
+                        }
+                    }
+                }
+            );
+        }
+
+        $.fn.outerHTML = function(s) {
+            return s
+                ? this.before(s).remove()
+                : jQuery("<p>").append(this.eq(0).clone()).html();
+        };
 
         $.fn.extend({
             disable: function(state) {
@@ -371,3 +606,55 @@ if (location.hash) {               // do the test straight away
     });//end document ready
 
 }(this, jQuery, Backbone));
+
+/**
+ * http://stackoverflow.com/questions/14441456/how-to-detect-which-device-view-youre-on-using-twitter-bootstrap-api
+ * @returns {string}
+ */
+function findBootstrapEnvironment() {
+    var envs = ['xs', 'sm', 'md', 'lg'];
+
+    var $el = $('<div>');
+    $el.appendTo($('body'));
+
+    for (var i = envs.length - 1; i >= 0; i--) {
+        var env = envs[i];
+
+        $el.addClass('hidden-'+env);
+        if ($el.is(':hidden')) {
+            $el.remove();
+            return env
+        }
+    }
+}
+
+/**
+ * http://stackoverflow.com/questions/16965515/how-to-get-a-style-attribute-from-a-css-class-by-javascript-jquery
+ */
+/*function getStyleRuleValue(style, selector, sheet) {
+    var sheets = typeof sheet !== 'undefined' ? [sheet] : document.styleSheets;
+    for (var i = 0, l = sheets.length; i < l; i++) {
+        var sheet = sheets[i];
+        if( !sheet.cssRules ) { continue; }
+        for (var j = 0, k = sheet.cssRules.length; j < k; j++) {
+            var rule = sheet.cssRules[j];
+            if (rule.selectorText && rule.selectorText.split(',').indexOf(selector) !== -1) {
+                return rule.style[style];
+            }
+        }
+    }
+    return null;
+}*/
+
+/*
+function getBootstrapStyleSheetsIndex() {
+    var sheets = document.styleSheets;
+    var count = sheets.length;
+    for (var i = 0; i < count; i++) {
+        var sheet = sheets[i];
+        var isBootstrap = new RegExp('bootstrap\\.min\\.css', 'i').test(sheet.href);
+        if(isBootstrap === true) {
+            return i;
+        }
+    }
+}*/

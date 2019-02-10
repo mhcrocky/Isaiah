@@ -32,6 +32,34 @@ ClassLoader::addDirectories(array(
 */
 
 Log::useFiles(storage_path().'/logs/laravel.log');
+if(Config::get('app.debug') == true) {
+    Log::getMonolog()->pushHandler(new \Monolog\Handler\ChromePHPHandler());
+}
+
+/*
+|--------------------------------------------------------------------------
+| Application 404 Handler
+|--------------------------------------------------------------------------
+|
+| Here you may handle any 404 errors that occur in your application.
+|
+*/
+
+/*App::missing(function($exception)
+{
+	$template_data = array(
+		'title' => 'Error 404 (Not Found)!',
+		'body_id' => 'chapter-index',
+		'body_css' => 'scriptures section-heading'
+	);
+	$template_data['title'] = 'Error 404 (Not Found)!';
+	$content_data = array('uri' => '/' . Request::path());
+	return View::make('layouts.master', $template_data)
+		->nest('heading', 'headings.resources')
+		->nest('mobile_search', 'widgets.search-iit-mobile')
+		->nest('content', 'errors.missing', $content_data);
+	//return Response::view('errors.missing', array('uri' => Request::path()), 404);
+});*/
 
 /*
 |--------------------------------------------------------------------------

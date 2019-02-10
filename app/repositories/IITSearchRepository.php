@@ -16,15 +16,21 @@ class IITSearchRepository {
      * @param int $limit
      * @return mixed
      */
-    public function GetIITSearchTerm($search_term, $page = 1, $limit = 10) {
+    public function GetIITSearchTerm($search_term, $page = 1, $limit = 20) {
         $result['count'] = 0;
         $result['html'] = '';
         $result_count = 0;
         $search_html = '';
         $EOL = PHP_EOL;
 
-        $results = $this->_getIITSearchResults($search_term, $page, $limit);
+        $is_exact_match = preg_match('/^".*"$/', $search_term);
+        if($is_exact_match == true) {
+            $results = $this->_getIITSearchResults(preg_replace('/"/', '' , $search_term), true, $page, $limit);
+        } else {
+            $results = $this->_getIITSearchResults($search_term, false, $page, $limit);
+        }
 
+        //$search_term = preg_replace('/"/', '' , $search_term);
         $search_results = $results['results'];
         $total_count = $results['count'];
 
@@ -40,9 +46,12 @@ EOT;
             for ($i = 0; $i < $result_count; $i++) {
                 $chapter_number = $search_results[$i]->chapter_number;
                 $verse_number = $this->_strrtrim($search_results[$i]->verse_number, '.0');
-                $scripture_text = html_entity_decode($search_results[$i]->scripture_text);
+                $scripture_text = html_entity_decode($search_results[$i]->scripture_text_plain);
+                $scripture_text = preg_replace('/<span\b[^>]*>(.*)<\/span>/U', ' $1 ', $scripture_text);
+                $scripture_text = preg_replace('/\s\s/', ' ', $scripture_text);
+                $scripture_text = preg_replace('/<b>|<\/b>/', '', $scripture_text);
                 $search_html .= <<<EOT
-<li>${scripture_text} - <i>Isaiah ${chapter_number}:${verse_number}</i></li>
+<li><a href='/${chapter_number}?verse=$verse_number&search=$search_term#one_col'><i>Isaiah ${chapter_number}:${verse_number}</i></a> <span>${scripture_text}</span></li>
 EOT;
             }
 
@@ -62,11 +71,12 @@ EOT;
      * Get the concordance words for specified letter
      *
      * @param string $search_term
+     * @param bool $is_exact
      * @param int $page
      * @param int $limit
      * @return array
      */
-    private function _getIITSearchResults($search_term, $page = 1, $limit = 10) {
+    private function _getIITSearchResults($search_term, $is_exact = false, $page = 1, $limit = 10) {
         $offset = ($page - 1) * $limit;
         $results = DB::table('volumes')
             ->limit($limit)
@@ -88,15 +98,16 @@ EOT;
                 $join->on('chapters.id', '=', 'verses.chapter_id');
             })
             ->where('books.book_title', '=', 'Isaiah IIT')
-            ->where(function($query) use ($search_term) {
-                $terms = explode(' ', $search_term);
-                $term_count = count($terms);
-                for($i = 0; $i < $term_count; $i++) {
-                    $query->where('verses.scripture_text', 'LIKE', '%' . $terms[$i] . '%', 'and');
+            ->where(function($query) use ($search_term, $is_exact) {
+                if($is_exact == true) {
+                    $query->where('verses.scripture_text_plain', 'RLIKE', '[[:<:]]' . $search_term . '[[:>:]]', 'and');
+                } else {
+                    $search_term = preg_replace('/ /', '%', $search_term);
+                    $query->where('verses.scripture_text_plain', 'LIKE', '%' . $search_term . '%', 'and');
                 }
             })
             ->select('chapters.id as chapter_id', 'verses.id as verse_id', 'chapters.chapter_number',
-                'verses.verse_number', 'verses.scripture_text', 'verses.segment_id',
+                'verses.verse_number', 'verses.scripture_text_plain', 'verses.segment_id',
                 'verses.is_poetry', 'verses.one_col_html',  'verses.three_col_html')->get();
         $count_result = DB::table('volumes')
             /*->orderBy('volumes.id')
@@ -116,11 +127,12 @@ EOT;
                 $join->on('chapters.id', '=', 'verses.chapter_id');
             })
             ->where('books.book_title', '=', 'Isaiah IIT')
-            ->where(function($query) use ($search_term) {
-                $terms = explode(' ', $search_term);
-                $term_count = count($terms);
-                for($i = 0; $i < $term_count; $i++) {
-                    $query->where('verses.scripture_text', 'LIKE', '%' . $terms[$i] . '%', 'and');
+            ->where(function($query) use ($search_term, $is_exact) {
+                if($is_exact == true) {
+                    $query->where('verses.scripture_text_plain', 'RLIKE', '[[:<:]]' . $search_term . '[[:>:]]', 'and');
+                } else {
+                    $search_term = preg_replace('/ /', '%', $search_term);
+                    $query->where('verses.scripture_text_plain', 'LIKE', '%' . $search_term . '%', 'and');
                 }
             })
             ->select(array(DB::raw('COUNT(chapters.id) as results')))->get();

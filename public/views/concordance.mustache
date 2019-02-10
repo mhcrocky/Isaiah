@@ -2,13 +2,11 @@
 
             <h4 class="mini-header">Alphabetical List</h4>
 
-            <div class="non-mobile">
+            {{> widgets.letter-selection-concordance}}
 
-                {{> widgets.letter-selection-concordance}}
+            <h1 class="title-chapters"><a href="#alphamodal" class="modal-trigger" data-toggle="modal">Concordance</a> > {{concordance_letter}}</h1>
 
-                <hr>
-
-            </div>
+            <hr>
 
             <div class="one-col-padding">
 
@@ -16,6 +14,13 @@
 
             </div> <!-- End One Col Padding -->
 
+            {{> widgets.ad-concordance}}
+
+            <ul class="chapter-selection">
+                {{#letters}}
+                    <li><a class="btn {{button_class}} btn-chapter-sel" href="{{app_url}}/concordance/{{selection_letter}}">{{selection_letter}}</a></li>
+                {{/letters}}
+            </ul>
 
         </main>
 

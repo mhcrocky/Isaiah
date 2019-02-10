@@ -16,11 +16,15 @@ class Book extends Eloquent {
      */
     public $timestamps = false;
 
-    public function chapter() {
+    public function volume() {
+        return $this->hasOne('Volume');
+    }
+
+    public function chapters() {
         return $this->hasMany('Chapter');
     }
 
-    public function volume() {
-        return $this->hasOne('Volume');
+    public function verses() {
+        return $this->hasManyThrough('Verse', 'Chapter');
     }
 }

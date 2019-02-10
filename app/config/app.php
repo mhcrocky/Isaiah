@@ -4,6 +4,21 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Application Contact
+	|--------------------------------------------------------------------------
+	|
+	| Your application contact name and email address.
+	|
+	 */
+
+	'contact_name' => 'Avraham Gileadi',
+	//'contact_email' => 'avrahamgileadi@gmail.com',
+	'contact_email' => 'tj@ixqus.com',
+	'system_email' => 'contact@isaiahexplained.com',
+	'contact_subject' => 'New Feedback for IsaiahExplained.com',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Application Debug Mode
 	|--------------------------------------------------------------------------
 	|
@@ -13,7 +28,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +41,8 @@ return array(
 	|
 	*/
 
-	'url' => 'http://isaiahexplained.local',
+	//'url' => 'http://localhost',
+    'url' => 'http://dev-isaiah.isaiahexplained.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +55,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Los_Angeles',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -106,7 +122,8 @@ return array(
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Hashing\HashServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		//'Illuminate\Html\HtmlServiceProvider',
+		'IsaiahExplained\Providers\HtmlServiceProvider',
 		'Illuminate\Log\LogServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
 		'Illuminate\Database\MigrationServiceProvider',
@@ -124,6 +141,9 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
         'DaveJamesMiller\Boris\BorisServiceProvider',
+        'Flatten\FlattenServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        'Roumen\Sitemap\SitemapServiceProvider',
 	),
 
 	/*
@@ -190,7 +210,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+        'Flatten'         => 'Flatten\Facades\Flatten',
+        'Carbon'          => 'Carbon\Carbon',
 	),
 
 );
