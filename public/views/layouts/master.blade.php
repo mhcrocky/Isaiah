@@ -69,7 +69,7 @@
                             </ul>
                         </li>
                         <li><a href="{{ $app_url }}/bible/"><i class="fa fa-book fa-fw"></i> <span>KJV Bible</span></a></li>
-                        <li><a href="#"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
+                        <li><a href="http://hebraeuspress.com/"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
                         <li><a href="{{ $app_url }}/contact/"><i class="fa fa-envelope fa-fw"></i> <span>Contact</span></a></li>
                         <li class="show-hide nav-search">
                             <form role="search">
