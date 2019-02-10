@@ -340,14 +340,24 @@ EOT;
 
                 foreach($matches[0] as $citation) {
                     $replacements[] = [ 'original citation' => $citation, 'replacement citation' => $citation ];
-                    if(preg_match('/^((\d{1}\s)?[A-Z][a-z]+)/', $citation, $citation_matches)) {
+                    if(preg_match('/((?:\d{1}\s)?[A-Z][a-z]+)/', $citation, $citation_matches)) {
                         $book_title = rtrim($citation_matches[0], ';');
                         $book_abbr = BibleRepository::GetAbbrFromBookTitle($book_title);
                         $is_iit = ($book_abbr == 'isa');
 
                         //if(preg_match_all('/^((\d{1}\s)?[A-Z][a-z]+) (\d{1,3}:?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)|(\d{1,3}:?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
-                        if(preg_match_all('/^((\d{1} )?[A-Z][a-z]+) (\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)|(\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
+                        //if(preg_match_all('/^((\d{1} )?[A-Z][a-z]+) (\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)|(\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
+                        //if(preg_match_all('/((\d{1} )[A-Z][a-z]+|[A-Z][a-z]+) (\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)|(\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
+                        if(preg_match_all('/((\d{1} )[A-Z][a-z]+|[A-Z][a-z]+) (\d{1,3}:?((?:\d{1,3}-\d{1,3},?\s?)+|(?:\d{1,3}-\d{1,3},?\s?)+\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}-\d{1,3}(?:, \d{1,3})+|(?:\d{1,3}, )+\d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)|(\d{1,3}:?((?:\d{1,3}-\d{1,3},?\s?)+|(?:\d{1,3}-\d{1,3},?\s?)+\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}-\d{1,3}(?:, \d{1,3})+|(?:\d{1,3}, )+\d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
+                            $reference_iteration = 0;
                             foreach($reference_matches[0] as $reference) {
+                                if(!empty($reference_matches[1][$reference_iteration])) {
+                                    $book_title = $reference_matches[1][$reference_iteration];
+                                } else {
+                                    $book_title = $reference_matches[1][0];
+                                }
+                                $book_abbr = BibleRepository::GetAbbrFromBookTitle($book_title);
+                                $reference_iteration++;
                                 if(strpos($reference, $book_title) !== false) {
                                     $reference_chapter_verse = trim(str_replace($book_title, '', $reference));
                                 } else {
@@ -360,7 +370,10 @@ EOT;
                                 }*/
                                 //if(preg_match_all('/((\d{1,3}):?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
                                 //if(preg_match_all('/((\d{1,3}):?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
-                                if(preg_match_all('/((\d{1,3}):?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                //if(preg_match_all('/((\d{1,3}):?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                //if(preg_match_all('/((\d{1,3}):?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}|(?:\d{1,3}, )+\d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                //if(preg_match_all('/((\d{1,3}):?((?:\d{1,3}-\d{1,3},?\s?)+|(?:\d{1,3}-\d{1,3},?\s?)+\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}-\d{1,3}(?:, \d{1,3})+|(?:\d{1,3}, )+\d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                if(preg_match_all('/(^(\d{1,3}):?((?:\d{1,3}-\d{1,3},?\s?)+|(?:\d{1,3}-\d{1,3},?\s?)+\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}-\d{1,3}(?:, \d{1,3})+|(?:\d{1,3}, )+\d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?$)+/', $reference_chapter_verse, $reference_parts)) {
                                     $chapter_number = $reference_parts[2][0];
                                     $verse_reference = $reference_parts[3][0];
                                     $reference_text = '';
@@ -436,11 +449,14 @@ EOT;
                                             }
                                             $new_citation = str_replace('/' . $reference, '/' . $reference_chapter_verse, $new_citation);
                                             //$new_commentary = str_replace($citation, $new_citation, $new_commentary);
-                                            $replacements[$citation_iteration]['replacement citation'] = str_replace($reference, $new_citation, $replacements[$citation_iteration]['replacement citation']);
+                                            //$replacements[$citation_iteration]['replacement citation'] = str_replace($reference, $new_citation, $replacements[$citation_iteration]['replacement citation']);
+                                            $replacements[$citation_iteration]['replacement citation'] = str_replace($citation, $new_citation, $replacements[$citation_iteration]['replacement citation']);
+                                            $test = 1;
                                         } else {
                                             //$citation = 'Isaiah 11:10-12, 14-15; 41:2, 10, 13; 49:1-3'
                                             //$regex = '/((\d{1,3}:)?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})+)+/';
-                                            $regex = '/((\d{1,3}:)?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|(, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})+)+/';
+                                            //$regex = '/((\d{1,3}:)?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|(, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})+)+/';
+                                            $regex = '/((\d{1,3}:)?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|(, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})+)+/';
                                             if(preg_match_all($regex, $reference_chapter_verses, $sub_reference_matches)) {
                                                 if(!empty($sub_reference_matches[0])) {
                                                     $sub_reference_match_count = count($sub_reference_matches[0]);
@@ -498,7 +514,41 @@ EOT;
                                                                 $reference_url .= '">' . $sub_reference . '</a>';
                                                                 $new_citation = str_replace($sub_reference, $reference_url, $new_citation);
                                                             } else {
-                                                                $test = 1;
+                                                                if(!empty($sub_reference_matches[0][2])) {
+                                                                    $sub_reference = $sub_reference_matches[0][2];
+                                                                    $chapter_parts = explode(':', $sub_reference);
+                                                                    if (count($chapter_parts) > 1) {
+                                                                        /*$tmp_book_title = rtrim($reference_chapter_verse, ';');
+                                                                        $tmp_book_abbr = BibleRepository::GetAbbrFromBookTitle($tmp_book_title);*/
+
+                                                                        $chapter_number = $chapter_parts[0];
+                                                                        $verse_reference = str_replace(' ', '', $chapter_parts[1]);
+                                                                        $reference_url = '';
+                                                                        if ($is_iit == true) {
+                                                                            $reference_url = '<a href="' . $app_url . '/' . $chapter_number;
+                                                                        } else {
+                                                                            $reference_url = '<a href="' . $app_url . '/bible/' . $book_abbr . '/' . $chapter_number;
+                                                                        }
+                                                                        if (!empty($verse_reference)) {
+                                                                            $reference_url .= '?reference=' . $verse_reference;
+                                                                        }
+                                                                        if ($is_iit == true) {
+                                                                            $reference_url .= '#three_col';
+                                                                        }
+
+                                                                        /*$sub_reference = preg_replace('/:/', 'zzz:zzz', $sub_reference);
+                                                                        $sub_reference = preg_replace('/,/', 'zzz,zzz', $sub_reference);*/
+
+                                                                        $reference_url .= '">' . $sub_reference . '</a>';
+                                                                        $new_citation = str_replace($reference_chapter_verse, $reference_url, $new_citation);
+                                                                        $test = 1;
+                                                                    } else {
+                                                                        $test = 1;
+                                                                    }
+                                                                    $test = 1;
+                                                                } else {
+                                                                    $test = 1;
+                                                                }
                                                             }
                                                             $test = 1;
                                                         }
@@ -536,12 +586,13 @@ EOT;
             }
 
             //$commentary = preg_replace('//', '', $commentary);
-            //$new_commentary = preg_replace('/zzz/', '', $new_commentary);
 
             //[ 'original citation' => 'value', 'replacement citation' => 'value' ];
             foreach($replacements as $replacement) {
                 $new_commentary = str_replace($replacement['original citation'], $replacement['replacement citation'], $new_commentary);
             }
+
+            $new_commentary = preg_replace('/zzz/', '', $new_commentary);
 
             $subject_verses = '<div class="subject_verses" style="display: none;">' . $this->_getCommentarySubjectVerses($header->commentary_id) . '</div>';
             if(!empty($new_commentary)) {
