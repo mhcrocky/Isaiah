@@ -198,6 +198,8 @@ class Crawler
             if (!in_array($link, $this->crawled)) {
                 $this->queue[$link] = false;
             }
+        } else {
+            $this->error('Invalid page "'.$link.'"');
         }
     }
 
