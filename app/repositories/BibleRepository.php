@@ -38,6 +38,18 @@ class BibleRepository {
         return Book::where('book_lds_url', '=', $book_abbr)->first()->book_title;
     }
 
+    public static function GetAbbrFromBookTitle($book_title) {
+        if($book_title == 'Psalm') {
+            $book_title = 'Psalms';
+        }
+        $book = Book::where('book_title', '=', $book_title)->first();
+        if(!empty($book)) {
+            return $book->book_lds_url;
+        } else {
+            return null;
+        }
+    }
+
     /**
      * Get Book's Chapters
      *
