@@ -162,7 +162,7 @@
     <?php } else { ?>
     <script src="{{ asset('js/jquery.cookie.min.js') }}"></script>
     <script src="{{ asset('js/findAndReplaceDOMText.min.js') }}"></script>
-    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/app.min.js') }}"></script>
     <?php } ?>
     @yield('scripts')
 </body>
