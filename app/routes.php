@@ -43,4 +43,8 @@ Route::get('/commentary/mp3/{chapterNumber}', 'MediaController@showMediaMP3')->w
 Route::get('/contact', 'ContactController@GetContactForm');
 Route::post('/contact', 'ContactController@SubmitContactForm');
 
+Route::get('/about', function() {
+    return Redirect::to(Config::get('app.url') . '/Isaiah-Institute-Translation');
+});
+
 App::missing(function($exception) { return RedirectRepository::PageNotFound(); });
