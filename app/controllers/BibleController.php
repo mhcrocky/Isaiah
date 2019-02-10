@@ -33,6 +33,7 @@ class BibleController extends \BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());*/
 
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.bible-chapter-index')
             //->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
@@ -63,6 +64,7 @@ class BibleController extends \BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('vignette_modal', 'modals.vignette')
             ->nest('heading', 'headings.bible-chapter-index')
             //->nest('top_nav', 'widgets.chapter-selection-top')
@@ -106,6 +108,7 @@ class BibleController extends \BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             //->nest('heading', 'headings.bible-chapter')
             //->nest('top_nav', 'widgets.chapter-selection-top-kjv-book-chapter')
             ->nest('chapter_modal', 'modals.bible-chapter')

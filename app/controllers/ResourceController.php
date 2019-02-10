@@ -12,6 +12,7 @@ class ResourceController extends BaseController {
         $content_data = array();
 
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.chapter-index')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'resource-index', $content_data);
@@ -57,6 +58,7 @@ class ResourceController extends BaseController {
                 break;
         }
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('vignette_modal', 'modals.vignette')
             ->nest('heading', 'headings.resources')
             ->nest('mobile_search', 'widgets.search-iit-mobile')

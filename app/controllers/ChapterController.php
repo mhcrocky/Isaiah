@@ -40,6 +40,7 @@ class ChapterController extends BaseController {
         //View::share('search_term', Input::get('search', ''));
 
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('bottom_nav', 'widgets.chapter-selection-bottom')
             ->nest('verse_modal', 'modals.verse', $verse_modal_data)

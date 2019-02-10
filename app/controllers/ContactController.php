@@ -10,6 +10,7 @@ class ContactController extends \BaseController {
         $content_data = [];
 
         return View::make('layouts.master', $template_data)
+                ->nest('tracking_code', 'widgets.tracking-code')
                 ->nest('heading', 'headings.resources')
                 ->nest('content', 'contact', $content_data);
     }
@@ -60,6 +61,7 @@ class ContactController extends \BaseController {
                 ->with('error', 'Feedback must contain more than 5 characters. Try Again.');*/
             $content_data['errors'] = $validator->messages();
             return View::make('layouts.master', $template_data)
+                ->nest('tracking_code', 'widgets.tracking-code')
                 ->nest('heading', 'headings.resources')
                 ->nest('content', 'contact', $content_data);
         }

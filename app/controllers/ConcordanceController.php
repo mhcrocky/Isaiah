@@ -19,6 +19,7 @@ class ConcordanceController extends BaseController {
         View::share('letters', WidgetRepository::GetConcordanceSelection());
 
         return View::make('layouts.concordance', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.concordance-index')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'concordance-index', $content_data);
@@ -53,6 +54,7 @@ class ConcordanceController extends BaseController {
         //View::share('search_term', Input::get('search', ''));
 
         return View::make('layouts.concordance', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             //->nest('heading', 'headings.concordance', $header_data)
             ->nest('heading', 'headings.concordance', $header_data)
             ->nest('alpha_modal', 'modals.alpha')
