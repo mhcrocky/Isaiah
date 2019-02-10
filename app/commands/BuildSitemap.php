@@ -73,14 +73,18 @@ class BuildSitemap extends Command {
 
         foreach(new RecursiveIteratorIterator($iterativeQueue) as $key => $url) {
             if(!in_array($url, $crawler->queue_errors)) {
-                $sitemap->add(URL::to($url), $lastMonth, '1.0', 'monthly');
-                //$this->info("Added {$url} to sitemap.");
-                $this->output->writeln(sprintf($message, "Added {$url} to sitemap."));
+                if($url != '/') {
+                    $sitemap->add(URL::to($url), $lastMonth, '1.0', 'monthly');
+                    //$this->info("Added {$url} to sitemap.");
+                    $this->output->writeln(sprintf($message, "Added {$url} to sitemap."));
+                    ++$link_count;
+                } else {
+                    $this->output->writeln(sprintf($message, "Skipped {$url} in sitemap."));
+                }
             } else {
                 //$this->info("Skipped {$url} due to errors.");
                 $this->output->writeln(sprintf($message, "Skipped {$url} due to errors."));
             }
-            ++$link_count;
         }
 
         $this->output->writeln(sprintf($message, 'Saving sitemap...'));
