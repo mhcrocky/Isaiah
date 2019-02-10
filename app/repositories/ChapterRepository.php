@@ -314,6 +314,7 @@ EOT;
     public function GetIITCommentary($chapter_number) {
         $iit_commentary_html = '';
         $headers = $this->_getCommentaryHeaders($chapter_number);
+        $app_url = Config::get('app.url');
         foreach($headers as $header) {
             $iit_commentary_html .= '<div class="commentary">' . html_entity_decode($header->header) . '</div>';
             $verses = $this->_getCommentaryVerses($header->commentary_id);
@@ -326,11 +327,265 @@ EOT;
                     $wrapper_class .= 'commentary_' . $this->_strrtrim($verses[$i]->verse_number, '.0');
                 }
             }
+
+            $commentary = html_entity_decode($this->_getCommentary($header->commentary_id));
+            $commentary = str_replace('–', '-', $commentary);
+            $new_commentary = $commentary;
+
+            $replacements = array();
+            //$replacements[] = [ 'original citation' => 'value', 'replacement citation' => 'value' ];
+            if(preg_match_all('/\b((G(e(nesis)|e?n)|Ex(o(d(us)?)?)?|L(eviticus|e?v)|N(u(mbers)?|u?m)|D(euteronomy|(eu)?t)|J(os(hua)?|o?sh)|J(udg(es)?|gs|d)|Ru(th?)?|Ezra?|Ne(h(emiah)?)?|Est(h(er)?)?|Jo?b|Ps(alm)?s?|Pr(ov(erbs)?)?|Ec(c(les(iastes)?)?)?|S(o(ng( of (Songs|Solomon))?)?|g)|Is(a(iah)?)?|J(e(remiah)?|e?r)|L(a(mentations)?|a?m)|Ez(e(kiel)?|e?k)|D(a(niel)?|a?n)|Ho(s(ea)?)?|J(oe)?l|Am(os)?|Ob(a(d(iah)?)?)?|Jon(ah)?|M(i(c(ah)?)?|c)|N(a(h(um)?)?|h)|Hab(akkuk)?|Z(ep(h(aniah)?)?|p)|H(ag(g(ai)?)?|g)|Z(ec(h(ariah)?)?|c)|M(al(a(chi)?)?|l)|M(at(thew)?|(at)?t)|M(ar)?k|L(uke|[uk])|J(oh)?n|Ac(ts)?|R(o(mans)?|o?m)|G(al(atians)?|l)|Ep(h(esians)?)?|Ph(il(ippians)?|p)|C(o(l(ossians)?)?|l)|Ti(t(us)?)?|Ph(ile(m(on)?)?|l?m)|H(e(b(rews)?)?|b)|Ja((me)?s|m)|J(ude?|d)|R(e(velation)?|e?v)|Bar(uch)?|Add([^A-Za-z0-9]|&#xA0;| )?Dan|Pr(ayer)?[^A-Za-z0-9]?(of )?Azar(iah)?|Bel( and the Dragon)?|S(on)?g( of the |([^A-Za-z0-9]|&#xA0;| )?)Three( Children)?|Sus(anna)?|Add(itions to |([^A-Za-z0-9]|&#xA0;| )?)Esth(er)?|Ep(istle of |([^A-Za-z0-9]|&#xA0;| )?)Jer(emiah)?|J(udith|dt)|Pr(ayer of([^A-Za-z0-9]|&#xA0;| )?)Man(asseh)?|Sir(ach)?|Tob(it)?|Wis(dom of Solomon)?)|(([1-4]|First|Second|Third|Fourth|I{1,3}|IV)([^A-Za-z0-9]|&#xA0;| )?(S(amuel|a?m)|K((in)?gs)?|Ch(r(on(icles)?)?)?|Co(r(inthians)?)?|Th(ess?(alonians)?)?|T(i(mothy)?|i?m)|P(eter|e?t)?|J((oh)?n)?|Esdr(as)?|Macc(abees)?)|(SAM|KGS|CHR|COR|THE|TIM|PET|JOH)[1-3]))(\.?)([^A-Za-z0-9]|&#xA0;| )?([0-9]{1,3})(([:\.,]([0-9]{1,3})(f{1,2}|[a-z])?[-–]([0-9]{1,3})[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?|[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?[-–]([0-9]{1,3})(f{1,2}|[a-z])?|[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?|[-–]([0-9]{1,3}))?)([,;]([^A-Za-z0-9]|&#xA0;| )?(((([1-4]|First|Second|Third|Fourth|I{1,3}|IV)([^A-Za-z0-9]|&#xA0;| )?(S(amuel|a?m)|K((in)?gs)?|Ch(r(on(icles)?)?)?|Co(r(inthians)?)?|Th(ess?(alonians)?)?|T(i(mothy)?|i?m)|P(eter|e?t)?|J((oh)?n)?|Esdr(as)?|Macc(abees)?)|(SAM|KGS|CHR|COR|THE|TIM|PET|JOH)[1-3])(\.?)([^A-Za-z0-9]|&#xA0;| )?([0-9]{1,3})([:\.,]([0-9]{1,3})(f{1,2}|[a-z])?[-–]([0-9]{1,3})[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?|[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?[-–]([0-9]{1,3})(f{1,2}|[a-z])?|[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?|[-–]([0-9]{1,3}))?)|([0-9]{1,3})([:\.,]([0-9]{1,3})(f{1,2}|[a-z])?[-–]([0-9]{1,3})[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?|[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?[-–]([0-9]{1,3})(f{1,2}|[a-z])?|[:\.,]([0-9]{1,3})(f{1,2}|[a-z])?|[-–]([0-9]{1,3}))?))*\b/m', $commentary, $matches)) {
+
+                $citation_iteration = 0;
+
+                foreach($matches[0] as $citation) {
+                    $replacements[] = [ 'original citation' => $citation, 'replacement citation' => $citation ];
+                    if(preg_match('/^((\d{1}\s)?[A-Z][a-z]+)/', $citation, $citation_matches)) {
+                        $book_title = rtrim($citation_matches[0], ';');
+                        $book_abbr = BibleRepository::GetAbbrFromBookTitle($book_title);
+                        $is_iit = ($book_abbr == 'isa');
+
+                        //if(preg_match_all('/^((\d{1}\s)?[A-Z][a-z]+) (\d{1,3}:?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)|(\d{1,3}:?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
+                        if(preg_match_all('/^((\d{1} )?[A-Z][a-z]+) (\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)|(\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}(?:, \d{1,3})+|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3} \d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $citation, $reference_matches)) {
+                            foreach($reference_matches[0] as $reference) {
+                                if(strpos($reference, $book_title) !== false) {
+                                    $reference_chapter_verse = trim(str_replace($book_title, '', $reference));
+                                } else {
+                                    $reference_chapter_verse = $reference;
+                                }
+                                /*if(preg_match_all('/((\d{1,3}):?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                    $chapter_number = $reference_parts[2];
+                                    $verse_reference = $reference_parts[3];
+                                    $test = 1;
+                                }*/
+                                //if(preg_match_all('/((\d{1,3}):?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                //if(preg_match_all('/((\d{1,3}):?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                if(preg_match_all('/((\d{1,3}):?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}-\d{1,3}, \d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(?:\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/', $reference_chapter_verse, $reference_parts)) {
+                                    $chapter_number = $reference_parts[2][0];
+                                    $verse_reference = $reference_parts[3][0];
+                                    $reference_text = '';
+                                    if(!empty($verse_reference)) {
+                                        if (strpos($verse_reference, ',') !== false) {
+                                            $reference_text = str_replace(' ', '', $verse_reference);
+                                            //5-7, 28-32
+                                            /*if (strpos($verse_reference, '-') !== false) {
+                                                $reference_text = str_replace(' ', '', $verse_reference);
+                                            } else {
+                                                $reference_text = $verse_reference;
+                                            }*/
+                                        } elseif (strpos($verse_reference, '-')) {
+                                            $reference_text = $verse_reference;
+                                        } else {
+                                            $reference_text = $verse_reference;
+                                        }
+
+                                        $reference_url = $this->getReferenceUrl($reference_text, $reference, $is_iit, $app_url, $book_abbr, $chapter_number);
+
+                                        //$new_commentary = str_replace($citation, $reference_url, $new_commentary);
+                                        $new_citation = $reference_url;
+                                        if (preg_match('/((.*\w+) (\d{1,3}))/', $reference, $title_matches)) {
+                                            //$new_citation = str_replace('/' . $reference, '/' . $reference_chapter_verse, $new_citation);
+                                            $test = 1;
+                                        } else {
+                                            $new_citation = str_replace('/' . $reference, '/' . $reference_chapter_verse, $new_citation);
+                                        }
+                                        //$new_commentary = str_replace($reference, $new_citation, $new_commentary);
+
+                                        $replacements[$citation_iteration]['replacement citation'] = str_replace($reference, $new_citation, $replacements[$citation_iteration]['replacement citation']);
+
+                                        $test = 1;
+                                    } else {
+                                        //$citation = Isaiah 13-23, 47
+                                        $reference_chapter_verses = trim(str_replace($book_title, '', $citation));
+                                        if(strpos($citation, ':') == false) {
+                                            //$chapter_regex = '/^((\d{1}\s)?[A-Z][a-z]+ \d{1,3})|(\d{1,3}:?(\d{1,3}.?\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}.?\d{1,3}|\d{1,3}\s\d{1,3}.?\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}.?\d{1,3}|\d{1,3})?)+/';
+                                            $chapter_regex = '/^(.*\w+ \d{1,3})|(\d{1,3}:?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})?)+/';
+                                            if ($is_iit == true) {
+                                                $new_citation = preg_replace_callback(
+                                                    $chapter_regex,
+                                                    function ($matches) use ($app_url) {
+                                                        $citation = $matches[0];
+
+                                                        if (preg_match('/((.*\w+) (\d{1,3}))/', $citation, $title_matches)) {
+                                                            $retval = '<a href="' . $app_url . '/' . $title_matches[3] . '">' . $citation . '</a>';
+                                                        } else {
+                                                            $retval = '<a href="' . $app_url . '/' . $citation . '">' . $citation . '</a>';
+                                                        }
+
+                                                        return $retval;
+                                                    },
+                                                    $citation
+                                                );
+                                            } else {
+                                                $new_citation = preg_replace_callback(
+                                                    $chapter_regex,
+                                                    function ($matches) use ($app_url, $book_abbr) {
+                                                        $citation = $matches[0];
+
+                                                        if (preg_match('/((.*\w+) (\d{1,3}))/', $citation, $title_matches)) {
+                                                            $retval = '<a href="' . $app_url . '/bible/' . $book_abbr . '/' . $title_matches[3] . '">' . $citation . '</a>';
+                                                        } else {
+                                                            $retval = '<a href="' . $app_url . '/bible/' . $book_abbr . '/' . $citation . '">' . $citation . '</a>';
+                                                        }
+
+                                                        return $retval;
+                                                    },
+                                                    $citation
+                                                );
+                                                //$new_citation = preg_replace($chapter_regex, '<a href="' . $app_url . '/bible/' . $book_abbr . '$1">$1</a>', $citation);
+                                            }
+                                            $new_citation = str_replace('/' . $reference, '/' . $reference_chapter_verse, $new_citation);
+                                            //$new_commentary = str_replace($citation, $new_citation, $new_commentary);
+                                            $replacements[$citation_iteration]['replacement citation'] = str_replace($reference, $new_citation, $replacements[$citation_iteration]['replacement citation']);
+                                        } else {
+                                            //$citation = 'Isaiah 11:10-12, 14-15; 41:2, 10, 13; 49:1-3'
+                                            //$regex = '/((\d{1,3}:)?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})+)+/';
+                                            $regex = '/((\d{1,3}:)?(\d{1,3}-\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}, \d{1,3}-\d{1,3}|\d{1,3}\s\d{1,3}-\d{1,3}|(\d{1,3}, )+\d{1,3}|(, )+\d{1,3}|\d{1,3}-\d{1,3}|\d{1,3})+)+/';
+                                            if(preg_match_all($regex, $reference_chapter_verses, $sub_reference_matches)) {
+                                                if(!empty($sub_reference_matches[0])) {
+                                                    $sub_reference_match_count = count($sub_reference_matches[0]);
+                                                    $new_citation = $citation;
+                                                    for($i = 0; $i < $sub_reference_match_count; $i++) {
+                                                        $sub_reference = $sub_reference_matches[0][$i];
+                                                        if($i == 0) {
+                                                            $initial_citation = $book_title . ' ' . $sub_reference;
+                                                            $chapter_parts = explode(':', $sub_reference);
+                                                            if(count($chapter_parts) > 1) {
+                                                                $chapter_number = $chapter_parts[0];
+                                                                $verse_reference = str_replace(' ', '', $chapter_parts[1]);
+                                                                $reference_url = '';
+                                                                if($is_iit == true) {
+                                                                    $reference_url = '<a href="' . $app_url . '/' . $chapter_number;
+                                                                } else {
+                                                                    $reference_url = '<a href="' . $app_url . '/bible/' . $book_abbr . '/' . $chapter_number;
+                                                                }
+                                                                if(!empty($verse_reference)) {
+                                                                    $reference_url .= '?reference=' . $verse_reference;
+                                                                }
+                                                                if($is_iit == true) {
+                                                                    $reference_url .= '#three_col';
+                                                                }
+
+                                                                /*$initial_citation = preg_replace('/:/', 'zzz:zzz', $initial_citation);
+                                                                $initial_citation = preg_replace('/,/', 'zzz,zzz', $initial_citation);*/
+
+                                                                $reference_url .= '">' . $initial_citation . '</a>';
+                                                                $new_citation = str_replace($initial_citation, $reference_url, $new_citation);
+                                                            } else {
+                                                                $test = 1;
+                                                            }
+                                                        } else {
+                                                            $chapter_parts = explode(':', $sub_reference);
+                                                            if(count($chapter_parts) > 1) {
+                                                                $chapter_number = $chapter_parts[0];
+                                                                $verse_reference = str_replace(' ', '', $chapter_parts[1]);
+                                                                $reference_url = '';
+                                                                if($is_iit == true) {
+                                                                    $reference_url = '<a href="' . $app_url . '/' . $chapter_number;
+                                                                } else {
+                                                                    $reference_url = '<a href="' . $app_url . '/bible/' . $book_abbr . '/' . $chapter_number;
+                                                                }
+                                                                if(!empty($verse_reference)) {
+                                                                    $reference_url .= '?reference=' . $verse_reference;
+                                                                }
+                                                                if($is_iit == true) {
+                                                                    $reference_url .= '#three_col';
+                                                                }
+
+                                                                /*$sub_reference = preg_replace('/:/', 'zzz:zzz', $sub_reference);
+                                                                $sub_reference = preg_replace('/,/', 'zzz,zzz', $sub_reference);*/
+
+                                                                $reference_url .= '">' . $sub_reference . '</a>';
+                                                                $new_citation = str_replace($sub_reference, $reference_url, $new_citation);
+                                                            } else {
+                                                                $test = 1;
+                                                            }
+                                                            $test = 1;
+                                                        }
+                                                    }
+                                                    //$new_commentary = str_replace($citation, $new_citation, $new_commentary);
+
+                                                    $replacements[$citation_iteration]['replacement citation'] = str_replace($reference, $new_citation, $replacements[$citation_iteration]['replacement citation']);
+
+                                                    $test = 1;
+                                                } else {
+                                                    $test = 1;
+                                                }
+                                                $test = 1;
+                                            } else {
+                                                $test = 1;
+                                            }
+                                            $test = 1;
+                                        }
+                                    }
+                                    $test = 1;
+                                } else {
+                                    $test = 1;
+                                }
+                            }
+                        } else {
+                            $test = 1;
+                        }
+                    }
+                    $test = 1;
+                    ++$citation_iteration;
+                }
+            } else {
+                // No links
+                $test = 1;
+            }
+
+            //$commentary = preg_replace('//', '', $commentary);
+            //$new_commentary = preg_replace('/zzz/', '', $new_commentary);
+
+            //[ 'original citation' => 'value', 'replacement citation' => 'value' ];
+            foreach($replacements as $replacement) {
+                $new_commentary = str_replace($replacement['original citation'], $replacement['replacement citation'], $new_commentary);
+            }
+
             $subject_verses = '<div class="subject_verses" style="display: none;">' . $this->_getCommentarySubjectVerses($header->commentary_id) . '</div>';
-            $iit_commentary_html .= "<div class=\"$wrapper_class\">$subject_verses" . html_entity_decode($this->_getCommentary($header->commentary_id)) . '</div>';
+            if(!empty($new_commentary)) {
+                $iit_commentary_html .= "<div class=\"$wrapper_class\">$subject_verses" . $new_commentary . '</div>';
+            } else {
+                $iit_commentary_html .= "<div class=\"$wrapper_class\">$subject_verses" . $commentary . '</div>';
+            }
 
         }
         return $iit_commentary_html;
+    }
+
+    /**
+     * Get scripture reference URL query string
+     *
+     * @param $reference_text
+     * @param $reference
+     * @param $is_iit
+     * @param $app_url
+     * @param $book_abbr
+     * @param $chapter_number
+     * @return string
+     */
+    private function getReferenceUrl($reference_text, $reference, $is_iit, $app_url, $book_abbr, $chapter_number) {
+        if($is_iit == true) {
+            $reference_url = $app_url . "/{$chapter_number}";
+        } else {
+            $reference_url = $app_url . "/bible/{$book_abbr}/{$chapter_number}";
+        }
+
+        if(!empty($reference_text)) {
+            $reference_text = str_replace(' ', '', $reference_text);
+            $reference_url .= "?reference={$reference_text}";
+            if($is_iit == true) {
+                $reference_url .= "#three_col";
+            }
+        }
+
+        /*$reference = preg_replace('/:/', 'zzz:zzz', $reference);
+        $reference = preg_replace('/,/', 'zzz,zzz', $reference);*/
+
+        $reference_url = '<a href="' . $reference_url . '">' . $reference . '</a>';
+
+        return $reference_url;
     }
 
     /**
