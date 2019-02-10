@@ -42,14 +42,16 @@ class BuildSitemap extends Command {
 
         $message = '<info>%s</info>';
 
-        if(!empty($this->option('root'))) {
-            $root = $this->option('root');
+        $root_option = $this->option('root');
+        if(!empty($root_option)) {
+            $root = $root_option;
         } else {
             $root = Config::get('app.url');
         }
 
-        if(!empty($this->option('all-canonical'))) {
-            $is_all_canonical = boolval((bool)$this->option('all-canonical'));
+        $canonical_option = $this->option('all-canonical');
+        if(!empty($canonical_option)) {
+            $is_all_canonical = boolval((bool)$canonical_option);
             $this->output->writeln(sprintf($message, 'Running all-canonical.'));
         } else {
             $is_all_canonical = false;
