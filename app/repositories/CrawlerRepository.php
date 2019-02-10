@@ -193,9 +193,11 @@ class Crawler
     protected function queueLink(DOMElement $link)
     {
         $link = $link->getAttribute('href');
-        // If the page wasn't crawled yet, crawl it
-        if (!in_array($link, $this->crawled)) {
-            $this->queue[$link] = false;
+        if(strpos($link, 'href') == false) {
+            // If the page wasn't crawled yet, crawl it
+            if (!in_array($link, $this->crawled)) {
+                $this->queue[$link] = false;
+            }
         }
     }
 
