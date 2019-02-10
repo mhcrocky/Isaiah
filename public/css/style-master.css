@@ -967,6 +967,7 @@ aside p {
     line-height: 17px;
 }
 
+#widget_newsletter #mc_embed_signup {background: transparent;}
 #widget_newsletter #mc_embed_signup form {padding: 0;}
 #widget_newsletter #mc_embed_signup .mc-field-group {width: 100%;}
 #widget_newsletter #mc_embed_signup .button {background: #D3BA71; font-weight: 400; margin: 0;}
