@@ -159,6 +159,18 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             populateVerseModal(window.verse_number);
         });
 
+        /**
+         * Reset vignette modals on close
+         */
+        $('#vig1,#vig2,#vig3,#vig4,#vig5,#vig6').on('hidden.bs.modal', function (event) {
+            var target = event.target.id;
+            var $frame = $('iframe#'+target);
+            var vidsrc = $frame.attr('src');
+            $frame.attr('src','');
+            $frame.attr('src', vidsrc);
+            $("#" + target + " iframe").attr("src", jQuery("#" + target + " iframe").attr("src"));
+        })
+
         function populateVerseModal(verse_number) {
             var chapter_number = $('#chapter-number').html();
             var iit_text = $('#iit_' + verse_number).html();
