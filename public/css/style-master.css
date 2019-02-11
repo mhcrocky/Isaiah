@@ -434,7 +434,7 @@ a.modal-trigger.chapter-number-double {
 }
 
 .highlight {
-    background-color: #FFFF00;
+    background-color: rgba(253, 235, 109, 0.44);
 }
 
 main a:hover,
