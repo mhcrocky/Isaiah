@@ -239,14 +239,15 @@ a.JPV_title {
     width: 60px;
     height: auto;
     float: left;
-    margin: 0 1em 1.5em 0;
+    margin: 0 1em 0 0;
 }
 
 #widget_books li {
     float: left;
+    margin: 0 0 1.2em;
 }
 
-#widget_books a {
+#widget_books h3 {
     font-size: 15px;
     line-height: 1.2em;
     font-weight: 500;
@@ -258,7 +259,18 @@ a.JPV_title {
     font-size: 12px;
     line-height: 16px !important;
     display: table;
-    margin-bottom: 1.5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#widget_books span a {
+display: inline-block;
+}
+
+#widget_books span div {
+display: inline-block;
+padding: 0 6px;
+color: rgba(0, 0, 0, 0.3);
 }
 
 /*-----------------------------------
