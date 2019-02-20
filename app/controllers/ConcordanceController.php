@@ -29,14 +29,15 @@ class ConcordanceController extends BaseController {
     {
         $concordance_letter = strtoupper($concordance_letter);
 
+        $concordanceRepository = new ConcordanceRepository();
+
         $template_data = array(
             'title' => "${concordance_letter} - A Comprehensive Concordance Of The Book of Isaiah.",
-            'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
+            //'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
+            'meta' => $concordanceRepository->GetConcordanceMetaTags(),
             'body_id' => 'concordance',
             'body_css' => 'tab-heading alphabetical scriptures'
         );
-
-        $concordanceRepository = new ConcordanceRepository();
 
         $content_data = array(
             'letter_heading' => $concordance_letter,

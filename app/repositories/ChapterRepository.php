@@ -5,6 +5,35 @@ class ChapterRepository {
 
     private $_iit_chapter_text = '';
 
+    public function GetChapterMetaTags($chapter_number) {
+        $meta_tags = [];
+        $common_meta_tags = MetaTags::where('route', '=', '*')->get();
+        foreach($common_meta_tags as $common_meta_tag) {
+            if($common_meta_tag->name != 'robots') {
+                $meta_tags[] = ['name' => $common_meta_tag->name, 'content' => $common_meta_tag->content];
+            } else {
+                $query_string = Input::getQueryString();
+                if(!empty($query_string)) {
+                    $meta_tags[] = ['name' => $common_meta_tag->name, 'content' => 'noindex, nofollow'];
+                } else {
+                    $meta_tags[] = ['name' => $common_meta_tag->name, 'content' => $common_meta_tag->content];
+                }
+            }
+        }
+        $specific_meta_tags = MetaTags::where('route', '=', "/{$chapter_number}")->get();
+        foreach($specific_meta_tags as $specific_meta_tag) {
+            $meta_tags[] = ['name' => $specific_meta_tag->name, 'content' => $specific_meta_tag->content];
+        }
+        $meta = '';
+        foreach($meta_tags as $meta_tag) {
+            $meta .= <<<EOT
+<meta name="{$meta_tag['name']}" content="{$meta_tag['content']}">
+
+EOT;
+        }
+        return $meta;
+    }
+
     /**
      * Gets text for the chapter heading
      *

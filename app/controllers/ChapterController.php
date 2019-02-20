@@ -3,14 +3,15 @@
 class ChapterController extends BaseController {
 
     public function showChapter($chapter_number) {
+        $chapterRepository = new ChapterRepository();
+
         $template_data = array(
             'title' => "Isaiah ${chapter_number}",
-            'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
+            //'robot_meta' => Helpers\getRobotIgnoreMeta(Input::getQueryString()),
+            'meta' => $chapterRepository->GetChapterMetaTags($chapter_number),
             'body_id' => 'chapters',
             'body_css' => 'scriptures tab-heading'
         );
-
-        $chapterRepository = new ChapterRepository();
 
         $reference_input = Input::get('reference', '');
 
@@ -51,5 +52,4 @@ class ChapterController extends BaseController {
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'chapter', $content_data);
     }
-
 }
