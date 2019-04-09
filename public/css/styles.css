@@ -783,3 +783,54 @@ input[type="submit"]:focus,
 input[type="button"]:focus {
     outline : none;
 }
+
+#store h2 {
+    background: rgb(61, 84, 120);
+    color: #fff;
+    padding: 8px 12px;
+    font-weight: 300;
+    margin: 0 0 30px;
+}
+
+#store .row p {
+    margin: 11px 0;
+    font-size: 16px;
+    line-height: 20px !important;
+}
+
+#store .price {
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+#store .formats {
+    display: block;
+    margin: -5px 0 10px;
+    color: #888;
+}
+
+#store .row img {
+    margin-bottom: 10px;
+}
+
+
+/*---------------------------------------------------------------------------
+  >Queries
+---------------------------------------------------------------------------*/
+
+/* MOBILE ONLY */ @media screen and (max-width: 768px) {
+
+    #store .row div {
+        padding-bottom: 28px;
+    }
+
+} /*--------------------------------------- End */
+
+
+/* SMALL & BIGGER */ @media screen and (min-width: 768px){
+
+    #store .row div {
+        min-height: 400px;
+    }
+
+} /*--------------------------------------- End */

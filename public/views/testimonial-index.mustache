@@ -1,0 +1,25 @@
+<main id="content" class="sub col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+    <div class="page">
+        {{#testimonials}}
+            <div class="dsq-widget-comment">
+                <img class="dsq-user-avatar" src="{{author.avatar.cache}}" />
+                <p class="dsq-comment-author"><a href="{{author.profileUrl}}">{{author.name}}</a></p>
+                <p class="dsq-comment-content">{{{message}}}</p>
+            </div>
+        {{/testimonials}}
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES * * */
+            var disqus_shortname = 'isaiah-explained';
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+    </div>
+</main>
+{{> asides.bible}}

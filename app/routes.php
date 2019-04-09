@@ -36,6 +36,10 @@ Route::get('/resources/{resourcePage}', 'ResourceController@findResource')->wher
 Route::get('/search', 'IITSearchController@showIndex');
 Route::get('/search/{searchTerm}', 'IITSearchController@findTerm')->where('searchTerm', '(.*)');
 
+Route::get('/store', 'ResourceController@showStore');
+
+Route::get('/testimonials', 'ResourceController@showTestimonials');
+
 Route::get('/media/commentary/{fileName}', 'MediaController@showMediaCommentary');
 /*Route::get('/commentary/ogg/{chapterNumber}', 'MediaController@showMediaOGG')->where('chapterNumber', '[0-9]+');
 Route::get('/commentary/mp3/{chapterNumber}', 'MediaController@showMediaMP3')->where('chapterNumber', '[0-9]+');*/

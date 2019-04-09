@@ -64,4 +64,62 @@ class ResourceController extends BaseController {
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', $content_template, $content_data);
     }
+
+    public function showStore() {
+        $template_data = array(
+            'title' => 'Store',
+            'body_id' => 'chapter-index',
+            'body_css' => 'scriptures section-heading'
+        );
+
+        $content_data = array(
+            'store_data' => ''
+        );
+
+        return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
+            ->nest('heading', 'headings.chapter-index')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
+            ->nest('content', 'store', $content_data);
+    }
+
+    public function showTestimonials() {
+        $template_data = array(
+            'title' => 'Testimonials',
+            'body_id' => 'chapter-index',
+            'body_css' => 'scriptures section-heading'
+        );
+
+        $key='hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
+        $forum='isaiah-explained'; // Disqus shortname
+        $limit='5'; // The number of comments you want to show
+        $thread='3664297995'; // Same as your disqus_identifier
+        $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret='.$key.'&forum='.$forum.'&thread='.$thread.'&limit='.$limit;
+//$endpoint = 'http://disqus.com/';
+
+// Get the results
+        $session = curl_init($endpoint);
+        $ch = curl_init();
+        curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+        $data = curl_exec($session);
+        curl_close($session);
+
+// decode the json data to make it easier to parse with php
+        $results = json_decode($data);
+
+// parse the desired JSON data into HTML for use on your site
+        $comments = $results->response;
+
+        //dd($comments);
+
+        $content_data = array(
+            'testimonials' => $comments
+        );
+
+        return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
+            ->nest('heading', 'headings.chapter-index')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
+            ->nest('content', 'testimonial-index', $content_data);
+    }
 }
