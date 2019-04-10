@@ -92,11 +92,9 @@ class TestimonialController extends \BaseController {
 			$message = urlencode($input_data['body']);
 
 			//TODO: Submit to Disqus
-			header("Host: {$this->app_domain}");
-			header("Referer: {$this->app_url}");
 
 			$fields = [
-				'api_secret'	=> 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs',
+				'api_key'	=> 'E8Uh5l5fHZ6gD8U3KycjAIAk46f68Zw7C6eW8WSjZvCLXebZ7p0r1yrYDrLilk2F',
 				'message' 		=> $message,
 				'thread' 		=> '3664297995',
 				'author_email' 	=> $author_email,
@@ -110,6 +108,12 @@ class TestimonialController extends \BaseController {
 				$fields_string .= $key.'='.$value.'&';
 			}
 			rtrim($fields_string, '&');
+
+			header("Host: .disqus.com");
+			//header("Host: {$this->app_domain}");
+
+			$referrer = $this->app_url;
+			header("Referer: {$referrer}");
 
 			$session = curl_init($endpoint);
 			curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
