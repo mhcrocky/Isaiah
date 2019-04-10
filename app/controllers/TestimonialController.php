@@ -62,6 +62,12 @@ class TestimonialController extends \BaseController {
 
 		$validator = Validator::make ($input_data, $rules);
 
+		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread);
+
+		$content_data = array(
+			'testimonials' => $comments
+		);
+
 		if ($validator->passes()){
 			$result = TestimonialRepository::CreateDisqusPost($input_data, $this->thread, $this->app_url);
 
