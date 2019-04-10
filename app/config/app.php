@@ -42,7 +42,7 @@ return array(
 	*/
 
 	//'url' => 'http://localhost',
-    'url' => 'http://dev-isaiah.isaiahexplained.com',
+    'url' => 'http://www.isaiahexplained.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -143,7 +143,7 @@ return array(
         'DaveJamesMiller\Boris\BorisServiceProvider',
         'Flatten\FlattenServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
-        'Roumen\Sitemap\SitemapServiceProvider',
+        //'Roumen\Sitemap\SitemapServiceProvider',
 	),
 
 	/*
