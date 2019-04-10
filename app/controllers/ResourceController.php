@@ -110,7 +110,7 @@ class ResourceController extends BaseController {
         // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;
 
-        //Testing deploy log 3
+        //Testing deploy log 4
         //foreach($comments as $comment) {
             //dd($comment->message);
         //}
