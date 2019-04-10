@@ -111,7 +111,9 @@ class ResourceController extends BaseController {
         $comments = $results->response;
 
         foreach($comments as $comment) {
-            dd(htmlentities(str_ireplace('<p>','', $comment->message)));
+            $comment->message = str_ireplace('<p>','', $comment->message);
+            $comment->message = str_ireplace('</p>','', $comment->message);
+            dd(htmlentities($comment->message));
         }
 
         //dd($comments);
