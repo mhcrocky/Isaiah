@@ -87,8 +87,27 @@ class TestimonialController extends \BaseController {
 		$validator = Validator::make ($input_data, $rules);
 
 		if ($validator->passes()){
+			$author_email = urlencode($input_data['email']);
+			$author_name = urlencode($input_data['full_name']);
+			$message = urlencode($input_data['body']);
 
 			//TODO: Submit to Disqus
+			header("Host: {$this->app_domain}");
+			header("Referer: {$this->app_url}");
+			$thread='3664297995'; // Same as your disqus_identifier
+			$endpoint = 'https://disqus.com/api/3.0/posts/create.json?message='.$message.'&thread='.$thread.'&author_email='.$author_email.'&author_name='.$author_name;
+
+			// Get the results
+			$session = curl_init($endpoint);
+			$ch = curl_init();
+			curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+			$data = curl_exec($session);
+			curl_close($session);
+
+			// decode the json data to make it easier to parse with php
+			$results = json_decode($data);
+
+			dd($results);
 
 			Mail::send('emails.testimonial', $input_data, function($message) use ($input_data)
 			{
