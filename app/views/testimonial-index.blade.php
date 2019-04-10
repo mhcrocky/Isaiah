@@ -26,7 +26,7 @@
 
     <h2 class="title-chapters">Submit Your Testimonial</h2>
 
-    {{ Form::open(array('action' => 'ResourceController@SubmitTestimonialForm')) }}
+    {{ Form::open(array('action' => 'TestimonialController@SubmitTestimonialForm')) }}
 
     {{ Form::openGroup('title', 'Full Name') }}
     {{ Form::text('full_name', (!empty($input_data['full_name'])) ? $input_data['full_name'] : '', array('placeholder' => 'Full Name', 'id' => 'full_name')) }}
