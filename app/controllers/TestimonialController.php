@@ -1,6 +1,8 @@
 <?php
 
 class TestimonialController extends \BaseController {
+	private $thread = '3669612850';
+
 	/**
 	 * @return Illuminate\View\View
 	 */
@@ -14,7 +16,7 @@ class TestimonialController extends \BaseController {
 		$key='hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
 		$forum='isaiah-explained'; // Disqus shortname
 		$limit='5'; // The number of comments you want to show
-		$thread='3664297995'; // Same as your disqus_identifier
+		$thread = $this->thread; // Same as your disqus_identifier
 		$endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret='.$key.'&forum='.$forum.'&thread='.$thread.'&limit='.$limit;
 		//$endpoint = 'http://disqus.com/';
 
@@ -96,7 +98,7 @@ class TestimonialController extends \BaseController {
 			$fields = [
 				'api_key'	=> 'E8Uh5l5fHZ6gD8U3KycjAIAk46f68Zw7C6eW8WSjZvCLXebZ7p0r1yrYDrLilk2F',
 				'message' 		=> $message,
-				'thread' 		=> '3664297995',
+				'thread' 		=> $this->thread,
 				'author_email' 	=> $author_email,
 				'author_name' 	=> $author_name
 			];
@@ -126,29 +128,20 @@ class TestimonialController extends \BaseController {
 
 			// decode the json data to make it easier to parse with php
 			$results = json_decode($data);
-
-			dd($results);
+			//$results->response->raw_message etc. For some reason, response->author_email doesn't come back with anon comment from Disqus
 
 			Mail::send('emails.testimonial', $input_data, function($message) use ($input_data)
 			{
-				//$message->from(Config::get('app.system_email'), $input_data['full_name']);
 				$message->from($input_data['email'], $input_data['full_name']);
 				$message->to(Config::get('app.contact_email'))->subject(Config::get('app.testimonial_subject'));
 				$message->setBody($input_data['body']);
 			});
-			// Redirect to page
-			/*return Redirect::route('contact')
-                ->with('message', 'Your message has been sent. Thank You!');*/
 			$content_data = [];
 			$content_data['message'] = 'Your testimonial has been submitted. Thank You!';
 			return View::make('layouts.master', $template_data)
 				->nest('heading', 'headings.resources')
 				->nest('content', 'contact', $content_data);
-			//return View::make('contact');
 		}else{
-			//return contact form with errors
-			/*return Redirect::route('contact')
-                ->with('error', 'Feedback must contain more than 5 characters. Try Again.');*/
 			$content_data['errors'] = $validator->messages();
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
