@@ -99,7 +99,7 @@ class TestimonialController extends \BaseController {
 				'message' 		=> $message,
 				'thread' 		=> '3664297995',
 				'author_email' 	=> $author_email,
-				'author_name' 	=> author_name
+				'author_name' 	=> $author_name
 			];
 
 			$endpoint = 'https://disqus.com/api/3.0/posts/create.json';
