@@ -140,13 +140,13 @@ class TestimonialController extends \BaseController {
 			$content_data['message'] = 'Your testimonial has been submitted. Thank You!';
 			return View::make('layouts.master', $template_data)
 				->nest('heading', 'headings.resources')
-				->nest('content', 'contact', $content_data);
+				->nest('content', 'testimonial-index', $content_data);
 		}else{
 			$content_data['errors'] = $validator->messages();
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
 				->nest('heading', 'headings.resources')
-				->nest('content', 'contact', $content_data);
+				->nest('content', 'testimonial-index', $content_data);
 		}
 	}
 }
