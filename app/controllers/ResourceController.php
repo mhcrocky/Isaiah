@@ -110,9 +110,9 @@ class ResourceController extends BaseController {
         // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;
 
-        foreach($comments as $comment) {
+        //foreach($comments as $comment) {
             //dd($comment->message);
-        }
+        //}
 
         //dd($comments);
 
