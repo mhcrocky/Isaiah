@@ -95,20 +95,24 @@ class ResourceController extends BaseController {
         $limit='5'; // The number of comments you want to show
         $thread='3664297995'; // Same as your disqus_identifier
         $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret='.$key.'&forum='.$forum.'&thread='.$thread.'&limit='.$limit;
-//$endpoint = 'http://disqus.com/';
+        //$endpoint = 'http://disqus.com/';
 
-// Get the results
+        // Get the results
         $session = curl_init($endpoint);
         $ch = curl_init();
         curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
         $data = curl_exec($session);
         curl_close($session);
 
-// decode the json data to make it easier to parse with php
+        // decode the json data to make it easier to parse with php
         $results = json_decode($data);
 
-// parse the desired JSON data into HTML for use on your site
+        // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;
+
+        foreach($comments as $comment) {
+            //dd($comment->message);
+        }
 
         //dd($comments);
 
