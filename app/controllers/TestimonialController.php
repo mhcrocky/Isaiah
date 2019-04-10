@@ -96,6 +96,7 @@ class TestimonialController extends \BaseController {
 			header("Referer: {$this->app_url}");
 
 			$fields = [
+				'api_secret'	=> 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs',
 				'message' 		=> $message,
 				'thread' 		=> '3664297995',
 				'author_email' 	=> $author_email,
