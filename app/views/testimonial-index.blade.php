@@ -24,7 +24,9 @@
         @endforeach
     @endif
 
-    <h2 class="title-chapters">Submit Your Testimonial</h2>
+    <hr>
+
+    <h3 class="title-chapters">Submit Your Testimonial</h3>
 
     {{ Form::open(array('action' => 'TestimonialController@SubmitTestimonialForm')) }}
 
