@@ -64,10 +64,6 @@ class TestimonialController extends \BaseController {
 
 		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread);
 
-		$content_data = array(
-			'testimonials' => $comments
-		);
-
 		if ($validator->passes()){
 			$result = TestimonialRepository::CreateDisqusPost($input_data, $this->thread, $this->app_url);
 
@@ -77,13 +73,18 @@ class TestimonialController extends \BaseController {
 				$message->to(Config::get('app.contact_email'))->subject(Config::get('app.testimonial_subject'));
 				$message->setBody($input_data['body']);
 			});
-			$content_data = [];
-			$content_data['message'] = 'Your testimonial has been submitted. Thank You!';
+			$content_data = [
+				'message' 		=> 'Your testimonial has been submitted. Thank You!',
+				'testimonials' 	=> $comments
+			];
 			return View::make('layouts.master', $template_data)
 				->nest('heading', 'headings.resources')
 				->nest('content', 'testimonial-index', $content_data);
 		}else{
-			$content_data['errors'] = $validator->messages();
+			$content_data = [
+				'errors' 		=> $validator->messages(),
+				'testimonials' 	=> $comments
+			];
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
 				->nest('heading', 'headings.resources')
