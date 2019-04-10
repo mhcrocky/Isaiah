@@ -1,17 +1,15 @@
 <?php
 
 class TestimonialRepository {
-    public static $thread = '3669612850';
-
     /**
      * @return mixed
      */
-    public static function GetDisqusTestimonials()
+    public static function GetDisqusTestimonials($thread_id)
     {
         $key = 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
         $forum = 'isaiah-explained'; // Disqus shortname
         $limit = '5'; // The number of comments you want to show
-        $thread = TestimonialRepository::$thread; // Same as your disqus_identifier
+        $thread = $thread_id; // Same as your disqus_identifier
         $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
         //$endpoint = 'http://disqus.com/';
 
@@ -52,7 +50,7 @@ class TestimonialRepository {
     /**
      * @param $input_data
      */
-    public static function CreateDisqusPost($input_data, $api_url)
+    public static function CreateDisqusPost($input_data, $thread_id, $api_url)
     {
         $author_email = urlencode($input_data['email']);
         $author_name = urlencode($input_data['full_name']);
@@ -63,7 +61,7 @@ class TestimonialRepository {
         $fields = [
             'api_key' => 'E8Uh5l5fHZ6gD8U3KycjAIAk46f68Zw7C6eW8WSjZvCLXebZ7p0r1yrYDrLilk2F',
             'message' => $message,
-            'thread' => TestimonialRepository::$thread,
+            'thread' => $thread_id,
             'author_email' => $author_email,
             'author_name' => $author_name
         ];

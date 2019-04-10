@@ -1,7 +1,17 @@
 <?php
 
 class TestimonialController extends \BaseController {
-	private $thread = '3669612850';
+	private $thread;
+
+	public function __construct() {
+		parent::__construct();
+
+		if(!App::environment('local', 'staging')) {
+			$this->thread = '3664297995';
+		} else {
+			$this->thread = '3669612850';
+		}
+	}
 
 	/**
 	 * @return Illuminate\View\View
@@ -13,7 +23,7 @@ class TestimonialController extends \BaseController {
 			'body_css' => 'scriptures section-heading'
 		);
 
-		$comments = TestimonialRepository::GetDisqusTestimonials();
+		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread);
 
 		$content_data = array(
 			'testimonials' => $comments
@@ -53,7 +63,7 @@ class TestimonialController extends \BaseController {
 		$validator = Validator::make ($input_data, $rules);
 
 		if ($validator->passes()){
-			$result = TestimonialRepository::CreateDisqusPost($input_data, $this->app_url);
+			$result = TestimonialRepository::CreateDisqusPost($input_data, $this->thread, $this->app_url);
 
 			Mail::send('emails.testimonial', $input_data, function($message) use ($input_data)
 			{
