@@ -43,6 +43,7 @@ return array(
 
 	//'url' => 'http://localhost',
     'url' => 'http://www.isaiahexplained.com',
+	'domain' => 'www.isaiahexplained.com',
 
 	/*
 	|--------------------------------------------------------------------------

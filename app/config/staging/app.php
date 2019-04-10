@@ -44,5 +44,5 @@ return array(
 
     //'url' => 'http://localhost',
     'url' => 'http://dev.isaiahexplained.com',
-
+    'domain' => 'dev.isaiahexplained.com',
 );
