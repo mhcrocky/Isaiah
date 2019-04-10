@@ -2,5 +2,6 @@
 <p>{{$full_name}}</p>
 <p>Phone Number:</p>
 <p>{{$phone_number}}</p>
-<p>Testimonial:</p>
-<p>{{$body}}</p>
+<p>Testimonial (preview):</p>
+<p>&ldquo;{{$body}}&rdquo;&mdash;{{$full_name}}</p>
+<p><a href="https://disqus.com/">Click to moderate on Disqus.com</a></p>
