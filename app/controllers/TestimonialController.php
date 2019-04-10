@@ -13,7 +13,7 @@ class TestimonialController extends \BaseController {
 			'body_css' => 'scriptures section-heading'
 		);
 
-		$comments = $this->GetDisqusTestimonials();
+		$comments = TestimonialRepository::GetDisqusTestimonials();
 
 		$content_data = array(
 			'testimonials' => $comments
