@@ -2,6 +2,22 @@
 
 return array(
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Contact
+    |--------------------------------------------------------------------------
+    |
+    | Your application contact name and email address.
+    |
+     */
+
+    'contact_name' => 'Avraham Gileadi',
+    //'contact_email' => 'avrahamgileadi@gmail.com',
+    'contact_email' => 'tj@ixqus.com',
+    'system_email' => 'contact@isaiahexplained.com',
+    'contact_subject' => 'New Feedback for IsaiahExplained.com',
+    'testimonial_subject' => 'New Testimonial for IsaiahExplained.com',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
