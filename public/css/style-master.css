@@ -755,8 +755,8 @@ button.close {
   >Ads
 ---------------------------------------------------------------------------*/
 
-.isaiah-ad {padding: 1em 0; display: block;}
-.isaiah-ad img {width: 100%; height: auto;}
+.isaiah-ad {padding: 1em 0; display: block; text-align: center;}
+.isaiah-ad input { width: 100%; max-width: 800px;}
 
 /*---------------------------------------------------------------------------
   >Aside

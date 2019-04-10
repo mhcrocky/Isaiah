@@ -834,3 +834,16 @@ input[type="button"]:focus {
     }
 
 } /*--------------------------------------- End */
+
+#widget_books form {
+    display: inline;
+}
+
+#widget_books form button {
+    background: rgba(0, 0, 0, 0);
+    color: #2970B3;
+}
+
+#widget_books form button:hover {
+    color: #2A6496;
+}
