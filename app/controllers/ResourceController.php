@@ -110,11 +110,21 @@ class ResourceController extends BaseController {
         // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;
 
-        foreach($comments as $comment) {
+        $comment_count = count($comments);
+
+        for($i = 0; $i < $comment_count; $i++) {
+            $message = $comments[$i]->message;
+            $message = str_ireplace('<p>','', $message);
+            $message = str_ireplace('</p>','', $message);
+            $comments[$i]->message = $message;
+            //dd(htmlentities($comment->message));
+        }
+
+        /*foreach($comments as $comment) {
             $comment->message = str_ireplace('<p>','', $comment->message);
             $comment->message = str_ireplace('</p>','', $comment->message);
-            dd(htmlentities($comment->message));
-        }
+            //dd(htmlentities($comment->message));
+        }*/
 
         //dd($comments);
 
