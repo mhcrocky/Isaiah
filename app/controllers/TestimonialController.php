@@ -20,7 +20,7 @@ class TestimonialController extends \BaseController {
 
 		// Get the results
 		$session = curl_init($endpoint);
-		$ch = curl_init();
+		//$ch = curl_init();
 		curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
 		$data = curl_exec($session);
 		curl_close($session);
@@ -94,13 +94,28 @@ class TestimonialController extends \BaseController {
 			//TODO: Submit to Disqus
 			header("Host: {$this->app_domain}");
 			header("Referer: {$this->app_url}");
-			$thread='3664297995'; // Same as your disqus_identifier
-			$endpoint = 'https://disqus.com/api/3.0/posts/create.json?message='.$message.'&thread='.$thread.'&author_email='.$author_email.'&author_name='.$author_name;
 
-			// Get the results
+			$fields = [
+				'message' 		=> $message,
+				'thread' 		=> '3664297995',
+				'author_email' 	=> $author_email,
+				'author_name' 	=> author_name
+			];
+
+			$endpoint = 'https://disqus.com/api/3.0/posts/create.json';
+
+			$fields_string = '';
+			foreach($fields as $key=>$value) {
+				$fields_string .= $key.'='.$value.'&';
+			}
+			rtrim($fields_string, '&');
+
 			$session = curl_init($endpoint);
-			$ch = curl_init();
 			curl_setopt($session, CURLOPT_RETURNTRANSFER, true);
+			curl_setopt($session,CURLOPT_URL, $endpoint);
+			curl_setopt($session,CURLOPT_POST, count($fields));
+			curl_setopt($session,CURLOPT_POSTFIELDS, $fields_string);
+
 			$data = curl_exec($session);
 			curl_close($session);
 
