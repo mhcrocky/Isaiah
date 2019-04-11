@@ -32,11 +32,14 @@ class TestimonialRepository {
             $message = $comments[$i]->message;
             $message = str_ireplace('<p>', '', $message);
             $message = str_ireplace('</p>', '', $message);
-            preg_match_all('/###(.+?)###/', $message, $m);
-            dd($m);
-            $citation = $m[1][0];
-            $comments[$i]->message = $message;
-            $comments[$i]->author->name = $citation;
+            $template_match_result = preg_match_all('/###(.+?)###/', $message, $m);
+            if(!empty($template_match_result) && $template_match_result == 1) {
+                $citation = $m[1][0];
+                $comments[$i]->message = $message;
+                $comments[$i]->author->name = $citation;
+            } else {
+                $comments[$i]->message = $message;
+            }
             //dd(htmlentities($comment->message));
         }
 
