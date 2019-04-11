@@ -33,6 +33,7 @@ class TestimonialRepository {
             $message = str_ireplace('<p>', '', $message);
             $message = str_ireplace('</p>', '', $message);
             preg_match_all('/###(.+?)###/', $message, $m);
+            dd($m);
             $citation = $m[1][0];
             $comments[$i]->message = $message;
             $comments[$i]->author->name = $citation;
