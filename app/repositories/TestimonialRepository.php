@@ -32,7 +32,10 @@ class TestimonialRepository {
             $message = $comments[$i]->message;
             $message = str_ireplace('<p>', '', $message);
             $message = str_ireplace('</p>', '', $message);
+            preg_match_all('###(.+?)###', $message, $m);
+            $citation = $m[1];
             $comments[$i]->message = $message;
+            $comments[$i]->author->name = $citation;
             //dd(htmlentities($comment->message));
         }
 
