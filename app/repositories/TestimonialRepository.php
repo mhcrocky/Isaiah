@@ -49,8 +49,17 @@ class TestimonialRepository {
             }
         }
 
-        $testimonials['prevCursor'] = $prev;
-        $testimonials['nextCursor'] = $next;
+        if(!empty($prev)) {
+            $testimonials['prevCursor'] = $prev;
+        } else {
+            $testimonials['prevCursor'] = '';
+        }
+
+        if(!empty($next)) {
+            $testimonials['nextCursor'] = $next;
+        } else {
+            $testimonials['nextCursor'] = '';
+        }
 
         // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;
