@@ -39,7 +39,8 @@ Route::get('/search/{searchTerm}', 'IITSearchController@findTerm')->where('searc
 Route::get('/store', 'StoreController@showStore');
 
 Route::get('/testimonials', 'TestimonialController@GetTestimonialForm');
-Route::post('/testimonials', 'TestimonialController@SubmitTestimonialForm');
+Route::post('/testimonials', 'TestimonialController@GetTestimonialForm');
+Route::post('/testimonials/submit', 'TestimonialController@SubmitTestimonialForm');
 
 Route::get('/media/commentary/{fileName}', 'MediaController@showMediaCommentary');
 /*Route::get('/commentary/ogg/{chapterNumber}', 'MediaController@showMediaOGG')->where('chapterNumber', '[0-9]+');

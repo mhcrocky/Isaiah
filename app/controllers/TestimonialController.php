@@ -23,7 +23,15 @@ class TestimonialController extends \BaseController {
 			'body_css' => 'scriptures section-heading'
 		);
 
-		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread);
+		$input_data = Input::all();
+
+		if(!empty($input_data['nextCursor'])) {
+			$next = $input_data['nextCursor'];
+		} else {
+			$next = '';
+		}
+
+		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread, $next);
 
 		$content_data = array(
 			'testimonials' => $comments
@@ -62,7 +70,9 @@ class TestimonialController extends \BaseController {
 
 		$validator = Validator::make ($input_data, $rules);
 
-		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread);
+		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread);
+		$comments = $testimonials['comments'];
+		$next = $testimonials['nextCursor'];
 
 		if ($validator->passes()){
 			$result = TestimonialRepository::CreateDisqusPost($input_data, $this->thread, $this->app_url);
@@ -75,7 +85,8 @@ class TestimonialController extends \BaseController {
 			});
 			$content_data = [
 				'message' 		=> 'Your testimonial has been submitted. Thank You!',
-				'testimonials' 	=> $comments
+				'testimonials' 	=> $comments,
+				'next' => $next
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('heading', 'headings.resources')

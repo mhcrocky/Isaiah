@@ -2,16 +2,23 @@
 
 class TestimonialRepository {
     /**
+     * @param $thread_id
+     * @param $next
      * @return mixed
      */
-    public static function GetDisqusTestimonials($thread_id)
+    public static function GetDisqusTestimonials($thread_id, $next)
     {
         $key = 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
         $forum = 'isaiah-explained'; // Disqus shortname
         $limit = '5'; // The number of comments you want to show
         $thread = $thread_id; // Same as your disqus_identifier
-        $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
-        //$endpoint = 'http://disqus.com/';
+
+        if(empty($next)) {
+            $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
+            //$endpoint = 'http://disqus.com/';
+        } else {
+            $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit . '&cursor=' . $next;
+        }
 
         // Get the results
         $session = curl_init($endpoint);
@@ -22,6 +29,17 @@ class TestimonialRepository {
 
         // decode the json data to make it easier to parse with php
         $results = json_decode($data);
+
+        $next = '';
+
+        if (!empty($results->cursor)) {
+            $cursor = $results->cursor;
+            if (!empty($cursor->hasNext)) {
+                $next = $cursor->next;
+            }
+        }
+
+        $testimonials['nextCursor'] = $next;
 
         // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;
@@ -50,8 +68,9 @@ class TestimonialRepository {
         }*/
 
         //dd($comments);
+        $testimonials['comments'] = $comments;
 
-        return $comments;
+        return $testimonials;
     }
 
     /**

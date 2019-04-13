@@ -8,6 +8,10 @@
                 <p class="dsq-comment-content">&ldquo;{{ $testimonial->message }}&rdquo;&mdash;{{ $testimonial->author->name }}</p>
             </div>
         @endforeach
+        @if (!empty($next))
+            {{ Form::open(array('action' => 'TestimonialController@SubmitTestimonialForm')) }}
+            {{ Form::close() }}
+        @endif
     </div>
 
     @if (isset($message))
@@ -28,27 +32,27 @@
 
     <h3 class="title-chapters">Submit Your Testimonial</h3>
 
-    {{ Form::open(array('action' => 'TestimonialController@SubmitTestimonialForm')) }}
+    {{ Form::open(array('url' => $app_url . '/testimonials/submit', 'action' => 'TestimonialController@SubmitTestimonialForm')) }}
 
-    {{ Form::openGroup('title', 'Full Name') }}
-    {{ Form::text('full_name', (!empty($input_data['full_name'])) ? $input_data['full_name'] : '', array('placeholder' => 'Full Name', 'id' => 'full_name')) }}
-    {{ Form::closeGroup() }}
+        {{ Form::openGroup('title', 'Full Name') }}
+            {{ Form::text('full_name', (!empty($input_data['full_name'])) ? $input_data['full_name'] : '', array('placeholder' => 'Full Name', 'id' => 'full_name')) }}
+        {{ Form::closeGroup() }}
 
-    {{ Form::openGroup('title', 'Email') }}
-    {{ Form::text('email', (!empty($input_data['email'])) ? $input_data['email'] : '', array('placeholder' => 'Email', 'id' => 'email')) }}
-    {{ Form::closeGroup() }}
+        {{ Form::openGroup('title', 'Email') }}
+            {{ Form::text('email', (!empty($input_data['email'])) ? $input_data['email'] : '', array('placeholder' => 'Email', 'id' => 'email')) }}
+        {{ Form::closeGroup() }}
 
-    {{ Form::openGroup('title', 'Phone Number') }}
-    {{ Form::text('phone_number', (!empty($input_data['phone_number'])) ? $input_data['phone_number'] : '', array('placeholder' => 'Phone Number', 'id' => 'phone_number')) }}
-    {{ Form::closeGroup() }}
+        {{ Form::openGroup('title', 'Phone Number') }}
+            {{ Form::text('phone_number', (!empty($input_data['phone_number'])) ? $input_data['phone_number'] : '', array('placeholder' => 'Phone Number', 'id' => 'phone_number')) }}
+        {{ Form::closeGroup() }}
 
-    {{ Form::openGroup('title', 'Testimonial') }}
-    {{ Form::textarea ('body', (!empty($input_data['body'])) ? $input_data['body'] : '', array('placeholder' => 'Testimonial', 'class' => 'form-control', 'id' => 'body', 'rows' => '4' )) }}
-    {{ Form::closeGroup() }}
+        {{ Form::openGroup('title', 'Testimonial') }}
+            {{ Form::textarea ('body', (!empty($input_data['body'])) ? $input_data['body'] : '', array('placeholder' => 'Testimonial', 'class' => 'form-control', 'id' => 'body', 'rows' => '4' )) }}
+        {{ Form::closeGroup() }}
 
-    <div class="modal-footer">
-        {{ Form::submit('Submit', array('class' => 'btn btn-primary')) }}
-    </div>
+        <div class="modal-footer">
+            {{ Form::submit('Submit', array('class' => 'btn btn-primary')) }}
+        </div>
 
     {{ Form::close() }}
 </main>
