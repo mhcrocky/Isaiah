@@ -8,6 +8,9 @@
                 <p class="dsq-comment-content">&ldquo;{{ $testimonial->message }}&rdquo;&mdash;{{ $testimonial->author->name }}</p>
             </div>
         @endforeach
+        @if (isset($prev))
+            <a href="{{ $app_url }}/testimonials?prev={{ $prev }}">Next</a>
+        @endif
         @if (isset($next))
             <a href="{{ $app_url }}/testimonials?next={{ $next }}">Next</a>
         @endif
