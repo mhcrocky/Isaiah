@@ -30,12 +30,12 @@
             {{ Form::hidden('prev', $prev) }}
             {{ Form::hidden('next', $next) }}
             {{ Form::hidden('direction', 'next', array('id' => 'direction')) }}
-            @if (isset($prev))
+            @if (!empty($prev))
                 {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) }}
             @else
                 {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled'))) }}
             @endif
-            @if (isset($next))
+            @if (!empty($next))
                 {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right'))) }}
             @else
                 {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right disabled'))) }}
