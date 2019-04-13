@@ -22,14 +22,14 @@
 
     {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
         @if (isset($prev))
-            {{ Form::submit(null, array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left')) }}
+            {{ HTML::decode(Form::button('<i class="btn btn-default fa fa-angle-left"></i>', array('id' => 'nav-left-disqus', 'class' => 'btn'))) }}
         @else
-        {{ Form::submit(null, array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled')) }}
+            {{ HTML::decode(Form::button('<i class="btn btn-default fa fa-angle-left disabled"></i>', array('id' => 'nav-left-disqus', 'class' => 'btn disabled'))) }}
         @endif
         @if (isset($next))
-            {{ Form::submit(null, array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right')) }}
+            {{ HTML::decode(Form::button('<i class="btn btn-default fa fa-angle-right"></i>', array('id' => 'nav-right-disqus', 'class' => 'btn'))) }}
         @else
-            {{ Form::submit(null, array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right disabled')) }}
+            {{ HTML::decode(Form::button('<i class="btn btn-default fa fa-angle-right disabled"></i>', array('id' => 'nav-right-disqus', 'class' => 'btn disabled'))) }}
         @endif
     {{ Form::close() }}
     <hr>
