@@ -27,6 +27,8 @@ class TestimonialController extends \BaseController {
 		$next = json_decode($this->GetInputValue('next'));
 		$direction = json_decode($this->GetInputValue('direction'));
 
+		dd(Input::all());
+
 		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $direction);
 
 		if(!empty($testimonials['nextCursor'])) {
@@ -59,8 +61,6 @@ class TestimonialController extends \BaseController {
 		);
 
 		//$content_data = [];
-
-		dd(Input::all());
 
 		$prev = json_decode($this->GetInputValue('prev'));
 		$next = json_decode($this->GetInputValue('next'));
