@@ -25,8 +25,8 @@ class TestimonialController extends \BaseController {
 
 		$input_data = Input::all();
 
-		if(!empty($input_data['nextCursor'])) {
-			$next = $input_data['nextCursor'];
+		if(!empty($input_data['next'])) {
+			$next = $input_data['next'];
 		} else {
 			$next = '';
 		}
@@ -65,8 +65,8 @@ class TestimonialController extends \BaseController {
 
 		$input_data = Input::all();
 
-		if(!empty($input_data['nextCursor'])) {
-			$next = $input_data['nextCursor'];
+		if(!empty($input_data['next'])) {
+			$next = $input_data['next'];
 		} else {
 			$next = '';
 		}
