@@ -60,6 +60,8 @@ class TestimonialController extends \BaseController {
 
 		//$content_data = [];
 
+		dd(Input::all());
+
 		$prev = json_decode($this->GetInputValue('prev'));
 		$next = json_decode($this->GetInputValue('next'));
 		$direction = json_decode($this->GetInputValue('direction'));
