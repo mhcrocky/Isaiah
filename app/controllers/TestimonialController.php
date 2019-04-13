@@ -101,7 +101,9 @@ class TestimonialController extends \BaseController {
 		}else{
 			$content_data = [
 				'errors' 		=> $validator->messages(),
-				'testimonials' 	=> $comments
+				'input_data' 	=> $input_data,
+				'testimonials' 	=> $comments,
+				'next'			=> $next
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
