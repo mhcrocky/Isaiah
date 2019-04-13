@@ -141,7 +141,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             populateVerseModal(window.verse_number);
         });
 
-        $( "#regForm" ).submit(function( event ) {
+        $( "#disqus-testimonials" ).submit(function( event ) {
             var $form = $('form#disqus-testimonials');
 
             var data = $form.serialize(),
