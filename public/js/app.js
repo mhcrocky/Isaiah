@@ -161,15 +161,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                     $testimonialContainer = $('#testimonial-container');
                     $testimonialContainer.empty();
                     jQuery.each(data.testimonials, function() {
-                        var commentContainer = $('<div>').attr({
-                            class: 'dsq-widget-comment'
-                        });
-                        var commentContent = $('<p>').attr({
-                            class: 'dsq-comment-content'
-                        });
-                        commentContent.html('&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name);
-                        commentContainer.append(commentContent);
-                        $testimonialContainer.append(commentContainer);
+                        $testimonialContainer.append('<div class="dsq-widget-comment"><p class="dsq-comment-content">&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name + '</p>');
                     });
                 } //success
             }); //done
