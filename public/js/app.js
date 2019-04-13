@@ -141,13 +141,17 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             populateVerseModal(window.verse_number);
         });
 
+        $('#nav-left-disqus').on('click', function (e) {
+            e.preventDefault();
+            alert('Left');
+        });
+
         /**
          * Page verse modal left
          */
-        $('#nav-links-light-verse-left').on('click', function (e) {
+        $('#nav-right-disqus').on('click', function (e) {
             e.preventDefault();
-            window.verse_number = chapter_verse_order[window.verse_index - 1];
-            populateVerseModal(window.verse_number);
+            alert('Left');
         });
 
         /**

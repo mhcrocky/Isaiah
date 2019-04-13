@@ -18,20 +18,16 @@ class TestimonialController extends \BaseController {
 	 */
 	public function GetTestimonialForm() {
 		$template_data = array(
-			'title' => 'Testimonials',
-			'body_id' => 'chapter-index',
-			'body_css' => 'scriptures section-heading'
+			'title' 	=> 'Testimonials',
+			'body_id' 	=> 'chapter-index',
+			'body_css' 	=> 'scriptures section-heading'
 		);
 
-		$input_data = Input::all();
+		$prev = json_decode($this->GetInputValue('prev'));
+		$next = json_decode($this->GetInputValue('next'));
+		$direction = json_decode($this->GetInputValue('direction'));
 
-		if(!empty($input_data['next'])) {
-			$next = $input_data['next'];
-		} else {
-			$next = '';
-		}
-
-		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next);
+		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $direction);
 
 		if(!empty($testimonials['nextCursor'])) {
 			$next = $testimonials['nextCursor'];
@@ -40,8 +36,9 @@ class TestimonialController extends \BaseController {
 		}
 
 		$content_data = array(
-			'testimonials' => $testimonials['comments'],
-			'next' => $next
+			'testimonials' 	=> $testimonials['comments'],
+			'prev'			=> $prev,
+			'next' 			=> $next
 		);
 
 		return View::make('layouts.master', $template_data)
@@ -56,34 +53,30 @@ class TestimonialController extends \BaseController {
 	 */
 	public function SubmitTestimonialForm() {
 		$template_data = array(
-			'title' => 'Testimonials',
-			'body_id' => 'chapter-index',
-			'body_css' => 'scriptures section-heading'
+			'title' 	=> 'Testimonials',
+			'body_id' 	=> 'chapter-index',
+			'body_css' 	=> 'scriptures section-heading'
 		);
 
 		//$content_data = [];
 
-		$input_data = Input::all();
-
-		if(!empty($input_data['next'])) {
-			$next = $input_data['next'];
-		} else {
-			$next = '';
-		}
-
-		$content_data = ['input_data' => $input_data, 'next' => $next];
+		$prev = json_decode($this->GetInputValue('prev'));
+		$next = json_decode($this->GetInputValue('next'));
+		$direction = json_decode($this->GetInputValue('direction'));
 
 		$rules = array (
-			'full_name' => 'required',
-			'email' => 'required|email',
-			//'subject' => 'required',
-			'phone_number' => array('Regex:/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/'),
-			'body' => 'required|min:5'
+			'full_name' 	=> 'required',
+			'email' 		=> 'required|email',
+			//'subject' 	=> 'required',
+			'phone_number' 	=> array('Regex:/^(?:(?:\+?1\s*(?:[.-]\s*)?)?(?:\(\s*([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9])\s*\)|([2-9]1[02-9]|[2-9][02-8]1|[2-9][02-8][02-9]))\s*(?:[.-]\s*)?)?([2-9]1[02-9]|[2-9][02-9]1|[2-9][02-9]{2})\s*(?:[.-]\s*)?([0-9]{4})(?:\s*(?:#|x\.?|ext\.?|extension)\s*(\d+))?$/'),
+			'body' 			=> 'required|min:5'
 		);
 
+		$input_data = Input::all();
+		//$content_data = ['input_data' => $input_data, 'prev' => $prev, 'next' => $next];
 		$validator = Validator::make ($input_data, $rules);
 
-		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread);
+		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $direction);
 		$comments = $testimonials['comments'];
 		$next = $testimonials['nextCursor'];
 
@@ -99,7 +92,8 @@ class TestimonialController extends \BaseController {
 			$content_data = [
 				'message' 		=> 'Your testimonial has been submitted. Thank You!',
 				'testimonials' 	=> $comments,
-				'next' => $next
+				'prev' 			=> $prev,
+				'next' 			=> $next
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('heading', 'headings.resources')
@@ -109,6 +103,7 @@ class TestimonialController extends \BaseController {
 				'errors' 		=> $validator->messages(),
 				'input_data' 	=> $input_data,
 				'testimonials' 	=> $comments,
+				'prev'			=> $prev,
 				'next'			=> $next
 			];
 			return View::make('layouts.master', $template_data)
@@ -116,5 +111,14 @@ class TestimonialController extends \BaseController {
 				->nest('heading', 'headings.resources')
 				->nest('content', 'testimonial-index', $content_data);
 		}
+	}
+
+	/**
+	 * @param $input_key string Key value from Input array
+	 * @return string
+	 */
+	public function GetInputValue($input_key)
+	{
+		return Input::get($input_key, '');
 	}
 }

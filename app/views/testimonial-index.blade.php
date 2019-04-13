@@ -9,16 +9,18 @@
             </div>
         @endforeach
         {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
-        @if (isset($prev))
-            {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) }}
-        @else
-            {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled'))) }}
-        @endif
-        @if (isset($next))
-            {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right'))) }}
-        @else
-            {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right disabled'))) }}
-        @endif
+            {{ Form::hidden('prev', $prev) }}
+            {{ Form::hidden('next', $next) }}
+            @if (isset($prev))
+                {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) }}
+            @else
+                {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled'))) }}
+            @endif
+            @if (isset($next))
+                {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right'))) }}
+            @else
+                {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right disabled'))) }}
+            @endif
         {{ Form::close() }}
     </div>
 

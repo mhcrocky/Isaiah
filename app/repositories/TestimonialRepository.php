@@ -2,11 +2,13 @@
 
 class TestimonialRepository {
     /**
-     * @param $thread_id
-     * @param $next
+     * @param $thread_id string Disqus thread Id
+     * @param $prev string Json array of previous cursor values
+     * @param $next string Disqus next cursor value
+     * @param $direction string 'next' if foward and 'prev' if backwards
      * @return mixed
      */
-    public static function GetDisqusTestimonials($thread_id, $next)
+    public static function GetDisqusTestimonials($thread_id, $next = '', $prev = '', $direction = 'next')
     {
         $key = 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
         $forum = 'isaiah-explained'; // Disqus shortname
