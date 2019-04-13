@@ -8,19 +8,7 @@
                 <p class="dsq-comment-content">&ldquo;{{ $testimonial->message }}&rdquo;&mdash;{{ $testimonial->author->name }}</p>
             </div>
         @endforeach
-        @if (isset($prev))
-            <a id="nav-left-disqus" class="btn btn-default fa fa-angle-left" href="{{ $app_url }}/testimonials"></a>
-        @else
-            <a id="nav-left-disqus" class="btn btn-default fa fa-angle-left disabled" href="#"></a>
-        @endif
-        @if (isset($next))
-            <a id="nav-right-disqus" class="btn btn-default fa fa-angle-right" href="{{ $app_url }}/testimonials"></a>
-        @else
-            <a id="nav-right-disqus" class="btn btn-default fa fa-angle-right disabled" href="#"></a>
-        @endif
-    </div>
-
-    {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
+        {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
         @if (isset($prev))
             {{ HTML::decode(Form::button('<i class="btn btn-default fa fa-angle-left"></i>', array('id' => 'nav-left-disqus', 'class' => 'btn'))) }}
         @else
@@ -31,7 +19,9 @@
         @else
             {{ HTML::decode(Form::button('<i class="btn btn-default fa fa-angle-right disabled"></i>', array('id' => 'nav-right-disqus', 'class' => 'btn disabled'))) }}
         @endif
-    {{ Form::close() }}
+        {{ Form::close() }}
+    </div>
+
     <hr>
 
     <h3 class="title-chapters">Submit Your Testimonial</h3>
