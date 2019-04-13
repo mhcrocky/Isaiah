@@ -31,10 +31,16 @@ class TestimonialController extends \BaseController {
 			$next = '';
 		}
 
-		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread, $next);
+		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next);
+
+		if(!empty($testimonials['nextCursor'])) {
+			$next = $testimonials['nextCursor'];
+		} else {
+			$next = '';
+		}
 
 		$content_data = array(
-			'testimonials' => $comments,
+			'testimonials' => $testimonials['comments'],
 			'next' => $next
 		);
 
