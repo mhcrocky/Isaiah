@@ -143,7 +143,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
         $( "#disqus-testimonials" ).submit(function( event ) {
             event.preventDefault();
-            
+
             var $form = $('form#disqus-testimonials');
 
             var data = $form.serialize(),
@@ -176,11 +176,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
             var $form = $('form#disqus-testimonials');
 
-            $('<input>').attr({
-                type: 'hidden',
-                id: 'direction',
-                value: 'prev'
-            }).appendTo($form);
+            $('#direction').val('prev');
 
             $form.submit();
         });
@@ -193,11 +189,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
             var $form = $('form#disqus-testimonials');
 
-            $('<input>').attr({
-                type: 'hidden',
-                id: 'direction',
-                value: 'next'
-            }).appendTo($form);
+            $('#direction').val('next');
 
             $form.submit();
         });

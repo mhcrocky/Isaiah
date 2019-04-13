@@ -29,6 +29,7 @@
         {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
             {{ Form::hidden('prev', $prev) }}
             {{ Form::hidden('next', $next) }}
+            {{ Form::hidden('direction', 'next', array('id' => 'direction')) }}
             @if (isset($prev))
                 {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) }}
             @else
