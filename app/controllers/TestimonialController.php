@@ -34,7 +34,8 @@ class TestimonialController extends \BaseController {
 		$comments = TestimonialRepository::GetDisqusTestimonials($this->thread, $next);
 
 		$content_data = array(
-			'testimonials' => $comments
+			'testimonials' => $comments,
+			'next' => $next
 		);
 
 		return View::make('layouts.master', $template_data)
@@ -58,7 +59,13 @@ class TestimonialController extends \BaseController {
 
 		$input_data = Input::all();
 
-		$content_data = ['input_data' => $input_data];
+		if(!empty($input_data['nextCursor'])) {
+			$next = $input_data['nextCursor'];
+		} else {
+			$next = '';
+		}
+
+		$content_data = ['input_data' => $input_data, 'next' => $next];
 
 		$rules = array (
 			'full_name' => 'required',
