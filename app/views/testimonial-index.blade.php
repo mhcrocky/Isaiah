@@ -27,8 +27,8 @@
         @endforeach
         </div>
         {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
-            {{ Form::hidden('prev', $prev) }}
-            {{ Form::hidden('next', $next) }}
+            {{ Form::hidden('prev', $prev, array('id' => 'disqus-prev')) }}
+            {{ Form::hidden('next', $next, array('id' => 'disqus-next')) }}
             {{ Form::hidden('direction', 'next', array('id' => 'direction')) }}
             @if (!empty($prev))
                 {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) }}
