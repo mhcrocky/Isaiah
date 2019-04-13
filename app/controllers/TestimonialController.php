@@ -37,17 +37,26 @@ class TestimonialController extends \BaseController {
 			$next = '';
 		}
 
-		$content_data = array(
-			'testimonials' 	=> $testimonials['comments'],
-			'prev'			=> $prev,
-			'next' 			=> $next
-		);
+		if(!Request::isMethod('post')) {
+			$content_data = array(
+				'testimonials' 	=> $testimonials['comments'],
+				'prev'			=> $prev,
+				'next' 			=> $next
+			);
 
-		return View::make('layouts.master', $template_data)
-			->nest('tracking_code', 'widgets.tracking-code')
-			->nest('heading', 'headings.chapter-index')
-			->nest('mobile_search', 'widgets.search-iit-mobile')
-			->nest('content', 'testimonial-index', $content_data);
+			return View::make('layouts.master', $template_data)
+				->nest('tracking_code', 'widgets.tracking-code')
+				->nest('heading', 'headings.chapter-index')
+				->nest('mobile_search', 'widgets.search-iit-mobile')
+				->nest('content', 'testimonial-index', $content_data);
+		} else {
+			return Response::json(array(
+				'success' => true,
+				'testimonials' 	=> json_encode($testimonials['comments']),
+				'prev'			=> json_encode($prev),
+				'next'			=> json_encode($next)
+			));
+		}
 	}
 
 	/**

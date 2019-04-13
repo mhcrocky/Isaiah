@@ -2,12 +2,30 @@
 
     <h1 class="title-chapters">Testimonials</h1>
 
+    @if (isset($message))
+        <div id="message" class="alert alert-success" role="alert">
+            {{{$message}}}
+        </div>
+    @endif
+
+    @if (isset($errors))
+        <div id="errors">
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger" role="alert">
+                {{{$error}}}
+            </div>
+        @endforeach
+        </div>
+    @endif
+
     <div class="page">
+        <div id="testimonial-container">
         @foreach ($testimonials as $testimonial)
             <div class="dsq-widget-comment">
                 <p class="dsq-comment-content">&ldquo;{{ $testimonial->message }}&rdquo;&mdash;{{ $testimonial->author->name }}</p>
             </div>
         @endforeach
+        </div>
         {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
             {{ Form::hidden('prev', $prev) }}
             {{ Form::hidden('next', $next) }}

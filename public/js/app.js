@@ -141,14 +141,52 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             populateVerseModal(window.verse_number);
         });
 
+        $( "#regForm" ).submit(function( event ) {
+            var $form = $('form#disqus-testimonials');
+
+            var data = $form.serialize(),
+                url = $form.attr( "action" );
+
+            var posting = $.post( url, { formData: data } );
+
+            posting.done(function( data ) {
+                if(data.fail) {
+                    $.each(data.errors, function( index, value ) {
+                        var errorDiv = '#errors';
+                        $(errorDiv).empty().append('<div class="alert alert-danger" role="alert">' + value + '</div>');
+                    });
+                    $('#message').empty();
+                }
+                if(data.success) {
+                    $testimonialContainer = $('#testimonial-container');
+                    $testimonialContainer.html('');
+                    jQuery.each(data.testimonials, function() {
+                        var commentContainer = $('<div>').attr({
+                            class: 'dsq-widget-comment'
+                        });
+                        var commentContent = $('<p>').attr({
+                            class: 'dsq-comment-content'
+                        });
+                        commentContent.html('&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name);
+                        commentContainer.append(commentContent);
+                        $testimonialContainer.appendChild(commentContainer);
+                    });
+                } //success
+            }); //done
+        });
+
         $('#nav-left-disqus').on('click', function (e) {
             e.preventDefault();
+
+            var $form = $('form#disqus-testimonials');
+
             $('<input>').attr({
                 type: 'hidden',
                 id: 'direction',
                 value: 'prev'
-            }).appendTo('form#disqus-testimonials');
-            $('form#disqus-testimonials').submit();
+            }).appendTo($form);
+
+            $form.submit();
         });
 
         /**
@@ -156,12 +194,16 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          */
         $('#nav-right-disqus').on('click', function (e) {
             e.preventDefault();
+
+            var $form = $('form#disqus-testimonials');
+
             $('<input>').attr({
                 type: 'hidden',
                 id: 'direction',
                 value: 'next'
-            }).appendTo('form#disqus-testimonials');
-            $('form#disqus-testimonials').submit();
+            }).appendTo($form);
+
+            $form.submit();
         });
 
         /**
