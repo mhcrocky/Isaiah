@@ -46,6 +46,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
     //document ready
     $(function(){
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
 
         /**
          ***************************************
@@ -167,7 +172,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                         $testimonialContainer.append('<div class="dsq-widget-comment"><p class="dsq-comment-content">&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name + '</p>');
                     });
 
-                    $("[name='_token']").val(data.token);
+                    $("meta[name='csrf-token']").val(data.token);
                     $('#disqus-prev').val(data.prev);
                     $('#disqus-next').val(data.next);
                 }

@@ -53,4 +53,11 @@ Route::get('/about', function() {
     return Redirect::to(Config::get('app.url') . '/Isaiah-Institute-Translation');
 });
 
+Route::filter('csrf', function() {
+    $token = Request::ajax() ? Request::header('X-CSRF-Token') : Input::get('_token');
+    if (Session::token() !== $token) {
+        throw new Illuminate\Session\TokenMismatchException;
+    }
+});
+
 App::missing(function($exception) { return RedirectRepository::PageNotFound(); });
