@@ -143,7 +143,12 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
         $('#nav-left-disqus').on('click', function (e) {
             e.preventDefault();
-            alert('Left');
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'direction',
+                value: 'prev'
+            }).appendTo('#disqus-testimonials');
+            $('form#disqus-testimonials').submit();
         });
 
         /**
@@ -151,7 +156,12 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
          */
         $('#nav-right-disqus').on('click', function (e) {
             e.preventDefault();
-            alert('Left');
+            $('<input>').attr({
+                type: 'hidden',
+                id: 'direction',
+                value: 'next'
+            }).appendTo('#disqus-testimonials');
+            $('form#disqus-testimonials').submit();
         });
 
         /**
