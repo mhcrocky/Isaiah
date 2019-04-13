@@ -20,20 +20,18 @@
         @endif
     </div>
 
-    @if (isset($message))
-        <div class="alert alert-success" role="alert">
-            {{{$message}}}
-        </div>
-    @endif
-
-    @if (isset($errors))
-        @foreach ($errors->all() as $error)
-            <div class="alert alert-danger" role="alert">
-                {{{$error}}}
-            </div>
-        @endforeach
-    @endif
-
+    {{ Form::open(array('url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
+        @if (isset($prev))
+            {{ Form::submit(null, array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left')) }}
+        @else
+        {{ Form::submit(null, array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled')) }}
+        @endif
+        @if (isset($next))
+            {{ Form::submit(null, array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right')) }}
+        @else
+            {{ Form::submit(null, array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right disabled')) }}
+        @endif
+    {{ Form::close() }}
     <hr>
 
     <h3 class="title-chapters">Submit Your Testimonial</h3>
