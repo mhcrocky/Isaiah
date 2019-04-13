@@ -9,8 +9,7 @@
             </div>
         @endforeach
         @if (!empty($next))
-            {{ Form::open(array('action' => 'TestimonialController@SubmitTestimonialForm')) }}
-            {{ Form::close() }}
+            <a href="{{ $app_url }}/testimonials?next={{ $next }}">Next</a>
         @endif
     </div>
 
