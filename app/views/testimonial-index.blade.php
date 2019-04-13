@@ -20,7 +20,7 @@
         @endif
     </div>
 
-    {{ Form::open(array('url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
+    {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
         @if (isset($prev))
             {{ Form::submit(null, array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left')) }}
         @else
@@ -36,7 +36,7 @@
 
     <h3 class="title-chapters">Submit Your Testimonial</h3>
 
-    {{ Form::open(array('url' => $app_url . '/testimonials/submit', 'action' => 'TestimonialController@SubmitTestimonialForm')) }}
+    {{ Form::open(array('id' => 'submit-testimonials', 'url' => $app_url . '/testimonials/submit', 'action' => 'TestimonialController@SubmitTestimonialForm')) }}
 
         {{ Form::openGroup('title', 'Full Name') }}
             {{ Form::text('full_name', (!empty($input_data['full_name'])) ? $input_data['full_name'] : '', array('placeholder' => 'Full Name', 'id' => 'full_name')) }}
