@@ -9,10 +9,14 @@
             </div>
         @endforeach
         @if (isset($prev))
-            <a href="{{ $app_url }}/testimonials?prev={{ $prev }}">Next</a>
+            <a id="nav-left-disqus" class="btn btn-default fa fa-angle-left" href="{{ $app_url }}/testimonials"></a>
+        @else
+            <a id="nav-left-disqus" class="btn btn-default fa fa-angle-left disabled" href="#"></a>
         @endif
         @if (isset($next))
-            <a href="{{ $app_url }}/testimonials?next={{ $next }}">Next</a>
+            <a id="nav-right-disqus" class="btn btn-default fa fa-angle-right" href="{{ $app_url }}/testimonials"></a>
+        @else
+            <a id="nav-right-disqus" class="btn btn-default fa fa-angle-right disabled" href="#"></a>
         @endif
     </div>
 
