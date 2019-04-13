@@ -160,7 +160,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                 if(data.success) {
                     $testimonialContainer = $('#testimonial-container');
                     $testimonialContainer.empty();
-                    jQuery.each(data.testimonials, function() {
+                    var testimonials = jQuery.parseJSON(data.testimonials);
+                    jQuery.each(testimonials, function() {
                         $testimonialContainer.append('<div class="dsq-widget-comment"><p class="dsq-comment-content">&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name + '</p>');
                     });
                 } //success
