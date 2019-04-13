@@ -34,7 +34,6 @@ class TestimonialRepository {
 
         if (!empty($results->cursor)) {
             $cursor = $results->cursor;
-            dd($cursor);
             if (!empty($cursor->hasNext)) {
                 $next = $cursor->next;
             }
