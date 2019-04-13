@@ -15,24 +15,17 @@ class TestimonialRepository {
         $limit = '5'; // The number of comments you want to show
         $thread = $thread_id; // Same as your disqus_identifier
 
-        if(!empty($prev)) {
-            $prev_array = json_decode($prev);
-        } else {
-            $prev_array = [];
-        }
-
         $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
 
-        if(!empty($next)) {
-            if($direction == 'next') {
-                $prev_array[] = $next;
-                $endpoint .= "&cursor={$next}";
-            } else {
-                $next = array_pop($prev_array);
+        if($direction == 'next') {
+            if(!empty($next)) {
                 $endpoint .= "&cursor={$next}";
             }
+        } else {
+            if(!empty($prev)) {
+                $endpoint .= "&cursor={$prev}";
+            }
         }
-        $testimonials['prevCursor'] = $prev_array;
 
         // Get the results
         $session = curl_init($endpoint);
@@ -51,8 +44,12 @@ class TestimonialRepository {
             if (!empty($cursor->hasNext)) {
                 $next = $cursor->next;
             }
+            if (!empty($cursor->hasPrev)) {
+                $prev = $cursor->prev;
+            }
         }
 
+        $testimonials['prevCursor'] = $prev;
         $testimonials['nextCursor'] = $next;
 
         // parse the desired JSON data into HTML for use on your site

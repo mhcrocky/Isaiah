@@ -64,9 +64,9 @@ class TestimonialController extends \BaseController {
 		} else {
 			return Response::json(array(
 				'success' => true,
-				'testimonials' 	=> json_encode($testimonials['comments']),
-				'prev'			=> json_encode($prev),
-				'next'			=> json_encode($next),
+				'testimonials' 	=> $testimonials['comments'],
+				'prev'			=> $prev,
+				'next'			=> $next,
 				'token'			=> csrf_token()
 			));
 		}
