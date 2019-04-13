@@ -159,7 +159,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                 }
                 if(data.success) {
                     $testimonialContainer = $('#testimonial-container');
-                    $testimonialContainer.html('');
+                    $testimonialContainer.empty();
                     jQuery.each(data.testimonials, function() {
                         var commentContainer = $('<div>').attr({
                             class: 'dsq-widget-comment'
@@ -169,7 +169,7 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                         });
                         commentContent.html('&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name);
                         commentContainer.append(commentContent);
-                        $testimonialContainer.appendChild(commentContainer);
+                        $testimonialContainer.append(commentContainer);
                     });
                 } //success
             }); //done
