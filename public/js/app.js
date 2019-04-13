@@ -142,6 +142,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         });
 
         $( "#disqus-testimonials" ).submit(function( event ) {
+            event.preventDefault();
+            
             var $form = $('form#disqus-testimonials');
 
             var data = $form.serialize(),
