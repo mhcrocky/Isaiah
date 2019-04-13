@@ -27,7 +27,7 @@ class TestimonialController extends \BaseController {
 		$next = json_decode($this->GetInputValue('next'));
 		$direction = json_decode($this->GetInputValue('direction'));
 
-		dd(Input::all());
+		//dd(Input::all());
 
 		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $direction);
 
