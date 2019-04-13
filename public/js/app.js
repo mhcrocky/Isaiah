@@ -166,9 +166,8 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                     jQuery.each(testimonials, function() {
                         $testimonialContainer.append('<div class="dsq-widget-comment"><p class="dsq-comment-content">&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name + '</p>');
                     });
-                } //success
-            }); //done
-            var test = 1;
+                }
+            });
         });
 
         $('#nav-left-disqus').on('click', function (e) {

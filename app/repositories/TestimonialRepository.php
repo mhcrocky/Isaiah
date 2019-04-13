@@ -15,7 +15,11 @@ class TestimonialRepository {
         $limit = '5'; // The number of comments you want to show
         $thread = $thread_id; // Same as your disqus_identifier
 
-        $prev_array = json_decode($prev);
+        if(!empty($prev)) {
+            $prev_array = json_decode($prev);
+        } else {
+            $prev_array = [];
+        }
 
         $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
 
