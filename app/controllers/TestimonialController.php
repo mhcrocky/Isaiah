@@ -26,12 +26,14 @@ class TestimonialController extends \BaseController {
 		if(!Request::isMethod('post')) {
 			$prev = json_decode($this->GetInputValue('prev'));
 			$next = json_decode($this->GetInputValue('next'));
+			$prevList = json_encode($this->GetInputValue('prevList'));
 			$direction = json_decode($this->GetInputValue('direction'));
 		} else {
 			$inputData = Input::get('formData');
 			parse_str($inputData, $formFields);
 			$prev = $formFields['prev'];
 			$next = $formFields['next'];
+			$prevList = $formFields['prevList'];
 			$direction = $formFields['direction'];
 		}
 
@@ -53,7 +55,8 @@ class TestimonialController extends \BaseController {
 			$content_data = array(
 				'testimonials' 	=> $testimonials['comments'],
 				'prev'			=> $prev,
-				'next' 			=> $next
+				'next' 			=> $next,
+				'prevList'		=> $prevList
 			);
 
 			return View::make('layouts.master', $template_data)
@@ -67,6 +70,7 @@ class TestimonialController extends \BaseController {
 				'testimonials' 	=> $testimonials['comments'],
 				'prev'			=> $prev,
 				'next'			=> $next,
+				'prevList'		=> $prevList,
 				'token'			=> csrf_token()
 			));
 		}
@@ -103,6 +107,7 @@ class TestimonialController extends \BaseController {
 		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $direction);
 		$comments = $testimonials['comments'];
 		$next = $testimonials['nextCursor'];
+		$prevList = json_encode($testimonials['prevList']);
 
 		if ($validator->passes()){
 			$result = TestimonialRepository::CreateDisqusPost($input_data, $this->thread, $this->app_url);
@@ -114,21 +119,25 @@ class TestimonialController extends \BaseController {
 				$message->setBody($input_data['body']);
 			});
 			$content_data = [
-				'message' 		=> 'Your testimonial has been submitted. Thank You!',
+				'isSuccess' 	=> true,
+				'message' 		=> 'Your testimonial has been submitted for review. Thank You!',
 				'testimonials' 	=> $comments,
 				'prev' 			=> $prev,
-				'next' 			=> $next
+				'next' 			=> $next,
+				'prevList'		=> $prevList
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('heading', 'headings.resources')
 				->nest('content', 'testimonial-index', $content_data);
 		}else{
 			$content_data = [
+				'isSuccess' 	=> false,
 				'errors' 		=> $validator->messages(),
 				'input_data' 	=> $input_data,
 				'testimonials' 	=> $comments,
 				'prev'			=> $prev,
-				'next'			=> $next
+				'next'			=> $next,
+				'prevList'		=> $prevList
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')

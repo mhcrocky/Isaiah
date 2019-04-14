@@ -154,6 +154,9 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             var data = $form.serialize(),
                 url = $form.attr( "action" );
 
+            var $loading_indicator = $('#loading-indicator');
+
+            $loading_indicator.show();
             var posting = $.post( url, { formData: data } );
 
             posting.done(function( data ) {
@@ -173,9 +176,11 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
 
                     $("meta[name='csrf-token']").remove();
                     $('head').append( '<meta name="csrf-token" content="' + data.token + '">' );
+                    $('#disqus-prev-list').val(data.prevList);
                     $('#disqus-prev').val(data.prev);
                     $('#disqus-next').val(data.next);
                 }
+                $loading_indicator.hide();
             });
         });
 

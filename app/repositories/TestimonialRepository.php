@@ -5,10 +5,11 @@ class TestimonialRepository {
      * @param $thread_id string Disqus thread Id
      * @param $prev string Json array of previous cursor values
      * @param $next string Disqus next cursor value
+     * @param $prevList array List of previous next cursors
      * @param $direction string 'next' if foward and 'prev' if backwards
      * @return mixed
      */
-    public static function GetDisqusTestimonials($thread_id, $next = '', $prev = '', $direction = 'next')
+    public static function GetDisqusTestimonials($thread_id, $next = '', $prev = '', $prevList = [], $direction = 'next')
     {
         $key = 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
         $forum = 'isaiah-explained'; // Disqus shortname
@@ -21,6 +22,7 @@ class TestimonialRepository {
             if(!empty($next)) {
                 $endpoint .= "&cursor={$next}";
             }
+            $prevList[] = $next;
         } else {
             if(!empty($prev)) {
                 $endpoint .= "&cursor={$prev}";
@@ -60,6 +62,18 @@ class TestimonialRepository {
         } else {
             $testimonials['nextCursor'] = '';
         }
+
+        if(!empty($prevList)) {
+            $testimonials['prevList'] = $prevList;
+        } else {
+            $testimonials['prevList'] = [];
+        }
+
+        /*if($direction == 'next') {
+
+        } else {
+
+        }*/
 
         // parse the desired JSON data into HTML for use on your site
         $comments = $results->response;

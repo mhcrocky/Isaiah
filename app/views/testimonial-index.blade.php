@@ -19,6 +19,7 @@
     @endif
 
     <div class="page">
+        <img id="loading-indicator" src="{{ $app_url }}/images/loading.gif" style="display:none" />
         <div id="testimonial-container">
         @foreach ($testimonials as $testimonial)
             <div class="dsq-widget-comment">
@@ -27,22 +28,26 @@
         @endforeach
         </div>
         {{ Form::open(array('id' => 'disqus-testimonials', 'url' => $app_url . '/testimonials', 'action' => 'TestimonialController@GetTestimonialForm')) }}
+            {{ Form::hidden('prevList', $prevList, array('id' => 'disqus-prev-list')) }}
             {{ Form::hidden('prev', $prev, array('id' => 'disqus-prev')) }}
             {{ Form::hidden('next', $next, array('id' => 'disqus-next')) }}
             {{ Form::hidden('direction', 'next', array('id' => 'direction')) }}
-            @if (!empty($prev))
-                {{-- HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) --}}
-            @else
-                {{-- HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled'))) --}}
-            @endif
-            @if (!empty($next))
-                {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right pull-right'))) }}
-            @else
-                {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right pull-right disabled'))) }}
-            @endif
+            <div class="pull-right">
+                @if (!empty($prev))
+                    {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left'))) }}
+                @else
+                    {{ HTML::decode(Form::button('', array('id' => 'nav-left-disqus', 'class' => 'btn btn-default fa fa-angle-left disabled'))) }}
+                @endif
+                @if (!empty($next))
+                    {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right'))) }}
+                @else
+                    {{ HTML::decode(Form::button('', array('id' => 'nav-right-disqus', 'class' => 'btn btn-default fa fa-angle-right disabled'))) }}
+                @endif
+            </div>
         {{ Form::close() }}
     </div>
 
+    @if (empty($isSuccess) || $isSuccess != true)
     <hr>
 
     <h3 class="title-chapters">Submit Your Testimonial</h3>
@@ -70,5 +75,6 @@
         </div>
 
     {{ Form::close() }}
+    @endif
 </main>
 @include('asides.bible')
