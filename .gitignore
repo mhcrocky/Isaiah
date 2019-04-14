@@ -9,6 +9,4 @@ Thumbs.db
 **/.idea/workspace.xml
 **/.idea/tasks.xml
 _ide_helper.php
-*.mp3
-*.swf
-*.gz
+public/Lessons/**
