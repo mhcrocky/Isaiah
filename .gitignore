@@ -10,3 +10,5 @@ Thumbs.db
 **/.idea/tasks.xml
 _ide_helper.php
 *.mp3
+*.swf
+*.gz
