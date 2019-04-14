@@ -204,7 +204,7 @@ aside .widget {
 .publications span {display: table;}
 
 aside .aside-quotes {
-    background-image: url(images/papyrus-texture.jpg);
+    /*background-image: url(images/papyrus-texture.jpg);*/
     background-size: cover;
     padding: 13px 15px;
 }
@@ -620,18 +620,18 @@ footer .sub-menu {
     .sub .page {margin-bottom: 15px; padding: 20px;}
 
     .gform_wrapper .top_label li.gfield.gf_left_half, .gform_wrapper .top_label li.gfield.gf_right_half {width: 100%;}
-    .gform_button {font-size: 20px !important; padding: 10px 0 !important; width: 100%;}a:focus
+    /*.gform_button {font-size: 20px !important; padding: 10px 0 !important; width: 100%;}a:focus
                                                                                         {
                                                                                             background-color: #D3	BA71;
                                                                                         }
 
-    aside aud	io {margin: 10px 0; mar	gi	n	-bottom: 10px;}
+    aside aud	io {margin: 10px 0; mar	gi	n	-bottom: 10px;}*/
     #modal_vid {height: 164px !important;}
 
 
 } /*--------------------------------------- End */
 
-/* SMALL to LARGE 	*/	 @media screen and (min-width: 	76	8	px) and (max-width: 1200px) {
+/* SMALL to LARGE 	*/	 @media screen and (min-width: 768px) and (max-width: 1200px) {
 
     .wp_rp_title {font-size: 13px;}
     ul.related_post img {width: 50px;}
@@ -773,7 +773,7 @@ footer .sub-menu {
 
     article iframe {height: 388px;}
     article .post-title, article .post-title a {line-height: 34px;}
-    .wp_rp_title {for : 0px;
+    /*.wp_rp_title {for : 0px;*/
     #modal_vid {height: 600px !important;}
 
 } /*--------------------------------------- End */
@@ -848,8 +848,15 @@ input[type="button"]:focus {
     color: #2A6496;
 }
 
-#loading-indicator {
+.page_is_loading {
+    height: 400px;
+    position: relative;
+}
+
+#ajax_loader {
     position: absolute;
-    left: 10px;
-    top: 10px;
+    left: 50%;
+    top: 50%;
+    margin-left: -33px; /* -1 * image width / 2 */
+    margin-top: -33px; /* -1 * image height / 2 */
 }

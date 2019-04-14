@@ -18,8 +18,10 @@
         </div>
     @endif
 
-    <div class="page">
-        <img id="loading-indicator" src="{{ $app_url }}/images/loading.gif" style="display:none" />
+    <div id='testimonial-page' class="page">
+        <div id='ajax_loader' style="display: none;">
+            <img src="{{ $app_url }}/images/ajax-loader.gif" />
+        </div>
         <div id="testimonial-container">
         @foreach ($testimonials as $testimonial)
             <div class="dsq-widget-comment">

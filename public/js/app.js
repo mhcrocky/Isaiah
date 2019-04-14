@@ -154,9 +154,19 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
             var data = $form.serialize(),
                 url = $form.attr( "action" );
 
-            var $loading_indicator = $('#loading-indicator');
+            var $ajax_loader = $('#ajax_loader');
+            var $testimonialPage = $('#testimonial-page');
+            var $prevButton = $('#nav-left-disqus');
+            var $nextButton = $('#nav-right-disqus');
 
-            $loading_indicator.show();
+            var $testimonialContainer = $('#testimonial-container');
+            $testimonialContainer.empty();
+
+            $ajax_loader.show();
+            $prevButton.hide();
+            $nextButton.hide();
+            $testimonialPage.addClass('page_is_loading');
+
             var posting = $.post( url, { formData: data } );
 
             posting.done(function( data ) {
@@ -168,8 +178,6 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                     $('#message').empty();
                 }
                 if(data.success) {
-                    $testimonialContainer = $('#testimonial-container');
-                    $testimonialContainer.empty();
                     jQuery.each(data.testimonials, function() {
                         $testimonialContainer.append('<div class="dsq-widget-comment"><p class="dsq-comment-content">&ldquo;' + this.message + '&rdquo;&mdash;' + this.author.name + '</p>');
                     });
@@ -178,9 +186,25 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
                     $('head').append( '<meta name="csrf-token" content="' + data.token + '">' );
                     $('#disqus-prev-list').val(data.prevList);
                     $('#disqus-prev').val(data.prev);
+
+                    if(data.prev != "") {
+                        $('#nav-left-disqus').disable(false);
+                    } else {
+                        $('#nav-left-disqus').disable(true);
+                    }
+
                     $('#disqus-next').val(data.next);
+
+                    if(data.next != "") {
+                        $('#nav-right-disqus').disable(false);
+                    } else {
+                        $('#nav-right-disqus').disable(true);
+                    }
                 }
-                $loading_indicator.hide();
+                $testimonialPage.removeClass('page_is_loading');
+                $ajax_loader.hide();
+                $prevButton.show();
+                $nextButton.show();
             });
         });
 

@@ -33,11 +33,11 @@ class TestimonialController extends \BaseController {
 			parse_str($inputData, $formFields);
 			$prev = $formFields['prev'];
 			$next = $formFields['next'];
-			$prevList = $formFields['prevList'];
+			$prevList = json_decode($formFields['prevList']);
 			$direction = $formFields['direction'];
 		}
 
-		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $direction);
+		$testimonials = TestimonialRepository::GetDisqusTestimonials($this->thread, $next, $prev, $prevList, $direction);
 
 		if(!empty($testimonials['prevCursor'])) {
 			$prev = $testimonials['prevCursor'];

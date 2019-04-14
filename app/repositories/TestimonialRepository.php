@@ -18,6 +18,10 @@ class TestimonialRepository {
 
         $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
 
+        if(empty($prevList) || !is_array($prevList)) {
+            $prevList = [];
+        }
+
         if($direction == 'next') {
             if(!empty($next)) {
                 $endpoint .= "&cursor={$next}";
@@ -26,6 +30,9 @@ class TestimonialRepository {
         } else {
             if(!empty($prev)) {
                 $endpoint .= "&cursor={$prev}";
+            }
+            if(!empty($prevList)) {
+                array_pop($prevList);
             }
         }
 
@@ -48,6 +55,8 @@ class TestimonialRepository {
             }
             if (!empty($cursor->hasPrev)) {
                 $prev = $cursor->prev;
+            } else {
+                $prev = '';
             }
         }
 
@@ -64,9 +73,9 @@ class TestimonialRepository {
         }
 
         if(!empty($prevList)) {
-            $testimonials['prevList'] = $prevList;
+            $testimonials['prevList'] = json_encode($prevList);
         } else {
-            $testimonials['prevList'] = [];
+            $testimonials['prevList'] = json_encode([]);
         }
 
         /*if($direction == 'next') {
