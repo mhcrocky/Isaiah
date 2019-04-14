@@ -849,12 +849,13 @@ input[type="button"]:focus {
 }
 
 .page_is_loading {
-    height: 400px;
     position: relative;
+    min-height: 400px;
 }
 
 #ajax_loader {
     position: absolute;
+    height: 400px;
     left: 50%;
     top: 50%;
     margin-left: -33px; /* -1 * image width / 2 */
