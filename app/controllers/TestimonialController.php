@@ -127,6 +127,7 @@ class TestimonialController extends \BaseController {
 				'prevList'		=> $prevList
 			];
 			return View::make('layouts.master', $template_data)
+				->nest('tracking_code', 'widgets.tracking-code')
 				->nest('heading', 'headings.resources')
 				->nest('content', 'testimonial-index', $content_data);
 		}else{
