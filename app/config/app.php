@@ -13,6 +13,8 @@ return array(
 
 	'contact_name' => 'Avraham Gileadi',
 	'contact_email' => 'avrahamgileadi@gmail.com',
+	'moderator_name' => 'Eric Cawley',
+	'moderator_email' => 'eric@completemarketing.us',
 	'system_email' => 'contact@isaiahexplained.com',
 	'contact_subject' => 'New Feedback for IsaiahExplained.com',
 	'testimonial_subject' => 'New Testimonial for IsaiahExplained.com',

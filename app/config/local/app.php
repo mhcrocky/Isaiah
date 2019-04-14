@@ -11,8 +11,10 @@ return array(
     |
      */
 
-    'contact_name' => 'Avraham Gileadi',
+    'contact_name' => 'TJ Wood',
     'contact_email' => 'tj@ixqus.com',
+    'moderator_name' => 'TJ Wood',
+    'moderator_email' => 'tj@ixqus.com',
     'system_email' => 'contact@isaiahexplained.com',
     'contact_subject' => 'New Feedback for IsaiahExplained.com',
     'testimonial_subject' => 'New Testimonial for IsaiahExplained.com',

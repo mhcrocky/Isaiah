@@ -115,7 +115,7 @@ class TestimonialController extends \BaseController {
 			Mail::send('emails.testimonial', $input_data, function($message) use ($input_data)
 			{
 				$message->from($input_data['email'], $input_data['full_name']);
-				$message->to(Config::get('app.contact_email'))->subject(Config::get('app.testimonial_subject'));
+				$message->to(Config::get('app.moderator_email'))->subject(Config::get('app.testimonial_subject'));
 				$message->setBody($input_data['body']);
 			});
 			$content_data = [
