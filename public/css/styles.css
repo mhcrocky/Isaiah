@@ -855,7 +855,7 @@ input[type="button"]:focus {
 
 #ajax_loader {
     position: absolute;
-    height: 400px;
+    height: 600px;
     left: 50%;
     top: 50%;
     margin-left: -33px; /* -1 * image width / 2 */
