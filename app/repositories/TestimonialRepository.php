@@ -13,7 +13,7 @@ class TestimonialRepository {
     {
         $key = 'hUFhDILTYUsdL35aYgxZEZ3gbJuJ024I1ySlbS3AxjmJUAGK6gsHlvifF4EQVJjs'; // TODO replace with your Disqus secret key from http://disqus.com/api/applications/
         $forum = 'isaiah-explained'; // Disqus shortname
-        $limit = '5'; // The number of comments you want to show
+        $limit = Config::get('app.disqus_pager_limit'); // The number of comments you want to show
         $thread = $thread_id; // Same as your disqus_identifier
 
         $endpoint = 'https://disqus.com/api/3.0/threads/listPosts.json?api_secret=' . $key . '&forum=' . $forum . '&thread=' . $thread . '&limit=' . $limit;
