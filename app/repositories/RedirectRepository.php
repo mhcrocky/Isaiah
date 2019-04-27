@@ -80,6 +80,8 @@ class RedirectRepository {
             $redirect_url = '/Isaiah-Institute-Translation/';
         } elseif(preg_match('/^\/Concordance\/index\.html/i', $uri)) {
             $redirect_url = '/Concordance/';
+        } elseif(preg_match('/^\/120-Shorts/i', $uri)) {
+            $redirect_url = '/resources/overviews-of-the-prophecy-of-isaiah';
         } else {
             $new_path = '/legacy' . urldecode($uri);
             $filename = public_path() . $new_path;
