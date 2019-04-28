@@ -52,6 +52,7 @@ class ContactController extends \BaseController {
             $content_data = [];
             $content_data['message'] = 'Your message has been sent. Thank You!';
             return View::make('layouts.master', $template_data)
+                ->nest('tracking_code', 'widgets.tracking-code')
                 ->nest('heading', 'headings.resources')
                 ->nest('content', 'contact', $content_data);
             //return View::make('contact');

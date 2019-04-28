@@ -17,6 +17,7 @@ class RedirectRepository {
             $content_data = array('uri' => '/' . Request::path());
             View::share('app_url', $app_url);
             return View::make('layouts.master', $template_data)
+                ->nest('tracking_code', 'widgets.tracking-code')
                 ->nest('heading', 'headings.resources')
                 ->nest('mobile_search', 'widgets.search-iit-mobile')
                 ->nest('content', 'errors.missing', $content_data);
