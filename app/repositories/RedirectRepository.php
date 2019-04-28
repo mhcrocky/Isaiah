@@ -39,6 +39,7 @@ class RedirectRepository {
             $h = '';
         }
 
+        //isaiahexplained.local/Concordance/index.html
         if(preg_match('/^\/isaiah_ch_(\d{1,2})\.html/', $uri, $matches)) {
             if(!empty($matches[1])) {
                 $chapter_number = ltrim($matches[1], '0');
@@ -84,7 +85,7 @@ class RedirectRepository {
         } elseif(preg_match('/^\/Concordance\/title\.html/i', $uri)) {
             $redirect_url = '/Isaiah-Institute-Translation/';
         } elseif(preg_match('/^\/Concordance\/index\.html/i', $uri)) {
-            $redirect_url = '/Concordance/';
+            $redirect_url = '/concordance/';
         } elseif(preg_match('/^\/120-Shorts/i', $uri)) {
             $redirect_url = '/resources/overviews-of-the-prophecy-of-isaiah';
         } else {
