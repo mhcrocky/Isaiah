@@ -58,6 +58,10 @@ class RedirectRepository {
                         $word = $h_matches[3];
                     }
                     $redirect_url = "/{$chapter_number}?citation=c{$chapter_number}v{$verse_number}-{$word}#concordance";
+                } else {
+                    if(!empty($chapter_number) && is_numeric($chapter_number)) {
+                        $redirect_url = "/{$chapter_number}#concordance";
+                    }
                 }
             }
         } elseif(preg_match('/^\/Concordance\/concordance([A-Z])\.html/i', $uri, $matches)) {
