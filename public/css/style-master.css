@@ -755,7 +755,7 @@ button.close {
 ---------------------------------------------------------------------------*/
 
 .isaiah-ad {padding: 1em 0; display: block;}
-.isaiah-ad img {width: 100%; height: auto;}
+.isaiah-ad img {width: 100%; height: auto; max-width: 735px;}
 
 /*---------------------------------------------------------------------------
   >Aside
