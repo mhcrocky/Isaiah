@@ -62,6 +62,7 @@ class TestimonialController extends \BaseController {
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
 				->nest('heading', 'headings.chapter-index')
+				->nest('vignette_modal', 'modals.vignette')
 				->nest('mobile_search', 'widgets.search-iit-mobile')
 				->nest('content', 'testimonial-index', $content_data);
 		} else {
@@ -128,6 +129,7 @@ class TestimonialController extends \BaseController {
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
+				->nest('vignette_modal', 'modals.vignette')
 				->nest('heading', 'headings.resources')
 				->nest('content', 'testimonial-index', $content_data);
 		}else{
@@ -142,6 +144,7 @@ class TestimonialController extends \BaseController {
 			];
 			return View::make('layouts.master', $template_data)
 				->nest('tracking_code', 'widgets.tracking-code')
+				->nest('vignette_modal', 'modals.vignette')
 				->nest('heading', 'headings.resources')
 				->nest('content', 'testimonial-index', $content_data);
 		}

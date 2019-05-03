@@ -35,6 +35,7 @@ class BibleController extends \BaseController {
         return View::make('layouts.master', $template_data)
             ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.bible-chapter-index')
+            ->nest('vignette_modal', 'modals.vignette')
             //->nest('top_nav', 'widgets.chapter-selection-top')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'bible.book-index', $content_data);
