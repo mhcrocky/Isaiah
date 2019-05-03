@@ -63,7 +63,7 @@ q:before, q:after {
     content: none;
 }
 
-main p, main p a, main span, main b a, .modal b a, .modal p i, #iit-modal-verse span, main span a, main sup, #iit-modal-verse sup, main li, main i, #iit-modal-verse i, main b, #iit-modal-verse b, table td, table tbody span, .modal p, .verse, .vtext, .vtext b, .vtext i, .chapter-number-single, .chapter-number-double, .verse-number, .section-heading h1, .section-heading h1 .modal-trigger, .tab-heading h1, .tab-heading h1 .modal-trigger, .randomtext p, article h2, article h3, article h4, article h5, .page h2, .page h3, .page h4, .page h5, main b, main i, main strong, main em, .books-table h2 a, .title-chapters a, .modal b, .home-testimonials h2, #commentary-modal-verse a
+main p, main p a, main span, main b a, .modal b a, .modal p i, #iit-modal-verse span, main span a, main sup, #iit-modal-verse sup, main li, main i, #iit-modal-verse i, main b, #iit-modal-verse b, table td, table tbody span, .modal p, .verse, .vtext, .vtext b, .vtext i, .chapter-number-single, .chapter-number-double, .verse-number, .section-heading h1, .section-heading h1 .modal-trigger, .tab-heading h1, .tab-heading h1 .modal-trigger, .randomtext p, article h2, article h3, article h4, article h5, .page h2, .page h3, .page h4, .page h5, main b, main i, main strong, main em, .books-table h2 a, .title-chapters a, .modal b, .home-testimonials h2
 {
     font-family: "Crimson Text", "Palatino", Georgia, Time, serif;
 }
@@ -434,7 +434,7 @@ a.modal-trigger.chapter-number-double {
 }
 
 .highlight {
-    background-color: rgba(253, 235, 109, 0.44);
+    background-color: #FFFF00;
 }
 
 main a:hover,
@@ -459,8 +459,7 @@ font-style: normal;
 .heading .nav-pills .fa {color: #aaa;}
 
 .heading .nav-pills a {
-    /* color: #51709B; */
-    /* color: #5C90DF; */
+    color: #51709B;
 }
 
 .nav-pills a i {
@@ -484,7 +483,7 @@ font-style: normal;
 }
 
 .nav-pills a span {
-    font-weight: 400;
+    font-weight: 300;
 }
 
 #nav-left-disabled.heading-nav-left.disabled,
@@ -755,8 +754,8 @@ button.close {
   >Ads
 ---------------------------------------------------------------------------*/
 
-.isaiah-ad {padding: 1em 0; display: block; text-align: center;}
-.isaiah-ad input { width: 100%; max-width: 800px;}
+.isaiah-ad {padding: 1em 0; display: block;}
+.isaiah-ad img {width: 100%; height: auto; max-width: 735px;}
 
 /*---------------------------------------------------------------------------
   >Aside
@@ -968,7 +967,6 @@ aside p {
     line-height: 17px;
 }
 
-#widget_newsletter #mc_embed_signup {background: transparent;}
 #widget_newsletter #mc_embed_signup form {padding: 0;}
 #widget_newsletter #mc_embed_signup .mc-field-group {width: 100%;}
 #widget_newsletter #mc_embed_signup .button {background: #D3BA71; font-weight: 400; margin: 0;}
