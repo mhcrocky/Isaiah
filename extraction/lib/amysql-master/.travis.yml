@@ -1,0 +1,15 @@
+language: php
+env:
+  - AMYSQL_DRIVER=mysqli
+  - AMYSQL_DRIVER=mysql
+php:
+  - 5.2
+  - 5.3
+  - 5.4
+  - 5.5
+  - 5.6
+  - hhvm
+before_script:
+  - "mysql -e 'DROP DATABASE IF EXISTS amysql;'"
+  - "mysql -e 'create database amysql;'"
+script: phpunit

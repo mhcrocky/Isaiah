@@ -4,6 +4,34 @@ return array(
 
 	/*
 	|--------------------------------------------------------------------------
+	| Application Contact
+	|--------------------------------------------------------------------------
+	|
+	| Your application contact name and email address.
+	|
+	 */
+
+	'contact_name' => 'Avraham Gileadi',
+	'contact_email' => 'avrahamgileadi@gmail.com',
+	'moderator_name' => 'Eric Cawley',
+	'moderator_email' => 'eric@completemarketing.us',
+	'system_email' => 'contact@isaiahexplained.com',
+	'contact_subject' => 'New Feedback for IsaiahExplained.com',
+	'testimonial_subject' => 'New Testimonial for IsaiahExplained.com',
+
+	/*
+	|--------------------------------------------------------------------------
+	| Application Custom Settings
+	|--------------------------------------------------------------------------
+	|
+	| Your application custom settings
+	|
+	 */
+
+    'disqus_pager_limit' => '12',
+
+	/*
+	|--------------------------------------------------------------------------
 	| Application Debug Mode
 	|--------------------------------------------------------------------------
 	|
@@ -13,7 +41,7 @@ return array(
 	|
 	*/
 
-	'debug' => true,
+	'debug' => false,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -26,7 +54,9 @@ return array(
 	|
 	*/
 
-	'url' => 'http://isaiahexplained.local',
+	//'url' => 'http://localhost',
+    'url' => 'http://www.isaiahexplained.com',
+	'domain' => 'www.isaiahexplained.com',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -39,7 +69,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Los_Angeles',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -106,7 +136,8 @@ return array(
 		'Illuminate\Encryption\EncryptionServiceProvider',
 		'Illuminate\Filesystem\FilesystemServiceProvider',
 		'Illuminate\Hashing\HashServiceProvider',
-		'Illuminate\Html\HtmlServiceProvider',
+		//'Illuminate\Html\HtmlServiceProvider',
+		'IsaiahExplained\Providers\HtmlServiceProvider',
 		'Illuminate\Log\LogServiceProvider',
 		'Illuminate\Mail\MailServiceProvider',
 		'Illuminate\Database\MigrationServiceProvider',
@@ -124,6 +155,9 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
         'DaveJamesMiller\Boris\BorisServiceProvider',
+        'Flatten\FlattenServiceProvider',
+        'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
+        //'Roumen\Sitemap\SitemapServiceProvider',
 	),
 
 	/*
@@ -190,7 +224,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-
+        'Flatten'         => 'Flatten\Facades\Flatten',
+        'Carbon'          => 'Carbon\Carbon',
 	),
 
 );

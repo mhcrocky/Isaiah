@@ -2,6 +2,23 @@
 
 return array(
 
+    /*
+    |--------------------------------------------------------------------------
+    | Application Contact
+    |--------------------------------------------------------------------------
+    |
+    | Your application contact name and email address.
+    |
+     */
+
+    'contact_name' => 'TJ Wood',
+    'contact_email' => 'tj@ixqus.com',
+    'moderator_name' => 'TJ Wood',
+    'moderator_email' => 'tj@ixqus.com',
+    'system_email' => 'contact@isaiahexplained.com',
+    'contact_subject' => 'New Feedback for IsaiahExplained.com',
+    'testimonial_subject' => 'New Testimonial for IsaiahExplained.com',
+
 	/*
 	|--------------------------------------------------------------------------
 	| Application Debug Mode
@@ -14,5 +31,20 @@ return array(
 	*/
 
 	'debug' => true,
+
+    /*
+    |--------------------------------------------------------------------------
+    | Application URL
+    |--------------------------------------------------------------------------
+    |
+    | This URL is used by the console to properly generate URLs when using
+    | the Artisan command line tool. You should set this to the root of
+    | your application so that it is used when running Artisan tasks.
+    |
+    */
+
+    //'url' => 'http://localhost',
+    'url' => 'http://isaiahexplained.local',
+    'domain' => 'isaiahexplained.local',
 
 );

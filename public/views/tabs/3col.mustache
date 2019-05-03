@@ -1,6 +1,8 @@
 <main class="col-xs-12 full-width" role="main">
 
 <h4 class="mini-header">Comparative Translation</h4>
+<div class="top-links pull-right">{{> navigation.links-light}}</div>
+{{> widgets.tab-titles}}
 
 <div class="chapter-heading"><i>{{chapter_heading}}</i></div>
 
@@ -41,5 +43,7 @@
         <li id="three-col-footnote-{{letter}}"><sup>{{letter}}</sup>{{verse_number}} {{{footnote_text}}}</li>
     {{/footnotes}}
 </ul>
+
+{{> widgets.ad-isaiahdecoded}}
 
 </main>

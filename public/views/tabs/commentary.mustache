@@ -1,6 +1,8 @@
 <main class="col-xs-12 col-sm-8 left-column" role="main">
 
     <h4 class="mini-header">Apocalyptic Commentary</h4>
+    <div class="top-links pull-right">{{> navigation.links-light}}</div>
+    {{> widgets.tab-titles}}
 
     <div class="chapter-heading"><i>{{chapter_heading}}</i></div>
 
@@ -16,10 +18,12 @@
 
     <ul class="footnotes">
         {{#footnotes}}
-            <li><sup>{{letter}}</sup>{{verse_number}} {{{footnote_text}}}<div id="commentary-footnote-{{letter}}" style="display: none;">{{{footnote_text}}}</div></li>
+            <li id="commentary-footnote-{{letter}}"><sup>{{letter}}</sup>{{verse_number}} {{{footnote_text}}}</li>
         {{/footnotes}}
     </ul>
 
+    {{> widgets.ad-commentary}}
 </main>
 
-{{> asides.commentary}}
+<!--{\{> asides.commentary}}-->
+{{> asides.isaiah}}

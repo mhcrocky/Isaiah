@@ -9,11 +9,15 @@ class IITSearchController extends BaseController {
             'body_id' => 'search',
             'body_css' => 'scriptures tab-heading'
         );
+
         $content_data = array(
             'index_search' => IITSearchRepository::GetIITSearchIndex()
         );
+
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
+
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.search')
             ->nest('mobile_search', 'widgets.search-iit-mobile')
             ->nest('content', 'search-index', $content_data);
@@ -44,8 +48,9 @@ class IITSearchController extends BaseController {
         View::share('chapters', WidgetRepository::GetChapterSelection(0));
 
         return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
             ->nest('heading', 'headings.search')
-            ->nest('mobile_search', 'widgets.search-iit-mobile')
+            ->nest('mobile_search', 'widgets.search-mobile')
             ->nest('content', 'search', $content_data);
     }
 

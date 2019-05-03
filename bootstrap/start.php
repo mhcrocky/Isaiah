@@ -25,9 +25,8 @@ $app = new Illuminate\Foundation\Application;
 */
 
 $env = $app->detectEnvironment(array(
-
-	'local' => array('homestead'),
-
+	'local' => array('homestead', 'tjw.local'),
+    'staging' => array('test.ixqus.com')
 ));
 
 /*

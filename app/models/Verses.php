@@ -9,6 +9,10 @@ class Verse extends Eloquent {
      */
     protected $table = 'verses';
 
+    protected $appends = array('verse_class');
+
+    protected $highlights = [];
+
     /**
      * Do not maintain ORM creation records for this model
      *
@@ -16,7 +20,27 @@ class Verse extends Eloquent {
      */
     public $timestamps = false;
 
+    public function book() {
+        return $this->hasOne('Book');
+    }
+
     public function chapter() {
         return $this->hasOne('Chapter');
+    }
+
+    public function getVerseNumberAttribute($value) {
+        return Helpers\strrtrim($value, '.0');
+    }
+
+    public function getVerseClassAttribute() {
+        if(!empty($this->highlights[$this->verse_number])) {
+            return $this->highlights[$this->verse_number];
+        } else {
+            return '';
+        }
+    }
+
+    public function SetVerseClassAttribute($class) {
+        $this->highlights[$this->verse_number] = $class;
     }
 }

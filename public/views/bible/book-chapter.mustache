@@ -1,0 +1,17 @@
+<main class="col-xs-12 col-sm-8 left-column" style="padding-top: 0;" role="main">
+    <div class="top-links pull-right">{{> navigation.links-light}}</div>
+    <h1 class="title-chapters"><a href="{{app_url}}/bible/"><i class="fa fa-book"></i></a><i class="fa fa-angle-right"></i><a href="#chaptermodal" class="modal-trigger" data-toggle="modal">{{book_title}}</a> {{chapter_number}}</h1>
+
+    <hr>
+    <!--<div class="row chapter-table">-->
+    <div class="one-col-padding scripture-text" id="scripture_area">
+        {{#book_verses}}
+            <p id="verse_{{verse_number}}" class="{{verse_class}}">{{verse_number}} {{scripture_text}}</p>
+        {{/book_verses}}
+    </div>
+    <hr>
+    <div class="bottom-links pull-right">{{> navigation.links-light}}</div>
+    {{> widgets.ad-isaiahdecoded}}
+</main>
+<!--{\{> asides.chapter-index}}-->
+{{> asides.bible}}

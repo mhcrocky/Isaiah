@@ -31,6 +31,17 @@ return array(
 			'prefix'    => '',
 		),
 
+        /*'mysql' => array(
+            'driver'    => 'mysql',
+            'host'     => 'localhost',
+            'database'  => 'isaiahde_logos',
+            'username'  => 'isaiahde_tekton',
+            'password'  => 'kkg7n5a4',
+            'charset'   => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix'    => '',
+        ),*/
+
 		'pgsql' => array(
 			'driver'   => 'pgsql',
 			'host'     => 'localhost',
