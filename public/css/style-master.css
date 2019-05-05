@@ -459,7 +459,8 @@ font-style: normal;
 .heading .nav-pills .fa {color: #aaa;}
 
 .heading .nav-pills a {
-    color: #51709B;
+    /* color: #51709B; */
+    /* color: #5C90DF; */
 }
 
 .nav-pills a i {
@@ -754,8 +755,8 @@ button.close {
   >Ads
 ---------------------------------------------------------------------------*/
 
-.isaiah-ad {padding: 1em 0; display: block;}
-.isaiah-ad img {width: 100%; height: auto; max-width: 735px;}
+/*.isaiah-ad {padding: 1em 0; display: block; text-align: center;}*/
+.isaiah-ad input { width: 100%; max-width: 735px;}
 
 /*---------------------------------------------------------------------------
   >Aside
