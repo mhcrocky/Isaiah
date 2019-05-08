@@ -861,3 +861,9 @@ input[type="button"]:focus {
     margin-left: -33px; /* -1 * image width / 2 */
     margin-top: -33px; /* -1 * image height / 2 */
 }
+
+.aside-underline {
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid #D7D2C5;
+}
