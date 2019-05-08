@@ -130,8 +130,8 @@
                         <h3>Network</h3>
                         <ul>
                             <li><a href="http://isaiahinstitute.com/" target="_blank">IsaiahInstitute.com</a></li>
-                            <li><a href="http://isaiahreport.com/" target="_blank">IsaiahReport.com</a></li>
-                            <li><a href="http://isaiahprophecy.com/" target="_blank">IsaiahProphecy.com</a></li>
+                            <!--<li><a href="http://isaiahreport.com/" target="_blank">IsaiahReport.com</a></li>
+                            <li><a href="http://isaiahprophecy.com/" target="_blank">IsaiahProphecy.com</a></li>-->
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-3">
