@@ -241,9 +241,9 @@ if (location.hash || location.pathname.match(/\/\d{1,2}/)) {
         });
 
         /**
-         * Reset vignette modals on close
+         * Reset vignette and video highlight modals on close
          */
-        $('#vig1,#vig2,#vig3,#vig4,#vig5,#vig6').on('hidden.bs.modal', function (event) {
+        $('#vig1,#vig2,#vig3,#vig4,#vig5,#vig6,#highlight1,#highlight2,#highlight3,#highlight4,#highlight5,#highlight6,#highlight7').on('hidden.bs.modal', function (event) {
             var target = event.target.id;
             var $frame = $('iframe#'+target);
             var vidsrc = $frame.attr('src');
