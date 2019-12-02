@@ -12,7 +12,7 @@ return array(
 	 */
 
 	'contact_name' => 'Avraham Gileadi',
-	'contact_email' => 'avrahamgileadi@gmail.com',
+	'contact_email' => 'IsaiahReport@gmail.com',
 	'moderator_name' => 'Eric Cawley',
 	'moderator_email' => 'eric@completemarketing.us',
 	'system_email' => 'contact@isaiahexplained.com',
