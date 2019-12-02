@@ -15,7 +15,7 @@ return array(
 	'contact_email' => 'IsaiahReport@gmail.com',
 	'moderator_name' => 'Eric Cawley',
 	'moderator_email' => 'eric@completemarketing.us',
-	'system_email' => 'contact@isaiahexplained.com',
+	'system_email' => 'IsaiahReport@gmail.com',
 	'contact_subject' => 'New Feedback for IsaiahExplained.com',
 	'testimonial_subject' => 'New Testimonial for IsaiahExplained.com',
 
