@@ -18,6 +18,7 @@
 });*/
 
 Route::get('/', 'IndexController@showIndex');
+Route::get('/about', 'IndexController@showAbout');
 Route::get('/Isaiah-Institute-Translation', 'IndexController@showIITInfo');
 Route::get('/{chapterNumber}', 'ChapterController@showChapter')->where('chapterNumber', '^(?!67|68|69)[1-6][0-9]|[1-9]$');
 
