@@ -62,6 +62,7 @@
                 <div id="main-nav" class="navbar-collapse collapse navbar-right">
                     <ul class="nav navbar-nav">
                         <li><a title="Home" href="{{ $app_url }}/"><i class="fa fa-home fa-fw"></i>&nbsp;<span>Home</span></a></li>
+                        <li><a title="About" href="{{ $app_url }}/about"><i class="fa fa-info-circle fa-fw"></i>&nbsp;<span>About</span></a></li>
                         <li class="dropdown"><a title="<i class=&quot;fa fa-graduation-cap fa-fw&quot;></i>&nbsp;<span>Resources</span>" href="#" data-toggle="dropdown" class="dropdown-toggle" aria-haspopup="true"><i class="fa fa-graduation-cap fa-fw"></i>&nbsp;<span>Resources</span> <span class="caret"></span></a>
                             <ul role="menu" class="dropdown-menu">
                                 <li><a title="Key Features of the Prophecy of Isaiah" href="{{ $app_url }}/resources/key-features-of-the-prophecy-of-isaiah/">Key Features of the Prophecy of Isaiah</a></li>
@@ -112,11 +113,11 @@
                         <h3>Isaiah Explained</h3>
                         <ul>
                             <li><a href="{{ $app_url }}/"><i class="fa fa-home fa-fw"></i>&nbsp;<span>Home</span></a></li>
+                            <li><a href="{{ $app_url }}/about"><i class="fa fa-info-circle fa-fw"></i>&nbsp;<span>About</span></a></li>
                             <li><a href="{{ $app_url }}/bible"><i class="fa fa-book fa-fw"></i>&nbsp;<span>KJV Bible</span></a></li>
                             <li><a href="{{ $app_url }}/testimonials"><i class="fa fa-quote-left fa-fw"></i>&nbsp;<span>Testimonials</span></a></li>
                             <li><a href="{{ $app_url }}/store"><i class="fa fa-shopping-cart fa-fw"></i> <span>Store</span></a></li>
-                            <li><a href="{{ $app_url }}/about"><i class="fa fa-info-circle fa-fw"></i>&nbsp;<span>About</span></a></li>
-                            <!-- 					<li><a href="http://isaiahexplained.com/blog/contact/"><i class="fa fa-envelope fa-fw"></i>&nbsp;<span>Contact</span></a></li> -->
+    <!-- 					<li><a href="http://isaiahexplained.com/blog/contact/"><i class="fa fa-envelope fa-fw"></i>&nbsp;<span>Contact</span></a></li> -->
                         </ul>
                     </div>
                     <div class="col-xs-12 col-sm-3 col-list">

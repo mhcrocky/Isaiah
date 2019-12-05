@@ -42,6 +42,24 @@ class IndexController extends BaseController {
             ->nest('content', 'chapter-index', $content_data);
     }
 
+    public function showAbout() {
+        $template_data = array(
+            'title' => 'About',
+            'body_id' => 'chapter-index',
+            'body_css' => 'scriptures section-heading'
+        );
+
+        $content_data = array();
+
+        return View::make('layouts.master', $template_data)
+            ->nest('tracking_code', 'widgets.tracking-code')
+            ->nest('vignette_modal', 'modals.vignette')
+            ->nest('heading', 'headings.chapter-index')
+            ->nest('top_nav', 'widgets.chapter-selection-top')
+            ->nest('mobile_search', 'widgets.search-iit-mobile')
+            ->nest('content', 'resources.about', $content_data);
+    }
+
     public function showIITInfo() {
         $template_data = array(
             'title' => 'Isaiah Institute Translation',
