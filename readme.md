@@ -1,3 +1,9 @@
-We have revolutionized the study of Isaiah online with our new online version of the Isaiah Institute Translation of Isaiah! Now you can easily and comfortably view the full, tablet or mobile version of the site, utilize a helpful three-column comparative view of the text that includes the King James Version and the Masoretic Text. You can also browse the detailed Apocalyptic Commentary and Interactive Concordance!
+# Isaiah Explained
 
-There has never been a more profound compilation of study tools made available for the Book of Isaiah and it is all yours to enjoy for FREE! We invite you to share the site with your friends and family.
+### Platform
+
+isaiahexplained.com is a MySQL and PHP/JQuery driven website using the [Laravel 4.2.x](https://laravel.com/docs/4.2) MVC framework and the [mustache](https://mustache.github.io/) template engine. Site development uses a git flow loosely following the [nvie branching strategy guide](http://nvie.com/posts/a-successful-git-branching-model/).
+
+The site source contains git hooks for BitBucket. When pushing commits to the development branch, the dev site should be updated automatically. When the development branch is merged into the master branch, the www site should be updated automatically. Configuration on both servers is required to support this, and is beyond the scope of this readme.
+
+The [www](www.isaiahexplained.com) production site is currently hosted on a BlueHost server, which significantly impacts its performance. To alleviate performance deficiencies, the [flatten](https://github.com/Anahkiasen/flatten) library is used to flatten PHP pages into flat html. The [dev](dev.isaiahexplained.com) is currently hosted on a DigitalOcean website, along with some store files.
