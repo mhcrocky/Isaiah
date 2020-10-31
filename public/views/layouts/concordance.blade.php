@@ -138,17 +138,19 @@
                     <div class="col-xs-12 col-sm-3">
                         <h3>Social</h3>
                         <ul>
-                            <!--
-        <li><a class="btn btn-facebook" href=""><i class="fa fa-facebook fa-fw"></i>&nbsp;&nbsp;Facebook</a></li>
-                            <li><a class="btn btn-twitter" href=""><i class="fa fa-twitter fa-fw"></i>&nbsp;&nbsp;twitter</a></li>
-        -->
+                          <li>
+                            <a class="btn btn-facebook" href="https://www.facebook.com/hebraeus.isaiah.institute/"><i class="fa fa-facebook fa-fw"></i>&nbsp;&nbsp;Facebook</a>
+                          </li>
+                          <li>
+                            <a class="btn btn-twitter" href="https://twitter.com/GileadiAvraham"><i class="fa fa-twitter fa-fw"></i>&nbsp;&nbsp;Twitter</a>
+                          </li>
                         </ul>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-xs-12">
                         <hr>
-                        <p class="copyright">&copy;<?php echo date("Y"); ?> Isaiah Explained, All Rights Reserved.</p>
+                        <p class="copyright">&copy; <?php echo date("Y"); ?> Hebraeus Foundation. All Rights Reserved.</p>
                     </div>
                 </div>
             </footer>
