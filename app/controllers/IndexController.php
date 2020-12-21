@@ -16,9 +16,10 @@ class IndexController extends BaseController {
     */
 
     public function showIndex() {
-        //dd(Config::get('app.debug'));
+        // dd(Config::get('app.debug'));
         /*$test_data = array('var1' => 'test data1', 'var2' => 'test data 2');
         Log::getMonolog()->addInfo('Log Message', $test_data);*/
+
 
         $template_data = array(
             'title' => 'The Book of Isaiah',

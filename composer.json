@@ -5,15 +5,13 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-	    "way/generators": "~3.0",
-        "twitter/bootstrap": "dev-master",
-        "conarwelsh/mustache-l4": "dev-master",
-	    "davejamesmiller/laravel-boris": "dev-master",
-		"anahkiasen/flatten": "dev-master",
-		"barryvdh/laravel-ide-helper": "~1.11@dev",
-		"doctrine/dbal": "v2.4.2",
-		"roumen/sitemap": "~2.4@dev",
-		"nesbot/carbon": "~1.13"
+		"twitter/bootstrap": "dev-main",
+		"way/generators": "~3.0",
+		"barryvdh/laravel-ide-helper": "~1.11",
+		"roumen/sitemap": "~2.4",
+		"nesbot/carbon": "~1.13",
+		"davejamesmiller/laravel-boris": "dev-master",
+		"conarwelsh/mustache-l4": "dev-master"
 	},
     "require-dev": {
         "phpunit/phpunit": "3.7.*",

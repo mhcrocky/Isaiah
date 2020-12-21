@@ -41,7 +41,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -155,7 +155,7 @@ return array(
         'Way\Generators\GeneratorsServiceProvider',
         'Conarwelsh\MustacheL4\MustacheL4ServiceProvider',
         'DaveJamesMiller\Boris\BorisServiceProvider',
-        'Flatten\FlattenServiceProvider',
+        // 'Flatten\FlattenServiceProvider',
         'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider',
         //'Roumen\Sitemap\SitemapServiceProvider',
 	),
